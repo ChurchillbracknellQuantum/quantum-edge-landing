@@ -310,6 +310,12 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .pbtn.g:hover{box-shadow:0 6px 24px rgba(245,200,66,.3);transform:translateY(-1px)}
 .pbtn.o{border:2px solid var(--gold);color:var(--gold)}
 .pbtn.o:hover{background:var(--gf)}
+/* Featured card CTA — inverted so it stands out against gold border/badge */
+.pcard.feat .pbtn.g{background:#fff;color:#0D0A00;font-weight:900;border:none;box-shadow:0 2px 20px rgba(255,255,255,.12)}
+.pcard.feat .pbtn.g:hover{background:var(--gold);color:#000;box-shadow:0 8px 28px rgba(245,200,66,.4);transform:translateY(-2px)}
+/* Support locked badge */
+.sup-buyer-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.66rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+.sup-locked{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--green);font-weight:700;border-top:1px solid rgba(42,31,0,.5);padding-top:14px;margin-top:auto}
 .price-guarantee{display:flex;justify-content:center;gap:20px;margin:20px 0 10px;flex-wrap:wrap}
 .pg-item{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);font-weight:600}
 .pg-chk{color:var(--green);font-weight:800;font-size:.88rem}
@@ -733,9 +739,10 @@ footer span{color:var(--gold);font-weight:700}
     <div class="sup-grid">
       <div class="sup-card reveal">
         <div class="sup-icon">&#129302;</div>
-        <h3>Telegram AI Bot</h3>
-        <p>Instant answers 24/5 from our AI-powered support bot. Ask anything &mdash; setup, strategy, broker compatibility, prop firm rules. Handles 90% of questions instantly.</p>
-        <a href="https://t.me/getquantumedgeaibot" class="pbtn o sup-btn" target="_blank" rel="noopener">Chat on Telegram &rarr;</a>
+        <div class="sup-buyer-tag">&#128274; Buyers Only</div>
+        <h3>AI Support Bot</h3>
+        <p>After purchase, you get exclusive access to our AI-powered Telegram support bot — trained on TITAN's full documentation. Setup, broker config, prop firm rules, DD cap triggers — answered instantly, 24/5. No waiting. No tickets.</p>
+        <div class="sup-locked">&#10003; Unlocked automatically with your license key</div>
       </div>
       <div class="sup-card sup-card-feat reveal">
         <div class="sup-badge-24">24-Hour Response Guarantee</div>
