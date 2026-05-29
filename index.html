@@ -27,7 +27,6 @@ body.loading{overflow:hidden}
 .lfill{height:100%;background:var(--gold);animation:lload 1.8s ease forwards}
 @keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
 @keyframes lload{0%{width:0}100%{width:100%}}
-.sl{display:inline-block;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,10,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:all .3s}
 .nav-inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
 nav.scrolled{height:64px;background:rgba(13,10,0,.97)}
@@ -511,10 +510,6 @@ function closeLB(){document.getElementById('lb').classList.remove('open');docume
 function lbNav(d){li=(li+d+LI.length)%LI.length;document.getElementById('lb-img').src=LI[li]}
 document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLB()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1)});
-// Letter scatter hover effect
-function wrapL(el){if(el.dataset.lw)return;el.dataset.lw='1';[...el.childNodes].forEach(n=>{if(n.nodeType===3){const fr=document.createDocumentFragment();[...n.textContent].forEach(c=>{const s=document.createElement('span');s.className='sl';s.textContent=c;fr.appendChild(s)});n.parentNode.replaceChild(fr,n)}})}
-function scatter(el,on){wrapL(el);el.querySelectorAll('.sl').forEach(s=>{s.style.transform=on?`translate(${(Math.random()-.5)*14}px,${(Math.random()-.5)*10}px) rotate(${(Math.random()-.5)*18}deg)`:'';})}
-document.querySelectorAll('.hero-h1,.hero-badge,.sec-title,.sec-label,.nav-links a,.hstat .lbl,.pname,.ptier,.step h3,.pain-card h3,.urgency').forEach(el=>{el.addEventListener('mouseenter',()=>scatter(el,true));el.addEventListener('mouseleave',()=>scatter(el,false))});
 function tFaq(el){const a=el.nextElementSibling,o=a.classList.contains('open');document.querySelectorAll('.faq-a.open').forEach(x=>{x.classList.remove('open');x.previousElementSibling.classList.remove('open')});if(!o){a.classList.add('open');el.classList.add('open')}}
 </script>
 </body>
