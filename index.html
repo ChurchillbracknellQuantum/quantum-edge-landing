@@ -1,5 +1,660 @@
 <!DOCTYPE html>
-<html>
-<head><title>Quantum Edge Trading</title></head>
-<body><h1>Coming Soon</h1></body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TITAN AutoTrader — Institutional-grade automated forex trading. 70-79% win rate across 5 verified pairs. Built from 60+ trading books. Download for MT5.">
+    <title>TITAN AutoTrader | Quantum Edge Trading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg:#0D0A00;--surface:#1A1300;--border:#2A1F00;
+            --gold:#F5C842;--gold-accent:#E8A800;--gold-dim:rgba(245,200,66,0.12);
+            --white:#FFFFFF;--muted:#CCCCCC;--muted2:#888888;
+            --green:#2DB87A;--red:#E84040;
+            --font:'Inter',sans-serif;--font-d:'Playfair Display',serif;
+            --max-w:1200px;--r:12px;--t:all 0.3s cubic-bezier(0.4,0,0.2,1)
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font);background:var(--bg);color:var(--white);overflow-x:hidden;cursor:none}
+        body.loading{overflow:hidden}
+        ::-webkit-scrollbar{width:5px}
+        ::-webkit-scrollbar-track{background:var(--bg)}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+        .cur{position:fixed;pointer-events:none;z-index:10000;mix-blend-mode:difference}
+        #cDot{width:8px;height:8px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%)}
+        #cRing{width:36px;height:36px;border:2px solid var(--gold);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s;opacity:.6}
+        #cRing.h{width:56px;height:56px;opacity:1}
+        @media(max-width:768px){.cur{display:none}body{cursor:auto}}
+        #loader{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .8s ease,visibility .8s ease}
+        #loader.out{opacity:0;visibility:hidden}
+        .l-emblem{width:88px;height:88px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:pRing 2s ease-in-out infinite}
+        .l-qe{font-family:var(--font-d);font-size:34px;font-weight:900;background:linear-gradient(135deg,#F5C842,#E8A800,#F5C842);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .l-brand{font-size:11px;font-weight:600;letter-spacing:4px;color:var(--muted);text-transform:uppercase}
+        .l-bar-w{width:200px;height:2px;background:var(--border);border-radius:1px;overflow:hidden}
+        .l-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold-accent),var(--gold));animation:lProg 2s ease forwards}
+        .l-txt{font-size:12px;color:var(--muted2);letter-spacing:2px;animation:blink 1s ease-in-out infinite}
+        @keyframes lProg{to{width:100%}}
+        @keyframes pRing{0%,100%{box-shadow:0 0 0 0 rgba(245,200,66,.4)}50%{box-shadow:0 0 0 20px rgba(245,200,66,0)}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;transition:var(--t)}
+        nav.scrolled{background:rgba(13,10,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+        .n-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .n-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:17px;font-weight:900;color:#000}
+        .n-txt{font-size:14px;font-weight:700;color:var(--white)}.n-txt span{color:var(--gold)}
+        .n-links{display:flex;align-items:center;gap:28px;list-style:none}
+        .n-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--muted);transition:color .2s}
+        .n-links a:hover{color:var(--gold)}
+        .n-cta{background:linear-gradient(135deg,var(--gold),var(--gold-accent));color:#000!important;padding:10px 20px;border-radius:8px;font-weight:700!important}
+        .n-ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
+        .n-ham span{display:block;width:24px;height:2px;background:var(--gold);border-radius:1px}
+        .mob-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+        .mob-menu.open{display:flex}
+        .mob-menu a{text-decoration:none;font-size:22px;font-weight:700;color:var(--white)}
+        .mob-menu a:hover{color:var(--gold)}
+        .mob-x{position:absolute;top:24px;right:24px;font-size:28px;cursor:pointer;color:var(--gold)}
+        @media(max-width:768px){.n-links{display:none}.n-ham{display:flex}}
+        .ctr{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+        section{padding:100px 0}
+        .gold-txt{background:linear-gradient(135deg,#F5C842,#E8A800,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .s-label{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+        h1,h2,h3{font-family:var(--font-d);line-height:1.1}
+        .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+        .bdot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s ease-in-out infinite}
+        .rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+        .rl{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+        .rr{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
+        .rv.vis,.rl.vis,.rr.vis{opacity:1;transform:none}
+        .btn-p{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,var(--gold),var(--gold-accent));color:#000;font-weight:800;font-size:15px;border-radius:var(--r);text-decoration:none;transition:var(--t);border:none;cursor:pointer}
+        .btn-p:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(245,200,66,.3)}
+        .btn-s{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:transparent;color:var(--white);font-weight:600;font-size:15px;border-radius:var(--r);text-decoration:none;border:1px solid var(--border);transition:var(--t)}
+        .btn-s:hover{border-color:var(--gold);color:var(--gold)}
+        #hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:80px;overflow:hidden}
+        #pCanvas{position:absolute;inset:0;pointer-events:none}
+        .h-content{position:relative;z-index:2;max-width:760px}
+        .h-content h1{font-size:clamp(38px,6vw,78px);font-weight:900;line-height:1.05;margin-bottom:24px}
+        .h-content p{font-size:clamp(16px,2vw,19px);line-height:1.75;color:var(--muted);margin-bottom:40px;max-width:580px}
+        .h-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px}
+        .h-stats{display:flex;gap:40px;flex-wrap:wrap}
+        .h-sv{font-size:30px;font-weight:800;color:var(--gold);display:block}
+        .h-sk{font-size:12px;color:var(--muted2);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+        .tick-w{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;overflow:hidden;white-space:nowrap}
+        .tick-t{display:inline-flex;animation:tick 35s linear infinite}
+        .tick-i{display:inline-flex;align-items:center;gap:8px;padding:0 40px;font-size:13px;font-weight:600;color:var(--muted)}
+        .tick-i .up{color:var(--green)}.tick-i .sep{color:var(--border)}
+        @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        #pain{background:var(--surface)}
+        .pain-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px}
+        .pain-c{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:36px 28px;position:relative;overflow:hidden;transition:var(--t)}
+        .pain-c:hover{border-color:rgba(245,200,66,.3);transform:translateY(-4px)}
+        .pain-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+        .pain-c .ico{font-size:36px;margin-bottom:20px}
+        .pain-c h3{font-family:var(--font);font-size:18px;font-weight:700;margin-bottom:12px}
+        .pain-c p{font-size:14px;line-height:1.75;color:var(--muted)}
+        .sol-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px}
+        .sol-t h2{font-size:clamp(30px,4vw,50px);margin-bottom:24px}
+        .sol-t p{font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:14px}
+        .sol-feats{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px}
+        .sol-feats li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.5}
+        .chk{width:20px;height:20px;background:rgba(45,184,122,.12);border:1px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+        .chk::after{content:'\2713';font-size:11px;color:var(--green);font-weight:700}
+        .sol-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px}
+        .sol-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+        .sol-row:last-child{border:none}
+        .sol-lbl{font-size:13px;color:var(--muted)}.sol-val{font-size:16px;font-weight:700;color:var(--gold)}.sol-grn{color:var(--green)!important}
+        @media(max-width:768px){.sol-g{grid-template-columns:1fr;gap:40px}}
+        #performance{background:var(--surface)}
+        .perf-hd{text-align:center;margin-bottom:56px}
+        .perf-hd h2{font-size:clamp(30px,4vw,50px);margin-bottom:14px}
+        .perf-hd p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto}
+        .perf-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;margin-bottom:36px}
+        .perf-c{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:var(--t)}
+        .perf-c:hover{border-color:rgba(245,200,66,.4);box-shadow:0 20px 40px rgba(245,200,66,.07);transform:translateY(-4px)}
+        .perf-ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+        .perf-pair{font-size:21px;font-weight:800}.perf-tf{font-size:12px;color:var(--muted2);font-weight:500}
+        .perf-badge{padding:4px 12px;background:rgba(45,184,122,.1);border:1px solid rgba(45,184,122,.3);border-radius:100px;font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px}
+        .perf-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+        .ps-v{font-size:22px;font-weight:800}.ps-v.g{color:var(--gold)}.ps-v.gr{color:var(--green)}.ps-v.w{color:var(--white)}
+        .ps-k{font-size:11px;color:var(--muted2);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+        .eq-w{background:rgba(0,0,0,.4);border-radius:8px;padding:10px}
+        .eq-lbl{font-size:10px;color:var(--muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+        .eq-svg{width:100%;height:68px}
+        .eq-line{fill:none;stroke:#2DB87A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+        .port-sum{background:var(--bg);border:1px solid var(--gold);border-radius:var(--r);padding:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:28px;text-align:center}
+        .ps-big{font-size:34px;font-weight:900;color:var(--gold);display:block}.ps-sub{font-size:12px;color:var(--muted2);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+        .know-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+        .k-cnts{display:flex;gap:40px;margin-bottom:36px}
+        .k-cv{font-size:56px;font-weight:900;color:var(--gold);line-height:1}
+        .k-cl{font-size:13px;color:var(--muted);margin-top:4px}
+        .k-tags{display:flex;flex-wrap:wrap;gap:8px}
+        .k-tag{padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:12px;color:var(--muted);font-weight:500}
+        .k-tag.g{border-color:var(--gold-dim);color:var(--gold);background:rgba(245,200,66,.05)}
+        .k-vis{display:flex;flex-direction:column;gap:14px}
+        .k-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:var(--t)}
+        .k-card:hover{border-color:rgba(245,200,66,.3)}
+        .k-ico{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+        .k-tt{font-size:14px;font-weight:600}.k-st{font-size:12px;color:var(--muted2);margin-top:2px}
+        @media(max-width:768px){.know-g{grid-template-columns:1fr;gap:40px}}
+        #how{background:var(--surface)}
+        .steps-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:56px}
+        .step-c{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:36px 28px;transition:var(--t)}
+        .step-c:hover{border-color:rgba(245,200,66,.3);transform:translateY(-4px)}
+        .step-n{font-size:60px;font-weight:900;color:var(--border);line-height:1;margin-bottom:16px;font-family:var(--font-d)}
+        .step-c h3{font-family:var(--font);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--gold)}
+        .step-c p{font-size:14px;line-height:1.75;color:var(--muted)}
+        .cmp-w{margin-top:56px;overflow-x:auto}
+        .cmp-t{width:100%;border-collapse:collapse;min-width:580px}
+        .cmp-t th{padding:20px 24px;text-align:left;font-size:14px;font-weight:700;border-bottom:2px solid var(--border)}
+        .cmp-t th.tc{color:var(--gold);background:rgba(245,200,66,.05)}.cmp-t th.nc{color:var(--muted2)}
+        .cmp-t td{padding:15px 24px;font-size:14px;border-bottom:1px solid var(--border)}
+        .cmp-t tr:hover td{background:rgba(255,255,255,.02)}
+        .cmp-t td.fc{color:var(--muted);font-weight:500}
+        .cmp-t td.tc{color:var(--green);font-weight:600;background:rgba(245,200,66,.02)}
+        .cmp-t td.nc{color:var(--red)}
+        #pricing{background:var(--surface)}
+        .price-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:56px}
+        .price-c{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:40px 30px;position:relative;transition:var(--t)}
+        .price-c:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+        .price-c.feat{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 20px 40px rgba(245,200,66,.1)}
+        .feat-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-accent));color:#000;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 20px;border-radius:100px}
+        .p-tier{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+        .p-name{font-size:21px;font-weight:800;margin-bottom:8px}.p-desc{font-size:13px;color:var(--muted2);margin-bottom:28px}
+        .p-amt{font-size:54px;font-weight:900;line-height:1;margin-bottom:6px}.p-amt sup{font-size:22px;font-weight:600;color:var(--gold)}
+        .p-once{font-size:12px;color:var(--muted2);margin-bottom:28px}
+        .p-div{height:1px;background:var(--border);margin-bottom:24px}
+        .p-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:32px}
+        .p-feats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
+        .p-feats li .ck{color:var(--green);font-weight:700;flex-shrink:0}
+        .p-btn{display:block;width:100%;padding:16px;text-align:center;border-radius:var(--r);font-weight:700;font-size:15px;text-decoration:none;transition:var(--t);border:none;cursor:pointer}
+        .p-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-accent));color:#000}
+        .p-btn.gold:hover{box-shadow:0 16px 40px rgba(245,200,66,.4);transform:translateY(-2px)}
+        .p-btn.out{background:transparent;color:var(--white);border:1px solid var(--border)}
+        .p-btn.out:hover{border-color:var(--gold);color:var(--gold)}
+        #vs{text-align:center}
+        .vid-w{max-width:800px;margin:56px auto 0;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:60px 40px}
+        .vid-ph{display:flex;flex-direction:column;align-items:center;gap:16px}
+        .play{width:80px;height:80px;background:linear-gradient(135deg,var(--gold),var(--gold-accent));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t)}
+        .play:hover{transform:scale(1.1);box-shadow:0 0 40px rgba(245,200,66,.4)}
+        .play::after{content:'\25B6';font-size:28px;color:#000;margin-left:4px}
+        .faq-l{max-width:800px;margin:56px auto 0}
+        .faq-i{border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px;overflow:hidden;transition:var(--t)}
+        .faq-i.open{border-color:rgba(245,200,66,.3)}
+        .faq-q{padding:22px 26px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px;font-weight:600;transition:color .2s;user-select:none}
+        .faq-q:hover{color:var(--gold)}
+        .faq-ic{width:24px;height:24px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--gold);transition:transform .3s}
+        .faq-i.open .faq-ic{transform:rotate(45deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+        .faq-ai{padding:0 26px 22px;font-size:14px;line-height:1.8;color:var(--muted)}
+        #disc{background:var(--surface);padding:60px 0}
+        .disc-b{border:1px solid var(--border);border-radius:var(--r);padding:32px;max-width:900px;margin:0 auto}
+        .disc-b h4{font-family:var(--font);font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+        .disc-b p{font-size:12px;line-height:1.8;color:var(--muted2)}
+        #fcta{text-align:center;padding:120px 0;position:relative;overflow:hidden}
+        .cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(245,200,66,.08) 0%,transparent 70%);pointer-events:none}
+        #fcta h2{font-size:clamp(34px,5vw,62px);margin-bottom:22px}
+        #fcta p{font-size:18px;color:var(--muted);margin-bottom:44px;max-width:500px;margin-left:auto;margin-right:auto}
+        .fbtns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        footer{background:#000;border-top:1px solid var(--border);padding:36px 0}
+        .ft-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+        .ft-brand{font-size:14px;font-weight:700;color:var(--gold)}
+        .ft-links{display:flex;gap:24px}
+        .ft-links a{font-size:13px;color:var(--muted2);text-decoration:none;transition:color .2s}
+        .ft-links a:hover{color:var(--gold)}
+        .ft-copy{font-size:12px;color:var(--muted2)}
+        @media(max-width:768px){section{padding:70px 0}.perf-g{grid-template-columns:1fr}.price-g{grid-template-columns:1fr}.ft-in{flex-direction:column;text-align:center}}
+    </style>
+</head>
+<body class="loading">
+<div class="cur" id="cDot"></div>
+<div class="cur" id="cRing"></div>
+<div id="loader">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div class="l-emblem"><span class="l-qe">QE</span></div>
+        <div class="l-brand">Quantum Edge Trading</div>
+    </div>
+    <div class="l-bar-w"><div class="l-bar"></div></div>
+    <div class="l-txt">Initializing Systems...</div>
+</div>
+<nav id="nav">
+    <a href="#" class="n-logo"><div class="n-icon">QE</div><div class="n-txt">Quantum <span>Edge</span> Trading</div></a>
+    <ul class="n-links">
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#pricing" class="n-cta">Get TITAN &rarr;</a></li>
+    </ul>
+    <div class="n-ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mob">
+    <span class="mob-x" id="mobX">&#x2715;</span>
+    <a href="#performance" onclick="cMob()">Performance</a>
+    <a href="#how" onclick="cMob()">How It Works</a>
+    <a href="#pricing" onclick="cMob()">Pricing</a>
+    <a href="#faq" onclick="cMob()">FAQ</a>
+    <a href="#pricing" class="btn-p" onclick="cMob()">Get TITAN &rarr;</a>
+</div>
+<section id="hero">
+    <canvas id="pCanvas"></canvas>
+    <div class="ctr">
+        <div class="h-content">
+            <div class="badge rv"><span class="bdot"></span>Live Verified Results</div>
+            <h1 class="rv" style="transition-delay:.1s">Trade Like an<br>Institution.<br><span class="gold-txt">Automate Like</span><br><span class="gold-txt">a Machine.</span></h1>
+            <p class="rv" style="transition-delay:.2s">TITAN AutoTrader deploys 7 institutional-grade patterns across 5 verified forex pairs &mdash; achieving 70&ndash;79% win rate over 17 months of verified backtesting.</p>
+            <div class="h-btns rv" style="transition-delay:.3s">
+                <a href="#pricing" class="btn-p">Get TITAN AutoTrader &rarr;</a>
+                <a href="#performance" class="btn-s">View Live Results</a>
+            </div>
+            <div class="h-stats rv" style="transition-delay:.4s">
+                <div><span class="h-sv" data-count="195">0</span><span class="h-sk">Total Trades</span></div>
+                <div><span class="h-sv" data-count="75" data-suffix="%">0%</span><span class="h-sk">Avg Win Rate</span></div>
+                <div><span class="h-sv" data-count="5">0</span><span class="h-sk">Verified Pairs</span></div>
+                <div><span class="h-sv" data-count="17">0</span><span class="h-sk">Months Tested</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="tick-w">
+    <div class="tick-t">
+        <span class="tick-i">USDCHF <span class="up">&#9650; WR 73.81%</span> <span class="sep">|</span> PF 1.86 | Sharpe 8.23</span>
+        <span class="tick-i">GBPUSD <span class="up">&#9650; WR 64.86%</span> <span class="sep">|</span> PF 1.44 | Sharpe 3.31</span>
+        <span class="tick-i">AUDUSD <span class="up">&#9650; WR 78.38%</span> <span class="sep">|</span> PF 1.78 | Sharpe 5.16</span>
+        <span class="tick-i">AUDCHF <span class="up">&#9650; WR 73.91%</span> <span class="sep">|</span> PF 1.95 | Sharpe 7.41</span>
+        <span class="tick-i">CADCHF <span class="up">&#9650; WR 78.57%</span> <span class="sep">|</span> PF 1.95 | Sharpe 9.32</span>
+        <span class="tick-i">17-Month Backtest <span class="sep">|</span> Jan 2025 &ndash; May 2026 <span class="sep">|</span> 100% History Quality</span>
+        <span class="tick-i">USDCHF <span class="up">&#9650; WR 73.81%</span> <span class="sep">|</span> PF 1.86 | Sharpe 8.23</span>
+        <span class="tick-i">GBPUSD <span class="up">&#9650; WR 64.86%</span> <span class="sep">|</span> PF 1.44 | Sharpe 3.31</span>
+        <span class="tick-i">AUDUSD <span class="up">&#9650; WR 78.38%</span> <span class="sep">|</span> PF 1.78 | Sharpe 5.16</span>
+        <span class="tick-i">AUDCHF <span class="up">&#9650; WR 73.91%</span> <span class="sep">|</span> PF 1.95 | Sharpe 7.41</span>
+        <span class="tick-i">CADCHF <span class="up">&#9650; WR 78.57%</span> <span class="sep">|</span> PF 1.95 | Sharpe 9.32</span>
+        <span class="tick-i">17-Month Backtest <span class="sep">|</span> Jan 2025 &ndash; May 2026 <span class="sep">|</span> 100% History Quality</span>
+    </div>
+</div>
+<section id="pain">
+    <div class="ctr">
+        <div class="s-label rv">The Problem</div>
+        <h2 class="rv" style="font-size:clamp(30px,4vw,50px);max-width:580px;transition-delay:.1s">Manual Trading Is Costing You Everything</h2>
+        <div class="pain-g">
+            <div class="pain-c rv" style="transition-delay:.1s"><div class="ico">&#x1F624;</div><h3>Emotion Destroys Accounts</h3><p>Fear, greed, and revenge trading undo what discipline builds. Every human trader fights this battle &mdash; and most lose. Emotion has no place in profitable, consistent trading.</p></div>
+            <div class="pain-c rv" style="transition-delay:.2s"><div class="ico">&#x1F634;</div><h3>You Miss 90% of Setups</h3><p>Forex runs 24 hours, 5 days a week. London opens at 3am your time. The highest-quality setups appear when you sleep, work, or simply blink. You cannot be everywhere.</p></div>
+            <div class="pain-c rv" style="transition-delay:.3s"><div class="ico">&#x1F480;</div><h3>Most EAs Are Scams</h3><p>Backtested to look perfect on historical data. No real edge. No transparency. The vendor shows cherry-picked results &mdash; then the EA blows your account in week two.</p></div>
+        </div>
+    </div>
+</section>
+<section id="solution">
+    <div class="ctr">
+        <div class="sol-g">
+            <div class="sol-t">
+                <div class="s-label rv">The Solution</div>
+                <h2 class="rv" style="transition-delay:.1s">Introducing<br><span class="gold-txt">TITAN AutoTrader</span></h2>
+                <p class="rv" style="transition-delay:.2s">TITAN is not another cookie-cutter EA. It was engineered by synthesising over 60 professional trading books and 800+ hours of advanced market research into a single, disciplined, institutional system.</p>
+                <p class="rv" style="transition-delay:.25s">It runs 24 hours a day, 5 days a week &mdash; hunting only the highest-probability setups, and walking away from everything else.</p>
+                <ul class="sol-feats">
+                    <li class="rv" style="transition-delay:.3s"><div class="chk"></div>7 high-probability patterns running simultaneously</li>
+                    <li class="rv" style="transition-delay:.34s"><div class="chk"></div>Triple-screen confirmation: D1 + H4 + H1 must all align</li>
+                    <li class="rv" style="transition-delay:.38s"><div class="chk"></div>Kaufman Efficiency Ratio filters out all choppy markets</li>
+                    <li class="rv" style="transition-delay:.42s"><div class="chk"></div>ICT Kill Zones: London &amp; New York sessions only</li>
+                    <li class="rv" style="transition-delay:.46s"><div class="chk"></div>Full news blackout &mdash; NFP, FOMC, CPI, ECB, BOE</li>
+                    <li class="rv" style="transition-delay:.5s"><div class="chk"></div>Monster trail exits &mdash; rides big moves, skips small ones</li>
+                </ul>
+            </div>
+            <div class="rr" style="transition-delay:.2s">
+                <div class="sol-card" style="margin-bottom:14px">
+                    <div style="font-size:11px;color:var(--muted2);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px">TITAN Portfolio Summary</div>
+                    <div class="sol-row"><span class="sol-lbl">Portfolio Win Rate</span><span class="sol-val">~75%</span></div>
+                    <div class="sol-row"><span class="sol-lbl">Avg Profit Factor</span><span class="sol-val">1.80</span></div>
+                    <div class="sol-row"><span class="sol-lbl">Max Drawdown</span><span class="sol-val sol-grn">&lt; 2.5%</span></div>
+                    <div class="sol-row"><span class="sol-lbl">Active Pairs</span><span class="sol-val">5 Pairs H1</span></div>
+                    <div class="sol-row"><span class="sol-lbl">Test Period</span><span class="sol-val">17 Months</span></div>
+                    <div class="sol-row"><span class="sol-lbl">History Quality</span><span class="sol-val sol-grn">100%</span></div>
+                </div>
+                <div style="display:flex;gap:12px">
+                    <div class="sol-card" style="flex:1;text-align:center"><div style="font-size:26px;font-weight:900;color:var(--green)">5 Min</div><div style="font-size:12px;color:var(--muted2);margin-top:4px">Setup Time</div></div>
+                    <div class="sol-card" style="flex:1;text-align:center"><div style="font-size:26px;font-weight:900;color:var(--gold)">24/5</div><div style="font-size:12px;color:var(--muted2);margin-top:4px">Auto Trading</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="performance">
+    <div class="ctr">
+        <div class="perf-hd">
+            <div class="s-label rv">Verified Results</div>
+            <h2 class="rv" style="transition-delay:.1s">17-Month Backtest &mdash; <span class="gold-txt">All 5 Pairs</span></h2>
+            <p class="rv" style="transition-delay:.2s">January 2025 to May 2026. $2,000 starting capital. Exness MT5. 1-Minute OHLC. 100% History Quality.</p>
+        </div>
+        <svg style="position:absolute;width:0;height:0"><defs>
+            <linearGradient id="gG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2DB87A" stop-opacity=".35"/>
+                <stop offset="100%" stop-color="#2DB87A" stop-opacity="0"/>
+            </linearGradient>
+        </defs></svg>
+        <div class="perf-g">
+            <div class="perf-c rv" style="transition-delay:.1s">
+                <div class="perf-ch"><div><div class="perf-pair">USDCHF</div><div class="perf-tf">H1 &middot; 17 Months &middot; 42 Trades</div></div><div class="perf-badge">&#x2713; Verified</div></div>
+                <div class="perf-stats">
+                    <div><div class="ps-v g">73.81%</div><div class="ps-k">Win Rate</div></div>
+                    <div><div class="ps-v g">1.86</div><div class="ps-k">Profit Factor</div></div>
+                    <div><div class="ps-v gr">8.23</div><div class="ps-k">Sharpe Ratio</div></div>
+                    <div><div class="ps-v gr">2.07%</div><div class="ps-k">Max Drawdown</div></div>
+                    <div><div class="ps-v w">+$85.63</div><div class="ps-k">Net Profit</div></div>
+                    <div><div class="ps-v gr">100%</div><div class="ps-k">History Quality</div></div>
+                </div>
+                <div class="eq-w"><div class="eq-lbl">Equity Curve</div>
+                    <svg class="eq-svg" viewBox="0 0 300 68" preserveAspectRatio="none">
+                        <polygon fill="url(#gG)" points="0,63 15,65 30,58 55,46 75,48 95,44 115,47 135,36 155,38 175,34 195,31 215,28 235,23 255,18 275,14 300,12 300,68 0,68"/>
+                        <polyline class="eq-line" points="0,63 15,65 30,58 55,46 75,48 95,44 115,47 135,36 155,38 175,34 195,31 215,28 235,23 255,18 275,14 300,12"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="perf-c rv" style="transition-delay:.15s">
+                <div class="perf-ch"><div><div class="perf-pair">GBPUSD</div><div class="perf-tf">H1 &middot; 17 Months &middot; 37 Trades</div></div><div class="perf-badge">&#x2713; Verified</div></div>
+                <div class="perf-stats">
+                    <div><div class="ps-v g">64.86%</div><div class="ps-k">Win Rate</div></div>
+                    <div><div class="ps-v g">1.44</div><div class="ps-k">Profit Factor</div></div>
+                    <div><div class="ps-v gr">3.31</div><div class="ps-k">Sharpe Ratio</div></div>
+                    <div><div class="ps-v gr">2.29%</div><div class="ps-k">Max Drawdown</div></div>
+                    <div><div class="ps-v w">+$45.16</div><div class="ps-k">Net Profit</div></div>
+                    <div><div class="ps-v gr">100%</div><div class="ps-k">History Quality</div></div>
+                </div>
+                <div class="eq-w"><div class="eq-lbl">Equity Curve</div>
+                    <svg class="eq-svg" viewBox="0 0 300 68" preserveAspectRatio="none">
+                        <polygon fill="url(#gG)" points="0,63 20,61 40,56 60,46 80,40 100,48 120,44 140,55 160,52 180,45 200,50 220,38 240,34 260,30 280,27 300,25 300,68 0,68"/>
+                        <polyline class="eq-line" points="0,63 20,61 40,56 60,46 80,40 100,48 120,44 140,55 160,52 180,45 200,50 220,38 240,34 260,30 280,27 300,25"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="perf-c rv" style="transition-delay:.2s">
+                <div class="perf-ch"><div><div class="perf-pair">AUDUSD</div><div class="perf-tf">H1 &middot; 17 Months &middot; 37 Trades</div></div><div class="perf-badge">&#x2713; Verified</div></div>
+                <div class="perf-stats">
+                    <div><div class="ps-v g">78.38%</div><div class="ps-k">Win Rate</div></div>
+                    <div><div class="ps-v g">1.78</div><div class="ps-k">Profit Factor</div></div>
+                    <div><div class="ps-v gr">5.16</div><div class="ps-k">Sharpe Ratio</div></div>
+                    <div><div class="ps-v gr">1.46%</div><div class="ps-k">Max Drawdown</div></div>
+                    <div><div class="ps-v w">+$54.61</div><div class="ps-k">Net Profit</div></div>
+                    <div><div class="ps-v gr">100%</div><div class="ps-k">History Quality</div></div>
+                </div>
+                <div class="eq-w"><div class="eq-lbl">Equity Curve</div>
+                    <svg class="eq-svg" viewBox="0 0 300 68" preserveAspectRatio="none">
+                        <polygon fill="url(#gG)" points="0,62 25,60 50,54 75,50 100,46 125,42 150,38 175,34 200,30 225,26 250,22 275,18 300,16 300,68 0,68"/>
+                        <polyline class="eq-line" points="0,62 25,60 50,54 75,50 100,46 125,42 150,38 175,34 200,30 225,26 250,22 275,18 300,16"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="perf-c rv" style="transition-delay:.25s">
+                <div class="perf-ch"><div><div class="perf-pair">AUDCHF</div><div class="perf-tf">H1 &middot; 17 Months &middot; 46 Trades</div></div><div class="perf-badge">&#x2713; Verified</div></div>
+                <div class="perf-stats">
+                    <div><div class="ps-v g">73.91%</div><div class="ps-k">Win Rate</div></div>
+                    <div><div class="ps-v g">1.95</div><div class="ps-k">Profit Factor</div></div>
+                    <div><div class="ps-v gr">7.41</div><div class="ps-k">Sharpe Ratio</div></div>
+                    <div><div class="ps-v gr">1.44%</div><div class="ps-k">Max Drawdown</div></div>
+                    <div><div class="ps-v w">+$94.94</div><div class="ps-k">Net Profit</div></div>
+                    <div><div class="ps-v gr">100%</div><div class="ps-k">History Quality</div></div>
+                </div>
+                <div class="eq-w"><div class="eq-lbl">Equity Curve</div>
+                    <svg class="eq-svg" viewBox="0 0 300 68" preserveAspectRatio="none">
+                        <polygon fill="url(#gG)" points="0,63 28,63 48,50 68,50 88,44 108,44 130,34 150,34 170,28 190,28 210,22 230,22 252,15 272,15 300,12 300,68 0,68"/>
+                        <polyline class="eq-line" points="0,63 28,63 48,50 68,50 88,44 108,44 130,34 150,34 170,28 190,28 210,22 230,22 252,15 272,15 300,12"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="perf-c rv" style="transition-delay:.3s">
+                <div class="perf-ch"><div><div class="perf-pair">CADCHF</div><div class="perf-tf">H1 &middot; 17 Months &middot; 42 Trades</div></div><div class="perf-badge">&#x2713; Verified</div></div>
+                <div class="perf-stats">
+                    <div><div class="ps-v g">78.57%</div><div class="ps-k">Win Rate</div></div>
+                    <div><div class="ps-v g">1.95</div><div class="ps-k">Profit Factor</div></div>
+                    <div><div class="ps-v gr">9.32</div><div class="ps-k">Sharpe Ratio</div></div>
+                    <div><div class="ps-v gr">1.39%</div><div class="ps-k">Max Drawdown</div></div>
+                    <div><div class="ps-v w">+$79.81</div><div class="ps-k">Net Profit</div></div>
+                    <div><div class="ps-v gr">100%</div><div class="ps-k">History Quality</div></div>
+                </div>
+                <div class="eq-w"><div class="eq-lbl">Equity Curve</div>
+                    <svg class="eq-svg" viewBox="0 0 300 68" preserveAspectRatio="none">
+                        <polygon fill="url(#gG)" points="0,64 30,61 60,56 90,51 120,46 150,40 180,35 210,29 240,23 270,17 300,14 300,68 0,68"/>
+                        <polyline class="eq-line" points="0,64 30,61 60,56 90,51 120,46 150,40 180,35 210,29 240,23 270,17 300,14"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="port-sum rv" style="transition-delay:.35s">
+            <div><span class="ps-big" data-count="195">0</span><div class="ps-sub">Total Trades</div></div>
+            <div><span class="ps-big">~75%</span><div class="ps-sub">Portfolio Win Rate</div></div>
+            <div><span class="ps-big">1.80</span><div class="ps-sub">Avg Profit Factor</div></div>
+            <div><span class="ps-big" style="color:var(--green)">&lt;2.5%</span><div class="ps-sub">Max Drawdown</div></div>
+            <div><span class="ps-big">100%</span><div class="ps-sub">History Quality</div></div>
+            <div><span class="ps-big">17mo</span><div class="ps-sub">Test Duration</div></div>
+        </div>
+    </div>
+</section>
+<section id="knowledge">
+    <div class="ctr">
+        <div class="know-g">
+            <div>
+                <div class="s-label rv">The Research</div>
+                <h2 class="rv" style="font-size:clamp(30px,4vw,50px);margin-bottom:22px;transition-delay:.1s">Built From <span class="gold-txt">60+ Books</span><br>&amp; <span class="gold-txt">800+ Videos</span></h2>
+                <p class="rv" style="color:var(--muted);line-height:1.8;margin-bottom:28px;transition-delay:.2s">What took legendary traders decades to master &mdash; TITAN executes in milliseconds. Every entry rule, exit philosophy, and risk protocol was derived from the most rigorous trading research available.</p>
+                <div class="k-cnts rv" style="transition-delay:.25s">
+                    <div><span class="k-cv" data-count="60">0</span><div class="k-cl">Trading Books</div></div>
+                    <div><span class="k-cv" data-count="800">0</span><div class="k-cl">Market Videos</div></div>
+                </div>
+                <div class="k-tags rv" style="transition-delay:.3s">
+                    <span class="k-tag g">Harmonic Patterns</span><span class="k-tag g">ICT Methodology</span><span class="k-tag g">Kill Zone Trading</span><span class="k-tag g">Kaufman ER Filter</span><span class="k-tag">Multi-Timeframe Analysis</span><span class="k-tag">Breakout Systems</span><span class="k-tag">ADX Trend Filter</span><span class="k-tag">News Blackout</span><span class="k-tag">Swing Trading</span><span class="k-tag">Trail Exit Mastery</span><span class="k-tag">Risk Management</span><span class="k-tag">Candlestick Patterns</span>
+                </div>
+            </div>
+            <div class="k-vis">
+                <div class="k-card rv" style="transition-delay:.15s"><div class="k-ico" style="background:rgba(245,200,66,.1)">&#x1F4CA;</div><div><div class="k-tt">Pattern Recognition Engine</div><div class="k-st">7 high-probability patterns identified per bar</div></div></div>
+                <div class="k-card rv" style="transition-delay:.2s"><div class="k-ico" style="background:rgba(45,184,122,.1)">&#x1F3AF;</div><div><div class="k-tt">Triple-Screen Confirmation</div><div class="k-st">D1 + H4 + H1 must all align before entry</div></div></div>
+                <div class="k-card rv" style="transition-delay:.25s"><div class="k-ico" style="background:rgba(245,200,66,.1)">&#x26A1;</div><div><div class="k-tt">Kaufman Efficiency Filter</div><div class="k-st">Skips choppy, ranging, low-quality markets</div></div></div>
+                <div class="k-card rv" style="transition-delay:.3s"><div class="k-ico" style="background:rgba(45,184,122,.1)">&#x1F6E1;&#xFE0F;</div><div><div class="k-tt">Institutional Risk Protocol</div><div class="k-st">3% daily cap &middot; 8% overall hard stop &middot; Always</div></div></div>
+                <div class="k-card rv" style="transition-delay:.35s"><div class="k-ico" style="background:rgba(245,200,66,.1)">&#x1F680;</div><div><div class="k-tt">Monster Trail Exit</div><div class="k-st">Rides large moves &middot; Locks profit automatically</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="how">
+    <div class="ctr">
+        <div style="text-align:center;max-width:580px;margin:0 auto 56px">
+            <div class="s-label rv">Simple Setup</div>
+            <h2 class="rv" style="font-size:clamp(30px,4vw,50px);transition-delay:.1s">Live in <span class="gold-txt">5 Minutes</span></h2>
+            <p class="rv" style="color:var(--muted);font-size:16px;margin-top:14px;transition-delay:.2s">No coding. No complex settings. No experience required.</p>
+        </div>
+        <div class="steps-g">
+            <div class="step-c rv" style="transition-delay:.1s"><div class="step-n">01</div><h3>Purchase &amp; Download</h3><p>Complete your secure purchase. Receive your unique license key and EA files instantly to your email within 60 seconds.</p></div>
+            <div class="step-c rv" style="transition-delay:.2s"><div class="step-n">02</div><h3>Install on MetaTrader 5</h3><p>Drag the .mq5 file into your MT5 Experts folder. Press F7 to compile. Zero coding required. Full step-by-step guide included.</p></div>
+            <div class="step-c rv" style="transition-delay:.3s"><div class="step-n">03</div><h3>Activate Your License</h3><p>Enter your unique key in the EA Inputs tab. TITAN verifies and permanently binds to your MT5 account. One key, one account.</p></div>
+            <div class="step-c rv" style="transition-delay:.4s"><div class="step-n">04</div><h3>Let TITAN Trade</h3><p>Attach to all 5 pairs on H1 charts. Run on a VPS 24/5. TITAN monitors and trades the market around the clock &mdash; you don&rsquo;t have to.</p></div>
+        </div>
+    </div>
+</section>
+<section id="comparison">
+    <div class="ctr">
+        <div style="text-align:center;max-width:580px;margin:0 auto 56px">
+            <div class="s-label rv">The Difference</div>
+            <h2 class="rv" style="font-size:clamp(30px,4vw,50px);transition-delay:.1s">TITAN vs <span class="gold-txt">Typical EAs</span></h2>
+        </div>
+        <div class="cmp-w rv" style="transition-delay:.2s">
+            <table class="cmp-t">
+                <thead><tr><th style="width:36%;color:var(--muted)">Feature</th><th class="tc">&#x2726; TITAN AutoTrader</th><th class="nc">Typical EA</th></tr></thead>
+                <tbody>
+                    <tr><td class="fc">Win Rate</td><td class="tc">&#x2713; 70&ndash;79%</td><td class="nc">&#x2717; 40&ndash;55%</td></tr>
+                    <tr><td class="fc">Profit Factor</td><td class="tc">&#x2713; 1.44&ndash;1.96</td><td class="nc">&#x2717; 1.0&ndash;1.3</td></tr>
+                    <tr><td class="fc">Max Drawdown</td><td class="tc">&#x2713; &lt; 2.5%</td><td class="nc">&#x2717; 20&ndash;50%</td></tr>
+                    <tr><td class="fc">Sharpe Ratio</td><td class="tc">&#x2713; 3.31&ndash;9.32</td><td class="nc">&#x2717; Rarely disclosed</td></tr>
+                    <tr><td class="fc">Verified Backtest</td><td class="tc">&#x2713; Full 17-month data</td><td class="nc">&#x2717; Cherry-picked</td></tr>
+                    <tr><td class="fc">News Protection</td><td class="tc">&#x2713; NFP / FOMC / CPI / ECB</td><td class="nc">&#x2717; Rarely included</td></tr>
+                    <tr><td class="fc">Prop Firm Ready</td><td class="tc">&#x2713; FTMO / FundedNext (Pro)</td><td class="nc">&#x2717; Almost never</td></tr>
+                    <tr><td class="fc">License Security</td><td class="tc">&#x2713; 1 key &middot; 1 MT5 account</td><td class="nc">&#x2717; Often cracked/resold</td></tr>
+                    <tr><td class="fc">Research Depth</td><td class="tc">&#x2713; 60+ books &middot; 800+ videos</td><td class="nc">&#x2717; Unknown / none</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="pricing">
+    <div class="ctr">
+        <div style="text-align:center;max-width:580px;margin:0 auto 56px">
+            <div class="s-label rv">Pricing</div>
+            <h2 class="rv" style="font-size:clamp(30px,4vw,50px);transition-delay:.1s">Choose Your <span class="gold-txt">Arsenal</span></h2>
+            <p class="rv" style="color:var(--muted);font-size:16px;margin-top:14px;transition-delay:.2s">One-time payment. Lifetime license. No subscriptions. No hidden fees.</p>
+        </div>
+        <div class="price-g">
+            <div class="price-c rv" style="transition-delay:.1s">
+                <div class="p-tier">Tier 1</div>
+                <div class="p-name">TITAN AutoTrader</div>
+                <div class="p-desc">5 Regular EAs for standard live accounts</div>
+                <div class="p-amt"><sup>$</sup>250</div>
+                <div class="p-once">One-time &middot; Lifetime license</div>
+                <div class="p-div"></div>
+                <ul class="p-feats">
+                    <li><span class="ck">&#x2713;</span>5 Expert Advisors (USDCHF, GBPUSD, AUDUSD, AUDCHF, CADCHF)</li>
+                    <li><span class="ck">&#x2713;</span>H1 timeframe &middot; 70&ndash;79% verified win rate</li>
+                    <li><span class="ck">&#x2713;</span>Full buyer guide + quick install guide</li>
+                    <li><span class="ck">&#x2713;</span>License key &mdash; 1 MT5 account</li>
+                    <li><span class="ck">&#x2713;</span>News blackout built-in</li>
+                    <li><span class="ck">&#x2713;</span>Telegram support access</li>
+                </ul>
+                <a href="#" class="p-btn out">Get TITAN Regular &rarr;</a>
+            </div>
+            <div class="price-c feat rv" style="transition-delay:.2s">
+                <div class="feat-badge">Most Popular</div>
+                <div class="p-tier">Tier 2</div>
+                <div class="p-name">TITAN AutoTrader Pro</div>
+                <div class="p-desc">5 PROP EAs &mdash; FTMO &amp; FundedNext ready</div>
+                <div class="p-amt"><sup>$</sup>399</div>
+                <div class="p-once">One-time &middot; Lifetime license</div>
+                <div class="p-div"></div>
+                <ul class="p-feats">
+                    <li><span class="ck">&#x2713;</span>5 PROP-compliant Expert Advisors</li>
+                    <li><span class="ck">&#x2713;</span>FTMO compliant &mdash; 5% daily / 10% overall</li>
+                    <li><span class="ck">&#x2713;</span>FundedNext compliant</li>
+                    <li><span class="ck">&#x2713;</span>Infinity Forex Funds compatible</li>
+                    <li><span class="ck">&#x2713;</span>4% daily DD hard stop built-in</li>
+                    <li><span class="ck">&#x2713;</span>Per-firm setup guides included</li>
+                    <li><span class="ck">&#x2713;</span>License key &mdash; 1 MT5 account</li>
+                    <li><span class="ck">&#x2713;</span>Priority Telegram support</li>
+                </ul>
+                <a href="#" class="p-btn gold">Get TITAN Pro &rarr;</a>
+            </div>
+            <div class="price-c rv" style="transition-delay:.3s">
+                <div class="p-tier">Tier 3 &middot; Inner Circle</div>
+                <div class="p-name">TITAN AutoTrader Suite</div>
+                <div class="p-desc">All 10 EAs &mdash; the complete arsenal</div>
+                <div class="p-amt"><sup>$</sup>549</div>
+                <div class="p-once">One-time &middot; Lifetime license</div>
+                <div class="p-div"></div>
+                <ul class="p-feats">
+                    <li><span class="ck">&#x2713;</span>All 5 Regular EAs</li>
+                    <li><span class="ck">&#x2713;</span>All 5 PROP EAs</li>
+                    <li><span class="ck">&#x2713;</span>Everything in Tier 1 + Tier 2</li>
+                    <li><span class="ck">&#x2713;</span>Run regular + prop simultaneously</li>
+                    <li><span class="ck">&#x2713;</span>Inner Circle Telegram access</li>
+                    <li><span class="ck">&#x2713;</span>All future updates included</li>
+                    <li><span class="ck">&#x2713;</span>License key &mdash; 1 MT5 account</li>
+                    <li><span class="ck">&#x2713;</span>VIP priority support</li>
+                </ul>
+                <a href="#" class="p-btn out">Get Full Suite &rarr;</a>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:28px;font-size:13px;color:var(--muted2)" class="rv">&#x1F512; Secure checkout &middot; License key delivered instantly by email &middot; MetaTrader 5 required</div>
+    </div>
+</section>
+<section id="vs" style="background:var(--surface)">
+    <div class="ctr" style="text-align:center">
+        <div class="s-label rv">See It In Action</div>
+        <h2 class="rv" style="font-size:clamp(30px,4vw,50px);transition-delay:.1s">Watch TITAN <span class="gold-txt">Trade Live</span></h2>
+        <div class="vid-w rv" style="transition-delay:.2s">
+            <div class="vid-ph">
+                <div class="play"></div>
+                <div style="font-size:15px;color:var(--muted)">Full TITAN AutoTrader Demo &mdash; Setup, Backtest &amp; Live Walk-Through</div>
+                <div style="font-size:12px;color:var(--muted2);margin-top:6px">Video uploading shortly</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="faq">
+    <div class="ctr">
+        <div style="text-align:center;max-width:580px;margin:0 auto 56px">
+            <div class="s-label rv">FAQ</div>
+            <h2 class="rv" style="font-size:clamp(30px,4vw,50px);transition-delay:.1s">Common <span class="gold-txt">Questions</span></h2>
+        </div>
+        <div class="faq-l">
+            <div class="faq-i rv"><div class="faq-q">What broker should I use with TITAN?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">TITAN works with any MT5 broker offering the 5 pairs. We backtested on Exness MT5. Low-spread brokers recommended &mdash; under 10 pips per pair. Exness, Pepperstone, and IC Markets are all suitable.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.05s"><div class="faq-q">What is the minimum account size?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">Minimum recommended is $500 per EA, or $2,000&ndash;$2,500 if running all 5 pairs simultaneously. We backtested on $2,000 starting capital.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.1s"><div class="faq-q">Can I run all 5 pairs at the same time?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">Yes &mdash; and this is the recommended setup. Each pair uses an independent magic number and risk percentage. Set RiskPercent to 0.3&ndash;0.5% per pair when running all 5 together.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.15s"><div class="faq-q">Does TITAN work on a Prop Firm account?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">Yes &mdash; TITAN AutoTrader Pro is specifically engineered for prop firms. Complies with FTMO (5% daily / 10% overall), FundedNext, and Infinity Forex Funds rules including 4% daily DD hard stop and news blackout.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.2s"><div class="faq-q">Is my license key transferable?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">No. Each license key binds permanently to one MT5 account number on first activation and cannot be transferred. Contact support if you need to change accounts.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.25s"><div class="faq-q">Do I need coding knowledge?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">None. Installation takes under 5 minutes: copy the file to your Experts folder, press F7 to compile, attach to chart, enter your license key. Full step-by-step guide included.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.3s"><div class="faq-q">Do I need MT5 running 24/7?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">Yes &mdash; TITAN needs MT5 running continuously. We recommend a VPS starting at $5&ndash;10/month. Hostinger VPS, Contabo, or ForexVPS.net all work well.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.35s"><div class="faq-q">What pairs does TITAN NOT trade?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">TITAN is optimised for USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF only. All JPY pairs, EURUSD, and USDCAD were permanently eliminated after testing. Do not add other pairs.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.4s"><div class="faq-q">How many trades per month?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">Running all 5 pairs, TITAN averages approximately 11&ndash;12 trades per month. Quality over quantity &mdash; fewer, higher-probability trades at 70&ndash;79% win rate outperforms high-frequency systems.</div></div></div>
+            <div class="faq-i rv" style="transition-delay:.45s"><div class="faq-q">What is your refund policy?<div class="faq-ic">+</div></div><div class="faq-a"><div class="faq-ai">All sales are final on digital products. We provide verified backtest data and transparent performance results before purchase for fully informed decisions. Technical issues resolved promptly by support.</div></div></div>
+        </div>
+    </div>
+</section>
+<section id="disc">
+    <div class="ctr">
+        <div class="disc-b rv">
+            <h4>&#x26A0; Risk Disclaimer</h4>
+            <p>Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance, including backtest results, is not indicative of future results. The high degree of leverage in forex trading can work against you as well as for you. Before deciding to trade foreign exchange, carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment. TITAN AutoTrader is a software tool and not a financial advisor. Results shown are from backtesting on historical data and do not guarantee future profitability. Always trade with money you can afford to lose. Quantum Edge Trading is not a registered financial advisor.</p>
+        </div>
+    </div>
+</section>
+<section id="fcta">
+    <div class="cta-glow"></div>
+    <div class="ctr" style="position:relative;z-index:2">
+        <div class="s-label rv">Start Trading</div>
+        <h2 class="rv" style="transition-delay:.1s">Ready to Trade Like<br><span class="gold-txt">an Institution?</span></h2>
+        <p class="rv" style="transition-delay:.2s">Join traders running TITAN across 5 verified forex pairs. 5-minute setup. License delivered instantly.</p>
+        <div class="fbtns rv" style="transition-delay:.3s">
+            <a href="#pricing" class="btn-p">Get TITAN AutoTrader &mdash; From $250 &rarr;</a>
+            <a href="#pricing" class="btn-s">View All Plans</a>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="ctr">
+        <div class="ft-in">
+            <div class="ft-brand">&#x2B21; Quantum Edge Trading</div>
+            <div class="ft-links">
+                <a href="#performance">Performance</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <a href="mailto:getquantumedgeai@gmail.com">Support</a>
+            </div>
+            <div class="ft-copy">&copy; 2026 Quantum Edge Trading. All rights reserved.</div>
+        </div>
+    </div>
+</footer>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('out');document.body.classList.remove('loading')},2400)});
+var cD=document.getElementById('cDot'),cR=document.getElementById('cRing'),mX=0,mY=0,rX=0,rY=0;
+document.addEventListener('mousemove',function(e){mX=e.clientX;mY=e.clientY;cD.style.left=mX+'px';cD.style.top=mY+'px'});
+(function aR(){rX+=(mX-rX)*.14;rY+=(mY-rY)*.14;cR.style.left=rX+'px';cR.style.top=rY+'px';requestAnimationFrame(aR)})();
+document.querySelectorAll('a,button,.faq-q,.price-c').forEach(function(el){el.addEventListener('mouseenter',function(){cR.classList.add('h')});el.addEventListener('mouseleave',function(){cR.classList.remove('h')})});
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>50)});
+document.getElementById('ham').addEventListener('click',function(){document.getElementById('mob').classList.add('open')});
+document.getElementById('mobX').addEventListener('click',cMob);
+function cMob(){document.getElementById('mob').classList.remove('open')}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rl,.rr').forEach(function(el){obs.observe(el)});
+function cnt(el){var t=parseInt(el.getAttribute('data-count')),sf=el.getAttribute('data-suffix')||'',dur=1800,s=performance.now();(function u(now){var p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t)+sf;if(p<1)requestAnimationFrame(u);else el.textContent=t+sf})(s)}
+var cobs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cnt(e.target);cobs.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){cobs.observe(el)});
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var item=q.parentElement,ans=item.querySelector('.faq-a'),open=item.classList.contains('open');document.querySelectorAll('.faq-i').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}})});
+var cv=document.getElementById('pCanvas'),ctx=cv.getContext('2d'),pts=[];
+function rsz(){cv.width=innerWidth;cv.height=innerHeight}rsz();
+window.addEventListener('resize',rsz);
+function P(){this.r()}
+P.prototype.r=function(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.sz=Math.random()*1.8+.4;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.op=Math.random()*.35+.08;this.c=Math.random()>.65?'#F5C842':'#ffffff'};
+P.prototype.u=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.r()};
+P.prototype.d=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.sz,0,Math.PI*2);ctx.fillStyle=this.c;ctx.globalAlpha=this.op;ctx.fill();ctx.globalAlpha=1};
+for(var i=0;i<90;i++)pts.push(new P());
+(function ap(){ctx.clearRect(0,0,cv.width,cv.height);pts.forEach(function(p){p.u();p.d()});requestAnimationFrame(ap)})();
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+</script>
+</body>
 </html>
