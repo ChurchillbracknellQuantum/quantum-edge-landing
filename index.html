@@ -64,9 +64,11 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 .nav-logo-text .sub{font-size:.58rem;color:var(--muted2);letter-spacing:3px;text-transform:uppercase}
 .nav-links{display:flex;gap:26px;align-items:center}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.84rem;font-weight:600;transition:color .2s;position:relative;letter-spacing:.3px}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s ease;border-radius:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s ease;border-radius:2px}
 .nav-links a:hover{color:var(--gold)}
 .nav-links a:hover::after{width:100%}
+.nav-links a.nav-active{color:var(--gold)}
+.nav-links a.nav-active::after{width:100%}
 .nav-cta{background:var(--gold);color:#000!important;padding:11px 28px;border-radius:7px;font-weight:800!important;font-size:.83rem!important;letter-spacing:1px;box-shadow:0 2px 16px rgba(245,200,66,.2)}
 .nav-cta:hover{background:var(--gold2)!important;box-shadow:0 4px 24px rgba(245,200,66,.35)!important}
 .nav-cta::after{display:none!important}
@@ -1393,6 +1395,23 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
   document.querySelector('.nav-burger').classList.remove('active');
   document.body.style.overflow='';
 }));
+
+// Active nav section highlight
+(function(){
+  const navLinks=document.querySelectorAll('#navLinks a[href^="#"]');
+  const sections=Array.from(navLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActive(){
+    const mid=window.scrollY+window.innerHeight*0.35;
+    let active=sections[0];
+    sections.forEach(s=>{if(s.offsetTop<=mid)active=s;});
+    navLinks.forEach(a=>{
+      const isActive=a.getAttribute('href')==='#'+active.id;
+      a.classList.toggle('nav-active',isActive);
+    });
+  }
+  window.addEventListener('scroll',setActive,{passive:true});
+  setActive();
+})();
 
 // Reveal
 const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.1});
