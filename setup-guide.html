@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TITAN AutoTrader Setup Guide — MT5 Installation & Configuration</title>
+<meta name="description" content="Complete step-by-step setup guide for TITAN AutoTrader MT5 Expert Advisor. Install, configure, and go live in under 10 minutes.">
+<link rel="canonical" href="https://getquantumedgeai.com/setup-guide.html">
+<link rel="icon" href="Logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0A00;--surface:#121000;--surface2:#1A1300;--border:#2A1F00;
+  --gold:#F5C842;--gold2:#E8A800;--gf:rgba(245,200,66,0.08);
+  --white:#fff;--muted:#CCCCCC;--muted2:#888;--green:#2DB87A;
+  --font:'Inter',sans-serif;--fontd:'Playfair Display',serif;--max:900px;--r:12px
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.6;min-height:100vh}
+nav{position:sticky;top:0;z-index:100;height:72px;background:rgba(13,10,0,.96);border-bottom:1px solid rgba(42,31,0,.6);backdrop-filter:blur(14px);display:flex;align-items:center}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:70px;width:70px;object-fit:contain}
+.nav-logo-text .brand{font-size:1rem;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.nav-logo-text .sub{font-size:.56rem;color:var(--muted2);letter-spacing:3px;text-transform:uppercase}
+.nav-back{color:var(--muted);text-decoration:none;font-size:.84rem;font-weight:600;border:1px solid rgba(42,31,0,.8);padding:8px 18px;border-radius:7px;transition:all .2s}
+.nav-back:hover{border-color:var(--gold);color:var(--gold)}
+.guide-hero{padding:60px 32px 40px;max-width:var(--max);margin:0 auto;text-align:center}
+.guide-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:24px}
+.guide-hero h1{font-family:var(--fontd);font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:16px;color:var(--white)}
+.guide-hero p{color:var(--muted);font-size:1rem;max-width:580px;margin:0 auto 32px;line-height:1.7}
+.time-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,184,122,.08);border:1px solid rgba(45,184,122,.25);color:var(--green);font-size:.82rem;font-weight:700;padding:8px 20px;border-radius:30px}
+.guide-body{max-width:var(--max);margin:0 auto;padding:20px 32px 80px}
+.step-block{background:var(--surface2);border:1px solid rgba(42,31,0,.7);border-radius:16px;padding:36px 40px;margin-bottom:24px;position:relative;transition:border-color .2s}
+.step-block:hover{border-color:rgba(245,200,66,.2)}
+.step-num-row{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.step-circle{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--fontd);font-size:1.2rem;font-weight:900;color:var(--gold);flex-shrink:0}
+.step-block h2{font-size:1.15rem;font-weight:800;color:var(--white)}
+.step-block p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:14px}
+.step-block p:last-child{margin-bottom:0}
+.step-note{background:rgba(245,200,66,.05);border-left:3px solid var(--gold);padding:12px 16px;border-radius:0 8px 8px 0;font-size:.84rem;color:var(--muted);margin-top:14px}
+.step-note strong{color:var(--gold)}
+.step-warn{background:rgba(232,168,0,.06);border-left:3px solid #ff8c00;padding:12px 16px;border-radius:0 8px 8px 0;font-size:.84rem;color:var(--muted);margin-top:14px}
+.step-warn strong{color:#ff8c00}
+.code-block{background:#0a0800;border:1px solid rgba(42,31,0,.9);border-radius:8px;padding:14px 18px;font-family:monospace;font-size:.84rem;color:#c9b458;margin:14px 0;overflow-x:auto;line-height:1.8}
+.input-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.84rem}
+.input-table th{background:rgba(42,31,0,.5);color:var(--gold);font-weight:700;padding:10px 14px;text-align:left;border-bottom:1px solid rgba(42,31,0,.8)}
+.input-table td{padding:10px 14px;border-bottom:1px solid rgba(42,31,0,.3);color:var(--muted);vertical-align:top}
+.input-table td:first-child{color:var(--white);font-weight:600;font-family:monospace;font-size:.8rem}
+.input-table td em{color:var(--green);font-style:normal;font-weight:700}
+.pairs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:16px}
+.pair-tag{background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);border-radius:8px;padding:10px 14px;text-align:center;font-weight:700;font-size:.84rem;color:var(--gold)}
+.pair-tag span{display:block;font-size:.72rem;color:var(--muted2);font-weight:500;margin-top:3px}
+.success-box{background:rgba(45,184,122,.06);border:1px solid rgba(45,184,122,.3);border-radius:16px;padding:36px;text-align:center;margin-top:32px}
+.success-box h3{font-family:var(--fontd);font-size:1.6rem;font-weight:900;color:var(--green);margin-bottom:10px}
+.success-box p{color:var(--muted);font-size:.92rem;max-width:500px;margin:0 auto 24px}
+.btn-gold{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:800;font-size:.92rem;padding:14px 36px;border-radius:8px;text-decoration:none;letter-spacing:.4px;transition:box-shadow .2s,transform .15s}
+.btn-gold:hover{box-shadow:0 6px 28px rgba(245,200,66,.4);transform:translateY(-1px)}
+footer{border-top:1px solid rgba(42,31,0,.5);padding:28px 32px;text-align:center;color:var(--muted2);font-size:.8rem}
+footer a{color:var(--muted2);text-decoration:none}
+footer a:hover{color:var(--gold)}
+@media(max-width:600px){
+  .guide-hero,.guide-body{padding-left:20px;padding-right:20px}
+  .step-block{padding:24px 20px}
+  .input-table{font-size:.78rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="Quantum Edge Trading">
+      <div class="nav-logo-text">
+        <div class="brand">Quantum Edge</div>
+        <div class="sub">Trading</div>
+      </div>
+    </a>
+    <a href="index.html" class="nav-back">&larr; Back to Home</a>
+  </div>
+</nav>
+
+<div class="guide-hero">
+  <div class="guide-badge">&#9881; Step-by-Step Installation Guide</div>
+  <h1>TITAN AutoTrader Setup</h1>
+  <p>From download to your first live trade in under 10 minutes. Follow each step exactly — no experience required.</p>
+  <div class="time-badge">&#10003; Takes under 10 minutes &nbsp;&middot;&nbsp; Works on any MT5 broker</div>
+</div>
+
+<div class="guide-body">
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">1</div>
+      <h2>Download &amp; Install MetaTrader 5</h2>
+    </div>
+    <p>MT5 is free. Download directly from your broker's website or from MetaQuotes. Recommended brokers for TITAN: <strong style="color:var(--white)">IC Markets, Pepperstone, FP Markets, Exness</strong> — all support hedging mode and Expert Advisors.</p>
+    <p>After installing, open MT5 and create a <strong style="color:var(--white)">demo account</strong> first to test before going live. Takes 2 minutes. No deposit required.</p>
+    <div class="step-note"><strong>Note:</strong> Only MetaTrader 5 is supported. MT4 is NOT compatible with TITAN. Ensure your broker allows Expert Advisors (EAs). FTMO and FundedNext both permit MT5 EAs.</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">2</div>
+      <h2>Install Your TITAN EA Files</h2>
+    </div>
+    <p>After purchase you receive a .zip file with your TITAN .mq5 files — one per pair (5 files for Regular, 5 for PROP version).</p>
+    <p><strong style="color:var(--white)">Step 2a:</strong> In MT5, click <em style="color:var(--gold)">File &rarr; Open Data Folder</em></p>
+    <p><strong style="color:var(--white)">Step 2b:</strong> Navigate to the Experts folder and paste your files:</p>
+    <div class="code-block">MQL5 &rarr; Experts &rarr; [paste your .mq5 files here]</div>
+    <p><strong style="color:var(--white)">Step 2c:</strong> In the Navigator panel, right-click <em style="color:var(--gold)">Expert Advisors &rarr; Refresh</em>. Your TITAN EAs now appear in the list.</p>
+    <div class="step-note"><strong>Tip:</strong> Keep all 5 TITAN files in the same Experts folder. Each file is pair-specific — do not attach the wrong EA to the wrong chart.</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">3</div>
+      <h2>Open the 5 Required H1 Charts</h2>
+    </div>
+    <p>TITAN runs on exactly these 5 pairs on the H1 (1-hour) timeframe. Open one chart per pair in MT5:</p>
+    <div class="pairs-grid">
+      <div class="pair-tag">USDCHF <span>H1 Chart</span></div>
+      <div class="pair-tag">GBPUSD <span>H1 Chart</span></div>
+      <div class="pair-tag">AUDUSD <span>H1 Chart</span></div>
+      <div class="pair-tag">AUDCHF <span>H1 Chart</span></div>
+      <div class="pair-tag">CADCHF <span>H1 Chart</span></div>
+    </div>
+    <div class="step-warn"><strong>Important:</strong> TITAN is validated only on these 5 pairs on H1. Running on other pairs or timeframes is untested and unsupported. EURUSD, all JPY pairs, and NZDUSD are permanently excluded.</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">4</div>
+      <h2>Attach TITAN to Each Chart</h2>
+    </div>
+    <p>For each chart, drag the matching TITAN EA from the Navigator panel onto the chart (or double-click while that chart is active). A settings dialog appears.</p>
+    <p><strong style="color:var(--white)">In the Common tab:</strong> tick <em style="color:var(--gold)">"Allow Algo Trading"</em></p>
+    <p><strong style="color:var(--white)">In the Inputs tab:</strong> configure your risk settings (see Step 5), then click OK.</p>
+    <div class="step-note"><strong>Check:</strong> A smiley face icon in the top-right corner of each chart = EA is active. Frowning face = disabled. Check that AutoTrading is enabled at the platform level (Step 6).</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">5</div>
+      <h2>Configure Your Risk Inputs</h2>
+    </div>
+    <p>Only adjust the inputs listed below. All others are pre-optimised from the 17-month backtest and should not be changed.</p>
+    <table class="input-table">
+      <thead><tr><th>Input</th><th>Recommended</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>RiskPercent</td><td><em>0.5% – 1%</em></td><td>Risk per trade as % of balance. Start at 0.5% on live. PROP: always 0.5%.</td></tr>
+        <tr><td>ATR_SL_Mult</td><td><em>1.5</em></td><td>ATR multiplier for stop loss. Pre-optimised — do not change.</td></tr>
+        <tr><td>PartialClosePct</td><td><em>50</em></td><td>Closes 50% of position at 2R profit. Reduces drawdown significantly.</td></tr>
+        <tr><td>LockTriggerR</td><td><em>2.0</em></td><td>Moves stop to breakeven once trade reaches 2R profit.</td></tr>
+        <tr><td>MonsterTrailATR</td><td><em>3.5</em></td><td>Trail multiplier for 6R+ winning trades. Leave default.</td></tr>
+        <tr><td>ER_MinValue</td><td><em>0.20</em></td><td>Efficiency Ratio filter — blocks choppy/ranging markets. Do not lower.</td></tr>
+        <tr><td>ADX_MinValue</td><td><em>25.0</em></td><td>Minimum ADX trend strength required to enter. Do not lower.</td></tr>
+        <tr><td>MaxSpreadPoints</td><td><em>20 – 30</em></td><td>Maximum spread in points allowed for entry. Protects against spread spikes.</td></tr>
+        <tr><td>NewsFilterMinutes</td><td><em>30</em></td><td>Pauses trading 30 min before/after high-impact news events. Essential for PROP.</td></tr>
+      </tbody>
+    </table>
+    <div class="step-warn"><strong>PROP traders:</strong> Use RiskPercent = 0.5% and NewsFilterMinutes = 60. See the full <a href="prop-guide.html" style="color:var(--gold)">Prop Firm Guide</a> for firm-specific settings.</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">6</div>
+      <h2>Enable AutoTrading in MT5</h2>
+    </div>
+    <p>The most commonly missed step. AutoTrading must be enabled at the platform level, not just per-EA.</p>
+    <p>In the MT5 toolbar: click the <em style="color:var(--gold)">"AutoTrading"</em> button. When active it turns green and shows "AutoTrading" text. Also confirm:</p>
+    <div class="code-block">Tools &rarr; Options &rarr; Expert Advisors &rarr; tick "Allow automated trading"</div>
+    <div class="step-note"><strong>Confirm:</strong> All 5 charts show the smiley face icon. Check the Journal tab (bottom panel) for TITAN initialization messages from each EA.</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num-row">
+      <div class="step-circle">7</div>
+      <h2>Monitor &amp; Verify</h2>
+    </div>
+    <p>Check the <strong style="color:var(--white)">Journal tab</strong> in MT5's bottom panel. You should see initialization messages:</p>
+    <div class="code-block">
+      TITAN v1.41 initialized | USDCHF H1 | Magic: 50200 | Risk: 0.50%<br>
+      TITAN v1.41 initialized | GBPUSD H1 | Magic: 50201 | Risk: 0.50%<br>
+      TITAN v1.41 initialized | AUDUSD H1 | Magic: 50202 | Risk: 0.50%<br>
+      TITAN v1.41 initialized | AUDCHF H1 | Magic: 50203 | Risk: 0.50%<br>
+      TITAN v1.41 initialized | CADCHF H1 | Magic: 50204 | Risk: 0.50%
+    </div>
+    <p>TITAN only trades when all filters align. On slow/choppy markets it will not trade — this is correct behaviour. Average 8–10 trades per pair per month based on 17-month backtest data.</p>
+    <div class="step-note"><strong>VPS recommended:</strong> For 24/5 uptime without leaving your PC on, use a Windows VPS (ForexVPS, BeeksFX, or Contabo at ~$20–30/month). Upload your full MT5 setup to the VPS.</div>
+  </div>
+
+  <div class="success-box">
+    <h3>&#10003; You're Live</h3>
+    <p>TITAN is running on all 5 pairs. Expect your first trade within 1–5 trading days depending on market conditions. Check the Journal tab daily to confirm all 5 EAs are active.</p>
+    <a href="index.html#support" class="btn-gold">Questions? Access Telegram Support &rarr;</a>
+  </div>
+
+  <div style="background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.18);border-radius:12px;padding:28px 32px;margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">PROP FIRM TRADERS</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--white)">Running TITAN on FTMO or FundedNext?</div>
+      <div style="font-size:.86rem;color:var(--muted);margin-top:4px">Firm-specific DD rules, exact settings, and challenge strategy inside.</div>
+    </div>
+    <a href="prop-guide.html" class="btn-gold" style="white-space:nowrap">Prop Firm Guide &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Quantum Edge Trading &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="index.html#support">Support</a> &nbsp;&middot;&nbsp; <a href="prop-guide.html">Prop Guide</a></p>
+</footer>
+
+</body>
+</html>
