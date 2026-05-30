@@ -1786,18 +1786,18 @@ document.querySelectorAll('a,button,.gcard,.faq-q,.gtab,.ob,.founder-card').forE
 });
 (function ar(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar)})();
 
-// Loader — 3s minimum, then lazy-load Spline
-window.addEventListener('load',function(){
+// Loader — 1.8s then show page, Spline lazy after
+document.addEventListener('DOMContentLoaded',function(){
   setTimeout(function(){
     document.getElementById('loader').classList.add('hide');
     document.body.classList.remove('loading');
-  },3000);
+  },1800);
   setTimeout(function(){
     var s=document.createElement('script');
     s.type='module';
     s.src='https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js';
     document.head.appendChild(s);
-  },3400);
+  },2400);
 });
 // Hide Spline watermark — inject CSS into shadow root (most reliable)
 (function(){
