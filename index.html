@@ -173,7 +173,7 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 #chatTab:hover{background:linear-gradient(180deg,#241900,#111000);box-shadow:-6px 0 36px rgba(245,200,66,.22);width:48px}
 #chatTab .ct-dot{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:cpulse 2.2s infinite}
 #chatTab .ct-icon{font-size:1.3rem;line-height:1}
-#chatTab .ct-txt{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);line-height:1;white-space:nowrap}
+#chatTab .ct-txt{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#FFFFFF;line-height:1;white-space:nowrap}
 #chatTab .ct-bar{width:2px;height:28px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);border-radius:2px;opacity:.5}
 @keyframes cpulse{0%,100%{opacity:.6;transform:scale(1)}60%{opacity:1;transform:scale(1.3)}}
 #chatPanel{position:fixed;top:0;right:0;bottom:0;width:360px;z-index:9600;display:flex;flex-direction:column;background:linear-gradient(180deg,#111000 0%,#0D0A00 100%);border-left:1px solid rgba(245,200,66,.3);box-shadow:-12px 0 60px rgba(0,0,0,.8);transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.175,1)}
@@ -480,7 +480,7 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .founder-card:hover{transform:translateY(-6px);border-color:rgba(245,200,66,.38);box-shadow:0 28px 70px rgba(0,0,0,.55)}
 .founder-photo-wrap{width:100%;height:260px;overflow:hidden;position:relative;flex-shrink:0}
 .founder-photo-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to bottom,transparent,rgba(11,9,0,.95))}
-.founder-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:brightness(.92) saturate(.98);transition:transform .5s ease,filter .4s;display:block}
+.founder-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:brightness(.92) saturate(.98);transition:transform .5s ease,filter .4s;display:block}
 .founder-card:hover .founder-photo-wrap img{transform:scale(1.04);filter:brightness(.98) saturate(1.05)}
 .founder-body{padding:22px 26px 28px;flex:1;display:flex;flex-direction:column}
 .founder-yrs{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.2);color:var(--gold);font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;width:fit-content}
@@ -524,8 +524,9 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:40px}
 .pcard{background:var(--surface);border:1px solid rgba(42,31,0,.7);border-radius:16px;padding:36px 28px;position:relative;transition:transform .2s,border-color .2s}
 .pcard:hover{transform:translateY(-4px);border-color:rgba(245,200,66,.2)}
-.pcard.feat{border-color:rgba(245,200,66,.35);background:linear-gradient(160deg,#1A1300,#0E0B00)}
-.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-size:.67rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 18px;border-radius:20px;white-space:nowrap}
+.pcard.feat{border-color:rgba(245,200,66,.45);background:linear-gradient(160deg,#1A1300,#0E0B00);margin-top:20px;z-index:2}
+@media(max-width:768px){.pcard.feat{margin-top:28px}}
+.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-size:.67rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 20px;border-radius:20px;white-space:nowrap;z-index:6;box-shadow:0 4px 18px rgba(245,200,66,.45)}
 .ptier{font-size:.66rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 .pname{font-family:var(--fontd);font-size:1.5rem;font-weight:900;margin-bottom:6px;color:var(--white)}
 .pprice{font-size:3rem;font-weight:900;color:var(--gold);font-family:var(--fontd);line-height:1;margin:16px 0}
@@ -1106,7 +1107,7 @@ tr{transition:background .15s}
     <div class="founders-grid">
       <div class="founder-card reveal">
         <div class="founder-photo-wrap">
-          <img src="founders/philina.png?v=2" alt="Philina Kendricks — Co-Founder, Quantum Edge Trading" loading="lazy">
+          <img src="founders/philina.png?v=3" alt="Philina Kendricks — Co-Founder, Quantum Edge Trading" loading="lazy">
         </div>
         <div class="founder-body">
           <div class="founder-yrs">&#9200;&nbsp; 20+ Years Experience</div>
@@ -1122,7 +1123,7 @@ tr{transition:background .15s}
       </div>
       <div class="founder-card reveal">
         <div class="founder-photo-wrap">
-          <img src="founders/philip.png?v=2" alt="Philip John — Co-Founder, Quantum Edge Trading" loading="lazy">
+          <img src="founders/philip.png?v=3" alt="Philip John — Co-Founder, Quantum Edge Trading" loading="lazy">
         </div>
         <div class="founder-body">
           <div class="founder-yrs">&#9200;&nbsp; 30+ Years Experience</div>
@@ -1482,6 +1483,10 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
     const mid=window.scrollY+window.innerHeight*0.35;
     let active=sections[0];
     sections.forEach(s=>{if(s.offsetTop<=mid)active=s;});
+    // Bottom-of-page: force-activate last in-page section (fixes FAQ/Support never highlighting)
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2){
+      active=sections[sections.length-1];
+    }
     navLinks.forEach(a=>{
       const isActive=a.getAttribute('href')==='#'+active.id;
       a.classList.toggle('nav-active',isActive);
