@@ -803,6 +803,156 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .tia-candle-result.win{color:#2DB87A}
 .tia-candle-result.loss{color:#ff7070}
 </style>
+
+<!-- ═══ STRUCTURED DATA / SCHEMA MARKUP ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://getquantumedgeai.com/#org",
+      "name": "Quantum Edge Trading",
+      "url": "https://getquantumedgeai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://getquantumedgeai.com/Logo.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://getquantumedgeai.com/#product",
+      "name": "TITAN AutoTrader",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "MetaTrader 5",
+      "description": "Institutional-grade MT5 Expert Advisor built from 60+ trading books. 74%+ win rate across 5 forex pairs (USDCHF, GBPUSD, AUDUSD, AUDCHF, CADCHF). FTMO and FundedNext compliant. 17-month verified backtest. No martingale. No grid. Fixed lot sizing.",
+      "url": "https://getquantumedgeai.com",
+      "brand": {
+        "@type": "Brand",
+        "name": "Quantum Edge Trading"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "TITAN AutoTrader",
+          "description": "5 Regular EAs for USDCHF, GBPUSD, AUDUSD, AUDCHF, CADCHF on H1 timeframe",
+          "price": "250",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2027-01-01"
+        },
+        {
+          "@type": "Offer",
+          "name": "TITAN AutoTrader Pro",
+          "description": "5 PROP EAs with 4% daily DD hard stop, FTMO and FundedNext compliant",
+          "price": "399",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2027-01-01"
+        },
+        {
+          "@type": "Offer",
+          "name": "TITAN AutoTrader Suite",
+          "description": "All 10 EAs (Regular + PROP) plus Inner Circle access and lifetime updates",
+          "price": "549",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2027-01-01"
+        }
+      ],
+      "publisher": {
+        "@id": "https://getquantumedgeai.com/#org"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://getquantumedgeai.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What broker should I use with TITAN AutoTrader?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any MT5 broker with Raw or Pro spread accounts. Exness, IC Markets, and Pepperstone all work well. Avoid Standard accounts — spread eats profits. Maximum spread: 20 points on forex pairs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What account size do I need to run TITAN?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Minimum $500, recommended $1,000–$2,000. The backtest was run on $2,000. When running all 5 pairs, set RiskPercent to 0.3% per pair (maximum 1.5% total exposure)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TITAN AutoTrader work on FTMO and FundedNext?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. TITAN Pro is built specifically for prop firm challenges. It includes a 4% daily drawdown hard stop (below FTMO's 5% rule) and automatic news blackout during FOMC and NFP events. The buyer guide includes exact input settings for each prop firm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to watch the EA 24/7?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. TITAN runs fully automated on a VPS. It monitors markets 24/5, manages all open trades, applies trailing stops, and closes all positions Friday before market close."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is TITAN AutoTrader a martingale or grid system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. TITAN uses fixed lot sizing only. One position maximum per pair at any time. No doubling on losing trades. Hard daily drawdown cap and overall drawdown cap are built in as code-level hard stops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which currency pairs does TITAN trade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TITAN trades exactly 5 pairs on the H1 timeframe: USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF. These were selected after testing 22 pairs — only pairs with verified profit factors above 1.44 across a 17-month window made the cut. EURUSD and JPY pairs are permanently excluded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How was the TITAN AutoTrader backtest conducted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All results use MT5 Strategy Tester with 1-minute OHLC data at 100% modelling quality. Starting balance: $2,000. Period: 17 months covering bull, bear, and sideways market regimes. No look-ahead bias. Spread is factored into every trade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I get free updates for TITAN AutoTrader?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — all updates are free, forever. When a new version is released, all existing buyers receive the updated file by email automatically. No upgrade fees, no expiry, no re-purchase required."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://getquantumedgeai.com/#website",
+      "url": "https://getquantumedgeai.com",
+      "name": "Quantum Edge Trading — TITAN AutoTrader",
+      "description": "Institutional-grade MT5 Expert Advisor for automated forex trading. 74%+ win rate. FTMO compliant. One-time payment.",
+      "publisher": {
+        "@id": "https://getquantumedgeai.com/#org"
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 <body class="loading">
 <div class="cur" id="cDot"></div>
