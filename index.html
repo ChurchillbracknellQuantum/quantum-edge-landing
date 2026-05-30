@@ -1799,8 +1799,22 @@ window.addEventListener('load',function(){
     document.head.appendChild(s);
   },3400);
 });
-// Hide Spline watermark
-(function(){function tryHide(){var v=document.querySelector('spline-viewer');if(!v)return;var sr=v.shadowRoot;if(!sr){setTimeout(tryHide,400);return;}var el=sr.getElementById('logo');if(el){el.style.display='none';return;}setTimeout(tryHide,400);}setTimeout(tryHide,1200);})();
+// Hide Spline watermark — inject CSS into shadow root (most reliable)
+(function(){
+  function nuke(){
+    var v=document.querySelector('spline-viewer');
+    if(!v){setTimeout(nuke,600);return;}
+    var sr=v.shadowRoot;
+    if(!sr){setTimeout(nuke,400);return;}
+    var s=document.createElement('style');
+    s.textContent='#logo,a[href*="spline"],div[class*="logo"],div[id*="logo"],[id*="watermark"],[class*="watermark"],canvas+div,#app>div:last-child{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}';
+    sr.appendChild(s);
+    var el=sr.getElementById('logo');if(el)el.style.cssText='display:none!important';
+  }
+  setTimeout(nuke,1500);
+  setTimeout(nuke,3500);
+  setTimeout(nuke,6000);
+})();
 
 // Nav
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
@@ -2377,6 +2391,17 @@ runCalc();
       else if(n===2){s2.classList.add('sc-active');if(b)b.textContent='AUDCHF · 73.9% WR · PF 1.95';}
       else{s1.classList.add('sc-active');if(b)b.textContent='USDCHF · 73.8% WR · PF 1.86';}
     }
+    function reset(){
+      ['tia-t1','tia-t2','tia-t3'].forEach(function(id){var e=document.getElementById(id);if(e)e.classList.remove('visible');});
+      ['tia-t1-m1','tia-t1-m2','tia-t1-m3','tia-t1-m4','tia-t2-m1','tia-t2-m2','tia-t2-m3','tia-t3-m1','tia-t3-m2','tia-t3-m3'].forEach(function(id){var e=document.getElementById(id);if(e)e.classList.remove('show');});
+      var cw=document.getElementById('tiaCandleWrap');if(cw)cw.classList.remove('active');
+      var cr=document.getElementById('tiaCandleResult');if(cr){cr.textContent='';cr.className='tia-candle-result';}
+      var s1=document.getElementById('tia-sc1'),s2=document.getElementById('tia-sc2'),b=document.getElementById('tiaBadge');
+      if(s2)s2.classList.remove('sc-active');
+      if(s1){s1.classList.remove('sc-active');s1.classList.add('sc-active');}
+      if(b)b.textContent='CADCHF · 78.6% WR · PF 1.95';
+      if(cur){cur.style.opacity='0';cur.style.transform='translate(40px,-50px)';}
+    }
     move(40,-50);
     setTimeout(function(){var p=getPos('tia-t1-buy');move(p.x,p.y);},500);
     setTimeout(function(){var p=getPos('tia-t1-buy');click(p.x,p.y,function(){card('tia-t1');screen(1);runCandle(1);});},1300);
@@ -2395,6 +2420,8 @@ runCalc();
     setTimeout(function(){show('tia-t3-m2');},11700);
     setTimeout(function(){show('tia-t3-m3');},12500);
     setTimeout(function(){cur.style.opacity='0';},13500);
+    // Loop: reset after 2.5s pause then re-run
+    setTimeout(function(){reset();setTimeout(run,700);},16200);
   }
   var sec=document.getElementById('titan-in-action');
   if(!sec)return;
