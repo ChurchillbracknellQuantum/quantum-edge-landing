@@ -1,0 +1,15 @@
+# Force correct content-type for XML sitemap so Google can parse it
+<FilesMatch "sitemap\.xml$">
+  Header set Content-Type "text/xml; charset=utf-8"
+</FilesMatch>
+
+# Allow all search engine crawlers explicitly
+SetEnvIfNoCase User-Agent "Googlebot" is_bot=1
+SetEnvIfNoCase User-Agent "Googlebot-Image" is_bot=1
+SetEnvIfNoCase User-Agent "Googlebot-Mobile" is_bot=1
+SetEnvIfNoCase User-Agent "bingbot" is_bot=1
+
+# Cache control for HTML pages
+<FilesMatch "\.(html|htm)$">
+  Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
