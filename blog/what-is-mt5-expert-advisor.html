@@ -85,7 +85,13 @@ a:hover{text-decoration:underline}
 .blog-hero h1 span{color:var(--gold)}
 .blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
 .blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
-.blog-thumb svg{width:100%;height:auto;border-radius:16px;border:1px solid var(--border);display:block}
+.thumb-real{height:380px;background-size:cover;background-position:center top;border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 35%,rgba(0,0,0,.2) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.thumb-tag{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.thumb-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.thumb-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ts{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:20px;font-size:.78rem;color:#ddd;font-weight:600;backdrop-filter:blur(4px)}
+@media(max-width:640px){.thumb-real{height:260px}.thumb-overlay{padding:20px}.thumb-title{font-size:1.2rem}}
 .blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
 .toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
 .toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
@@ -174,7 +180,19 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
 </div>
 
 <div class="blog-thumb">
-  <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <div class="thumb-real" style="background-image:url('../screenshots/CADCHF_equity%20(2).png')">
+    <div class="thumb-overlay">
+      <div class="thumb-tag">Beginner Education</div>
+      <h2 class="thumb-title">What Is an MT5 Expert Advisor?</h2>
+      <div class="thumb-stats">
+        <span class="ts">&#129302; Fully Automated</span>
+        <span class="ts">&#9200; Runs 24/5</span>
+        <span class="ts">&#128202; Real Backtest Data</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="display:none"><svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:#0D0A00"/><stop offset="60%" style="stop-color:#1A1300"/><stop offset="100%" style="stop-color:#0D0A00"/>

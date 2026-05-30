@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog — Quantum Edge Trading | MT5 EA Guides & Automated Trading</title>
+<meta name="description" content="Expert guides on MT5 Expert Advisors, FTMO prop firm trading, and automated forex systems. Real data, no fluff.">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/">
+<link rel="icon" href="../Logo.png" type="image/png">
+<meta property="og:title" content="Blog — Quantum Edge Trading">
+<meta property="og:description" content="MT5 EA guides, FTMO strategies, and automated forex trading insights. Built on real backtest data.">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#fff;--muted:#CCCCCC;--muted2:#888;--green:#2DB87A;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+nav a.brand img{height:36px;width:36px;object-fit:contain}
+nav .nl a{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+nav .nl a:hover{color:var(--gold)}
+nav .nl a.cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.82rem;margin-left:24px}
+.hero{padding:72px 44px 56px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-label{font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;margin-bottom:16px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--muted);font-size:1.05rem;max-width:540px;margin:0 auto}
+.grid{max-width:1100px;margin:0 auto;padding:60px 24px 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.card{background:var(--surf);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.card:hover{transform:translateY(-4px);border-color:rgba(245,200,66,.3)}
+.card-img{height:220px;background-size:cover;background-position:center top;position:relative}
+.card-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 20%,rgba(0,0,0,.1) 100%)}
+.card-tag{position:absolute;top:14px;left:14px;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:3px 11px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;backdrop-filter:blur(4px)}
+.card-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.card-body h2{font-size:1.15rem;font-weight:800;color:var(--white);line-height:1.3;margin-bottom:10px}
+.card-body p{color:var(--muted);font-size:.87rem;line-height:1.7;flex:1;margin-bottom:18px}
+.card-meta{display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--muted2)}
+.card-meta span.read{color:var(--gold);font-weight:700;font-size:.82rem}
+footer{border-top:1px solid var(--border);padding:28px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{color:var(--muted2);font-size:.8rem}
+footer .fl a{color:var(--muted2);font-size:.8rem;margin-left:16px}
+footer .fl a:hover{color:var(--gold)}
+@media(max-width:640px){nav{padding:0 20px}.hero{padding:48px 20px 40px}.grid{padding:40px 16px 60px;grid-template-columns:1fr}footer{padding:20px;flex-direction:column;text-align:center}.fl a{margin:0 8px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge">Quantum Edge</a>
+  <div class="nl">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta">Get TITAN →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">&#128196; The Quantum Edge Blog</div>
+  <h1>Automated Trading <span>Explained Honestly</span></h1>
+  <p>MT5 EA guides, FTMO strategies, and prop firm insights — built on real backtest data, not marketing fluff.</p>
+</div>
+
+<div class="grid">
+
+  <a href="best-mt5-ea-ftmo-challenge.html" class="card">
+    <div class="card-img" style="background-image:url('../screenshots/CADCHF_equity%20(1).png')">
+      <div class="card-img-overlay"></div>
+      <div class="card-tag">Prop Firm Trading</div>
+    </div>
+    <div class="card-body">
+      <h2>Best MT5 EA for FTMO Challenge 2026 — Real Backtest Data</h2>
+      <p>What actually makes an Expert Advisor pass an FTMO challenge? Real numbers, DD rules, news filters, and a full comparison table.</p>
+      <div class="card-meta">
+        <span>&#128197; May 30, 2026 &nbsp;·&nbsp; 8 min read</span>
+        <span class="read">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="what-is-mt5-expert-advisor.html" class="card">
+    <div class="card-img" style="background-image:url('../screenshots/CADCHF_equity%20(2).png')">
+      <div class="card-img-overlay"></div>
+      <div class="card-tag">Beginner Education</div>
+    </div>
+    <div class="card-body">
+      <h2>What Is an MT5 Expert Advisor? The Truth About Automated Forex Trading</h2>
+      <p>How EAs work, why over 80% of retail bots fail within 12 months, and what separates the ones that don't. Honest breakdown.</p>
+      <div class="card-meta">
+        <span>&#128197; May 30, 2026 &nbsp;·&nbsp; 10 min read</span>
+        <span class="read">Read →</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="fl">
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+  </div>
+</footer>
+</body>
+</html>
