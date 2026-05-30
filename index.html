@@ -737,11 +737,19 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 #titan-in-action{background:#070500;padding:100px 0;position:relative;overflow:hidden}
 #titan-in-action::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(245,200,66,.04) 0%,transparent 70%);pointer-events:none}
 .tia-inner{max-width:1200px;margin:0 auto;padding:0 60px}
-.tia-grid{display:grid;grid-template-columns:0.38fr 1fr 0.85fr;gap:40px;align-items:center;margin-top:56px}
-.tia-robot-col{display:flex;align-items:center;justify-content:center;height:520px}
-.tia-robot-viewer{width:100%;height:100%;min-height:400px}
-@media(max-width:900px){.tia-robot-col{display:none}}
+.tia-grid{display:grid;grid-template-columns:1.1fr 0.95fr;gap:52px;align-items:start;margin-top:56px}
 .tia-monitor-wrap{position:relative}
+.tia-screens{position:relative;height:460px}
+.tia-screen-card{position:absolute;width:90%;background:#0a0800;border:1px solid rgba(245,200,66,.2);border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,200,66,.05),0 16px 56px rgba(0,0,0,.75);transition:opacity .5s ease,transform .5s ease,box-shadow .5s ease,z-index 0s}
+.tia-screen-card.sc-1{top:0;left:0;z-index:2;transform:perspective(1100px) rotateY(-4deg) rotateX(1deg)}
+.tia-screen-card.sc-2{top:44px;left:10%;z-index:1;opacity:.55;transform:perspective(1100px) rotateY(-4deg) rotateX(1deg) scale(.93)}
+.tia-screen-card.sc-active{z-index:3;opacity:1;transform:perspective(1100px) rotateY(-2deg) rotateX(.5deg) scale(1.02);box-shadow:0 0 0 1px rgba(245,200,66,.22),0 24px 70px rgba(0,0,0,.85),0 0 44px rgba(245,200,66,.1)}
+.tia-log-wrap{position:relative}
+.tia-cursor-el{position:absolute;pointer-events:none;z-index:20;opacity:0;transition:transform .85s cubic-bezier(.4,0,.2,1),opacity .3s}
+.tia-cursor-el.visible{opacity:1}
+.tia-ripple{position:absolute;width:32px;height:32px;border-radius:50%;border:2px solid rgba(245,200,66,.9);transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none;z-index:19}
+.tia-ripple.pop{animation:tiaRipple .55s ease-out forwards}
+@keyframes tiaRipple{0%{transform:translate(-50%,-50%) scale(0);opacity:1}100%{transform:translate(-50%,-50%) scale(2.8);opacity:0}}
 .tia-monitor{background:#0a0800;border:1px solid rgba(245,200,66,.25);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,200,66,.08),0 20px 80px rgba(0,0,0,.8),0 0 60px rgba(245,200,66,.06);transform:perspective(1200px) rotateY(-5deg) rotateX(1deg);transition:transform .6s ease}
 .tia-monitor:hover{transform:perspective(1200px) rotateY(-1deg) rotateX(0deg)}
 .tia-monitor-bar{background:#0e0c00;border-bottom:1px solid rgba(245,200,66,.12);padding:9px 16px;display:flex;align-items:center;gap:8px}
@@ -1054,26 +1062,27 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 
     <div class="tia-grid">
 
-      <!-- Robot column -->
-      <div class="tia-robot-col">
-        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" mouse-target="global" class="tia-robot-viewer"></spline-viewer>
-      </div>
-
-      <!-- Monitor -->
+      <!-- Left: Two stacked screens -->
       <div class="tia-monitor-wrap reveal">
-        <div class="tia-monitor">
-          <div class="tia-monitor-bar">
-            <div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div>
-            <div class="tia-bar-title">MT5 Strategy Tester &nbsp;&middot;&nbsp; CADCHF H1 &nbsp;&middot;&nbsp; 17 Months</div>
+        <div class="tia-screens">
+          <div class="tia-screen-card sc-1 sc-active" id="tia-sc1">
+            <div class="tia-monitor-bar"><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-title">CADCHF H1 &middot; 17 Months</div></div>
+            <img src="screenshots/CADCHF_equity (1).png" class="tia-screen-img" alt="CADCHF backtest" loading="lazy">
+            <div class="tia-glass"></div>
           </div>
-          <img src="screenshots/CADCHF_equity (1).png" class="tia-screen-img" alt="CADCHF backtest equity curve">
-          <div class="tia-glass"></div>
+          <div class="tia-screen-card sc-2" id="tia-sc2">
+            <div class="tia-monitor-bar"><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-title">AUDCHF H1 &middot; 17 Months</div></div>
+            <img src="screenshots/AUDCHF_equity (1).png" class="tia-screen-img" alt="AUDCHF backtest" loading="lazy">
+            <div class="tia-glass"></div>
+          </div>
         </div>
-        <div class="tia-pair-badge">CADCHF &middot; 78.6% WR &middot; PF 1.95</div>
+        <div class="tia-pair-badge" id="tiaBadge">CADCHF &middot; 78.6% WR &middot; PF 1.95</div>
       </div>
 
-      <!-- Right: Trade Log -->
-      <div class="reveal">
+      <!-- Right: Trade Log with animated cursor -->
+      <div class="tia-log-wrap reveal">
+        <div class="tia-cursor-el" id="tiaCursor"><svg viewBox="0 0 14 20" width="20" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0L0 17L3.5 13L5.5 19L7.2 18.3L5.2 12.2L10 12.2Z" fill="white" stroke="#F5C842" stroke-width="0.6"/></svg></div>
+        <div class="tia-ripple" id="tiaRipple"></div>
         <div class="tia-log-title">Live Trade Execution</div>
         <div class="tia-log-sub">TITAN&rsquo;s decision chain &mdash; in real time</div>
 
@@ -2240,35 +2249,70 @@ runCalc();
     setTimeout(hide,3000);
   };
 })();
-// TITAN In Action — sequential trade animation
+// TITAN In Action — cursor-driven animation
 (function(){
   var fired=false;
-  var trades=[
-    {card:'tia-t1',miles:[['tia-t1-m1',600],['tia-t1-m2',1400],['tia-t1-m3',2200],['tia-t1-m4',3100]]},
-    {card:'tia-t2',miles:[['tia-t2-m1',600],['tia-t2-m2',1400],['tia-t2-m3',2200]]},
-    {card:'tia-t3',miles:[['tia-t3-m1',600],['tia-t3-m2',1400],['tia-t3-m3',2200]]}
-  ];
-  var cardDelay=[0,4200,7800];
   function run(){
-    trades.forEach(function(t,i){
-      setTimeout(function(){
-        var c=document.getElementById(t.card);
-        if(c)c.classList.add('visible');
-        t.miles.forEach(function(m){
-          setTimeout(function(){
-            var el=document.getElementById(m[0]);
-            if(el)el.classList.add('show');
-          },m[1]);
-        });
-      },cardDelay[i]);
-    });
+    var cur=document.getElementById('tiaCursor');
+    var rip=document.getElementById('tiaRipple');
+    var wrap=document.querySelector('.tia-log-wrap');
+    if(!cur||!wrap)return;
+    cur.classList.add('visible');
+
+    function getPos(id){
+      var el=document.getElementById(id);
+      if(!el)return{x:30,y:0};
+      var wr=wrap.getBoundingClientRect();
+      var er=el.getBoundingClientRect();
+      return{x:er.left-wr.left+14,y:er.top-wr.top+10};
+    }
+    function move(x,y){cur.style.transform='translate('+x+'px,'+y+'px)';}
+    function click(x,y,cb){
+      rip.style.left=(x+8)+'px';rip.style.top=(y+12)+'px';
+      cur.style.transform='translate('+x+'px,'+y+'px) scale(.75)';
+      rip.classList.remove('pop');void rip.offsetWidth;rip.classList.add('pop');
+      setTimeout(function(){cur.style.transform='translate('+x+'px,'+y+'px)';if(cb)cb();},160);
+    }
+    function show(id){var e=document.getElementById(id);if(e)e.classList.add('show');}
+    function card(id){var e=document.getElementById(id);if(e)e.classList.add('visible');}
+    function screen(n){
+      var s1=document.getElementById('tia-sc1'),s2=document.getElementById('tia-sc2'),b=document.getElementById('tiaBadge');
+      s1.classList.remove('sc-active');s2.classList.remove('sc-active');
+      if(n===1){s1.classList.add('sc-active');if(b)b.textContent='CADCHF · 78.6% WR · PF 1.95';}
+      else if(n===2){s2.classList.add('sc-active');if(b)b.textContent='AUDCHF · 73.9% WR · PF 1.95';}
+      else{s1.classList.add('sc-active');if(b)b.textContent='USDCHF · 73.8% WR · PF 1.86';}
+    }
+
+    // Start off-screen, slide in
+    move(40,-50);
+    setTimeout(function(){
+      var p=getPos('tia-t1');move(p.x,p.y);
+    },500);
+    // Click Trade 1
+    setTimeout(function(){var p=getPos('tia-t1');click(p.x,p.y,function(){card('tia-t1');screen(1);});},1300);
+    setTimeout(function(){show('tia-t1-m1');},1900);
+    setTimeout(function(){show('tia-t1-m2');},2700);
+    setTimeout(function(){show('tia-t1-m3');},3500);
+    setTimeout(function(){show('tia-t1-m4');},4300);
+    // Move to Trade 2
+    setTimeout(function(){var p=getPos('tia-t2');move(p.x,p.y);},5400);
+    setTimeout(function(){var p=getPos('tia-t2');click(p.x,p.y,function(){card('tia-t2');screen(2);});},6200);
+    setTimeout(function(){show('tia-t2-m1');},6800);
+    setTimeout(function(){show('tia-t2-m2');},7600);
+    setTimeout(function(){show('tia-t2-m3');},8400);
+    // Move to Trade 3
+    setTimeout(function(){var p=getPos('tia-t3');move(p.x,p.y);},9500);
+    setTimeout(function(){var p=getPos('tia-t3');click(p.x,p.y,function(){card('tia-t3');screen(3);});},10300);
+    setTimeout(function(){show('tia-t3-m1');},10900);
+    setTimeout(function(){show('tia-t3-m2');},11700);
+    setTimeout(function(){show('tia-t3-m3');},12500);
+    // Cursor fades off
+    setTimeout(function(){cur.style.opacity='0';},13500);
   }
   var sec=document.getElementById('titan-in-action');
   if(!sec)return;
   var obs=new IntersectionObserver(function(en){
-    en.forEach(function(e){
-      if(e.isIntersecting&&!fired){fired=true;run();obs.disconnect();}
-    });
+    en.forEach(function(e){if(e.isIntersecting&&!fired){fired=true;run();obs.disconnect();}});
   },{threshold:0.15});
   obs.observe(sec);
 })();
