@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Is an MT5 Expert Advisor? The Truth About Automated Forex Trading | Quantum Edge</title>
+<meta name="description" content="What is an MT5 Expert Advisor (EA) and does automated forex trading actually work? Real data, honest breakdown, and what separates winning EAs from failing ones.">
+<meta name="keywords" content="what is MT5 expert advisor, automated forex trading, does forex EA work, MT5 EA explained, expert advisor forex trading">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/what-is-mt5-expert-advisor.html">
+<link rel="icon" href="../Logo.png" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/what-is-mt5-expert-advisor.html">
+<meta property="og:title" content="What Is an MT5 Expert Advisor? The Truth About Automated Forex Trading">
+<meta property="og:description" content="Most retail EAs fail. Here's the honest breakdown of what an MT5 Expert Advisor actually is, how it works, and what the data says about automated trading.">
+<meta property="og:image" content="https://getquantumedgeai.com/blog/thumbnails/ea-explained-thumbnail.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Quantum Edge Trading">
+<meta property="article:published_time" content="2026-05-30T00:00:00Z">
+<meta property="article:author" content="Quantum Edge Trading">
+<meta property="article:section" content="Automated Trading Education">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Is an MT5 Expert Advisor? Honest Breakdown">
+<meta name="twitter:description" content="Most EAs fail. Here's why — and what the data says about the ones that don't.">
+<meta name="twitter:image" content="https://getquantumedgeai.com/blog/thumbnails/ea-explained-thumbnail.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getquantumedgeai.com/blog/what-is-mt5-expert-advisor.html#article",
+      "headline": "What Is an MT5 Expert Advisor? The Truth About Automated Forex Trading",
+      "description": "An honest, data-driven explanation of what MT5 Expert Advisors are, how they work, why most fail, and what separates winning automated trading systems.",
+      "image": "https://getquantumedgeai.com/blog/thumbnails/ea-explained-thumbnail.svg",
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "author": {"@type": "Organization", "name": "Quantum Edge Trading", "url": "https://getquantumedgeai.com"},
+      "publisher": {"@type": "Organization", "name": "Quantum Edge Trading", "logo": {"@type": "ImageObject", "url": "https://getquantumedgeai.com/Logo.png"}},
+      "mainEntityOfPage": "https://getquantumedgeai.com/blog/what-is-mt5-expert-advisor.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getquantumedgeai.com"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getquantumedgeai.com/blog"},
+        {"@type": "ListItem", "position": 3, "name": "What Is an MT5 Expert Advisor?"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "What is an Expert Advisor in MT5?","acceptedAnswer": {"@type": "Answer","text": "An Expert Advisor (EA) in MT5 is an automated trading program written in MQL5 that runs inside MetaTrader 5. It analyses the market, identifies trade setups based on coded logic, opens and closes positions, manages stop losses and take profits, and handles all trade execution without any human input. EAs run 24/5 as long as MetaTrader is connected to a broker."}},
+        {"@type": "Question","name": "Does automated forex trading actually work?","acceptedAnswer": {"@type": "Answer","text": "Yes, but only for a small percentage of EAs. Over 80% of retail EAs fail within 12 months due to curve-fitting, poor risk management, or no adaptability to changing market conditions. EAs built from institutional-grade logic with verified multi-year backtests consistently outperform manual trading by eliminating emotional errors and executing with perfect discipline."}},
+        {"@type": "Question","name": "What is the difference between MT4 and MT5 Expert Advisors?","acceptedAnswer": {"@type": "Answer","text": "MT5 Expert Advisors use MQL5, which is faster, more powerful, and supports multi-currency testing natively. MT4 EAs (.ex4) do not work on MT5. MT5 EAs (.ex5) are the current industry standard and are required by most prop firms including FTMO and FundedNext."}},
+        {"@type": "Question","name": "How much does a good MT5 Expert Advisor cost?","acceptedAnswer": {"@type": "Answer","text": "Good MT5 Expert Advisors range from $100 to $600 as a one-time purchase. Free EAs from the MQL5 marketplace rarely perform consistently. A verified EA with multi-year backtest data and transparent performance statistics is worth paying for."}},
+        {"@type": "Question","name": "Can an Expert Advisor trade without a computer?","acceptedAnswer": {"@type": "Answer","text": "Yes — by running MetaTrader 5 on a VPS (Virtual Private Server). A VPS keeps MT5 online 24/7 even when your computer is off. This is essential for automated trading — if your computer sleeps or loses internet, open trades become unmanaged."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#ffffff;--muted:#CCCCCC;--muted2:#888888;--green:#2DB87A;--max:860px;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.blog-nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.blog-nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+.blog-nav a.brand img{height:36px;width:36px;object-fit:contain}
+.blog-nav .nav-links a{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+.blog-nav .nav-links a:hover{color:var(--gold)}
+.blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.82rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.blog-nav .nav-cta:hover{background:var(--gold2);text-decoration:none}
+.blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
+.blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px;letter-spacing:.3px}
+.blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
+.blog-hero .breadcrumb a:hover{color:var(--gold)}
+.blog-hero .tag{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;max-width:800px;margin:0 auto 20px;color:var(--white)}
+.blog-hero h1 span{color:var(--gold)}
+.blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
+.blog-thumb svg{width:100%;height:auto;border-radius:16px;border:1px solid var(--border);display:block}
+.blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
+.toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.toc ol{padding-left:18px}
+.toc li{margin-bottom:6px}
+.toc a{color:var(--muted);font-size:.88rem;font-weight:500;text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--gold)}
+.answer-box{background:linear-gradient(135deg,rgba(245,200,66,.07) 0%,rgba(245,200,66,.03) 100%);border:1px solid rgba(245,200,66,.25);border-left:4px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:32px 0}
+.answer-box .ab-label{font-size:.72rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.answer-box p{color:var(--white);font-size:.96rem;line-height:1.65;font-weight:500;margin:0}
+h2{font-size:1.55rem;font-weight:800;color:var(--white);margin:52px 0 18px;line-height:1.25}
+h3{font-size:1.15rem;font-weight:700;color:var(--white);margin:36px 0 12px}
+p{color:var(--muted);margin-bottom:18px;line-height:1.78}
+strong{color:var(--white);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:18px}
+li{color:var(--muted);margin-bottom:8px;line-height:1.7}
+li strong{color:var(--white)}
+code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-radius:4px;font-family:monospace;font-size:.87em}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0 36px;font-size:.88rem}
+.data-table th{background:var(--surf2);color:var(--gold);font-weight:700;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-size:.78rem;letter-spacing:.4px;text-transform:uppercase}
+.data-table td{padding:12px 16px;border-bottom:1px solid rgba(42,31,0,.5);color:var(--muted);vertical-align:top}
+.data-table tr:hover td{background:rgba(245,200,66,.03)}
+.data-table .good{color:var(--green);font-weight:700}
+.data-table .bad{color:#ff7070;font-weight:700}
+.data-table .ok{color:var(--gold);font-weight:700}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.stat-block{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center}
+.stat-block .sv{font-size:1.6rem;font-weight:900;color:var(--gold);display:block;line-height:1}
+.stat-block .sl{font-size:.73rem;color:var(--muted2);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.callout{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin:32px 0}
+.callout.warning{border-left:4px solid #ff7070}
+.callout.tip{border-left:4px solid var(--green)}
+.callout.info{border-left:4px solid var(--gold)}
+.callout strong{color:var(--white)}
+.ea-diagram{background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:24px;margin:36px 0;text-align:center}
+.ea-diagram svg{max-width:100%;height:auto}
+.process-steps{display:grid;gap:16px;margin:28px 0}
+.step{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;display:flex;gap:18px;align-items:flex-start}
+.step-num{background:var(--gold);color:#000;font-weight:900;font-size:.88rem;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-body strong{color:var(--white);font-size:.96rem;display:block;margin-bottom:4px}
+.step-body p{color:var(--muted);font-size:.87rem;margin:0;line-height:1.6}
+.faq-section{margin:52px 0}
+.faq-item-blog{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.faq-q-blog{padding:18px 22px;font-weight:700;font-size:.94rem;color:var(--white);cursor:default;display:flex;justify-content:space-between;align-items:center;background:var(--surf)}
+.faq-a-blog{padding:18px 22px;color:var(--muted);font-size:.9rem;line-height:1.72;border-top:1px solid var(--border);background:var(--bg)}
+.cta-block{background:linear-gradient(135deg,#1A1000 0%,#0D0A00 100%);border:1px solid rgba(245,200,66,.25);border-radius:16px;padding:44px;text-align:center;margin:56px 0}
+.cta-block h3{font-size:1.45rem;font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-block p{color:var(--muted);margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);text-decoration:none}
+.cta-btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:8px;font-size:.9rem;text-decoration:none;margin-left:14px;transition:all .2s}
+.cta-btn-outline:hover{background:rgba(245,200,66,.1);text-decoration:none}
+.blog-footer{border-top:1px solid var(--border);padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.blog-footer p{color:var(--muted2);font-size:.8rem}
+.blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.blog-footer .footer-links a:hover{color:var(--gold)}
+@media(max-width:640px){
+  .blog-nav{padding:0 20px}.blog-hero{padding:44px 20px 40px}.blog-content{padding:40px 20px 60px}
+  .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}.blog-footer .footer-links a{margin:0 8px}
+  .stat-row{grid-template-columns:1fr 1fr}.cta-block{padding:28px 20px}.cta-btn-outline{margin:12px 0 0;display:block}
+}
+</style>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge Trading Logo">Quantum Edge</a>
+  <div class="nav-links">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN →</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="breadcrumb"><a href="https://getquantumedgeai.com">Home</a> &rsaquo; <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo; What Is an MT5 Expert Advisor?</div>
+  <div class="tag">Beginner Education</div>
+  <h1>What Is an MT5 Expert Advisor?<br><span>The Truth About Automated Forex Trading</span></h1>
+  <div class="meta">
+    <span>&#128197; May 30, 2026</span>
+    <span>&#9200; 10 min read</span>
+    <span>&#127891; Beginner–Intermediate</span>
+    <span>By <strong style="color:var(--white)">Quantum Edge Trading</strong></span>
+  </div>
+</div>
+
+<div class="blog-thumb">
+  <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#0D0A00"/><stop offset="60%" style="stop-color:#1A1300"/><stop offset="100%" style="stop-color:#0D0A00"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="400" fill="url(#bg2)"/>
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="rgba(245,200,66,0.05)" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="rgba(245,200,66,0.05)" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="rgba(245,200,66,0.05)" stroke-width="1"/>
+    <!-- Candles -->
+    <rect x="60" y="180" width="20" height="90" rx="2" fill="rgba(255,112,112,0.7)"/>
+    <rect x="100" y="140" width="20" height="80" rx="2" fill="rgba(45,184,122,0.7)"/>
+    <rect x="140" y="120" width="20" height="100" rx="2" fill="rgba(45,184,122,0.7)"/>
+    <rect x="180" y="160" width="20" height="70" rx="2" fill="rgba(255,112,112,0.7)"/>
+    <rect x="220" y="110" width="20" height="90" rx="2" fill="rgba(45,184,122,0.7)"/>
+    <rect x="260" y="95" width="20" height="80" rx="2" fill="rgba(45,184,122,0.7)"/>
+    <rect x="300" y="130" width="20" height="60" rx="2" fill="rgba(255,112,112,0.7)"/>
+    <!-- EA Box -->
+    <rect x="420" y="80" width="360" height="240" rx="14" fill="rgba(18,16,0,0.95)" stroke="rgba(245,200,66,0.3)" stroke-width="1.5"/>
+    <text x="600" y="120" font-family="Inter,sans-serif" font-size="15" font-weight="900" fill="#F5C842" text-anchor="middle">MT5 EXPERT ADVISOR</text>
+    <text x="600" y="148" font-family="Inter,sans-serif" font-size="11" fill="#888" text-anchor="middle">Runs MQL5 logic on every price tick</text>
+    <line x1="440" y1="162" x2="760" y2="162" stroke="rgba(42,31,0,0.8)" stroke-width="1"/>
+    <text x="480" y="185" font-family="Inter,sans-serif" font-size="11" fill="#2DB87A">&#10003; EMA200 trend confirmed</text>
+    <text x="480" y="206" font-family="Inter,sans-serif" font-size="11" fill="#2DB87A">&#10003; EMA21 pullback detected</text>
+    <text x="480" y="227" font-family="Inter,sans-serif" font-size="11" fill="#2DB87A">&#10003; Pin bar pattern fired</text>
+    <text x="480" y="248" font-family="Inter,sans-serif" font-size="11" fill="#2DB87A">&#10003; ADX &gt; 25 confirmed</text>
+    <text x="600" y="285" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#F5C842" text-anchor="middle">&#8594; TRADE EXECUTED — NO EMOTION</text>
+    <!-- Arrow -->
+    <line x1="780" y1="200" x2="840" y2="200" stroke="#2DB87A" stroke-width="2"/>
+    <polygon points="840,195 852,200 840,205" fill="#2DB87A"/>
+    <!-- Result -->
+    <rect x="852" y="155" width="160" height="90" rx="10" fill="rgba(45,184,122,0.08)" stroke="rgba(45,184,122,0.35)" stroke-width="1"/>
+    <text x="932" y="193" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#2DB87A" text-anchor="middle">BUY OPEN</text>
+    <text x="932" y="213" font-family="Inter,sans-serif" font-size="10" fill="#888" text-anchor="middle">1% risk / 1.5× ATR SL</text>
+    <text x="932" y="232" font-family="Inter,sans-serif" font-size="10" fill="#888" text-anchor="middle">24/5 automated</text>
+    <!-- Title -->
+    <text x="60" y="50" font-family="Inter,sans-serif" font-size="24" font-weight="900" fill="#F5C842">WHAT IS AN MT5 EA?</text>
+    <text x="60" y="75" font-family="Inter,sans-serif" font-size="14" fill="#CCCCCC">Automated Forex Trading Explained Honestly</text>
+    <text x="60" y="385" font-family="Inter,sans-serif" font-size="12" fill="#444">getquantumedgeai.com</text>
+  </svg>
+</div>
+
+<article class="blog-content">
+
+  <div class="answer-box">
+    <div class="ab-label">&#9889; Direct Answer</div>
+    <p>An MT5 Expert Advisor (EA) is an automated trading program written in MQL5 that runs inside MetaTrader 5. It analyses charts, identifies trade setups based on coded rules, executes orders, and manages risk — 24 hours a day, 5 days a week — without any human involvement. Over 80% of retail EAs fail within 12 months. The ones that work share three traits: institutional-grade logic, multi-year verified backtests, and strict risk management.</p>
+  </div>
+
+  <div class="toc">
+    <h3>&#128196; Table of Contents</h3>
+    <ol>
+      <li><a href="#what-is">What Is an MT5 Expert Advisor?</a></li>
+      <li><a href="#how-it-works">How Does an EA Actually Work?</a></li>
+      <li><a href="#does-it-work">Does Automated Forex Trading Actually Work?</a></li>
+      <li><a href="#why-most-fail">Why Most EAs Fail</a></li>
+      <li><a href="#what-makes-good">What Makes a Good EA?</a></li>
+      <li><a href="#mt4-vs-mt5">MT4 vs MT5 Expert Advisors</a></li>
+      <li><a href="#get-started">How to Get Started</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="what-is">&#129302; What Is an MT5 Expert Advisor?</h2>
+  <p>An Expert Advisor — commonly called an EA or trading bot — is software that automates trading inside MetaTrader 5. It is written in MQL5, MetaQuotes' programming language, and compiles to an .ex5 file that attaches to any MT5 chart.</p>
+  <p>Unlike a signal service (which tells you when to trade and waits for you to click), an EA executes trades automatically. It monitors price every tick, applies its logic, and places or closes orders — all without human action.</p>
+
+  <div class="answer-box">
+    <div class="ab-label">&#128204; Key Definition</div>
+    <p>An <strong>Expert Advisor (EA)</strong> is a compiled MQL5 program (.ex5 file) attached to an MT5 chart. It runs coded logic on every price tick, executes market and pending orders, modifies stop losses and take profits, and manages the full trade lifecycle — completely automatically.</p>
+  </div>
+
+  <h3>What an EA Can Do</h3>
+  <ul>
+    <li><strong>Open trades</strong> — market orders, pending orders (buy stop, sell limit, etc.)</li>
+    <li><strong>Manage positions</strong> — move stop losses, apply trailing stops, take partial profits</li>
+    <li><strong>Apply risk management</strong> — calculate lot size from account balance and risk %</li>
+    <li><strong>Filter conditions</strong> — trade only in specific sessions, avoid news events</li>
+    <li><strong>Close trades</strong> — at target, on timer, or via trailing stop</li>
+    <li><strong>Halt on risk limits</strong> — stop trading when daily DD cap is reached</li>
+  </ul>
+
+  <h2 id="how-it-works">&#9881;&#65039; How Does an EA Actually Work?</h2>
+  <p>An EA is not magic. It is conditional logic — if market conditions A + B + C are all true, take the trade. Here's how a professional EA processes a potential entry:</p>
+
+  <div class="ea-diagram">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+      <rect width="680" height="260" fill="#0D0A00"/>
+      <text x="340" y="28" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#CCCCCC" text-anchor="middle">EA Decision Flow — Runs on Every Price Tick</text>
+      <rect x="10" y="100" width="120" height="60" rx="8" fill="#1A1300" stroke="rgba(245,200,66,0.25)" stroke-width="1"/>
+      <text x="70" y="127" font-family="Inter,sans-serif" font-size="10" fill="#CCCCCC" text-anchor="middle">New Price</text>
+      <text x="70" y="145" font-family="Inter,sans-serif" font-size="10" fill="#CCCCCC" text-anchor="middle">Tick Arrives</text>
+      <line x1="130" y1="130" x2="165" y2="130" stroke="#F5C842" stroke-width="1.5"/>
+      <polygon points="165,125 174,130 165,135" fill="#F5C842"/>
+      <rect x="174" y="90" width="130" height="80" rx="8" fill="#1A1300" stroke="rgba(245,200,66,0.25)" stroke-width="1"/>
+      <text x="239" y="118" font-family="Inter,sans-serif" font-size="9" fill="#F5C842" text-anchor="middle" font-weight="700">GATE CHECKS</text>
+      <text x="239" y="136" font-family="Inter,sans,serif" font-size="9" fill="#888" text-anchor="middle">Session / Spread</text>
+      <text x="239" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" text-anchor="middle">DD cap / News</text>
+      <line x1="304" y1="130" x2="340" y2="130" stroke="#F5C842" stroke-width="1.5"/>
+      <polygon points="340,125 349,130 340,135" fill="#F5C842"/>
+      <rect x="349" y="90" width="130" height="80" rx="8" fill="#1A1300" stroke="rgba(245,200,66,0.25)" stroke-width="1"/>
+      <text x="414" y="118" font-family="Inter,sans-serif" font-size="9" fill="#F5C842" text-anchor="middle" font-weight="700">SIGNAL CHECK</text>
+      <text x="414" y="136" font-family="Inter,sans-serif" font-size="9" fill="#888" text-anchor="middle">EMA + Pattern</text>
+      <text x="414" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" text-anchor="middle">ADX confluence</text>
+      <line x1="479" y1="130" x2="515" y2="130" stroke="#2DB87A" stroke-width="1.5"/>
+      <polygon points="515,125 524,130 515,135" fill="#2DB87A"/>
+      <rect x="524" y="105" width="140" height="50" rx="8" fill="rgba(45,184,122,0.1)" stroke="rgba(45,184,122,0.4)" stroke-width="1"/>
+      <text x="594" y="128" font-family="Inter,sans-serif" font-size="10" fill="#2DB87A" text-anchor="middle" font-weight="700">EXECUTE TRADE</text>
+      <text x="594" y="146" font-family="Inter,sans-serif" font-size="9" fill="#888" text-anchor="middle">Lot size auto-calculated</text>
+      <line x1="239" y1="170" x2="239" y2="210" stroke="#ff7070" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="239" y="228" font-family="Inter,sans-serif" font-size="9" fill="#ff7070" text-anchor="middle">SKIP</text>
+      <line x1="414" y1="170" x2="414" y2="210" stroke="#ff7070" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="414" y="228" font-family="Inter,sans-serif" font-size="9" fill="#ff7070" text-anchor="middle">SKIP</text>
+    </svg>
+  </div>
+
+  <div class="process-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Gate checks run first</strong><p>Is it within the trading session? Is spread below the limit? Has the daily DD cap been hit? Is a news blackout active? If any gate fails, the EA skips this tick completely.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Confluence is measured</strong><p>The EA calculates EMA values, ATR, ADX, and checks for price patterns. All required signals must align simultaneously — if even one is missing, no trade fires.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Lot size is calculated automatically</strong><p>Based on: (account balance × risk %) ÷ stop loss in pips. The EA always risks the exact defined percentage — no manual sizing, no guessing.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Trade is placed and managed automatically</strong><p>SL and TP are set at entry. The EA manages trailing stops, partial closes, and break-even moves — all without human input — until the trade closes.</p></div></div>
+  </div>
+
+  <h2 id="does-it-work">&#128202; Does Automated Forex Trading Actually Work?</h2>
+
+  <div class="answer-box">
+    <div class="ab-label">&#9889; Direct Answer</div>
+    <p>Yes — but only for a minority of EAs. Over <strong>80% of retail EAs fail within 12 months</strong>. The ones that consistently work are built on institutional-grade logic with multi-year verified backtests, strict risk management, and no curve-fitting. The core advantage is not superior intelligence — it is perfect, emotion-free consistency.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-block"><span class="sv">&gt;80%</span><span class="sl">of retail EAs fail within 12 months</span></div>
+    <div class="stat-block"><span class="sv">24/5</span><span class="sl">hours a winning EA works without emotion</span></div>
+    <div class="stat-block"><span class="sv">100%</span><span class="sl">of human traders experience fear and greed</span></div>
+  </div>
+
+  <p>The fundamental advantage of a properly built EA is not that it is smarter than a human. It is that it is <strong>consistent</strong>. It executes the same logic every single time. It does not cut winners early out of fear. It does not hold losers hoping for a reversal. It does not overtrade after a winning streak. It follows its rules — every bar, every tick, every session.</p>
+
+  <h2 id="why-most-fail">&#128165; Why Most EAs Fail</h2>
+
+  <h3>1. Curve-Fitting (Over-Optimisation)</h3>
+  <p>Most cheap EAs are optimised on historical data until they look perfect — a process called curve-fitting. The EA learns the noise of past price action rather than the signal. It performs beautifully on 2020–2022 backtests, then collapses when market conditions shift in 2024–2026 because it was memorising history, not trading logic.</p>
+
+  <div class="callout warning">
+    <strong>&#9888;&#65039; Red flag:</strong> Any EA showing 90%+ win rate in backtests is almost certainly curve-fitted. Real institutional strategies average 60–80% win rates with strong profit factors. A 90%+ win rate in a backtest is a simulation artefact, not a real edge.
+  </div>
+
+  <h3>2. No Risk Management Architecture</h3>
+  <p>Many EAs have solid entry logic but catastrophic exit logic. No trailing stop. No daily DD halt. No per-trade risk cap. These EAs can win 20 consecutive trades and then lose the entire account balance on trade 21 when conditions shift.</p>
+
+  <h3>3. Martingale and Grid Systems</h3>
+  <p>A large category of retail EAs uses martingale (doubling lot size after losses) or grid strategies (opening orders at fixed price intervals). These produce smooth equity curves in sideways markets and fail catastrophically in trending or volatile conditions — often losing 50–100% in a single bad week.</p>
+
+  <h3>4. Single Market, Single Period Optimisation</h3>
+  <p>An EA tuned on EURUSD 2018–2022 may fail completely on EURUSD 2024 because volatility, spread, and liquidity patterns changed. Reliable EAs demonstrate consistent performance across multiple instruments and multiple market regimes — not just a cherry-picked window.</p>
+
+  <h2 id="what-makes-good">&#10003; What Makes a Good EA?</h2>
+
+  <table class="data-table">
+    <thead><tr><th>Characteristic</th><th>Good EA</th><th>Bad EA</th></tr></thead>
+    <tbody>
+      <tr><td>Backtest period</td><td class="good">2+ years, multiple regimes</td><td class="bad">3–6 months, optimised window</td></tr>
+      <tr><td>Win rate</td><td class="ok">60–80%</td><td class="bad">90%+ (curve-fitted signal)</td></tr>
+      <tr><td>Profit factor</td><td class="good">&gt;1.5 across all tested pairs</td><td class="bad">Only on select cherry-picked pairs</td></tr>
+      <tr><td>Max drawdown</td><td class="good">&lt;5% on forex</td><td class="bad">10–30% or undisclosed</td></tr>
+      <tr><td>Lot sizing</td><td class="good">Fixed % of balance</td><td class="bad">Martingale or grid</td></tr>
+      <tr><td>News handling</td><td class="good">Auto-blackout FOMC/NFP</td><td class="bad">Trades through high-impact news</td></tr>
+      <tr><td>Daily halt</td><td class="good">Hard-coded DD cap in code</td><td class="bad">Relies on user discipline</td></tr>
+      <tr><td>Forward test</td><td class="good">Verified on unseen data</td><td class="bad">Backtest results only</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="mt4-vs-mt5">&#128260; MT4 vs MT5 Expert Advisors</h2>
+
+  <div class="answer-box">
+    <div class="ab-label">&#128204; Key Difference</div>
+    <p>MT4 EAs (.ex4) and MT5 EAs (.ex5) are <strong>completely incompatible</strong>. An MT4 EA cannot run on MT5. MT5 uses MQL5, which is faster, supports multi-currency backtesting natively, and is the current industry standard. Most professional prop firms — including FTMO and FundedNext — operate on MT5.</p>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>Feature</th><th>MT4 EA (.ex4)</th><th>MT5 EA (.ex5)</th></tr></thead>
+    <tbody>
+      <tr><td>Language</td><td>MQL4</td><td class="good">MQL5 — faster, more powerful</td></tr>
+      <tr><td>Backtest type</td><td>Single currency only</td><td class="good">Multi-currency native</td></tr>
+      <tr><td>Instruments</td><td>Forex only</td><td class="good">Forex, stocks, futures, crypto</td></tr>
+      <tr><td>FTMO support</td><td class="ok">Some brokers</td><td class="good">Full support — standard</td></tr>
+      <tr><td>Processing</td><td>Single-threaded</td><td class="good">Multi-threaded optimisation</td></tr>
+      <tr><td>Industry status</td><td class="bad">Being phased out</td><td class="good">Current standard — 2026</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="get-started">&#128640; How to Get Started With an MT5 Expert Advisor</h2>
+
+  <div class="process-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Choose a verified EA</strong><p>Look for multi-year backtests with real profit factor data, transparent drawdown statistics, and forward-tested performance. Avoid anything promising 90%+ win rates or guaranteed returns.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Download MetaTrader 5</strong><p>Get MT5 from your broker's website (IC Markets, Pepperstone, Exness all offer it free). Open a demo account — you will need this for testing.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Install the EA</strong><p>Copy the .ex5 file to: <code>File → Open Data Folder → MQL5 → Experts</code>. Restart MT5. The EA will appear in the Navigator panel under Expert Advisors.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Test on demo for 30 days</strong><p>Run on a demo account for one full month. Watch how it enters, manages, and exits trades. Verify behaviour matches the backtest before risking real capital.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Set up a VPS</strong><p>Once satisfied, move to a VPS (Virtual Private Server) to keep the EA running 24/5 even when your computer is off. Hostinger, Contabo, and ForexVPS.net all work well with MT5.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Start live with conservative risk</strong><p>Begin with 0.5% risk per trade maximum. Scale up only after you're confident in the EA's behaviour on your specific broker and account type.</p></div></div>
+  </div>
+
+  <div class="callout tip">
+    <strong>&#9989; The 30-day demo rule:</strong> Never skip demo testing, even for a well-documented EA. Slippage, spread, and execution speed vary significantly between brokers. 30 days of demo data shows you exactly what to expect before real money is at risk.
+  </div>
+
+  <div class="faq-section">
+    <h2 id="faq">&#10067; FAQ: MT5 Expert Advisors Explained</h2>
+    <div class="faq-item-blog"><div class="faq-q-blog">What is an Expert Advisor in MT5?</div><div class="faq-a-blog">An Expert Advisor (EA) in MT5 is an automated trading program written in MQL5. It runs inside MetaTrader 5, analyses charts and indicators on every price tick, and executes trades automatically — 24 hours a day, 5 days a week — without any human input required.</div></div>
+    <div class="faq-item-blog"><div class="faq-q-blog">Does automated forex trading actually work?</div><div class="faq-a-blog">Yes, when done correctly. The key is finding an EA built on real institutional logic with a verified multi-year backtest, strict risk management, and no curve-fitting. Over 80% of retail EAs fail within 12 months — but properly built systems can outperform manual trading significantly by executing with perfect, emotion-free consistency.</div></div>
+    <div class="faq-item-blog"><div class="faq-q-blog">How much does a good MT5 Expert Advisor cost?</div><div class="faq-a-blog">Professional MT5 EAs typically cost $100–$600 as a one-time purchase, or $30–$100 per month on subscription. Free EAs rarely perform consistently in live markets. A verified EA with transparent backtest data and real performance statistics is worth the investment — the alternative is losing money to an untested system.</div></div>
+    <div class="faq-item-blog"><div class="faq-q-blog">Can an Expert Advisor trade without my computer being on?</div><div class="faq-a-blog">Yes — by running MT5 on a VPS (Virtual Private Server). A VPS is a cloud computer that stays online 24/7, keeping your EA active even when your own computer is off or loses internet. VPS hosting for MT5 starts at around $8/month and is essential for serious automated trading.</div></div>
+    <div class="faq-item-blog"><div class="faq-q-blog">What is the difference between MT4 and MT5 EAs?</div><div class="faq-a-blog">MT4 EAs (.ex4) and MT5 EAs (.ex5) are completely incompatible. An MT4 EA cannot run on MT5. MT5 uses MQL5, which is faster, supports multi-currency backtesting natively, and can trade stocks, futures, and crypto in addition to forex. MT5 is the current industry standard for all professional EA development.</div></div>
+  </div>
+
+  <div class="cta-block">
+    <h3>See a Professionally Built MT5 EA in Action</h3>
+    <p>TITAN AutoTrader was built from 60+ institutional trading books and verified across 17 months of backtesting. 74%+ win rate, 1.39% max drawdown, 5 forex pairs. No martingale. No guesswork.</p>
+    <a href="https://getquantumedgeai.com/#performance" class="cta-btn">View Live Results</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta-btn-outline">See Pricing</a>
+  </div>
+
+  <h3>Related Reading</h3>
+  <ul>
+    <li><a href="best-mt5-ea-ftmo-challenge.html">Best MT5 EA for FTMO Challenge 2026 — Real Backtest Data</a></li>
+    <li><a href="https://getquantumedgeai.com/setup-guide.html">MT5 EA Installation: Complete Step-by-Step Setup Guide</a></li>
+    <li><a href="https://getquantumedgeai.com/prop-guide.html">How to Pass FTMO With an Expert Advisor</a></li>
+    <li><a href="https://getquantumedgeai.com/#performance">TITAN AutoTrader Backtest Results: 17 Months, 5 Pairs</a></li>
+  </ul>
+
+</article>
+
+<footer class="blog-footer">
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+    <a href="https://getquantumedgeai.com">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
