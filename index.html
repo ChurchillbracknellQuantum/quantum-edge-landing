@@ -737,7 +737,10 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 #titan-in-action{background:#070500;padding:100px 0;position:relative;overflow:hidden}
 #titan-in-action::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(245,200,66,.04) 0%,transparent 70%);pointer-events:none}
 .tia-inner{max-width:1200px;margin:0 auto;padding:0 60px}
-.tia-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;margin-top:56px}
+.tia-grid{display:grid;grid-template-columns:0.38fr 1fr 0.85fr;gap:40px;align-items:center;margin-top:56px}
+.tia-robot-col{display:flex;align-items:center;justify-content:center;height:520px}
+.tia-robot-viewer{width:100%;height:100%;min-height:400px}
+@media(max-width:900px){.tia-robot-col{display:none}}
 .tia-monitor-wrap{position:relative}
 .tia-monitor{background:#0a0800;border:1px solid rgba(245,200,66,.25);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,200,66,.08),0 20px 80px rgba(0,0,0,.8),0 0 60px rgba(245,200,66,.06);transform:perspective(1200px) rotateY(-5deg) rotateX(1deg);transition:transform .6s ease}
 .tia-monitor:hover{transform:perspective(1200px) rotateY(-1deg) rotateX(0deg)}
@@ -1051,7 +1054,12 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 
     <div class="tia-grid">
 
-      <!-- Left: Monitor -->
+      <!-- Robot column -->
+      <div class="tia-robot-col">
+        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" mouse-target="global" class="tia-robot-viewer"></spline-viewer>
+      </div>
+
+      <!-- Monitor -->
       <div class="tia-monitor-wrap reveal">
         <div class="tia-monitor">
           <div class="tia-monitor-bar">
@@ -2225,7 +2233,7 @@ runCalc();
     var em=document.getElementById('epEmail').value.trim();
     if(!em)return;
     var fd=new FormData();
-    fd.append('email',em);fd.append('_subject','TITAN Waitlist — '+em);
+    fd.append('email',em);fd.append('_subject','TITAN Waitlist — '+em);fd.append('_autoresponse','Thanks for joining the TITAN waitlist!\n\nHere is your quick strategy snapshot:\n\nTITAN fires only when ALL 4 confluences align:\n✓ EMA200 confirms trend direction\n✓ Price pulls back to EMA21 area of value\n✓ Pin Bar or Engulfing candle fires\n✓ ADX > 25 confirms trend strength\n\nResult: 74% win rate across 5 pairs — 195 trades over 17 months.\n\nFull launch details and backtest report coming your way soon.\n\nWatch it live: https://getquantumedgeai.com\n\n— Philip & Philina\nQuantum Edge Trading');
     fetch('https://formsubmit.co/ajax/churchillbracknellportfolio@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd}).catch(function(){});
     localStorage.setItem('ep_done','1');
     document.getElementById('epWrap').innerHTML='<p style="text-align:center;padding:20px 0"><span style="font-size:2rem">✓</span><br><strong style="color:var(--green);font-size:1.1rem;display:block;margin:10px 0">You\'re on the list.</strong><span style="color:var(--muted);font-size:.85rem">Backtest report incoming. Check your inbox.</span></p>';
