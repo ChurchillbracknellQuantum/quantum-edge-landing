@@ -93,62 +93,10 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 .nav-burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 @media(max-width:960px){
   .nav-inner{padding:0 20px}
-  .nav-links{
-    display:flex;
-    position:fixed;
-    top:0;left:0;right:0;bottom:0;
-    background:rgba(8,6,0,.97);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    gap:0;
-    z-index:9900;
-    padding:100px 0 60px;
-    transform:translateX(100%);
-    transition:transform .4s cubic-bezier(.77,0,.175,1);
-    pointer-events:none;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling:touch;
-  }
-  .nav-links.open{transform:translateX(0);pointer-events:auto}
-  .nav-links a{
-    font-family:var(--fontd);
-    font-size:clamp(1.3rem,5vw,1.9rem);
-    font-weight:900;
-    color:rgba(255,255,255,.8);
-    padding:16px 40px;
-    width:100%;
-    text-align:center;
-    text-decoration:none;
-    letter-spacing:.5px;
-    border-bottom:1px solid rgba(42,31,0,.45);
-    display:block;
-    transition:color .2s,background .2s;
-    flex-shrink:0;
-  }
-  .nav-links a::after{display:none!important}
-  .nav-links a::before{display:none!important}
-  .nav-links a:hover,.nav-links a:active{color:var(--gold);background:rgba(245,200,66,.05)}
-  .nav-cta{
-    background:linear-gradient(135deg,var(--gold),var(--gold2))!important;
-    color:#000!important;
-    border-radius:50px!important;
-    padding:16px 52px!important;
-    font-size:.95rem!important;
-    font-weight:900!important;
-    letter-spacing:1.5px!important;
-    margin-top:14px;
-    border-bottom:none!important;
-    box-shadow:0 0 36px rgba(245,200,66,.3)!important;
-    width:auto!important;
-    display:inline-block!important;
-  }
+  .nav-links{display:none!important}
   .nav-burger{display:flex;z-index:9901!important}
   .nav-logo-text .brand{font-size:.85rem}
   .nav-more{display:none!important}
-  .nav-mob-link{display:block!important}
 }
 
 /* CHAT SIDE WIDGET */
@@ -755,6 +703,15 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 @media(max-width:600px){.priv-box{padding:28px 20px}}
 .spline-robot{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:auto}
 @media(max-width:767px){.spline-robot{display:none}}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:var(--fontd);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px}
+#mobileNav a:active{color:var(--gold);background:rgba(245,200,66,.04)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(min-width:961px){#mobileNav{display:none!important}}
 </style>
 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
 </head>
@@ -799,6 +756,22 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <div class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="#support" onclick="closeMobileNav()">Support</a>
+  <a href="setup-guide.html">Setup Guide</a>
+  <a href="#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
 
 <!-- ══════════════════ FOUNDER MODAL ══════════════════ -->
 <div id="founderModal" class="fmod-overlay" onclick="closeFounderModal(event)">
@@ -1619,26 +1592,28 @@ document.querySelectorAll('a,button,.gcard,.faq-q,.gtab,.ob,.founder-card').forE
 });
 (function ar(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar)})();
 
-// Loader
+// Loader — 3s minimum
 window.addEventListener('load',()=>setTimeout(()=>{
   document.getElementById('loader').classList.add('hide');
   document.body.classList.remove('loading');
-},1800));
+},3000));
+// Hide Spline watermark
+(function(){function tryHide(){var v=document.querySelector('spline-viewer');if(!v)return;var sr=v.shadowRoot;if(!sr){setTimeout(tryHide,400);return;}var el=sr.getElementById('logo');if(el){el.style.display='none';return;}setTimeout(tryHide,400);}setTimeout(tryHide,1200);})();
 
 // Nav
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
 function toggleNav(){
-  const nl=document.getElementById('navLinks');
-  const nb=document.querySelector('.nav-burger');
-  nl.classList.toggle('open');
-  nb.classList.toggle('active');
-  document.body.style.overflow=nl.classList.contains('open')?'hidden':'';
+  var mn=document.getElementById('mobileNav');
+  var nb=document.querySelector('.nav-burger');
+  var open=mn.classList.toggle('open');
+  nb.classList.toggle('active',open);
+  document.body.style.overflow=open?'hidden':'';
 }
-document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.remove('open');
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
   document.querySelector('.nav-burger').classList.remove('active');
   document.body.style.overflow='';
-}));
+}
 function toggleMoreMenu(e){
   e.stopPropagation();
   var m=document.getElementById('navMore');

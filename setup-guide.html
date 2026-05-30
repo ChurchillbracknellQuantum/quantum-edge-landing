@@ -72,6 +72,20 @@ footer a:hover{color:var(--gold)}
   .step-block{padding:24px 20px}
   .input-table{font-size:.78rem}
 }
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;display:block;transition:transform .3s,opacity .2s}
+.nav-burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-burger.active span:nth-child(2){opacity:0}
+.nav-burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:var(--fontd);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px}
+#mobileNav a:active{color:var(--gold)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(max-width:960px){.nav-links{display:none!important}.nav-burger{display:flex!important}}
 </style>
 </head>
 <body>
@@ -86,14 +100,30 @@ footer a:hover{color:var(--gold)}
       </div>
     </a>
     <div class="nav-links">
-      <a href="index.html#performance" class="nav-hide">Performance</a>
-      <a href="index.html#simulator" class="nav-hide">Simulator</a>
-      <a href="index.html#pricing" class="nav-hide">Pricing</a>
+      <a href="index.html#performance">Performance</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="setup-guide.html" class="nav-active">Setup Guide</a>
       <a href="index.html#pricing" class="nav-cta">Get Started</a>
     </div>
+    <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="index.html#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="index.html#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="index.html#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="index.html#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="index.html#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="index.html#support" onclick="closeMobileNav()">Support</a>
+  <a href="setup-guide.html" class="nav-active" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="index.html#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
 
 <div class="guide-hero">
   <div class="guide-badge">&#9881; Step-by-Step Installation Guide</div>
@@ -226,5 +256,19 @@ footer a:hover{color:var(--gold)}
   <p>&copy; 2026 Quantum Edge Trading &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="index.html#support">Support</a> &nbsp;&middot;&nbsp; <a href="prop-guide.html">Prop Guide</a></p>
 </footer>
 
+<script>
+function toggleNav(){
+  var mn=document.getElementById('mobileNav');
+  var nb=document.querySelector('.nav-burger');
+  var open=mn.classList.toggle('open');
+  nb.classList.toggle('active',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('active');
+  document.body.style.overflow='';
+}
+</script>
 </body>
 </html>
