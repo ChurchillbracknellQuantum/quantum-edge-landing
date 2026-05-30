@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Pass FTMO Challenge in 30 Days (Exact EA Strategy) | Quantum Edge Trading</title>
+<meta name="description" content="The exact strategy used to pass FTMO with a forex EA. Drawdown management, kill zone entries, news blackout rules, lot sizing, and the 4-confluence filter that keeps DD under 2%.">
+<meta name="keywords" content="how to pass FTMO challenge, pass FTMO with EA, FTMO challenge strategy, FTMO drawdown rules, automated FTMO trading">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/how-to-pass-ftmo-challenge.html">
+<link rel="icon" href="../Logo.png" type="image/png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/how-to-pass-ftmo-challenge.html">
+<meta property="og:title" content="How to Pass FTMO Challenge in 30 Days — Exact EA Strategy">
+<meta property="og:description" content="4-confluence filter. Kill zone entries. Automatic news blackout. The exact rules that kept drawdown under 2% across 17 months of backtesting.">
+<meta property="og:image" content="https://getquantumedgeai.com/screenshots/USDCHF_equity%20(1).png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Quantum Edge Trading">
+<meta property="article:published_time" content="2026-05-30T00:00:00Z">
+<meta property="article:author" content="Quantum Edge Trading">
+<meta property="article:section" content="Prop Firm Trading">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Pass FTMO Challenge in 30 Days — Exact EA Strategy">
+<meta name="twitter:description" content="Drawdown under 2%. Kill zones. News blackout. Real backtest data from 17 months, 195 trades.">
+<meta name="twitter:image" content="https://getquantumedgeai.com/screenshots/USDCHF_equity%20(1).png">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getquantumedgeai.com/blog/how-to-pass-ftmo-challenge.html#article",
+      "headline": "How to Pass FTMO Challenge in 30 Days: The Exact EA Strategy We Used",
+      "description": "A step-by-step breakdown of the exact automated trading strategy used to pass FTMO challenges — 4-confluence filter, kill zone entries, automatic news blackout, and hard drawdown caps.",
+      "image": "https://getquantumedgeai.com/screenshots/USDCHF_equity%20(1).png",
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "author": {"@type": "Organization", "name": "Quantum Edge Trading", "url": "https://getquantumedgeai.com"},
+      "publisher": {"@type": "Organization", "name": "Quantum Edge Trading", "logo": {"@type": "ImageObject", "url": "https://getquantumedgeai.com/Logo.png"}},
+      "mainEntityOfPage": "https://getquantumedgeai.com/blog/how-to-pass-ftmo-challenge.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getquantumedgeai.com"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getquantumedgeai.com/blog"},
+        {"@type": "ListItem", "position": 3, "name": "How to Pass FTMO Challenge in 30 Days"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to pass the FTMO challenge?",
+          "acceptedAnswer": {"@type": "Answer", "text": "FTMO gives you 30 calendar days to reach the 10% profit target on the Challenge phase. There is no minimum number of trading days. With a disciplined EA running on H1 timeframes and filtering for high-probability setups only, most traders complete the challenge in 3-4 weeks. Rushing with oversized lots is the most common reason for failure."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is the FTMO daily loss limit?",
+          "acceptedAnswer": {"@type": "Answer", "text": "FTMO's daily loss limit is 5% of the initial balance (not the current balance). On a $10,000 account that means you cannot lose more than $500 in a single trading day. Any automated EA you use must include a hard daily drawdown stop that halts trading before this limit is breached. TITAN AutoTrader uses a 3% daily cap as a safety buffer."}
+        },
+        {
+          "@type": "Question",
+          "name": "Can you use an Expert Advisor to pass FTMO?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. FTMO explicitly permits automated trading with MetaTrader Expert Advisors. The EA must not use tick scalping, high-frequency entries, arbitrage, or any strategy that exploits data feed latency. A properly configured forex EA with conservative lot sizing and hard drawdown stops is often safer than manual trading because it eliminates emotional decision-making."}
+        },
+        {
+          "@type": "Question",
+          "name": "What drawdown is safe for FTMO?",
+          "acceptedAnswer": {"@type": "Answer", "text": "For safety, your EA should target a maximum drawdown of 4-5% — well below FTMO's 10% overall limit. This gives you a 5-6% buffer in case of a drawdown cluster. An EA that backtests with a maximum drawdown above 6% is too risky for prop firm challenges. TITAN AutoTrader's 17-month backtest shows a 1.39% maximum drawdown across all 5 pairs."}
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if you fail an FTMO challenge?",
+          "acceptedAnswer": {"@type": "Answer", "text": "If you fail the FTMO Challenge (breach drawdown or miss the profit target), you can purchase a new challenge at full price and retry. FTMO does not offer a free retry. However, if you pass the Challenge but fail the Verification phase, FTMO offers one free retry. This makes capital preservation during the Verification phase even more important than during the Challenge itself."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#ffffff;--muted:#CCCCCC;--muted2:#888888;--green:#2DB87A;--max:860px;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.blog-nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.blog-nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+.blog-nav a.brand img{height:36px;width:36px;object-fit:contain}
+.blog-nav .nav-links a{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+.blog-nav .nav-links a:hover{color:var(--gold)}
+.blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.82rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.blog-nav .nav-cta:hover{background:var(--gold2);text-decoration:none}
+.blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
+.blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px;letter-spacing:.3px}
+.blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
+.blog-hero .breadcrumb a:hover{color:var(--gold)}
+.blog-hero .tag{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;max-width:780px;margin:0 auto 20px;color:var(--white)}
+.blog-hero h1 span{color:var(--gold)}
+.blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.blog-hero .meta span{display:flex;align-items:center;gap:6px}
+.blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
+.thumb-real{height:380px;background-size:cover;background-position:center top;border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 35%,rgba(0,0,0,.2) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.thumb-tag{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.thumb-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.thumb-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ts{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:20px;font-size:.78rem;color:#ddd;font-weight:600;backdrop-filter:blur(4px)}
+@media(max-width:640px){.thumb-real{height:260px}.thumb-overlay{padding:20px}.thumb-title{font-size:1.2rem}}
+.blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
+.toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.toc ol{padding-left:18px}
+.toc li{margin-bottom:6px}
+.toc a{color:var(--muted);font-size:.88rem;font-weight:500;text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--gold)}
+.answer-box{background:linear-gradient(135deg,rgba(245,200,66,.07) 0%,rgba(245,200,66,.03) 100%);border:1px solid rgba(245,200,66,.25);border-left:4px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:32px 0}
+.answer-box .ab-label{font-size:.72rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.answer-box p{color:var(--white);font-size:.96rem;line-height:1.65;font-weight:500;margin:0}
+h2{font-size:1.55rem;font-weight:800;color:var(--white);margin:52px 0 18px;line-height:1.25}
+h2 .gold{color:var(--gold)}
+h3{font-size:1.15rem;font-weight:700;color:var(--white);margin:36px 0 12px}
+p{color:var(--muted);margin-bottom:18px;line-height:1.78}
+strong{color:var(--white);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:18px}
+li{color:var(--muted);margin-bottom:8px;line-height:1.7}
+li strong{color:var(--white)}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0 36px;font-size:.88rem}
+.data-table th{background:var(--surf2);color:var(--gold);font-weight:700;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-size:.78rem;letter-spacing:.4px;text-transform:uppercase}
+.data-table td{padding:12px 16px;border-bottom:1px solid rgba(42,31,0,.5);color:var(--muted);vertical-align:top}
+.data-table tr:hover td{background:rgba(245,200,66,.03)}
+.data-table .good{color:var(--green);font-weight:700}
+.data-table .bad{color:#ff7070;font-weight:700}
+.data-table .ok{color:var(--gold);font-weight:700}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0}
+.stat-block{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center}
+.stat-block .sv{font-size:1.6rem;font-weight:900;color:var(--gold);display:block;line-height:1}
+.stat-block .sl{font-size:.73rem;color:var(--muted2);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+@media(max-width:600px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+.callout{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin:32px 0}
+.callout.warning{border-left:4px solid #ff7070}
+.callout.tip{border-left:4px solid var(--green)}
+.callout .callout-icon{font-size:1.1rem;margin-right:8px}
+.callout strong{color:var(--white)}
+.step-block{border:1px solid var(--border);border-radius:var(--r);padding:24px 28px 24px 76px;margin:20px 0;background:var(--surf);position:relative}
+.step-block .step-num{position:absolute;left:24px;top:22px;width:36px;height:36px;background:var(--gold);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem}
+.step-block h4{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:8px}
+.step-block p{margin:0;font-size:.92rem}
+.faq-section{margin:52px 0}
+.faq-item-blog{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.faq-q-blog{padding:18px 22px;font-weight:700;font-size:.94rem;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--surf)}
+.faq-q-blog:hover{background:var(--surf2)}
+.faq-a-blog{padding:18px 22px;color:var(--muted);font-size:.9rem;line-height:1.72;border-top:1px solid var(--border);background:var(--bg)}
+.cta-block{background:linear-gradient(135deg,#1A1000 0%,#0D0A00 100%);border:1px solid rgba(245,200,66,.25);border-radius:16px;padding:44px;text-align:center;margin:56px 0}
+.cta-block h3{font-size:1.45rem;font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-block p{color:var(--muted);margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);text-decoration:none}
+.cta-btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:8px;font-size:.9rem;text-decoration:none;margin-left:14px;transition:all .2s}
+.cta-btn-outline:hover{background:rgba(245,200,66,.1);text-decoration:none}
+.blog-footer{border-top:1px solid var(--border);padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.blog-footer p{color:var(--muted2);font-size:.8rem}
+.blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.blog-footer .footer-links a:hover{color:var(--gold)}
+@media(max-width:640px){
+  .blog-nav{padding:0 20px}
+  .blog-hero{padding:44px 20px 40px}
+  .blog-content{padding:40px 20px 60px}
+  .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .blog-footer .footer-links a{margin:0 8px}
+  .cta-block{padding:28px 20px}
+  .cta-btn-outline{margin:12px 0 0;display:block}
+  .step-block{padding:64px 20px 24px}
+  .step-block .step-num{left:20px;top:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <a href="https://getquantumedgeai.com" class="brand">
+    <img src="../Logo.png" alt="Quantum Edge Trading Logo">
+    Quantum Edge
+  </a>
+  <div class="nav-links">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &#8594;</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="breadcrumb">
+    <a href="https://getquantumedgeai.com">Home</a> &rsaquo;
+    <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo;
+    How to Pass FTMO Challenge in 30 Days
+  </div>
+  <div class="tag">Prop Firm Strategy</div>
+  <h1>How to Pass FTMO in 30 Days<br><span>The Exact EA Strategy We Used</span></h1>
+  <div class="meta">
+    <span>&#128197; May 30, 2026</span>
+    <span>&#9200; 9 min read</span>
+    <span>&#128202; Data-driven</span>
+    <span>By <strong style="color:var(--white)">Quantum Edge Trading</strong></span>
+  </div>
+</div>
+
+<div class="blog-thumb">
+  <div class="thumb-real" style="background-image:url('../screenshots/USDCHF_equity%20(1).png')">
+    <div class="thumb-overlay">
+      <div class="thumb-tag">FTMO STRATEGY</div>
+      <h2 class="thumb-title">Pass FTMO in 30 Days &mdash; Exact EA Rules</h2>
+      <div class="thumb-stats">
+        <span class="ts">&#128202; 73.8% Win Rate</span>
+        <span class="ts">&#128274; 2.07% Max DD</span>
+        <span class="ts">&#127937; FTMO-Engineered</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-content">
+
+  <div class="toc">
+    <h3>&#128196; In This Guide</h3>
+    <ol>
+      <li><a href="#ftmo-rules">FTMO Challenge Rules (What Actually Matters)</a></li>
+      <li><a href="#why-manual-fails">Why Manual Trading Fails FTMO</a></li>
+      <li><a href="#ea-requirements">What Your EA Needs to Pass</a></li>
+      <li><a href="#4-confluence">The 4-Confluence Filter Explained</a></li>
+      <li><a href="#risk-rules">Risk Rules: Daily Cap, Partial Close, Trail</a></li>
+      <li><a href="#kill-zones">Kill Zones: Why Timing Is Everything</a></li>
+      <li><a href="#news-blackout">News Blackout &mdash; The Rule Most EAs Skip</a></li>
+      <li><a href="#performance-table">TITAN Backtest Results by Pair</a></li>
+      <li><a href="#verification">Phase 2: Verification &mdash; Harder Than You Think</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <div class="answer-box">
+    <div class="ab-label">&#128204; Quick Answer</div>
+    <p>To pass FTMO in 30 days with an EA: keep lot sizing at 1% risk per trade, use a 4% daily hard stop (below FTMO's 5% limit), filter entries to London and New York open windows only, and blackout all FOMC and NFP events. An EA with a 17-month backtest showing under 2% max drawdown is safe for prop challenges. TITAN AutoTrader's 5-pair portfolio hit 1.39% max DD over 195 trades.</p>
+  </div>
+
+  <h2 id="ftmo-rules">The FTMO Challenge Rules <span class="gold">That Actually Matter</span></h2>
+
+  <p>FTMO has a detailed rule set, but traders fail for exactly two reasons: they breach the daily loss limit, or they take too long to hit the profit target. Everything else is secondary.</p>
+
+  <p>Here are the numbers that decide your outcome:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Rule</th>
+        <th>Challenge (Phase 1)</th>
+        <th>Verification (Phase 2)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Profit target</td><td class="ok">10% of initial balance</td><td class="ok">5% of initial balance</td></tr>
+      <tr><td>Maximum daily loss</td><td class="bad">5% of initial balance</td><td class="bad">5% of initial balance</td></tr>
+      <tr><td>Maximum overall loss</td><td class="bad">10% of initial balance</td><td class="bad">10% of initial balance</td></tr>
+      <tr><td>Minimum trading days</td><td>4 days</td><td>4 days</td></tr>
+      <tr><td>Time limit</td><td>30 calendar days</td><td>60 calendar days</td></tr>
+      <tr><td>EAs allowed?</td><td class="good">&#10003; Yes</td><td class="good">&#10003; Yes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    <p><span class="callout-icon">&#9888;&#65039;</span><strong>Critical detail:</strong> FTMO calculates daily loss from the highest balance reached that day &mdash; not the opening balance. If you're up $300 on a $10,000 account, your daily loss limit is $515 (5% of $10,300), not $500. Your EA needs to track this dynamically, or use a conservative buffer. TITAN uses a 3% daily cap to stay well clear.</p>
+  </div>
+
+  <h2 id="why-manual-fails">Why Manual Trading <span class="gold">Fails FTMO</span></h2>
+
+  <p>The statistics are brutal. The majority of prop firm challengers fail &mdash; and nearly all failures trace back to the same psychological patterns:</p>
+
+  <ul>
+    <li><strong>Revenge trading after a loss</strong> &mdash; manually oversizing the next position to "get it back" is the single fastest way to breach the daily limit</li>
+    <li><strong>Over-trading during choppy sessions</strong> &mdash; manual traders enter during European lunch hours when spreads widen and volatility drops to nothing, stacking losses that shouldn't exist</li>
+    <li><strong>Ignoring news events</strong> &mdash; most traders know NFP is a risk but trade it anyway because they feel confident. NFP can move 60&ndash;80 pips in seconds. One badly timed position wipes a day's worth of managed risk</li>
+    <li><strong>Inconsistent position sizing</strong> &mdash; lot size creep when you're near the target or cutting lots too small after a string of losses both destroy expectancy</li>
+  </ul>
+
+  <p>An EA removes all of these failure modes by executing the same rules on every single trade, regardless of whether the last trade won or lost.</p>
+
+  <div class="stat-row">
+    <div class="stat-block">
+      <span class="sv">74%+</span>
+      <span class="sl">Win Rate (17mo)</span>
+    </div>
+    <div class="stat-block">
+      <span class="sv">1.39%</span>
+      <span class="sl">Max Drawdown</span>
+    </div>
+    <div class="stat-block">
+      <span class="sv">195</span>
+      <span class="sl">Total Trades</span>
+    </div>
+    <div class="stat-block">
+      <span class="sv">1.86+</span>
+      <span class="sl">Profit Factor</span>
+    </div>
+  </div>
+
+  <h2 id="ea-requirements">What Your EA <span class="gold">Needs to Pass</span></h2>
+
+  <p>Not all EAs are safe for FTMO. Most publicly sold EAs have one or more of these disqualifying traits:</p>
+
+  <ul>
+    <li><strong>No hard daily DD cap</strong> &mdash; the EA keeps trading even when you're close to the daily limit</li>
+    <li><strong>Martingale or grid logic</strong> &mdash; position size scales up with losses, accelerating drawdown exactly when you can least afford it</li>
+    <li><strong>No news filter</strong> &mdash; trades fire during FOMC or NFP releases when slippage can be 10&ndash;20&times; normal</li>
+    <li><strong>Too many trades</strong> &mdash; high-frequency EAs burn the spread cost on dozens of trades per day, grinding down your edge over 30 days</li>
+    <li><strong>No partial close</strong> &mdash; all-or-nothing exits mean a perfectly good trade that went 2R and reversed gives you nothing</li>
+  </ul>
+
+  <p>A prop-firm-safe EA must have all of these built in before it touches a funded account. The architecture matters as much as the entry signal.</p>
+
+  <h2 id="4-confluence">The 4-Confluence Filter <span class="gold">Explained</span></h2>
+
+  <p>TITAN AutoTrader's entry logic requires four conditions to align simultaneously before any position opens. This is what keeps trade frequency low (10&ndash;12 trades per pair per month) and win rate above 70%.</p>
+
+  <div class="step-block">
+    <div class="step-num">1</div>
+    <h4>EMA 200 &mdash; Trend Direction Gate</h4>
+    <p>Price must be above the 200-period EMA on H1 for long entries, below for shorts. This filters out counter-trend setups &mdash; the #1 cause of high-drawdown losing streaks in backtesting.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">2</div>
+    <h4>EMA 21 Pullback &mdash; Entry Precision</h4>
+    <p>Price must pull back to within 0.25&times;ATR of the 21-period EMA and show a prior close confirming it was in trend. This ensures the EA enters on dips into structure, not at extended highs.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">3</div>
+    <h4>Pin Bar or Engulfing Candle &mdash; Rejection Signal</h4>
+    <p>A pin bar (lower wick &ge;2&times; body) or full engulfing candle must print at the pullback zone. This confirms price has rejected the level and momentum is reversing back in trend direction.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">4</div>
+    <h4>ADX &gt; 25 &mdash; Trend Strength Confirmation</h4>
+    <p>The Average Directional Index must be above 25 at entry. Entries in weak or ranging markets (ADX &lt; 25) showed significantly worse performance in backtesting &mdash; this single filter removed the worst 30% of trades.</p>
+  </div>
+
+  <div class="callout tip">
+    <p><span class="callout-icon">&#10003;</span><strong>Why 4 confluences matter for FTMO:</strong> Each confluence roughly halves the number of trades while keeping the winners. Fewer trades = fewer losing trades = lower drawdown. With 4 gates, every entry is a genuinely high-probability setup, not a coin flip on a pattern.</p>
+  </div>
+
+  <h2 id="risk-rules">Risk Rules: <span class="gold">Daily Cap, Partial Close, Trail</span></h2>
+
+  <h3>Position Sizing</h3>
+  <p>Every trade risks exactly <strong>1% of account balance</strong> on the prop challenge version. Stop loss is placed at 1.5&times;ATR below the entry candle's low. This means lot size varies by volatility &mdash; tighter ATR = larger lots, wider ATR = smaller lots. The risk stays flat.</p>
+
+  <h3>Breakeven Move</h3>
+  <p>Once price reaches 1R in profit, the stop loss moves to breakeven (entry price). This means the worst outcome on an open trade is zero, not a loss. You can sleep without checking if a trade that's up 1R will suddenly reverse and breach your daily limit.</p>
+
+  <h3>Partial Close at 2R</h3>
+  <p>50% of the position closes automatically at 2R profit. This locks in real money and lowers risk on the remaining half. For FTMO, this builds your balance buffer day by day, compressing the amount of drawdown needed to fail.</p>
+
+  <h3>Dynamic Trailing Stop</h3>
+  <p>The remaining 50% trails at 2.5&times;ATR past 2R, widening to 3.5&times;ATR once the trade hits 6R (the "monster trail"). This lets exceptional trades run to 8R, 10R, or beyond without premature exit.</p>
+
+  <h3>Hard Daily Cap</h3>
+  <p>If total daily loss reaches <strong>3%</strong> (vs FTMO's 5% limit), the EA halts all trading until the next calendar day. This 2% safety buffer ensures a bad day can never become a failed account.</p>
+
+  <h2 id="kill-zones">Kill Zones: <span class="gold">Why Timing Is Everything</span></h2>
+
+  <p>The 4-confluence entry can trigger at any hour of the day &mdash; but not all hours are equal. Forex volatility follows a predictable daily rhythm tied to institutional order flow.</p>
+
+  <p>TITAN only accepts entries during two kill zones:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Session</th><th>GMT Time</th><th>Why It Works</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>London Open</strong></td>
+        <td class="good">07:00 &ndash; 09:00</td>
+        <td>Highest institutional volume of the day. Spreads tightest. Breakouts from the Asia range are genuine, not noise.</td>
+      </tr>
+      <tr>
+        <td><strong>New York Open</strong></td>
+        <td class="good">13:00 &ndash; 15:00</td>
+        <td>Second-highest volume window. US data releases drive directional moves. London&ndash;NY overlap = maximum liquidity.</td>
+      </tr>
+      <tr>
+        <td>Asian session</td>
+        <td class="bad">00:00 &ndash; 06:00</td>
+        <td>Range-bound, low volume, wide spreads. CHF pairs especially prone to fake signals during Tokyo hours.</td>
+      </tr>
+      <tr>
+        <td>Late New York</td>
+        <td class="bad">18:00 &ndash; 23:00</td>
+        <td>Volume drops sharply. Moves are thin and reversible. Entry risk/reward degrades significantly.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Restricting entries to kill zones alone reduced trade count by roughly 40% in backtesting while keeping the winning setups intact. Fewer entries = fewer losses = more consistent equity curve = FTMO account protected.</p>
+
+  <h2 id="news-blackout">News Blackout &mdash; <span class="gold">The Rule Most EAs Skip</span></h2>
+
+  <p>High-impact news events destroy technical setups. A clean pin bar at EMA support is meaningless when NFP is 15 minutes away and market makers have pulled liquidity. Slippage on news releases can be 5&ndash;20&times; normal, turning a 1.5&times;ATR stop into a 3&times;ATR real loss.</p>
+
+  <p>TITAN applies automatic blackout for:</p>
+
+  <ul>
+    <li><strong>FOMC Rate Decision</strong> &mdash; every 6&ndash;8 weeks, Wednesday 18:00 UTC+1. No entries from 13:00 on decision day</li>
+    <li><strong>Non-Farm Payrolls (NFP)</strong> &mdash; first Friday of each month, 13:30 UTC+1. No entries 60 minutes before or after</li>
+    <li><strong>5 consecutive losing trades</strong> &mdash; automatic 24-hour pause to prevent drawdown clusters</li>
+  </ul>
+
+  <div class="callout warning">
+    <p><span class="callout-icon">&#9888;&#65039;</span><strong>Most free EAs and budget bots have no news filter.</strong> They fire during FOMC regardless of risk. This is the #1 reason EAs fail prop challenges &mdash; not the entry logic, but a single news candle that moves 80 pips in seconds and blows through the stop level before the broker fills the exit.</p>
+  </div>
+
+  <h2 id="performance-table">TITAN Backtest Results <span class="gold">by Pair</span></h2>
+
+  <p>All results: 17 months (January 2025 &ndash; May 2026), $2,000 balance, H1 timeframe, 1-minute OHLC, 100% modelling quality.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Pair</th>
+        <th>Trades</th>
+        <th>Win Rate</th>
+        <th>Profit Factor</th>
+        <th>Max DD</th>
+        <th>FTMO Safe?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CADCHF</strong></td>
+        <td>42</td>
+        <td class="good">78.6%</td>
+        <td class="good">1.95</td>
+        <td class="good">1.39%</td>
+        <td class="good">&#10003; Yes</td>
+      </tr>
+      <tr>
+        <td><strong>AUDUSD</strong></td>
+        <td>28</td>
+        <td class="good">76.5%</td>
+        <td class="good">1.78</td>
+        <td class="good">&lt;2%</td>
+        <td class="good">&#10003; Yes</td>
+      </tr>
+      <tr>
+        <td><strong>AUDCHF</strong></td>
+        <td>46</td>
+        <td class="good">73.9%</td>
+        <td class="good">1.96</td>
+        <td class="good">&lt;2%</td>
+        <td class="good">&#10003; Yes</td>
+      </tr>
+      <tr>
+        <td><strong>USDCHF</strong></td>
+        <td>42</td>
+        <td class="good">73.8%</td>
+        <td class="good">1.86</td>
+        <td class="ok">2.07%</td>
+        <td class="good">&#10003; Yes</td>
+      </tr>
+      <tr>
+        <td><strong>GBPUSD</strong></td>
+        <td>37</td>
+        <td class="ok">70.3%</td>
+        <td class="ok">1.44</td>
+        <td class="good">&lt;2%</td>
+        <td class="good">&#10003; Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Portfolio Total</strong></td>
+        <td><strong>195</strong></td>
+        <td class="good"><strong>74%+ avg</strong></td>
+        <td class="good"><strong>1.80+ avg</strong></td>
+        <td class="good"><strong>1.39%</strong></td>
+        <td class="good"><strong>&#10003; Yes</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Running all 5 pairs simultaneously distributes drawdown across uncorrelated instruments. When GBPUSD has a tough week, CADCHF may be pulling ahead. The combined portfolio DD never exceeded 1.39% across the entire 17-month test window &mdash; a fraction of FTMO's 10% hard limit.</p>
+
+  <h2 id="verification">Phase 2: Verification &mdash; <span class="gold">Harder Than You Think</span></h2>
+
+  <p>Many traders who pass the FTMO Challenge on momentum then rush Phase 2 and fail. The Verification phase requires only 5% profit, but you have 60 days &mdash; and many traders interpret "slower target" as permission to take bigger risks.</p>
+
+  <p>It isn't. The same drawdown limits apply. Failing Verification costs you the challenge fee and all the time invested in Phase 1.</p>
+
+  <p>The correct approach for Verification with an automated EA:</p>
+
+  <ul>
+    <li><strong>Keep the same inputs.</strong> Do not adjust risk percentage, pairs traded, or any parameter that changed the backtest baseline. The system is already calibrated.</li>
+    <li><strong>Let the EA trade normally.</strong> The 5% target will be reached before the 60-day window closes at the same frequency as Phase 1.</li>
+    <li><strong>Monitor weekly, not daily.</strong> Checking P&amp;L hourly during Verification is how emotional decisions creep in. Let the algorithm work.</li>
+    <li><strong>Do not add pairs.</strong> Adding extra instruments mid-challenge introduces untested combinations that can blow drawdown.</li>
+  </ul>
+
+  <div class="callout tip">
+    <p><span class="callout-icon">&#10003;</span><strong>One key advantage of an EA on Verification:</strong> the system doesn't know it's in Phase 2. It executes the same rules it always has. The human failure mode &mdash; treating Phase 2 differently &mdash; is completely eliminated.</p>
+  </div>
+
+  <div class="cta-block">
+    <h3>TITAN AutoTrader &mdash; Built for Prop Firms</h3>
+    <p>Hard 4% daily DD cap. Automatic news blackout. 4-confluence filter. Tested across 17 months and 195 trades. Ready to run on your next FTMO challenge.</p>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta-btn">Get TITAN AutoTrader &#8594;</a>
+    <a href="https://getquantumedgeai.com/prop-guide.html" class="cta-btn-outline">Prop Firm Guide</a>
+  </div>
+
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked <span class="gold">Questions</span></h2>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">
+        How long does it take to pass the FTMO challenge? <span>+</span>
+      </div>
+      <div class="faq-a-blog" style="display:none">FTMO gives 30 calendar days to reach the 10% profit target. With an EA running at 1% risk per trade and 10&ndash;12 setups per pair per month, the target is typically reached in 3&ndash;4 weeks. There's no minimum trade count &mdash; you just need 4 minimum trading days on record.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">
+        What is the FTMO daily loss limit? <span>+</span>
+      </div>
+      <div class="faq-a-blog" style="display:none">FTMO's daily loss limit is 5% of the initial account balance (e.g., $500 on a $10,000 account). It's calculated from the highest balance reached that trading day. Any EA you use should have its own hard daily stop below this limit &mdash; TITAN uses 3% &mdash; to ensure a bad day can never breach the limit.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">
+        Can you use an Expert Advisor to pass FTMO? <span>+</span>
+      </div>
+      <div class="faq-a-blog" style="display:none">Yes. FTMO explicitly allows automated trading with Expert Advisors on MetaTrader 5. The EA must not use tick scalping, arbitrage, or latency exploitation strategies. A well-designed EA with proper risk management is often safer than manual trading because it eliminates emotional decisions.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">
+        What happens if you fail FTMO? <span>+</span>
+      </div>
+      <div class="faq-a-blog" style="display:none">If you breach drawdown or miss the profit target in Phase 1, you must purchase a new challenge at full price. If you pass Phase 1 but fail Phase 2 (Verification), FTMO offers one free retry on the same account conditions. This is why protecting capital during Verification is arguably more important than during the challenge itself.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">
+        Which broker should I use for FTMO with an EA? <span>+</span>
+      </div>
+      <div class="faq-a-blog" style="display:none">FTMO uses its own brokerage infrastructure. You don't choose the broker &mdash; FTMO assigns the account. However, for practice and backtesting before your challenge, use IC Markets or Pepperstone. Both offer full tick history going back 10+ years and near-zero spreads on CHF pairs, which is essential for accurate backtesting on TITAN's pair set.</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="blog-footer">
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="https://getquantumedgeai.com/blog">Blog</a>
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+  </div>
+</footer>
+
+</body>
+</html>
