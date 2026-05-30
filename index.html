@@ -712,6 +712,27 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 #mobileNav a:active{color:var(--gold);background:rgba(245,200,66,.04)}
 #mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
 @media(min-width:961px){#mobileNav{display:none!important}}
+#exitPop{position:fixed;inset:0;z-index:99000;background:rgba(0,0,0,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s ease}
+#exitPop.open{opacity:1;pointer-events:auto}
+.ep-box{background:linear-gradient(160deg,#111000,#0D0A00);border:1px solid rgba(245,200,66,.3);border-radius:20px;padding:48px 44px;max-width:500px;width:100%;position:relative;box-shadow:0 0 0 1px rgba(245,200,66,.07),0 40px 120px rgba(0,0,0,.9),0 0 80px rgba(245,200,66,.06)}
+.ep-close{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(245,200,66,.25);color:var(--gold);width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.ep-close:hover{border-color:rgba(245,200,66,.6)}
+.ep-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.2);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px}
+.ep-badge::before{content:'';width:6px;height:6px;background:#ff4444;border-radius:50%;animation:bdot 1.2s infinite}
+.ep-h{font-family:var(--fontd);font-size:1.8rem;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:12px}
+.ep-h span{color:var(--gold)}
+.ep-sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:28px}
+.ep-form{display:flex;flex-direction:column;gap:12px}
+.ep-input{background:rgba(255,255,255,.05);border:1px solid rgba(42,31,0,.8);border-radius:10px;padding:14px 18px;color:var(--white);font-size:.9rem;font-family:var(--font);outline:none;transition:border-color .2s;width:100%}
+.ep-input:focus{border-color:rgba(245,200,66,.45)}
+.ep-input::placeholder{color:var(--muted2)}
+.ep-btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:800;font-size:.9rem;padding:15px;border-radius:10px;border:none;cursor:pointer;letter-spacing:.5px;transition:box-shadow .2s,transform .15s;font-family:var(--font)}
+.ep-btn:hover{box-shadow:0 6px 28px rgba(245,200,66,.4);transform:translateY(-1px)}
+.ep-skip{display:block;text-align:center;margin-top:14px;font-size:.72rem;color:var(--muted2);cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+.ep-skip:hover{color:var(--muted)}
+.ep-proof{display:flex;align-items:center;gap:8px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(42,31,0,.5);font-size:.72rem;color:var(--muted2)}
+.ep-proof-dot{width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0}
+@media(max-width:520px){.ep-box{padding:36px 24px}.ep-h{font-size:1.5rem}}
 /* ══ TITAN IN ACTION ══ */
 #titan-in-action{background:#070500;padding:100px 0;position:relative;overflow:hidden}
 #titan-in-action::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(245,200,66,.04) 0%,transparent 70%);pointer-events:none}
@@ -755,7 +776,6 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .tia-stat-label{font-size:.7rem;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase}
 @media(max-width:900px){.tia-grid{grid-template-columns:1fr;gap:36px}.tia-monitor{transform:none!important}.tia-inner{padding:0 24px}.tia-stats{grid-template-columns:1fr;gap:1px}}
 </style>
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
 </head>
 <body class="loading">
 <div class="cur" id="cDot"></div>
@@ -798,6 +818,24 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <div class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<!-- EXIT POPUP -->
+<div id="exitPop">
+  <div class="ep-box">
+    <button class="ep-close" onclick="exitPopClose()">&times;</button>
+    <div class="ep-badge">Free Report</div>
+    <h2 class="ep-h">Get the Full TITAN<br><span>Backtest Report</span></h2>
+    <p class="ep-sub">17 months. 195 trades. 5 currency pairs. Every entry, exit, and R-multiple — sent to your inbox free. See exactly how TITAN performs before you invest a cent.</p>
+    <div id="epWrap">
+      <form class="ep-form" onsubmit="epSubmit(event)">
+        <input id="epEmail" class="ep-input" type="email" placeholder="Your email address" required autocomplete="email">
+        <button type="submit" class="ep-btn">Send Me the Report &rarr;</button>
+      </form>
+      <span class="ep-skip" onclick="exitPopClose()">No thanks, I don&rsquo;t need verified backtest data</span>
+    </div>
+    <div class="ep-proof"><div class="ep-proof-dot"></div>200+ traders already on the waitlist &nbsp;&middot;&nbsp; Report delivered instantly</div>
+  </div>
+</div>
 
 <!-- MOBILE MENU -->
 <div id="mobileNav">
@@ -1709,11 +1747,19 @@ document.querySelectorAll('a,button,.gcard,.faq-q,.gtab,.ob,.founder-card').forE
 });
 (function ar(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar)})();
 
-// Loader — 3s minimum
-window.addEventListener('load',()=>setTimeout(()=>{
-  document.getElementById('loader').classList.add('hide');
-  document.body.classList.remove('loading');
-},3000));
+// Loader — 3s minimum, then lazy-load Spline
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.getElementById('loader').classList.add('hide');
+    document.body.classList.remove('loading');
+  },3000);
+  setTimeout(function(){
+    var s=document.createElement('script');
+    s.type='module';
+    s.src='https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js';
+    document.head.appendChild(s);
+  },3400);
+});
 // Hide Spline watermark
 (function(){function tryHide(){var v=document.querySelector('spline-viewer');if(!v)return;var sr=v.shadowRoot;if(!sr){setTimeout(tryHide,400);return;}var el=sr.getElementById('logo');if(el){el.style.display='none';return;}setTimeout(tryHide,400);}setTimeout(tryHide,1200);})();
 
@@ -2162,6 +2208,30 @@ runCalc();
   resize();
 })();
 
+// Exit popup
+(function(){
+  var shown=false;
+  function show(){
+    if(shown||sessionStorage.getItem('ep_shown'))return;
+    shown=true;sessionStorage.setItem('ep_shown','1');
+    document.getElementById('exitPop').classList.add('open');
+  }
+  function hide(){document.getElementById('exitPop').classList.remove('open');}
+  window.exitPopClose=hide;
+  document.addEventListener('mouseleave',function(e){if(e.clientY<0)show();});
+  setTimeout(show,45000);
+  window.epSubmit=function(e){
+    e.preventDefault();
+    var em=document.getElementById('epEmail').value.trim();
+    if(!em)return;
+    var fd=new FormData();
+    fd.append('email',em);fd.append('_subject','TITAN Waitlist — '+em);
+    fetch('https://formsubmit.co/ajax/GridpointDigitalSolution@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd}).catch(function(){});
+    localStorage.setItem('ep_done','1');
+    document.getElementById('epWrap').innerHTML='<p style="text-align:center;padding:20px 0"><span style="font-size:2rem">✓</span><br><strong style="color:var(--green);font-size:1.1rem;display:block;margin:10px 0">You\'re on the list.</strong><span style="color:var(--muted);font-size:.85rem">Backtest report incoming. Check your inbox.</span></p>';
+    setTimeout(hide,3000);
+  };
+})();
 // TITAN In Action — sequential trade animation
 (function(){
   var fired=false;
