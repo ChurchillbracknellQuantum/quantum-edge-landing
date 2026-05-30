@@ -712,6 +712,48 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 #mobileNav a:active{color:var(--gold);background:rgba(245,200,66,.04)}
 #mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
 @media(min-width:961px){#mobileNav{display:none!important}}
+/* ══ TITAN IN ACTION ══ */
+#titan-in-action{background:#070500;padding:100px 0;position:relative;overflow:hidden}
+#titan-in-action::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(245,200,66,.04) 0%,transparent 70%);pointer-events:none}
+.tia-inner{max-width:1200px;margin:0 auto;padding:0 60px}
+.tia-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;margin-top:56px}
+.tia-monitor-wrap{position:relative}
+.tia-monitor{background:#0a0800;border:1px solid rgba(245,200,66,.25);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,200,66,.08),0 20px 80px rgba(0,0,0,.8),0 0 60px rgba(245,200,66,.06);transform:perspective(1200px) rotateY(-5deg) rotateX(1deg);transition:transform .6s ease}
+.tia-monitor:hover{transform:perspective(1200px) rotateY(-1deg) rotateX(0deg)}
+.tia-monitor-bar{background:#0e0c00;border-bottom:1px solid rgba(245,200,66,.12);padding:9px 16px;display:flex;align-items:center;gap:8px}
+.tia-bar-dot{width:10px;height:10px;border-radius:50%}
+.tia-bar-dot:nth-child(1){background:#ff5f57}
+.tia-bar-dot:nth-child(2){background:#febc2e}
+.tia-bar-dot:nth-child(3){background:#28c840}
+.tia-bar-title{flex:1;text-align:center;font-size:.68rem;color:rgba(245,200,66,.45);letter-spacing:1.8px;text-transform:uppercase;font-weight:600}
+.tia-screen-img{width:100%;display:block;filter:brightness(.92) contrast(1.05)}
+.tia-glass{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 50%,rgba(0,0,0,.08) 100%);pointer-events:none;border-radius:12px}
+.tia-pair-badge{position:absolute;bottom:16px;right:16px;background:rgba(245,200,66,.9);color:#000;font-size:.62rem;font-weight:800;letter-spacing:2px;padding:5px 12px;border-radius:20px;text-transform:uppercase}
+.tia-log-title{font-family:var(--fontd);font-size:1.25rem;font-weight:900;color:var(--white);margin-bottom:4px}
+.tia-log-sub{font-size:.75rem;color:var(--muted2);letter-spacing:1px;margin-bottom:24px}
+.tia-trade{background:rgba(15,12,0,.85);border:1px solid rgba(42,31,0,.6);border-radius:12px;padding:18px 20px;margin-bottom:12px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.tia-trade.visible{opacity:1;transform:translateY(0)}
+.tia-trade.win{border-left:3px solid var(--green)}
+.tia-trade.loss{border-left:3px solid #ff5252}
+.tia-trade-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.tia-tpair{font-size:.9rem;font-weight:800;color:var(--white);letter-spacing:.8px}
+.tia-dir{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px}
+.tia-dir.buy{background:rgba(45,184,122,.12);color:var(--green);border:1px solid rgba(45,184,122,.28)}
+.tia-dir.sell{background:rgba(255,82,82,.08);color:#ff7070;border:1px solid rgba(255,82,82,.2)}
+.tia-entry-line{font-size:.72rem;color:var(--muted2);margin-bottom:10px}
+.tia-mile{display:flex;align-items:flex-start;gap:10px;font-size:.76rem;color:var(--muted);padding:7px 0;border-top:1px solid rgba(42,31,0,.35);opacity:0;transition:opacity .4s ease}
+.tia-mile.show{opacity:1}
+.tia-mile-icon{flex-shrink:0;width:16px;text-align:center;font-size:.8rem}
+.tia-mile-text{flex:1;line-height:1.55}
+.tia-result-line{font-weight:700;margin-top:2px}
+.tia-result-line.win{color:var(--green)}
+.tia-result-line.loss{color:#ff7070}
+.tia-disclaimer{font-size:.7rem;color:var(--muted2);margin-top:14px;line-height:1.7;border-top:1px solid rgba(42,31,0,.35);padding-top:12px}
+.tia-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:rgba(42,31,0,.3);border:1px solid rgba(42,31,0,.5);border-radius:12px;overflow:hidden}
+.tia-stat{padding:28px;text-align:center;background:rgba(10,8,0,.9)}
+.tia-stat-num{font-family:var(--fontd);font-size:2rem;font-weight:900;color:var(--gold);display:block;margin-bottom:4px}
+.tia-stat-label{font-size:.7rem;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase}
+@media(max-width:900px){.tia-grid{grid-template-columns:1fr;gap:36px}.tia-monitor{transform:none!important}.tia-inner{padding:0 24px}.tia-stats{grid-template-columns:1fr;gap:1px}}
 </style>
 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
 </head>
@@ -960,6 +1002,81 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="pain-card reveal"><div class="pain-icon">&#128201;</div><h3>Random Entry Signals</h3><p>Indicators without confluence. No institutional context. No kill zone discipline. Just noise.</p></div>
       <div class="pain-card reveal"><div class="pain-icon">&#128184;</div><h3>No Risk Management</h3><p>Oversized lots. No daily DD cap. No hard stops. One bad trade wipes months of gains.</p></div>
       <div class="pain-card reveal"><div class="pain-icon">&#129302;</div><h3>EA Scams</h3><p>Curve-fitted backtests. Martingale hidden inside. 40-50% win rates marketed as "profitable."</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TITAN IN ACTION ══════════════════ -->
+<section id="titan-in-action">
+  <div class="tia-inner">
+    <div class="reveal"><div class="sec-label">TITAN In Action</div><h2 class="sec-title">Watch It Execute.</h2><p class="sec-sub">Real backtest trades &mdash; entry logic, risk management, and exit execution &mdash; exactly as designed. Every single time.</p></div>
+
+    <div class="tia-grid">
+
+      <!-- Left: Monitor -->
+      <div class="tia-monitor-wrap reveal">
+        <div class="tia-monitor">
+          <div class="tia-monitor-bar">
+            <div class="tia-bar-dot"></div><div class="tia-bar-dot"></div><div class="tia-bar-dot"></div>
+            <div class="tia-bar-title">MT5 Strategy Tester &nbsp;&middot;&nbsp; CADCHF H1 &nbsp;&middot;&nbsp; 17 Months</div>
+          </div>
+          <img src="screenshots/CADCHF_equity (1).png" class="tia-screen-img" alt="CADCHF backtest equity curve">
+          <div class="tia-glass"></div>
+        </div>
+        <div class="tia-pair-badge">CADCHF &middot; 78.6% WR &middot; PF 1.95</div>
+      </div>
+
+      <!-- Right: Trade Log -->
+      <div class="reveal">
+        <div class="tia-log-title">Live Trade Execution</div>
+        <div class="tia-log-sub">TITAN&rsquo;s decision chain &mdash; in real time</div>
+
+        <!-- Trade 1 — CADCHF Win -->
+        <div class="tia-trade win" id="tia-t1">
+          <div class="tia-trade-head">
+            <span class="tia-tpair">CADCHF</span>
+            <span class="tia-dir buy">&#9650; BUY</span>
+          </div>
+          <div class="tia-entry-line">London Open &middot; 09:00 GMT &middot; Entry 0.6218 &middot; SL 26 pips</div>
+          <div class="tia-mile" id="tia-t1-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; EMA21 pullback &middot; Pin bar &middot; ADX 31</span></div>
+          <div class="tia-mile" id="tia-t1-m2"><span class="tia-mile-icon">&#127919;</span><span class="tia-mile-text">+2R reached &mdash; 50% partial closed &middot; <strong style="color:var(--green)">+$126 locked in</strong></span></div>
+          <div class="tia-mile" id="tia-t1-m3"><span class="tia-mile-icon">&#128640;</span><span class="tia-mile-text">Monster trail engaged &mdash; remainder running&hellip;</span></div>
+          <div class="tia-mile" id="tia-t1-m4"><span class="tia-mile-icon">&#10003;</span><span class="tia-mile-text"><span class="tia-result-line win">Closed +4.6R &nbsp;&middot;&nbsp; Total return <strong>+$286</strong></span></span></div>
+        </div>
+
+        <!-- Trade 2 — AUDCHF Win -->
+        <div class="tia-trade win" id="tia-t2">
+          <div class="tia-trade-head">
+            <span class="tia-tpair">AUDCHF</span>
+            <span class="tia-dir buy">&#9650; BUY</span>
+          </div>
+          <div class="tia-entry-line">NY Open &middot; 13:00 GMT &middot; Entry 0.5734 &middot; SL 31 pips</div>
+          <div class="tia-mile" id="tia-t2-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; Engulfing candle &middot; ADX 28</span></div>
+          <div class="tia-mile" id="tia-t2-m2"><span class="tia-mile-icon">&#127919;</span><span class="tia-mile-text">+2R reached &mdash; 50% partial closed &middot; <strong style="color:var(--green)">+$94 locked in</strong></span></div>
+          <div class="tia-mile" id="tia-t2-m3"><span class="tia-mile-icon">&#10003;</span><span class="tia-mile-text"><span class="tia-result-line win">Trail exit at +2.4R &nbsp;&middot;&nbsp; Total return <strong>+$116</strong></span></span></div>
+        </div>
+
+        <!-- Trade 3 — USDCHF Loss (credibility) -->
+        <div class="tia-trade loss" id="tia-t3">
+          <div class="tia-trade-head">
+            <span class="tia-tpair">USDCHF</span>
+            <span class="tia-dir sell">&#9660; SELL</span>
+          </div>
+          <div class="tia-entry-line">London Open &middot; 08:30 GMT &middot; Entry 0.9042 &middot; SL 22 pips</div>
+          <div class="tia-mile" id="tia-t3-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; EMA21 pullback &middot; ADX 26</span></div>
+          <div class="tia-mile" id="tia-t3-m2"><span class="tia-mile-icon">&#8617;</span><span class="tia-mile-text">Reversal on news event &mdash; hard stop triggered automatically</span></div>
+          <div class="tia-mile" id="tia-t3-m3"><span class="tia-mile-icon">&#10007;</span><span class="tia-mile-text"><span class="tia-result-line loss">Stop hit &minus;1.0R &nbsp;&middot;&nbsp; Loss contained at <strong>&minus;$90</strong></span></span></div>
+        </div>
+
+        <p class="tia-disclaimer">Not every trade wins &mdash; and that&rsquo;s by design. 74% win rate means 26 controlled losses per 100 trades, each capped at exactly 1R. Winners average 2.4R. The math compounds relentlessly.</p>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="tia-stats reveal">
+      <div class="tia-stat"><span class="tia-stat-num">195</span><span class="tia-stat-label">Trades &middot; 17 Months</span></div>
+      <div class="tia-stat"><span class="tia-stat-num">74%</span><span class="tia-stat-label">Average Win Rate</span></div>
+      <div class="tia-stat"><span class="tia-stat-num">1.73R</span><span class="tia-stat-label">Avg Expectancy Per Trade</span></div>
     </div>
   </div>
 </section>
@@ -2043,6 +2160,39 @@ runCalc();
   hero.addEventListener('touchend',function(){mouse.active=false;},{passive:true});
   window.addEventListener('resize',function(){setTimeout(resize,100);},{passive:true});
   resize();
+})();
+
+// TITAN In Action — sequential trade animation
+(function(){
+  var fired=false;
+  var trades=[
+    {card:'tia-t1',miles:[['tia-t1-m1',600],['tia-t1-m2',1400],['tia-t1-m3',2200],['tia-t1-m4',3100]]},
+    {card:'tia-t2',miles:[['tia-t2-m1',600],['tia-t2-m2',1400],['tia-t2-m3',2200]]},
+    {card:'tia-t3',miles:[['tia-t3-m1',600],['tia-t3-m2',1400],['tia-t3-m3',2200]]}
+  ];
+  var cardDelay=[0,4200,7800];
+  function run(){
+    trades.forEach(function(t,i){
+      setTimeout(function(){
+        var c=document.getElementById(t.card);
+        if(c)c.classList.add('visible');
+        t.miles.forEach(function(m){
+          setTimeout(function(){
+            var el=document.getElementById(m[0]);
+            if(el)el.classList.add('show');
+          },m[1]);
+        });
+      },cardDelay[i]);
+    });
+  }
+  var sec=document.getElementById('titan-in-action');
+  if(!sec)return;
+  var obs=new IntersectionObserver(function(en){
+    en.forEach(function(e){
+      if(e.isIntersecting&&!fired){fired=true;run();obs.disconnect();}
+    });
+  },{threshold:0.15});
+  obs.observe(sec);
 })();
 </script>
 </body>
