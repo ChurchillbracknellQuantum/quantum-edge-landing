@@ -794,6 +794,14 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .tia-stat-num{font-family:var(--fontd);font-size:2rem;font-weight:900;color:var(--gold);display:block;margin-bottom:4px}
 .tia-stat-label{font-size:.7rem;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase}
 @media(max-width:900px){.tia-grid{grid-template-columns:1fr;gap:36px}.tia-monitor{transform:none!important}.tia-inner{padding:0 24px}.tia-stats{grid-template-columns:1fr;gap:1px}}
+.tia-candle-wrap{background:#050300;border:1px solid rgba(245,200,66,.15);border-radius:8px;margin-top:18px;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.tia-candle-wrap.active{opacity:1;transform:translateY(0)}
+.tia-candle-header{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;background:rgba(0,0,0,.45);border-bottom:1px solid rgba(245,200,66,.08);font-size:.67rem;font-weight:700;color:var(--gold);letter-spacing:.06em}
+.tia-candle-live{color:#2DB87A;font-size:.62rem;letter-spacing:.04em}
+#tiaCandleCanvas{display:block;width:100%;height:auto}
+.tia-candle-result{text-align:center;padding:5px 8px;font-size:.74rem;font-weight:800;min-height:22px;letter-spacing:.5px}
+.tia-candle-result.win{color:#2DB87A}
+.tia-candle-result.loss{color:#ff7070}
 </style>
 </head>
 <body class="loading">
@@ -1083,8 +1091,14 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
             <img src="screenshots/AUDCHF_equity (1).png" class="tia-screen-img" alt="AUDCHF backtest" loading="lazy">
             <div class="tia-glass"></div>
           </div>
+          <div class="tia-pair-badge" id="tiaBadge">CADCHF &middot; 78.6% WR &middot; PF 1.95</div>
         </div>
-        <div class="tia-pair-badge" id="tiaBadge">CADCHF &middot; 78.6% WR &middot; PF 1.95</div>
+        <!-- Candlestick simulator -->
+        <div class="tia-candle-wrap" id="tiaCandleWrap">
+          <div class="tia-candle-header"><span id="tiaCandlePair">CADCHF H1 &nbsp;&#9650; BUY</span><span class="tia-candle-live">&#9679; LIVE</span></div>
+          <canvas id="tiaCandleCanvas" width="400" height="150"></canvas>
+          <div class="tia-candle-result" id="tiaCandleResult"></div>
+        </div>
       </div>
 
       <!-- Right: Trade Log with animated cursor -->
@@ -1098,7 +1112,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="tia-trade win" id="tia-t1">
           <div class="tia-trade-head">
             <span class="tia-tpair">CADCHF</span>
-            <span class="tia-dir buy">&#9650; BUY</span>
+            <span class="tia-dir buy" id="tia-t1-buy">&#9650; BUY</span>
           </div>
           <div class="tia-entry-line">London Open &middot; 09:00 GMT &middot; Entry 0.6218 &middot; SL 26 pips</div>
           <div class="tia-mile" id="tia-t1-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; EMA21 pullback &middot; Pin bar &middot; ADX 31</span></div>
@@ -1111,7 +1125,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="tia-trade win" id="tia-t2">
           <div class="tia-trade-head">
             <span class="tia-tpair">AUDCHF</span>
-            <span class="tia-dir buy">&#9650; BUY</span>
+            <span class="tia-dir buy" id="tia-t2-buy">&#9650; BUY</span>
           </div>
           <div class="tia-entry-line">NY Open &middot; 13:00 GMT &middot; Entry 0.5734 &middot; SL 31 pips</div>
           <div class="tia-mile" id="tia-t2-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; Engulfing candle &middot; ADX 28</span></div>
@@ -1123,7 +1137,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="tia-trade loss" id="tia-t3">
           <div class="tia-trade-head">
             <span class="tia-tpair">USDCHF</span>
-            <span class="tia-dir sell">&#9660; SELL</span>
+            <span class="tia-dir sell" id="tia-t3-sell">&#9660; SELL</span>
           </div>
           <div class="tia-entry-line">London Open &middot; 08:30 GMT &middot; Entry 0.9042 &middot; SL 22 pips</div>
           <div class="tia-mile" id="tia-t3-m1"><span class="tia-mile-icon">&#9881;</span><span class="tia-mile-text">4 confluences confirmed &mdash; EMA200 &middot; EMA21 pullback &middot; ADX 26</span></div>
@@ -2257,22 +2271,95 @@ runCalc();
     setTimeout(hide,3000);
   };
 })();
-// TITAN In Action — cursor-driven animation
+// TITAN In Action — cursor + candlestick sim
 (function(){
   var fired=false;
+  var CDATA={
+    1:{pair:'CADCHF H1',dir:'BUY',
+       candles:[[50,54,47,51],[51,53,49,50],[50,55,49,53],[53,56,51,52],[52,57,50,56],[56,61,55,59],[59,64,57,63],[63,68,61,66],[66,71,64,69],[69,75,67,73],[73,79,71,77],[77,83,75,82]],
+       ei:4,sl:46,tp:72,win:true,res:'+4.6R  ·  +$286'},
+    2:{pair:'AUDCHF H1',dir:'BUY',
+       candles:[[48,52,45,49],[49,51,47,50],[50,53,48,52],[52,56,50,54],[53,58,51,56],[56,61,54,60],[60,65,58,63],[63,68,61,66],[66,70,63,68]],
+       ei:4,sl:45,tp:64,win:true,res:'+2.4R  ·  +$116'},
+    3:{pair:'USDCHF H1',dir:'SELL',
+       candles:[[55,58,51,53],[53,55,50,51],[51,54,48,50],[50,53,47,49],[49,53,46,48],[48,56,46,54],[54,59,52,57],[57,62,55,60]],
+       ei:4,sl:56,tp:37,win:false,res:'−1.0R  ·  −$90'}
+  };
+
+  function runCandle(n){
+    var wrap=document.getElementById('tiaCandleWrap');
+    var canvas=document.getElementById('tiaCandleCanvas');
+    var pairEl=document.getElementById('tiaCandlePair');
+    var resEl=document.getElementById('tiaCandleResult');
+    if(!wrap||!canvas)return;
+    var d=CDATA[n];
+    pairEl.textContent=d.pair+'  '+(d.dir==='BUY'?'▲':'▼')+' '+d.dir;
+    resEl.textContent='';resEl.className='tia-candle-result';
+    wrap.classList.add('active');
+    var ctx=canvas.getContext('2d');
+    var W=canvas.width,H=canvas.height;
+    var cs=d.candles,nc=cs.length;
+    var pL=6,pR=26,pT=16,pB=16;
+    var cW2=Math.floor((W-pL-pR)/nc),bW=Math.max(4,cW2-3);
+    function py(p){return pT+(H-pT-pB)*(1-(p-40)/50);}
+    function bg(){
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#050300';ctx.fillRect(0,0,W,H);
+      ctx.strokeStyle='rgba(245,200,66,0.05)';ctx.lineWidth=1;
+      for(var i=0;i<=4;i++){var y=pT+((H-pT-pB)/4)*i;ctx.beginPath();ctx.moveTo(pL,y);ctx.lineTo(W-pR,y);ctx.stroke();}
+    }
+    function dc(i,o,h,l,c){
+      var x=pL+i*cW2+cW2/2;
+      var up=c>=o,col=up?'#2DB87A':'#e05555';
+      ctx.strokeStyle=col;ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(x,py(h));ctx.lineTo(x,py(l));ctx.stroke();
+      var bt=py(Math.max(o,c)),bb=py(Math.min(o,c));
+      ctx.fillStyle=col;ctx.fillRect(x-bW/2,bt,bW,Math.max(2,bb-bt));
+      if(i===d.ei){
+        ctx.fillStyle='#F5C842';ctx.font='bold 8px sans-serif';ctx.textAlign='center';
+        ctx.fillText(d.dir==='BUY'?'▲':'▼',x,d.dir==='BUY'?py(l)+11:py(h)-4);
+      }
+    }
+    function lvl(step){
+      var ex=pL+d.ei*cW2+cW2,ex2=pL+step*cW2+cW2;
+      ctx.setLineDash([3,3]);ctx.lineWidth=1;
+      ctx.strokeStyle='rgba(224,85,85,.6)';
+      ctx.beginPath();ctx.moveTo(ex,py(d.sl));ctx.lineTo(ex2,py(d.sl));ctx.stroke();
+      ctx.fillStyle='rgba(224,85,85,.85)';ctx.font='7px sans-serif';ctx.textAlign='left';
+      ctx.fillText('SL',W-pR+3,py(d.sl)+3);
+      ctx.strokeStyle='rgba(45,184,122,.6)';
+      ctx.beginPath();ctx.moveTo(ex,py(d.tp));ctx.lineTo(ex2,py(d.tp));ctx.stroke();
+      ctx.fillStyle='rgba(45,184,122,.85)';ctx.fillText('2R',W-pR+3,py(d.tp)+3);
+      ctx.setLineDash([]);
+    }
+    var step=0;
+    function tick(){
+      bg();
+      for(var i=0;i<=step&&i<nc;i++){var c=cs[i];dc(i,c[0],c[1],c[2],c[3]);}
+      if(step>=d.ei)lvl(Math.min(step,nc-1));
+      if(step>=nc){
+        ctx.fillStyle=d.win?'rgba(45,184,122,0.09)':'rgba(224,85,85,0.09)';
+        ctx.fillRect(0,0,W,H);
+        resEl.textContent=(d.win?'✓ ':'✗ ')+d.res;
+        resEl.className='tia-candle-result '+(d.win?'win':'loss');
+        return;
+      }
+      step++;setTimeout(tick,165);
+    }
+    bg();setTimeout(tick,250);
+  }
+
   function run(){
     var cur=document.getElementById('tiaCursor');
     var rip=document.getElementById('tiaRipple');
     var wrap=document.querySelector('.tia-log-wrap');
     if(!cur||!wrap)return;
     cur.classList.add('visible');
-
     function getPos(id){
       var el=document.getElementById(id);
       if(!el)return{x:30,y:0};
-      var wr=wrap.getBoundingClientRect();
-      var er=el.getBoundingClientRect();
-      return{x:er.left-wr.left+14,y:er.top-wr.top+10};
+      var wr=wrap.getBoundingClientRect(),er=el.getBoundingClientRect();
+      return{x:er.left-wr.left+er.width/2-8,y:er.top-wr.top+er.height/2-10};
     }
     function move(x,y){cur.style.transform='translate('+x+'px,'+y+'px)';}
     function click(x,y,cb){
@@ -2290,31 +2377,23 @@ runCalc();
       else if(n===2){s2.classList.add('sc-active');if(b)b.textContent='AUDCHF · 73.9% WR · PF 1.95';}
       else{s1.classList.add('sc-active');if(b)b.textContent='USDCHF · 73.8% WR · PF 1.86';}
     }
-
-    // Start off-screen, slide in
     move(40,-50);
-    setTimeout(function(){
-      var p=getPos('tia-t1');move(p.x,p.y);
-    },500);
-    // Click Trade 1
-    setTimeout(function(){var p=getPos('tia-t1');click(p.x,p.y,function(){card('tia-t1');screen(1);});},1300);
+    setTimeout(function(){var p=getPos('tia-t1-buy');move(p.x,p.y);},500);
+    setTimeout(function(){var p=getPos('tia-t1-buy');click(p.x,p.y,function(){card('tia-t1');screen(1);runCandle(1);});},1300);
     setTimeout(function(){show('tia-t1-m1');},1900);
     setTimeout(function(){show('tia-t1-m2');},2700);
     setTimeout(function(){show('tia-t1-m3');},3500);
     setTimeout(function(){show('tia-t1-m4');},4300);
-    // Move to Trade 2
-    setTimeout(function(){var p=getPos('tia-t2');move(p.x,p.y);},5400);
-    setTimeout(function(){var p=getPos('tia-t2');click(p.x,p.y,function(){card('tia-t2');screen(2);});},6200);
+    setTimeout(function(){var p=getPos('tia-t2-buy');move(p.x,p.y);},5400);
+    setTimeout(function(){var p=getPos('tia-t2-buy');click(p.x,p.y,function(){card('tia-t2');screen(2);runCandle(2);});},6200);
     setTimeout(function(){show('tia-t2-m1');},6800);
     setTimeout(function(){show('tia-t2-m2');},7600);
     setTimeout(function(){show('tia-t2-m3');},8400);
-    // Move to Trade 3
-    setTimeout(function(){var p=getPos('tia-t3');move(p.x,p.y);},9500);
-    setTimeout(function(){var p=getPos('tia-t3');click(p.x,p.y,function(){card('tia-t3');screen(3);});},10300);
+    setTimeout(function(){var p=getPos('tia-t3-sell');move(p.x,p.y);},9500);
+    setTimeout(function(){var p=getPos('tia-t3-sell');click(p.x,p.y,function(){card('tia-t3');screen(3);runCandle(3);});},10300);
     setTimeout(function(){show('tia-t3-m1');},10900);
     setTimeout(function(){show('tia-t3-m2');},11700);
     setTimeout(function(){show('tia-t3-m3');},12500);
-    // Cursor fades off
     setTimeout(function(){cur.style.opacity='0';},13500);
   }
   var sec=document.getElementById('titan-in-action');
