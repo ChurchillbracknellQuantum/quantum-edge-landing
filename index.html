@@ -753,7 +753,10 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .priv-box ul{padding-left:18px;margin-top:6px}
 .priv-box ul li{margin-bottom:5px}
 @media(max-width:600px){.priv-box{padding:28px 20px}}
+.spline-robot{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:auto}
+@media(max-width:767px){.spline-robot{display:none}}
 </style>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
 </head>
 <body class="loading">
 <div class="cur" id="cDot"></div>
@@ -926,8 +929,11 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <line x1="110" y1="194" x2="404" y2="322" stroke="rgba(245,200,66,0.05)" stroke-width="1" stroke-dasharray="5,6"/>
         </svg>
 
+        <!-- Spline 3D Robot -->
+        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" mouse-target="global" class="spline-robot"></spline-viewer>
+
         <!-- Central TITAN -->
-        <div class="titan-core">
+        <div class="titan-core" style="display:none">
           <img src="Logo.png" alt="Quantum Edge TITAN">
           <span class="titan-core-lbl">TITAN</span>
         </div>
