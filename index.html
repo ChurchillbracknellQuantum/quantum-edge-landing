@@ -74,6 +74,18 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 .nav-cta{background:var(--gold);color:#000!important;padding:11px 28px;border-radius:7px;font-weight:800!important;font-size:.83rem!important;letter-spacing:1px;box-shadow:0 2px 16px rgba(245,200,66,.2)}
 .nav-cta:hover{background:var(--gold2)!important;box-shadow:0 4px 24px rgba(245,200,66,.35)!important}
 .nav-cta::after{display:none!important}
+.nav-mob-link{display:none}
+.nav-more{position:relative;display:flex;align-items:center}
+.nav-more-btn{background:none;border:none;color:var(--muted);font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;letter-spacing:.3px;padding:0;transition:color .2s;font-family:var(--font);white-space:nowrap;line-height:1}
+.nav-more-btn:hover{color:var(--gold)}
+.nav-more-btn .nav-arr{font-size:.65rem;transition:transform .25s;display:inline-block}
+.nav-more.open .nav-more-btn{color:var(--gold)}
+.nav-more.open .nav-arr{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:#141100;border:1px solid rgba(245,200,66,.22);border-radius:12px;padding:8px 0;min-width:170px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:200;box-shadow:0 20px 56px rgba(0,0,0,.7),0 0 0 1px rgba(245,200,66,.06)}
+.nav-more.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block;padding:10px 22px;color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none;transition:color .2s,background .2s;white-space:nowrap;letter-spacing:.3px}
+.nav-dropdown a:hover{color:var(--gold);background:rgba(245,200,66,.05)}
+.nav-dropdown a::after{display:none!important}
 .nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;z-index:1001;position:relative}
 .nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;transition:transform .35s cubic-bezier(.77,0,.175,1),opacity .2s,width .3s}
 .nav-burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
@@ -92,7 +104,7 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
     align-items:center;
     justify-content:flex-start;
     gap:0;
-    z-index:1000;
+    z-index:9900;
     padding:100px 0 60px;
     transform:translateX(100%);
     transition:transform .4s cubic-bezier(.77,0,.175,1);
@@ -133,8 +145,10 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
     width:auto!important;
     display:inline-block!important;
   }
-  .nav-burger{display:flex}
+  .nav-burger{display:flex;z-index:9901!important}
   .nav-logo-text .brand{font-size:.85rem}
+  .nav-more{display:none!important}
+  .nav-mob-link{display:block!important}
 }
 
 /* CHAT SIDE WIDGET */
@@ -480,7 +494,7 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .fmod-bio strong{color:#fff;font-weight:700}
 .fmod-bio em{color:var(--gold);font-style:italic}
 .fmod-quote{background:rgba(245,200,66,.05);border-left:3px solid var(--gold);padding:14px 18px;border-radius:0 10px 10px 0;font-size:.86rem;color:#bbb;font-style:italic;line-height:1.7;margin-top:4px}
-@media(max-width:680px){.fmod-box{grid-template-columns:1fr;grid-template-rows:220px 1fr}.fmod-photo{min-height:220px}.fmod-details{padding:26px 22px}}
+@media(max-width:680px){.fmod-box{grid-template-columns:1fr;grid-template-rows:240px 1fr}.fmod-photo{min-height:240px}.fmod-photo img{object-position:center top!important}.fmod-details{padding:26px 22px}}
 .fc-meta{display:flex;flex-direction:column;gap:5px}
 .fc-yrs{display:inline-flex;align-items:center;width:fit-content;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.35);color:var(--gold);font-size:.59rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:4px}
 .fc-name{font-family:var(--fontd);font-size:1.85rem;font-weight:900;color:#fff;line-height:1.05}
@@ -762,12 +776,21 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#performance" data-label="Performance">Performance</a>
-      <a href="#simulator" data-label="Simulator">Simulator</a>
-      <a href="#founders" data-label="Founders">Founders</a>
       <a href="#pricing" data-label="Pricing">Pricing</a>
       <a href="#faq" data-label="FAQ">FAQ</a>
-      <a href="#support" data-label="Support">Support</a>
-      <a href="setup-guide.html" data-label="Setup Guide">Setup Guide</a>
+      <div class="nav-more" id="navMore">
+        <button class="nav-more-btn" onclick="toggleMoreMenu(event)">More <span class="nav-arr">&#9660;</span></button>
+        <div class="nav-dropdown" id="navDrop">
+          <a href="#simulator">Simulator</a>
+          <a href="#founders">Founders</a>
+          <a href="#support">Support</a>
+          <a href="setup-guide.html">Setup Guide</a>
+        </div>
+      </div>
+      <a href="#simulator" class="nav-mob-link">Simulator</a>
+      <a href="#founders" class="nav-mob-link">Founders</a>
+      <a href="#support" class="nav-mob-link">Support</a>
+      <a href="setup-guide.html" class="nav-mob-link">Setup Guide</a>
       <a href="#pricing" class="nav-cta">Get Started</a>
     </div>
     <div class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
@@ -1360,7 +1383,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <li>Per-firm exact settings guide</li>
           <li>License key &mdash; 1 MT5 account</li>
         </ul>
-        <a href="mailto:hello@getquantumedgeai.com?subject=Reserve%20TITAN%20AutoTrader%20Pro%20%24399&body=Hi%2C%20I%20want%20to%20reserve%20TITAN%20AutoTrader%20Pro%20(%24399).%20Please%20notify%20me%20the%20moment%20checkout%20is%20live." class="pbtn g" style="color:#000000;background:#F5C842;font-weight:900;text-decoration:none;display:block">Reserve My Copy &rarr;</a>
+        <a href="mailto:hello@getquantumedgeai.com?subject=Reserve%20TITAN%20AutoTrader%20Pro%20%24399&body=Hi%2C%20I%20want%20to%20reserve%20TITAN%20AutoTrader%20Pro%20(%24399).%20Please%20notify%20me%20the%20moment%20checkout%20is%20live." class="pbtn pfeat-btn" style="color:#000000!important;background:#F5C842!important;font-weight:900!important;text-decoration:none!important;display:block;-webkit-text-fill-color:#000000!important;background-clip:unset!important;-webkit-background-clip:unset!important;font-size:.95rem;letter-spacing:.5px;padding:16px">Reserve My Copy &rarr;</a>
       </div>
       <div class="pcard reveal">
         <div class="ptier">Tier 3 &mdash; Inner Circle</div>
@@ -1609,6 +1632,19 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
   document.getElementById('navLinks').classList.remove('open');
   document.querySelector('.nav-burger').classList.remove('active');
   document.body.style.overflow='';
+}));
+function toggleMoreMenu(e){
+  e.stopPropagation();
+  var m=document.getElementById('navMore');
+  if(m)m.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('navMore');
+  if(m&&!m.contains(e.target))m.classList.remove('open');
+});
+document.querySelectorAll('#navDrop a').forEach(a=>a.addEventListener('click',()=>{
+  var m=document.getElementById('navMore');
+  if(m)m.classList.remove('open');
 }));
 
 // Active nav section highlight
