@@ -475,5 +475,7 @@ li strong{color:var(--white)}
   </div>
 </footer>
 
+<button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:28px;right:28px;z-index:800;width:44px;height:44px;border-radius:50%;background:#F5C842;color:#000;border:none;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,200,66,.35)">&#8679;</button>
+<script>var _s=document.getElementById('stt');window.addEventListener('scroll',function(){_s.style.display=window.scrollY>400?'block':'none'});</script>
 </body>
 </html>
