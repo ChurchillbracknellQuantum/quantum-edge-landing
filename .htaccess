@@ -1,15 +1,10 @@
-# Force correct content-type for XML sitemap so Google can parse it
-<FilesMatch "sitemap\.xml$">
-  Header set Content-Type "text/xml; charset=utf-8"
-</FilesMatch>
+# Route sitemap.xml through PHP — guarantees correct Content-Type on any host
+RewriteEngine On
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
 
-# Allow all search engine crawlers explicitly
-SetEnvIfNoCase User-Agent "Googlebot" is_bot=1
-SetEnvIfNoCase User-Agent "Googlebot-Image" is_bot=1
-SetEnvIfNoCase User-Agent "Googlebot-Mobile" is_bot=1
-SetEnvIfNoCase User-Agent "bingbot" is_bot=1
-
-# Cache control for HTML pages
+# Cache control for HTML pages (only if mod_headers available)
+<IfModule mod_headers.c>
 <FilesMatch "\.(html|htm)$">
   Header set Cache-Control "public, max-age=3600"
 </FilesMatch>
+</IfModule>
