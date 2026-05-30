@@ -473,22 +473,30 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .tag{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.15);color:var(--muted);font-size:.73rem;padding:5px 13px;border-radius:20px;font-weight:500}
 @media(max-width:768px){.know-wrap{grid-template-columns:1fr;gap:36px}}
 
-/* FOUNDERS */
+/* FOUNDERS — DestinationCard style */
 #founders{background:var(--bg);border-top:1px solid rgba(42,31,0,.4)}
 .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px}
-.founder-card{background:rgba(11,9,0,.85);border:1px solid rgba(42,31,0,.85);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
-.founder-card:hover{transform:translateY(-6px);border-color:rgba(245,200,66,.38);box-shadow:0 28px 70px rgba(0,0,0,.55)}
-.founder-photo-wrap{width:100%;height:260px;overflow:hidden;position:relative;flex-shrink:0}
-.founder-photo-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to bottom,transparent,rgba(11,9,0,.95))}
-.founder-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:brightness(.92) saturate(.98);transition:transform .5s ease,filter .4s;display:block}
-.founder-card:hover .founder-photo-wrap img{transform:scale(1.04);filter:brightness(.98) saturate(1.05)}
-.founder-body{padding:22px 26px 28px;flex:1;display:flex;flex-direction:column}
-.founder-yrs{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.2);color:var(--gold);font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;width:fit-content}
-.founder-name{font-family:var(--fontd);font-size:1.55rem;font-weight:900;color:var(--white);margin-bottom:4px;line-height:1.1}
-.founder-role{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.founder-divider{width:36px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin-bottom:14px}
-.founder-bio{font-size:.84rem;color:var(--muted);line-height:1.72;font-weight:400}
-.founder-bio strong{color:var(--white);font-weight:700}
+.founder-card{position:relative;overflow:hidden;border-radius:20px;height:540px;cursor:pointer;border:1px solid rgba(42,31,0,.7);transition:border-color .35s,box-shadow .35s}
+.founder-card:hover{border-color:rgba(245,200,66,.55);box-shadow:0 32px 90px rgba(0,0,0,.65)}
+.fc-bg{position:absolute;inset:0;overflow:hidden}
+.fc-bg img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .65s cubic-bezier(.25,.46,.45,.94)}
+.founder-card:hover .fc-bg img{transform:scale(1.08)}
+.fc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,10,0,.95) 0%,rgba(13,10,0,.6) 40%,rgba(13,10,0,.15) 70%,transparent 100%);transition:background .4s}
+.founder-card:hover .fc-overlay{background:linear-gradient(to top,rgba(13,10,0,.98) 0%,rgba(13,10,0,.72) 45%,rgba(13,10,0,.25) 72%,transparent 100%)}
+.fc-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.fc-bio-panel{overflow:hidden;max-height:0;transition:max-height .5s cubic-bezier(.4,0,.2,1),margin-bottom .5s}
+.founder-card:hover .fc-bio-panel,.founder-card.fc-open .fc-bio-panel{max-height:220px;margin-bottom:18px}
+.fc-bio-text{font-size:.83rem;color:rgba(204,204,204,.95);line-height:1.72;font-weight:400}
+.fc-bio-text strong{color:#fff;font-weight:700}
+.fc-meta{display:flex;flex-direction:column;gap:5px}
+.fc-yrs{display:inline-flex;align-items:center;width:fit-content;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.35);color:var(--gold);font-size:.59rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:4px}
+.fc-name{font-family:var(--fontd);font-size:1.85rem;font-weight:900;color:#fff;line-height:1.05}
+.fc-role{font-size:.59rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.fc-explore{display:inline-flex;align-items:center;gap:9px;width:fit-content;background:rgba(13,10,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--gold);color:var(--gold);font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:9px;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s;font-family:var(--font)}
+.founder-card:hover .fc-explore{background:var(--gold);color:#000;box-shadow:0 4px 22px rgba(245,200,66,.35)}
+.fc-arrow{display:inline-block;transition:transform .3s}
+.founder-card:hover .fc-arrow{transform:translateX(5px)}
+/* combined stats strip */
 .founders-combined{margin-top:40px;background:linear-gradient(135deg,rgba(245,200,66,.05),rgba(245,200,66,.02));border:1px solid rgba(245,200,66,.18);border-radius:16px;padding:36px 40px}
 .fc-inner{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center}
 .fc-stat .fc-num{font-family:var(--fontd);font-size:2.8rem;font-weight:900;color:var(--gold);line-height:1}
@@ -497,7 +505,9 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .fc-quote em{color:var(--white);font-style:normal;font-weight:700}
 @media(max-width:860px){
   .founders-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
-  .founder-photo-wrap{height:220px}
+  .founder-card{height:480px}
+  .founder-card:hover .fc-bio-panel{max-height:0;margin-bottom:0}
+  .founder-card.fc-open .fc-bio-panel{max-height:220px!important;margin-bottom:18px!important}
   .fc-inner{grid-template-columns:1fr 1fr;gap:20px}
   .fc-quote{grid-column:span 2;border-left:none;border-top:1px solid rgba(42,31,0,.6);padding-left:0;padding-top:18px;margin-top:0}
 }
@@ -505,7 +515,7 @@ tr:hover td{background:rgba(245,200,66,.03)}
   .founders-combined{padding:26px 22px}
   .fc-inner{grid-template-columns:1fr;gap:16px}
   .fc-quote{grid-column:1;border-top:1px solid rgba(42,31,0,.6);padding-top:16px}
-  .founder-photo-wrap{height:200px}
+  .founder-card{height:420px}
 }
 
 /* COMPARE */
@@ -674,9 +684,50 @@ tr{transition:background .15s}
 /* Demo cards */
 .demo-card::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(245,200,66,.04),transparent);opacity:0;transition:opacity .3s}
 .demo-card:hover::after{opacity:1}
-/* Founder divider animate on card hover */
-.founder-card:hover .founder-divider{width:64px}
-.founder-divider{transition:width .4s ease}
+/* Founder card click toggle — mobile tap support */
+
+/* CALCULATOR */
+#calculator{background:var(--surface);border-top:1px solid rgba(42,31,0,.4)}
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:52px;align-items:start}
+.calc-panel{background:rgba(11,9,0,.85);border:1px solid rgba(42,31,0,.85);border-radius:20px;padding:32px 28px}
+.calc-pair-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.calc-tab{background:rgba(245,200,66,.06);border:1px solid rgba(42,31,0,.9);color:var(--muted2);font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border-radius:8px;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.calc-tab:hover{border-color:rgba(245,200,66,.35);color:var(--muted)}
+.calc-tab.active{background:rgba(245,200,66,.12);border-color:var(--gold);color:var(--gold)}
+.calc-field{margin-bottom:20px}
+.calc-field label{display:block;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:8px}
+.calc-field label span{color:var(--gold)}
+.calc-input{width:100%;background:rgba(13,10,0,.9);border:1px solid rgba(42,31,0,.9);color:var(--white);font-size:.95rem;font-weight:600;padding:12px 16px;border-radius:9px;outline:none;font-family:var(--font);transition:border-color .2s}
+.calc-input:focus{border-color:rgba(245,200,66,.5)}
+input[type=range].calc-input{padding:6px 0;background:transparent;border:none;cursor:pointer;-webkit-appearance:none}
+input[type=range].calc-input::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--gold) var(--pct,20%),rgba(42,31,0,.9) var(--pct,20%))}
+input[type=range].calc-input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid #000;margin-top:-7px;cursor:pointer}
+input[type=range].calc-input::-moz-range-track{height:4px;border-radius:2px;background:rgba(42,31,0,.9)}
+input[type=range].calc-input::-moz-range-progress{height:4px;background:var(--gold);border-radius:2px}
+input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid #000;cursor:pointer}
+.calc-row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.calc-run{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-size:.88rem;font-weight:900;letter-spacing:1px;padding:15px;border-radius:10px;border:none;cursor:pointer;font-family:var(--font);transition:box-shadow .2s,transform .15s;margin-top:8px;text-transform:uppercase}
+.calc-run:hover{box-shadow:0 6px 28px rgba(245,200,66,.4);transform:translateY(-1px)}
+/* results panel */
+.calc-results{background:rgba(11,9,0,.85);border:1px solid rgba(42,31,0,.85);border-radius:20px;padding:32px 28px;min-height:360px;display:flex;flex-direction:column}
+.calc-results-ph{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted2);font-size:.85rem;text-align:center;opacity:.6}
+.calc-results-ph svg{opacity:.3}
+.calc-results-content{display:none;flex-direction:column;gap:0}
+.calc-results-content.show{display:flex}
+.calc-pair-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.25);color:var(--gold);font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px;width:fit-content}
+.calc-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.calc-kpi{background:rgba(245,200,66,.04);border:1px solid rgba(42,31,0,.7);border-radius:12px;padding:16px 18px}
+.calc-kpi-val{font-family:var(--fontd);font-size:1.6rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px}
+.calc-kpi-lbl{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2)}
+.calc-r-strip{display:flex;flex-direction:column;gap:10px}
+.calc-r-row{display:flex;align-items:center;gap:14px;padding:12px 16px;background:rgba(245,200,66,.03);border:1px solid rgba(42,31,0,.5);border-radius:10px}
+.calc-r-label{font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);width:28px;flex-shrink:0}
+.calc-r-bar-wrap{flex:1;height:6px;background:rgba(42,31,0,.8);border-radius:3px;overflow:hidden}
+.calc-r-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.calc-r-val{font-family:var(--fontd);font-size:1rem;font-weight:900;color:var(--green);min-width:80px;text-align:right}
+.calc-disc-note{font-size:.68rem;color:var(--muted2);margin-top:18px;line-height:1.6;border-top:1px solid rgba(42,31,0,.5);padding-top:14px}
+@media(max-width:900px){.calc-wrap{grid-template-columns:1fr}}
+@media(max-width:500px){.calc-row2{grid-template-columns:1fr}.calc-kpi-grid{grid-template-columns:1fr}}
 /* Nav logo text slightly bigger */
 .nav-logo-text .brand{font-size:1.12rem}
 .nav-logo-text .sub{font-size:.62rem}
@@ -1063,6 +1114,70 @@ tr{transition:background .15s}
   </div>
 </section>
 
+<!-- ══════════════════ CALCULATOR ══════════════════ -->
+<section id="calculator">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label">Precision Trading</div>
+      <h2 class="sec-title">TITAN Pair Calculator</h2>
+      <p class="sec-sub" style="margin:0 auto">Know your exact lot size, pip value, and profit targets before placing any trade. Built for all 5 TITAN pairs.</p>
+    </div>
+    <div class="calc-wrap reveal">
+      <!-- Inputs -->
+      <div class="calc-panel">
+        <div class="calc-pair-tabs" id="calcTabs">
+          <button class="calc-tab active" data-pair="USDCHF" data-entry="0.9050" data-quote="base" onclick="selectPair(this)">USDCHF</button>
+          <button class="calc-tab" data-pair="GBPUSD" data-entry="1.2720" data-quote="usd" onclick="selectPair(this)">GBPUSD</button>
+          <button class="calc-tab" data-pair="AUDUSD" data-entry="0.6510" data-quote="usd" onclick="selectPair(this)">AUDUSD</button>
+          <button class="calc-tab" data-pair="AUDCHF" data-entry="0.5890" data-quote="cross" onclick="selectPair(this)">AUDCHF</button>
+          <button class="calc-tab" data-pair="CADCHF" data-entry="0.6630" data-quote="cross" onclick="selectPair(this)">CADCHF</button>
+        </div>
+        <div class="calc-field">
+          <label>Account Balance ($)</label>
+          <input class="calc-input" type="number" id="calcBalance" value="10000" min="100" max="1000000" step="500" oninput="runCalc()">
+        </div>
+        <div class="calc-field">
+          <label>Risk Per Trade &mdash; <span id="calcRiskDisplay">1.0</span>%</label>
+          <input class="calc-input" type="range" id="calcRisk" min="0.1" max="5" step="0.1" value="1" oninput="updateRiskLabel();runCalc()">
+        </div>
+        <div class="calc-row2">
+          <div class="calc-field">
+            <label>Entry Price</label>
+            <input class="calc-input" type="number" id="calcEntry" value="0.9050" step="0.0001" oninput="runCalc()">
+          </div>
+          <div class="calc-field">
+            <label>Stop Loss (pips)</label>
+            <input class="calc-input" type="number" id="calcSL" value="20" min="1" max="500" step="1" oninput="runCalc()">
+          </div>
+        </div>
+        <button class="calc-run" onclick="runCalc()">Calculate Risk &amp; Targets &#8594;</button>
+      </div>
+      <!-- Results -->
+      <div class="calc-results" id="calcResults">
+        <div class="calc-results-ph" id="calcPh">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#2A1F00" stroke-width="2"/><path d="M16 32l4-8 4 4 4-8 4 8" stroke="#F5C842" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Select a pair and hit<br><strong style="color:var(--gold)">Calculate</strong> to see your risk metrics</p>
+        </div>
+        <div class="calc-results-content" id="calcOut">
+          <div class="calc-pair-badge" id="calcBadge">&#9679;&nbsp; USDCHF</div>
+          <div class="calc-kpi-grid">
+            <div class="calc-kpi"><div class="calc-kpi-val" id="rDollarRisk">—</div><div class="calc-kpi-lbl">Dollar Risk ($)</div></div>
+            <div class="calc-kpi"><div class="calc-kpi-val" id="rLotSize">—</div><div class="calc-kpi-lbl">Lot Size</div></div>
+            <div class="calc-kpi"><div class="calc-kpi-val" id="rPipVal">—</div><div class="calc-kpi-lbl">Pip Value ($)</div></div>
+            <div class="calc-kpi"><div class="calc-kpi-val" id="rRiskPct">—</div><div class="calc-kpi-lbl">Risk %</div></div>
+          </div>
+          <div class="calc-r-strip">
+            <div class="calc-r-row"><div class="calc-r-label">2R</div><div class="calc-r-bar-wrap"><div class="calc-r-bar" id="bar2R"></div></div><div class="calc-r-val" id="r2R">—</div></div>
+            <div class="calc-r-row"><div class="calc-r-label">3R</div><div class="calc-r-bar-wrap"><div class="calc-r-bar" id="bar3R"></div></div><div class="calc-r-val" id="r3R">—</div></div>
+            <div class="calc-r-row"><div class="calc-r-label">6R</div><div class="calc-r-bar-wrap"><div class="calc-r-bar" id="bar6R"></div></div><div class="calc-r-val" id="r6R">—</div></div>
+          </div>
+          <div class="calc-disc-note">&#9888; Lot sizes rounded to 2 decimal places. Pip values are USD estimates; cross-pair values use approximate USD/CHF conversion. Always verify with your broker before trading live.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="how">
   <div class="container">
     <div class="reveal" style="text-align:center"><div class="sec-label">Setup</div><h2 class="sec-title">Running in 5 Minutes</h2></div>
@@ -1105,36 +1220,40 @@ tr{transition:background .15s}
       <p class="sec-sub" style="margin:0 auto">Two private traders with 50+ combined years of live market experience who built the system they wished existed &mdash; no hype, no social media, just results.</p>
     </div>
     <div class="founders-grid">
-      <div class="founder-card reveal">
-        <div class="founder-photo-wrap">
-          <img src="founders/philina.png?v=3" alt="Philina Kendricks — Co-Founder, Quantum Edge Trading" loading="lazy">
+      <!-- Philina card -->
+      <div class="founder-card reveal" onclick="toggleFounder(this)">
+        <div class="fc-bg">
+          <img src="founders/philina.png?v=4" alt="Philina Kendricks — Co-Founder, Quantum Edge Trading" loading="lazy">
         </div>
-        <div class="founder-body">
-          <div class="founder-yrs">&#9200;&nbsp; 20+ Years Experience</div>
-          <div class="founder-name">Philina Kendricks</div>
-          <div class="founder-role">Co-Founder &middot; Market Analyst &amp; Strategy Lead</div>
-          <div class="founder-divider"></div>
-          <p class="founder-bio">
-            Philina brings over <strong>20 years of live market experience</strong> across forex, gold, and currency pairs. Her journey started in binary trading where timing and market reading had to be razor sharp. She later moved into forex, building deep expertise in price action, market structure, and trading psychology.
-            <br><br>
-            She has supported private traders with analysis, trade signals, and practical guidance for many years. Her strength: reading the market calmly, cutting through noise, and finding setups that make structural sense. She believes <em>"trading rewards patience, structure, and emotional control &mdash; nothing else."</em>
-          </p>
+        <div class="fc-overlay"></div>
+        <div class="fc-content">
+          <div class="fc-bio-panel">
+            <p class="fc-bio-text">Philina brings over <strong>20 years of live market experience</strong> across forex, gold, and currency pairs. Her journey started in binary trading where timing and market reading had to be razor sharp. She later moved into forex, building deep expertise in price action, market structure, and trading psychology.<br><br>She has supported private traders with analysis, trade signals, and practical guidance for many years. Her strength: reading the market calmly, cutting through noise, and finding setups that make structural sense.</p>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-yrs">&#9200;&nbsp; 20+ Years Experience</div>
+            <div class="fc-name">Philina Kendricks</div>
+            <div class="fc-role">Co-Founder &middot; Market Analyst &amp; Strategy Lead</div>
+            <button class="fc-explore">Explore Profile <span class="fc-arrow">&#8594;</span></button>
+          </div>
         </div>
       </div>
-      <div class="founder-card reveal">
-        <div class="founder-photo-wrap">
-          <img src="founders/philip.png?v=3" alt="Philip John — Co-Founder, Quantum Edge Trading" loading="lazy">
+      <!-- Philip card -->
+      <div class="founder-card reveal" onclick="toggleFounder(this)">
+        <div class="fc-bg">
+          <img src="founders/philip.png?v=4" alt="Philip John — Co-Founder, Quantum Edge Trading" loading="lazy">
         </div>
-        <div class="founder-body">
-          <div class="founder-yrs">&#9200;&nbsp; 30+ Years Experience</div>
-          <div class="founder-name">Philip John</div>
-          <div class="founder-role">Co-Founder &middot; Quantitative Systems Architect</div>
-          <div class="founder-divider"></div>
-          <p class="founder-bio">
-            Philip brings over <strong>30 years of trading experience</strong> across financial markets, private trading environments, and industry-level systems. His background covers forex, commodities, and deep market behaviour analysis. He has worked with trading teams, brokers, and market businesses across multiple decades.
-            <br><br>
-            Philip saw the same pattern repeatedly: traders don't lose for lack of opportunity &mdash; they lose because emotions take over. Fear exits winners early. Greed overloads risk. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em>
-          </p>
+        <div class="fc-overlay"></div>
+        <div class="fc-content">
+          <div class="fc-bio-panel">
+            <p class="fc-bio-text">Philip brings over <strong>30 years of trading experience</strong> across financial markets, private trading environments, and industry-level systems. His background covers forex, commodities, and deep market behaviour analysis. He has worked with trading teams, brokers, and market businesses across multiple decades.<br><br>Philip saw the same pattern repeatedly: traders don't lose for lack of opportunity — they lose because emotions take over. Fear exits winners early. Greed overloads risk. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em></p>
+          </div>
+          <div class="fc-meta">
+            <div class="fc-yrs">&#9200;&nbsp; 30+ Years Experience</div>
+            <div class="fc-name">Philip John</div>
+            <div class="fc-role">Co-Founder &middot; Quantitative Systems Architect</div>
+            <button class="fc-explore">Explore Profile <span class="fc-arrow">&#8594;</span></button>
+          </div>
         </div>
       </div>
     </div>
@@ -1507,6 +1626,12 @@ if(fcards.length>=2){
   fcards[0].classList.replace('reveal','reveal-left');
   fcards[1].classList.replace('reveal','reveal-right');
 }
+// Toggle bio panel on mobile tap
+function toggleFounder(el){
+  const isMobile=window.innerWidth<=860;
+  if(!isMobile)return;
+  el.classList.toggle('fc-open');
+}
 
 // Reveal observer
 const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.12});
@@ -1687,6 +1812,82 @@ function runSim(){
   render();
   setTimeout(tick,2400);
 })();
+
+// ── CALCULATOR ──────────────────────────────────────────
+let _calcPair={pair:'USDCHF',quote:'base',entry:0.9050};
+
+function selectPair(btn){
+  document.querySelectorAll('.calc-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  _calcPair={pair:btn.dataset.pair,quote:btn.dataset.quote,entry:parseFloat(btn.dataset.entry)};
+  document.getElementById('calcEntry').value=_calcPair.entry;
+  runCalc();
+}
+
+function updateRiskLabel(){
+  const v=parseFloat(document.getElementById('calcRisk').value).toFixed(1);
+  document.getElementById('calcRiskDisplay').textContent=v;
+  const pct=(parseFloat(v)-0.1)/(5-0.1)*100;
+  document.getElementById('calcRisk').style.setProperty('--pct',pct+'%');
+}
+
+function pipValuePerLot(quote,entry){
+  if(quote==='usd')return 10;
+  return 10/entry;
+}
+
+function animateKpi(id,val,prefix,decimals){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const target=parseFloat(val);
+  const start=0,dur=700,startTime=performance.now();
+  function step(now){
+    const p=Math.min((now-startTime)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=prefix+(start+(target-start)*ease).toFixed(decimals);
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function runCalc(){
+  updateRiskLabel();
+  const balance=parseFloat(document.getElementById('calcBalance').value)||0;
+  const riskPct=parseFloat(document.getElementById('calcRisk').value)||1;
+  const entry=parseFloat(document.getElementById('calcEntry').value)||_calcPair.entry;
+  const slPips=parseFloat(document.getElementById('calcSL').value)||20;
+  if(balance<=0||slPips<=0)return;
+
+  const dollarRisk=balance*(riskPct/100);
+  const pvpl=pipValuePerLot(_calcPair.quote,entry);
+  const lotSize=dollarRisk/(slPips*pvpl);
+  const pipVal=pvpl*lotSize;
+  const p2r=dollarRisk*2,p3r=dollarRisk*3,p6r=dollarRisk*6;
+  const maxR=p6r;
+
+  document.getElementById('calcPh').style.display='none';
+  const out=document.getElementById('calcOut');
+  out.classList.add('show');
+  document.getElementById('calcBadge').innerHTML='&#9679;&nbsp;'+_calcPair.pair;
+
+  animateKpi('rDollarRisk',dollarRisk,'$',2);
+  animateKpi('rLotSize',lotSize,'',2);
+  animateKpi('rPipVal',pipVal,'$',2);
+  document.getElementById('rRiskPct').textContent=riskPct.toFixed(1)+'%';
+
+  setTimeout(()=>{
+    document.getElementById('r2R').textContent='+$'+p2r.toFixed(2);
+    document.getElementById('r3R').textContent='+$'+p3r.toFixed(2);
+    document.getElementById('r6R').textContent='+$'+p6r.toFixed(2);
+    document.getElementById('bar2R').style.width=(p2r/maxR*100)+'%';
+    document.getElementById('bar3R').style.width=(p3r/maxR*100)+'%';
+    document.getElementById('bar6R').style.width='100%';
+  },200);
+}
+
+// Init range track + auto-run
+updateRiskLabel();
+runCalc();
 </script>
 </body>
 </html>
