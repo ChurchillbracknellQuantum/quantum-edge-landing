@@ -11,13 +11,15 @@
 <meta property="og:type" content="product">
 <meta property="og:title" content="TITAN AutoTrader — MT5 Forex EA | 70-79% Win Rate">
 <meta property="og:description" content="Institutional-grade MT5 Expert Advisor. 17-month verified backtest. 5 forex pairs. FTMO & FundedNext compliant. One-time payment, no subscription.">
-<meta property="og:image" content="https://getquantumedgeai.com/Logo.png">
+<meta property="og:image" content="https://getquantumedgeai.com/og-card.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://getquantumedgeai.com/">
 <meta property="og:site_name" content="Quantum Edge Trading">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TITAN AutoTrader — MT5 Forex EA | 70-79% Win Rate">
 <meta name="twitter:description" content="Institutional-grade automated forex trading. 17-month backtest. FTMO compliant. One-time payment.">
-<meta name="twitter:image" content="https://getquantumedgeai.com/Logo.png">
+<meta name="twitter:image" content="https://getquantumedgeai.com/og-card.svg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"TITAN AutoTrader","description":"Institutional-grade MT5 Expert Advisor for automated forex trading across 5 verified currency pairs","brand":{"@type":"Brand","name":"Quantum Edge Trading"},"url":"https://getquantumedgeai.com","image":"https://getquantumedgeai.com/Logo.png","offers":[{"@type":"Offer","name":"TITAN AutoTrader","price":"250","priceCurrency":"USD","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"TITAN AutoTrader Pro","price":"399","priceCurrency":"USD","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"TITAN AutoTrader Suite","price":"549","priceCurrency":"USD","availability":"https://schema.org/InStock"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -338,8 +340,10 @@ section{padding:96px 44px}
 .sec-title{font-family:var(--fontd);font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:18px;letter-spacing:-.3px}
 .sec-sub{color:var(--muted);font-size:1.02rem;line-height:1.72;max-width:600px;font-weight:500}
 @media(max-width:768px){section{padding:64px 20px}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
-.reveal.vis{opacity:1;transform:none}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);transition-delay:var(--rd,0ms)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);transition-delay:var(--rd,0ms)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);transition-delay:var(--rd,0ms)}
+.reveal.vis,.reveal-left.vis,.reveal-right.vis{opacity:1;transform:none}
 
 /* PAIN */
 #pain{background:linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%)}
@@ -426,7 +430,28 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .sim-eq-lbl{font-size:.65rem;color:var(--muted2);text-align:right;font-weight:600}
 .sim-eq-lbl span{color:var(--green);font-weight:800}
 .sim-disc{font-size:.63rem;color:var(--muted2);line-height:1.65;margin-top:18px;padding-top:16px;border-top:1px solid rgba(42,31,0,.5);text-align:center}
-@media(max-width:768px){.sim-wrap{grid-template-columns:1fr}}
+/* Simulator gauge */
+.sim-gauge-wrap{display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:22px;padding:20px 0 16px;border-bottom:1px solid rgba(42,31,0,.5)}
+.sim-gauge-ring{position:relative;width:130px;height:130px;flex-shrink:0}
+.sim-gauge-ring svg{transform:rotate(-90deg)}
+.sim-gauge-bg{stroke:rgba(42,31,0,.9)}
+.sim-gauge-arc{stroke:#F5C842;stroke-dasharray:345;stroke-dashoffset:345;transition:stroke-dashoffset 1.4s cubic-bezier(.25,.46,.45,.94);filter:drop-shadow(0 0 6px rgba(245,200,66,.5))}
+.sim-gauge-arc.neg{stroke:#e05555;filter:drop-shadow(0 0 6px rgba(224,85,85,.5))}
+.sim-gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sim-gauge-val{font-family:var(--fontd);font-size:1.8rem;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 20px rgba(245,200,66,.4)}
+.sim-gauge-val.neg{color:#e05555}
+.sim-gauge-sub{font-size:.58rem;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;font-weight:700;margin-top:3px}
+.sim-gauge-info{display:flex;flex-direction:column;gap:10px;flex:1}
+.sim-gauge-stat{background:rgba(245,200,66,.04);border:1px solid rgba(42,31,0,.8);border-radius:8px;padding:10px 14px}
+.sim-gauge-stat .sgv{font-family:var(--fontd);font-size:1.15rem;font-weight:900;color:var(--gold);line-height:1}
+.sim-gauge-stat .sgv.grn{color:var(--green)}
+.sim-gauge-stat .sgl{font-size:.55rem;color:var(--muted2);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;font-weight:600}
+/* Loading pulse */
+.sim-loading{display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 0}
+.sim-spinner{width:36px;height:36px;border:3px solid rgba(42,31,0,.8);border-top-color:var(--gold);border-radius:50%;animation:simSpin .7s linear infinite}
+@keyframes simSpin{to{transform:rotate(360deg)}}
+.sim-loading p{font-size:.72rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;opacity:.7}
+@media(max-width:768px){.sim-wrap{grid-template-columns:1fr}.sim-gauge-wrap{flex-direction:column;gap:16px}.sim-gauge-info{flex-direction:row;flex-wrap:wrap}.sim-gauge-stat{flex:1;min-width:120px}}
 
 /* HOW */
 #how{background:var(--bg);border-top:1px solid rgba(42,31,0,.4)}
@@ -1003,14 +1028,31 @@ tr{transition:background .15s}
           <span class="sim-ph-icon">&#128202;</span>
           <p>Enter your account details and press <strong style="color:var(--gold)">Run Simulation</strong> to see projected performance based on real backtested data.</p>
         </div>
+        <div class="sim-loading" id="simLoading">
+          <div class="sim-spinner"></div>
+          <p>Running Simulation...</p>
+        </div>
         <div class="sim-out" id="simOut">
           <div class="sim-res-label">&#9660;&nbsp; Projected Results</div>
-          <div class="sim-kpi-grid">
-            <div class="sim-kpi"><div class="sim-kpi-v" id="simKpiTrades">—</div><div class="sim-kpi-l">Total Trades</div></div>
-            <div class="sim-kpi"><div class="sim-kpi-v" id="simKpiRecord">—</div><div class="sim-kpi-l">Win / Loss</div></div>
-            <div class="sim-kpi"><div class="sim-kpi-v grn" id="simKpiPnl">—</div><div class="sim-kpi-l">Net P&amp;L (USD)</div></div>
-            <div class="sim-kpi"><div class="sim-kpi-v grn" id="simKpiRoi">—</div><div class="sim-kpi-l">Return on Balance</div></div>
+          <!-- Gauge + side stats -->
+          <div class="sim-gauge-wrap">
+            <div class="sim-gauge-ring">
+              <svg viewBox="0 0 120 120" width="130" height="130">
+                <circle class="sim-gauge-bg" cx="60" cy="60" r="55" fill="none" stroke-width="10"/>
+                <circle class="sim-gauge-arc" id="simGaugeArc" cx="60" cy="60" r="55" fill="none" stroke-width="10" stroke-linecap="round"/>
+              </svg>
+              <div class="sim-gauge-center">
+                <div class="sim-gauge-val" id="simGaugeVal">0%</div>
+                <div class="sim-gauge-sub">ROI</div>
+              </div>
+            </div>
+            <div class="sim-gauge-info">
+              <div class="sim-gauge-stat"><div class="sgv grn" id="simKpiPnl">—</div><div class="sgl">Net P&amp;L (USD)</div></div>
+              <div class="sim-gauge-stat"><div class="sgv" id="simKpiTrades">—</div><div class="sgl">Total Trades</div></div>
+              <div class="sim-gauge-stat"><div class="sgv" id="simKpiRecord">—</div><div class="sgl">Win / Loss</div></div>
+            </div>
           </div>
+          <!-- Equity bar -->
           <div class="sim-eq-track"><div class="sim-eq-fill" id="simEqFill"></div></div>
           <div class="sim-eq-lbl">Projected equity growth: <span id="simEqLbl">0%</span></div>
           <div class="sim-disc">&#9888; Projections use verified backtest statistics. Forex trading carries substantial risk. Past performance does not guarantee future results. Always run on demo before going live.</div>
@@ -1245,6 +1287,14 @@ tr{transition:background .15s}
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Is this a martingale or grid system?<span class="faq-icon">+</span></div><div class="faq-a"><p>No. Fixed lot sizing only. One position maximum per pair at any time. No doubling on losers. Hard daily DD cap and overall DD cap built in as code-level hard stops.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">What VPS do I need?<span class="faq-icon">+</span></div><div class="faq-a"><p>Any Windows VPS with MT5 installed. Hostinger VPS (~$8/mo), Contabo (~$5/mo), or ForexVPS.net work well. You host the VPS &mdash; TITAN runs inside your MT5 terminal.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Who built this EA?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN was built by Philina Kendricks (20+ years, forex &amp; gold) and Philip John (30+ years, forex &amp; commodities). Two private traders with 50+ combined years of live market experience. See the Founders section above.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Which currency pairs does TITAN trade?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN trades exactly 5 pairs on the H1 timeframe: USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF. These were selected after testing 22 pairs &mdash; only pairs with verified profit factors above 1.44 across a 17-month window made the cut. EURUSD and JPY pairs are permanently excluded.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">What is the difference between TITAN and TITAN Pro?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN AutoTrader ($250) is optimised for live retail accounts &mdash; standard risk management, all 5 pairs. TITAN AutoTrader Pro ($399) is the prop firm edition: it adds a 4% hard daily drawdown stop, news blackout on FOMC/NFP events, and a Friday cut-off close. It is specifically engineered to pass FTMO and FundedNext Phase 1 and Phase 2 challenges. The Suite ($549) includes both versions plus Inner Circle access.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">How was the backtest conducted?<span class="faq-icon">+</span></div><div class="faq-a"><p>All results use MT5 Strategy Tester with 1-minute OHLC data and 100% modelling quality. Starting balance: $2,000. Period: 17 months covering bull, bear, and sideways regimes. No look-ahead bias &mdash; each trade entry, management, and exit is evaluated tick-by-tick. Spread is factored in on every trade.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Does TITAN trade during news events?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN Pro includes an automatic news blackout that prevents new entries 30 minutes before and after high-impact events (FOMC, NFP, CPI). All open trades are managed normally during news &mdash; only new entries are blocked. The standard TITAN version does not include this filter, making it suited for brokers who allow news trading.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Can I run TITAN on multiple accounts?<span class="faq-icon">+</span></div><div class="faq-a"><p>Each purchase licenses TITAN for use on one live account at a time. If you want to run it on a second account (e.g., a funded prop account alongside your personal account), you would need an additional license. Contact us via the support channel after purchase to discuss multi-account options.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">What happens if my VPS disconnects?<span class="faq-icon">+</span></div><div class="faq-a"><p>Any open trades placed by TITAN remain on your broker's server &mdash; they do not close when MT5 disconnects. However, TITAN will not be able to manage trailing stops or apply the daily DD cap until MT5 reconnects. We recommend a reliable VPS with 99.9%+ uptime and setting a broker-side stop loss on all open trades as a safety net.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Can I adjust the risk settings?<span class="faq-icon">+</span></div><div class="faq-a"><p>Yes. RiskPercent is the primary input &mdash; it determines position size as a percentage of account balance per trade. The recommended starting setting is 1% per pair. Running all 5 pairs simultaneously, we suggest 0.3% per pair (1.5% total exposure). You can also adjust ATR multipliers for stop loss and trailing stop if you want tighter or wider exits.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Do I get free updates?<span class="faq-icon">+</span></div><div class="faq-a"><p>Yes &mdash; all updates are free, forever. Markets evolve and so does TITAN. When we release an improved version, all existing buyers receive the updated .mq5 file by email automatically. No upgrade fees. No expiry. No re-purchase required. This includes both performance improvements and broker compatibility fixes.</p></div></div>
     </div>
   </div>
 </section>
@@ -1441,9 +1491,35 @@ document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',(
   setActive();
 })();
 
-// Reveal
-const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// Stagger delays for card groups
+['.edge-grid .edge-card','.pain-grid .pain-card','.price-grid .pcard','.steps .step','.sup-grid .sup-card'].forEach(sel=>{
+  document.querySelectorAll(sel).forEach((el,i)=>el.style.setProperty('--rd',(i*110)+'ms'));
+});
+
+// Directional reveals for founders
+const fcards=document.querySelectorAll('.founders-grid .founder-card');
+if(fcards.length>=2){
+  fcards[0].classList.replace('reveal','reveal-left');
+  fcards[1].classList.replace('reveal','reveal-right');
+}
+
+// Reveal observer
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>ro.observe(el));
+
+// Parallax — hero right panel
+const _pHero=document.querySelector('.hero-right');
+let _pTick=false;
+window.addEventListener('scroll',()=>{
+  if(!_pTick){
+    requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      if(_pHero&&y<1000)_pHero.style.transform='translateY('+(y*.1)+'px)';
+      _pTick=false;
+    });
+    _pTick=true;
+  }
+},{passive:true});
 
 // Counters
 const counted=new Set();
@@ -1541,16 +1617,49 @@ function runSim(){
   const losses=totalTrades-wins;
   const netPnl=riskAmt*totalTrades*(1-s.wr)*(s.pf-1);
   const roi=(netPnl/bal)*100;
-  document.getElementById('simKpiTrades').textContent=totalTrades;
-  document.getElementById('simKpiRecord').textContent=wins+'W / '+losses+'L';
-  document.getElementById('simKpiPnl').textContent='$'+netPnl.toFixed(0);
-  document.getElementById('simKpiRoi').textContent=roi.toFixed(1)+'%';
-  document.getElementById('simEqLbl').textContent=roi.toFixed(1)+'%';
+  // Show loader
   document.getElementById('simPh').style.display='none';
-  document.getElementById('simOut').style.display='block';
+  document.getElementById('simOut').style.display='none';
+  const loadEl=document.getElementById('simLoading');
+  loadEl.style.display='flex';
   setTimeout(()=>{
-    document.getElementById('simEqFill').style.width=Math.min((roi/30)*100,100)+'%';
-  },120);
+    loadEl.style.display='none';
+    document.getElementById('simOut').style.display='block';
+    // Animated counters
+    function countUp(id,target,prefix,suffix,dec){
+      const el=document.getElementById(id);
+      if(!el)return;
+      const dur=1100;const t0=performance.now();
+      (function frame(now){
+        const p=Math.min((now-t0)/dur,1);
+        const e=1-Math.pow(1-p,3);
+        el.textContent=prefix+(e*target).toFixed(dec)+suffix;
+        if(p<1)requestAnimationFrame(frame);
+      })(performance.now());
+    }
+    countUp('simKpiPnl',netPnl,'$','',0);
+    countUp('simKpiTrades',totalTrades,'','',0);
+    document.getElementById('simKpiRecord').textContent=wins+'W / '+losses+'L';
+    // Gauge
+    const circumference=2*Math.PI*55;
+    const arc=document.getElementById('simGaugeArc');
+    const gaugeVal=document.getElementById('simGaugeVal');
+    arc.style.strokeDasharray=circumference;
+    arc.style.strokeDashoffset=circumference;
+    const pct=Math.min(Math.abs(roi)/50,1);
+    const isNeg=roi<0;
+    arc.classList.toggle('neg',isNeg);
+    gaugeVal.classList.toggle('neg',isNeg);
+    setTimeout(()=>{
+      arc.style.strokeDashoffset=circumference-(circumference*pct);
+      countUp('simGaugeVal',roi,'',"%",1);
+    },80);
+    // Equity bar
+    setTimeout(()=>{
+      document.getElementById('simEqFill').style.width=Math.min((Math.abs(roi)/30)*100,100)+'%';
+      document.getElementById('simEqLbl').textContent=roi.toFixed(1)+'%';
+    },120);
+  },700);
 }
 
 // Typewriter — glitch-free
