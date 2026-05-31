@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Set Up an MT5 Expert Advisor: Step-by-Step Guide 2026 | Quantum Edge Trading</title>
+<meta name="description" content="How to install and set up an MT5 Expert Advisor in 7 steps. Covers file placement, chart attachment, input settings, AutoTrading, and demo testing. Full beginner guide.">
+<meta name="keywords" content="how to set up MT5 expert advisor, install MT5 EA, attach EA to chart MT5, MT5 automated trading setup, expert advisor MT5 guide">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/how-to-set-up-mt5-expert-advisor.html">
+<link rel="icon" href="../Logo.png" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/how-to-set-up-mt5-expert-advisor.html">
+<meta property="og:title" content="How to Set Up an MT5 Expert Advisor: Step-by-Step Guide 2026">
+<meta property="og:description" content="Install and run any MT5 EA in 7 clear steps. File placement, chart attachment, inputs, AutoTrading — nothing skipped.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=630">
+<meta property="og:site_name" content="Quantum Edge Trading">
+<meta property="article:published_time" content="2026-05-31T00:00:00Z">
+<meta property="article:author" content="Quantum Edge Trading">
+<meta property="article:section" content="Automated Trading">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Set Up an MT5 Expert Advisor — Step-by-Step 2026">
+<meta name="twitter:description" content="7 steps to install and run any MT5 EA. Beginner-friendly, nothing skipped.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=630">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getquantumedgeai.com/blog/how-to-set-up-mt5-expert-advisor.html#article",
+      "headline": "How to Set Up an MT5 Expert Advisor: Step-by-Step Guide 2026",
+      "description": "A complete beginner guide to installing and configuring any MT5 Expert Advisor — from file placement to live chart attachment and AutoTrading configuration.",
+      "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80",
+      "datePublished": "2026-05-31",
+      "dateModified": "2026-05-31",
+      "author": {"@type": "Organization", "name": "Quantum Edge Trading", "url": "https://getquantumedgeai.com"},
+      "publisher": {"@type": "Organization", "name": "Quantum Edge Trading", "logo": {"@type": "ImageObject", "url": "https://getquantumedgeai.com/Logo.png"}},
+      "mainEntityOfPage": "https://getquantumedgeai.com/blog/how-to-set-up-mt5-expert-advisor.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getquantumedgeai.com"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getquantumedgeai.com/blog"},
+        {"@type": "ListItem", "position": 3, "name": "How to Set Up an MT5 Expert Advisor"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "How do I install an Expert Advisor in MT5?","acceptedAnswer": {"@type": "Answer","text": "Copy the .ex5 file into File > Open Data Folder > MQL5 > Experts, then restart MetaTrader 5. The EA appears in the Navigator panel under Expert Advisors. Drag it onto the correct chart and timeframe to attach it."}},
+        {"@type": "Question","name": "Why is my MT5 EA not trading?","acceptedAnswer": {"@type": "Answer","text": "Check three things: (1) AutoTrading button in toolbar must be green; (2) Allow automated trading must be ticked in the EA Common properties tab; (3) the chart symbol and timeframe must match the EA specification exactly."}},
+        {"@type": "Question","name": "Can I run an MT5 EA without a VPS?","acceptedAnswer": {"@type": "Answer","text": "Yes, but your PC must stay on and connected 24/7. A Windows VPS costs $10-30 per month and provides uninterrupted 24/5 operation near your broker's server."}},
+        {"@type": "Question","name": "What is the MT5 Experts folder path on Windows?","acceptedAnswer": {"@type": "Answer","text": "Open MT5, click File > Open Data Folder, then navigate to MQL5 > Experts. The full path is: C:\\Users\\[Name]\\AppData\\Roaming\\MetaQuotes\\Terminal\\[ID]\\MQL5\\Experts\\"}},
+        {"@type": "Question","name": "Should I test an EA on demo before going live?","acceptedAnswer": {"@type": "Answer","text": "Always. Run for a minimum of 20-30 trades on a demo account first to confirm correct lot sizing, trade direction, SL/TP placement, and that daily loss limits trigger correctly."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#ffffff;--muted:#CCCCCC;--muted2:#888888;--green:#2DB87A;--max:860px;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+.blog-nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.blog-nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+.blog-nav a.brand img{height:36px;width:36px;object-fit:contain}
+.blog-nav .nav-links a{color:var(--muted);font-size:.95rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+.blog-nav .nav-links a:hover{color:var(--gold)}
+.blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.blog-nav .nav-cta:hover{background:var(--gold2);text-decoration:none}
+.blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
+.blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px}
+.blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
+.blog-hero .breadcrumb a:hover{color:var(--gold)}
+.blog-hero .tag{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;max-width:780px;margin:0 auto 20px}
+.blog-hero h1 span{color:var(--gold)}
+.blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
+.thumb-real{height:380px;background-size:cover;background-position:center;border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 35%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.thumb-tag{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.thumb-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.thumb-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ts{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:20px;font-size:.78rem;color:#ddd;font-weight:600;backdrop-filter:blur(4px)}
+.blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
+.toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.toc ol{padding-left:18px}.toc li{margin-bottom:6px}
+.toc a{color:var(--muted);font-size:.88rem;font-weight:500;text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--gold)}
+.answer-box{background:linear-gradient(135deg,rgba(245,200,66,.07),rgba(245,200,66,.03));border:1px solid rgba(245,200,66,.25);border-left:4px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:32px 0}
+.answer-box .ab-label{font-size:.72rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.answer-box p{color:var(--white);font-size:.96rem;line-height:1.65;font-weight:500;margin:0}
+h2{font-size:1.55rem;font-weight:800;color:var(--white);margin:52px 0 18px;line-height:1.25}
+h2 .gold{color:var(--gold)}
+h3{font-size:1.15rem;font-weight:700;color:var(--white);margin:36px 0 12px}
+p{color:var(--muted);margin-bottom:18px;line-height:1.78}
+strong{color:var(--white);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:18px}
+li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--white)}
+.step-block{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:28px 28px 24px;margin:28px 0;position:relative}
+.step-num{position:absolute;top:-14px;left:24px;background:var(--gold);color:#000;font-weight:900;font-size:.8rem;padding:4px 14px;border-radius:20px;letter-spacing:.5px}
+.step-block h3{margin-top:8px;margin-bottom:10px}
+.callout{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin:32px 0}
+.callout.tip{border-left:4px solid var(--green)}.callout.warning{border-left:4px solid #ff7070}
+.callout-icon{font-size:1.1rem;margin-right:8px}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:.88rem;overflow-x:auto;display:block}
+.data-table th{background:var(--surf2);color:var(--gold);font-weight:700;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-size:.78rem;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
+.data-table td{padding:12px 16px;border-bottom:1px solid rgba(42,31,0,.5);color:var(--muted);vertical-align:top}
+.data-table .good{color:var(--green);font-weight:700}
+.faq-section{margin:52px 0}
+.faq-item-blog{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.faq-q-blog{padding:18px 22px;font-weight:700;font-size:.94rem;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--surf)}
+.faq-q-blog:hover{background:var(--surf2)}
+.faq-a-blog{padding:18px 22px;color:var(--muted);font-size:.9rem;line-height:1.72;border-top:1px solid var(--border);background:var(--bg)}
+.cta-block{background:linear-gradient(135deg,#1A1000,#0D0A00);border:1px solid rgba(245,200,66,.25);border-radius:16px;padding:44px;text-align:center;margin:56px 0}
+.cta-block h3{font-size:1.45rem;font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-block p{color:var(--muted);margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);text-decoration:none}
+.cta-btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:8px;font-size:.9rem;text-decoration:none;margin-left:14px;transition:all .2s}
+.cta-btn-outline:hover{background:rgba(245,200,66,.1);text-decoration:none}
+.blog-footer{border-top:1px solid var(--border);padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.blog-footer p{color:var(--muted2);font-size:.8rem}
+.blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.blog-footer .footer-links a:hover{color:var(--gold)}
+.scroll-top-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:800;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(245,200,66,.35);transition:transform .2s}
+.scroll-top-btn:hover{transform:translateY(-3px)}
+@media(max-width:640px){
+  .blog-nav{padding:0 20px}.blog-hero{padding:44px 20px 40px}
+  .blog-content{padding:40px 20px 60px}.thumb-real{height:240px}
+  .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .blog-footer .footer-links a{margin:0 8px}
+  .cta-block{padding:28px 20px}.cta-btn-outline{margin:12px 0 0;display:block}
+  .blog-nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="blog-nav">
+  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge Trading">Quantum Edge</a>
+  <div class="nav-links">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &rarr;</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="breadcrumb"><a href="https://getquantumedgeai.com">Home</a> &rsaquo; <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo; How to Set Up an MT5 Expert Advisor</div>
+  <div class="tag">MT5 Setup Guide</div>
+  <h1>How to Set Up an MT5 Expert Advisor<br><span>Step-by-Step Guide for 2026</span></h1>
+  <div class="meta">
+    <span>&#128197; May 31, 2026</span>
+    <span>&#9200; 9 min read</span>
+    <span>&#128202; Beginner-Friendly</span>
+    <span>By <strong style="color:var(--white)">Quantum Edge Trading</strong></span>
+  </div>
+</div>
+
+<div class="blog-thumb">
+  <div class="thumb-real" style="background-image:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=500')">
+    <div class="thumb-overlay">
+      <div class="thumb-tag">MT5 SETUP GUIDE</div>
+      <h2 class="thumb-title">How to Set Up an MT5 Expert Advisor</h2>
+      <div class="thumb-stats">
+        <span class="ts">&#9316; 7 Clear Steps</span>
+        <span class="ts">&#128187; Windows &amp; Mac</span>
+        <span class="ts">&#9989; Beginner-Friendly</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-content">
+
+  <div class="answer-box">
+    <div class="ab-label">Quick Answer</div>
+    <p>To set up an MT5 Expert Advisor: copy the .ex5 file into your MT5 Experts folder (File &rarr; Open Data Folder &rarr; MQL5 &rarr; Experts), restart MetaTrader 5, find the EA in the Navigator panel, drag it onto the correct chart and timeframe, then click the AutoTrading button to enable it. The full process takes under 10 minutes.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#what-you-need">What You Need Before Starting</a></li>
+      <li><a href="#step1">Step 1 &mdash; Install MetaTrader 5</a></li>
+      <li><a href="#step2">Step 2 &mdash; Place the EA File in the Right Folder</a></li>
+      <li><a href="#step3">Step 3 &mdash; Restart MT5 and Find Your EA</a></li>
+      <li><a href="#step4">Step 4 &mdash; Open the Correct Chart</a></li>
+      <li><a href="#step5">Step 5 &mdash; Attach the EA to the Chart</a></li>
+      <li><a href="#step6">Step 6 &mdash; Configure EA Inputs</a></li>
+      <li><a href="#step7">Step 7 &mdash; Enable AutoTrading</a></li>
+      <li><a href="#vps">Should You Use a VPS?</a></li>
+      <li><a href="#demo">Always Test on Demo First</a></li>
+      <li><a href="#mistakes">7 Most Common Setup Mistakes</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <p>Setting up a MetaTrader 5 Expert Advisor sounds technical, but the process is straightforward once you understand where files go and what each setting controls. This guide walks through every step in sequence &mdash; from a fresh MT5 install to a live EA running on a real chart. No steps are skipped, and every common failure point is covered.</p>
+
+  <h2 id="what-you-need"><span class="gold">What You Need</span> Before Starting</h2>
+  <p>Before you touch any settings, make sure you have the following ready:</p>
+  <ul>
+    <li><strong>MetaTrader 5 (MT5)</strong> &mdash; download free from your broker or MetaQuotes. Do not use MetaTrader 4 &mdash; .ex5 files are not compatible with MT4.</li>
+    <li><strong>A broker account</strong> &mdash; demo or live. IC Markets, Pepperstone, and Exness all offer free demo accounts with full MT5 access.</li>
+    <li><strong>Your EA file</strong> &mdash; ending in .ex5 (compiled, ready to run). Some EAs come as .mq5 source code requiring compilation in MetaEditor first.</li>
+    <li><strong>EA documentation</strong> &mdash; specifically: which pairs it trades, which timeframe (H1, M30, etc.), and what the key input parameters mean.</li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="callout-icon">&#128161;</span>
+    <strong>Windows vs Mac:</strong> MT5 is a native Windows application. On Mac, use Wine, Parallels, or a Windows VPS. Most professional traders use a Windows VPS for reliability regardless of their personal computer.
+  </div>
+
+  <h2 id="step1">Step 1 &mdash; <span class="gold">Install MetaTrader 5</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 01</div>
+    <h3>Download and install MT5</h3>
+    <p>Go to your broker&rsquo;s website and download their branded MT5 installer. Using the broker&rsquo;s version ensures the correct server list is pre-loaded. Run the installer, accept the defaults, and log in with your broker credentials. If you already have MT5 for a different broker, you can install multiple instances simultaneously &mdash; each terminal folder is separate.</p>
+  </div>
+
+  <h2 id="step2">Step 2 &mdash; <span class="gold">Place the EA File in the Right Folder</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 02</div>
+    <h3>Navigate to the Experts folder</h3>
+    <p>Inside MT5, click <strong>File &rarr; Open Data Folder</strong>. This opens the MT5 data directory in Windows Explorer. Navigate to:</p>
+    <p style="font-family:monospace;background:var(--surf2);padding:12px 16px;border-radius:8px;font-size:.88rem;color:var(--gold);word-break:break-all">MQL5 &rarr; Experts</p>
+    <p>Copy your .ex5 file into this Experts folder. If the EA came with additional .set preset files, place them in the same folder unless documentation says otherwise.</p>
+  </div>
+
+  <div class="callout warning">
+    <span class="callout-icon">&#9888;</span>
+    <strong>Important:</strong> The Experts folder inside the MT5 <em>installation</em> directory differs from the one in the <em>data</em> directory. Always use File &rarr; Open Data Folder. Using the wrong folder means MT5 will never see your EA.
+  </div>
+
+  <h2 id="step3">Step 3 &mdash; <span class="gold">Restart MT5 and Find Your EA</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 03</div>
+    <h3>Refresh the Navigator</h3>
+    <p>Close and reopen MT5. In the left-side Navigator panel (press Ctrl+N if not visible), expand <strong>Expert Advisors</strong>. Your EA should appear in the list. If not, right-click on Expert Advisors and select <strong>Refresh</strong>.</p>
+    <p>If the EA still does not appear, confirm the .ex5 file is in the correct Experts folder and is not corrupted or incomplete.</p>
+  </div>
+
+  <h2 id="step4">Step 4 &mdash; <span class="gold">Open the Correct Chart</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 04</div>
+    <h3>Match the chart to the EA specifications</h3>
+    <p>Every EA is designed for a specific currency pair and timeframe. <a href="https://getquantumedgeai.com/setup-guide.html">TITAN AutoTrader</a> runs on CADCHF, USDCHF, GBPUSD, AUDUSD, and AUDCHF &mdash; all on the H1 (1-hour) timeframe. In MT5, go to <strong>File &rarr; New Chart</strong> or right-click in Market Watch to select the symbol. Switch the timeframe using the toolbar buttons.</p>
+  </div>
+
+  <h2 id="step5">Step 5 &mdash; <span class="gold">Attach the EA to the Chart</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 05</div>
+    <h3>Drag and drop, or double-click</h3>
+    <p>From the Navigator panel, drag your EA onto the open chart. A settings window appears immediately. You will see three tabs: <strong>Common</strong>, <strong>Inputs</strong>, and <strong>Dependencies</strong>. In the Common tab, make sure <strong>Allow automated trading</strong> is ticked before clicking OK.</p>
+  </div>
+
+  <h2 id="step6">Step 6 &mdash; <span class="gold">Configure EA Inputs</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 06</div>
+    <h3>Set risk and key parameters</h3>
+    <p>Click the <strong>Inputs</strong> tab. Most EAs share these core settings:</p>
+    <table class="data-table">
+      <tr><th>Parameter</th><th>Typical Name</th><th>Recommended Starting Value</th></tr>
+      <tr><td>Risk per trade</td><td>RiskPercent</td><td class="good">1.0% prop firms / 2.0% personal account</td></tr>
+      <tr><td>Maximum daily loss</td><td>MaxDailyLossPct</td><td class="good">3&ndash;4% (buffer below prop limits)</td></tr>
+      <tr><td>Maximum overall DD</td><td>MaxOverallDDPct</td><td class="good">8% (buffer below 10% prop limit)</td></tr>
+      <tr><td>Magic number</td><td>MagicNumber</td><td>Leave as default unless running multiple EAs</td></tr>
+      <tr><td>News filter</td><td>UseNewsBlackout</td><td class="good">True (always for prop firm accounts)</td></tr>
+    </table>
+    <p>Read the EA documentation carefully before changing any value you do not fully understand. Incorrect risk settings are the most common cause of unexpected drawdown.</p>
+  </div>
+
+  <h2 id="step7">Step 7 &mdash; <span class="gold">Enable AutoTrading</span></h2>
+  <div class="step-block">
+    <div class="step-num">STEP 07</div>
+    <h3>The AutoTrading button must be green</h3>
+    <p>After attaching the EA, find the <strong>AutoTrading</strong> button in the MT5 toolbar (top left). It should show a green play icon. If it is red or grey, click it. The EA cannot place any trades while AutoTrading is disabled, no matter how it is configured.</p>
+    <p>A small smiley face icon appears in the top-right corner of your chart. A green smiley means the EA is running. A red smiley means it is disabled on that chart &mdash; go back to the EA Common tab and check the Allow automated trading checkbox.</p>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-icon">&#9989;</span>
+    <strong>Quick checklist before going live:</strong> AutoTrading button = green &bull; Chart symbol matches EA &bull; Chart timeframe matches EA &bull; Allow automated trading = ticked &bull; Account has sufficient margin &bull; Internet connection stable
+  </div>
+
+  <h2 id="vps">Should You <span class="gold">Use a VPS?</span></h2>
+  <p>A Virtual Private Server (VPS) is a remote Windows computer running 24 hours a day in a data centre. For EA trading, a VPS solves three problems:</p>
+  <ol>
+    <li><strong>Your personal computer does not need to stay on.</strong> The VPS runs MT5 continuously while you sleep or work.</li>
+    <li><strong>Execution speed improves.</strong> A VPS near your broker&rsquo;s server executes orders in under 10 milliseconds &mdash; far faster than home broadband.</li>
+    <li><strong>Power cuts and internet outages do not interrupt trading.</strong> Most VPS providers guarantee 99.9% uptime.</li>
+  </ol>
+  <p>For broker proximity, IC Markets and Pepperstone use servers in New York (NY4) and London (LD4). Choose a VPS in those locations. Cost: $10&ndash;$30 per month. This is the single most important infrastructure investment for any EA trader.</p>
+  <p>See our full guide: <a href="https://getquantumedgeai.com/blog/best-vps-for-mt5-ea.html">Best VPS for MT5 Expert Advisors in 2026</a>.</p>
+
+  <h2 id="demo"><span class="gold">Always Test</span> on Demo First</h2>
+  <p>No matter how well-documented an EA is, run it on a demo account for a minimum of 20&ndash;30 trades before committing real capital. Demo testing confirms:</p>
+  <ul>
+    <li>The EA loads without errors (check View &rarr; Terminal &rarr; Experts for log messages)</li>
+    <li>Position sizing is calculating correctly based on your account balance</li>
+    <li>Stop losses and take profits are placed as expected</li>
+    <li>The EA trades the intended direction on the intended pairs</li>
+    <li>Daily loss limits trigger and stop further trading when hit</li>
+  </ul>
+
+  <h2 id="mistakes"><span class="gold">7 Most Common</span> MT5 EA Setup Mistakes</h2>
+  <ol>
+    <li><strong>Wrong chart timeframe.</strong> Attaching an H1 EA to an M5 chart. The EA fires on M5 bars instead &mdash; completely changing its behaviour. Always match timeframe exactly.</li>
+    <li><strong>AutoTrading disabled globally.</strong> The toolbar button is red. The EA appears to be running but cannot place trades.</li>
+    <li><strong>Allow automated trading unchecked.</strong> Global AutoTrading can be on, but each EA has its own per-chart permission. Both must be enabled.</li>
+    <li><strong>Wrong symbol name.</strong> Different brokers name pairs differently &mdash; &ldquo;CADCHF&rdquo; vs &ldquo;CADCHFm&rdquo; vs &ldquo;CADCHF.r&rdquo;. The EA&rsquo;s symbol filter must match your broker&rsquo;s exact naming.</li>
+    <li><strong>Standard account with tight spread filter.</strong> Standard accounts have 2&ndash;4 pip spreads. If the EA has a MaxSpreadPoints limit, widen it or use a Raw/Pro spread account instead.</li>
+    <li><strong>Insufficient backtest history.</strong> Some brokers only provide 6 months of data. For proper backtesting, use IC Markets or Pepperstone who provide years of tick data.</li>
+    <li><strong>No news filter on FOMC or NFP days.</strong> Major news causes extreme volatility and spread widening. Always enable the news blackout feature on any prop firm account.</li>
+  </ol>
+
+  <div class="cta-block">
+    <h3>Ready to Run a Proven MT5 EA?</h3>
+    <p>TITAN AutoTrader comes with a full setup guide, broker settings, and expert input recommendations. 74% win rate across 5 pairs &mdash; 17 months of verified backtest data included.</p>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta-btn">View TITAN Pricing &rarr;</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html" class="cta-btn-outline">Read Setup Guide</a>
+  </div>
+
+  <h2 id="faq"><span class="gold">Frequently Asked</span> Questions</h2>
+  <div class="faq-section">
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">How do I install an Expert Advisor in MT5? <span>&#9660;</span></div>
+      <div class="faq-a-blog" style="display:none">Copy the .ex5 file into File &rarr; Open Data Folder &rarr; MQL5 &rarr; Experts. Restart MT5. The EA appears in Navigator under Expert Advisors. Drag onto the correct chart and timeframe to attach.</div>
+    </div>
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Why is my MT5 EA not trading? <span>&#9660;</span></div>
+      <div class="faq-a-blog" style="display:none">Check three things: (1) AutoTrading button in toolbar must be green; (2) Allow automated trading must be ticked in the EA Common properties tab; (3) chart symbol and timeframe must match the EA specification exactly.</div>
+    </div>
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Can I run an MT5 EA without a VPS? <span>&#9660;</span></div>
+      <div class="faq-a-blog" style="display:none">Yes, but your PC must stay on and connected 24/7. A Windows VPS ($10&ndash;$30/month) near your broker&rsquo;s server provides uninterrupted 24/5 operation and faster execution.</div>
+    </div>
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">What is the MT5 Experts folder path on Windows? <span>&#9660;</span></div>
+      <div class="faq-a-blog" style="display:none">Open MT5, click File &rarr; Open Data Folder, then navigate to MQL5 &rarr; Experts. Full path: C:\Users\[Name]\AppData\Roaming\MetaQuotes\Terminal\[ID]\MQL5\Experts\</div>
+    </div>
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="var a=this.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block'">Should I test an EA on demo before going live? <span>&#9660;</span></div>
+      <div class="faq-a-blog" style="display:none">Always. Run for a minimum of 20&ndash;30 trades on a demo account to confirm correct lot sizing, trade direction, SL/TP placement, and that daily loss limits trigger correctly.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="blog-footer">
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="https://getquantumedgeai.com/blog">Blog</a>
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="sBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>var sb=document.getElementById('sBtn');window.addEventListener('scroll',function(){sb.style.display=window.scrollY>400?'flex':'none'},{passive:true});</script>
+</body>
+</html>
