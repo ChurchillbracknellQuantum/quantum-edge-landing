@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FundedNext EA Rules 2026 — What Expert Advisors Are Allowed | Quantum Edge Trading</title>
+<meta name="description" content="FundedNext EA trading rules explained: daily DD limits, maximum drawdown, news filters, allowed strategies, and how to configure your MT5 Expert Advisor to stay compliant.">
+<meta name="keywords" content="FundedNext EA rules, FundedNext expert advisor allowed, FundedNext automated trading, FundedNext drawdown rules, prop firm EA rules 2026">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/fundednext-ea-rules.html">
+<link rel="icon" href="../Logo.png" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/fundednext-ea-rules.html">
+<meta property="og:title" content="FundedNext EA Rules 2026 — What Expert Advisors Are Allowed">
+<meta property="og:description" content="Complete breakdown of FundedNext EA rules. Daily DD, max DD, news trading, copiers, allowed strategies — and how to configure your EA for compliance.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80&fit=crop&h=630">
+<meta property="og:site_name" content="Quantum Edge Trading">
+<meta property="article:published_time" content="2026-05-31T00:00:00Z">
+<meta property="article:author" content="Quantum Edge Trading">
+<meta property="article:section" content="Prop Firm Trading">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FundedNext EA Rules 2026 — Full Compliance Guide">
+<meta name="twitter:description" content="Daily DD, max DD, news filters, restricted strategies — everything you need to run an EA on FundedNext without getting breached.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80&fit=crop&h=630">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getquantumedgeai.com/blog/fundednext-ea-rules.html#article",
+      "headline": "FundedNext EA Rules 2026 — What Expert Advisors Are Allowed",
+      "description": "A complete guide to FundedNext rules for automated EA traders. Covers daily drawdown, maximum drawdown, news filters, allowed strategy types, and configuration tips.",
+      "image": "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80",
+      "datePublished": "2026-05-31",
+      "dateModified": "2026-05-31",
+      "author": {"@type": "Organization", "name": "Quantum Edge Trading", "url": "https://getquantumedgeai.com"},
+      "publisher": {"@type": "Organization", "name": "Quantum Edge Trading", "logo": {"@type": "ImageObject", "url": "https://getquantumedgeai.com/Logo.png"}},
+      "mainEntityOfPage": "https://getquantumedgeai.com/blog/fundednext-ea-rules.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getquantumedgeai.com"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getquantumedgeai.com/blog"},
+        {"@type": "ListItem", "position": 3, "name": "FundedNext EA Rules 2026"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "Are Expert Advisors allowed on FundedNext?","acceptedAnswer": {"@type": "Answer","text": "Yes. FundedNext explicitly permits Expert Advisors on all challenge and funded account types. The EA must not use prohibited strategies such as high-frequency tick scalping, latency arbitrage, or trade copying between accounts simultaneously."}},
+        {"@type": "Question","name": "What is the daily drawdown limit on FundedNext?","acceptedAnswer": {"@type": "Answer","text": "FundedNext uses a 5% daily loss limit on the Stellar 2-step challenge and a 4% daily limit on the Stellar 1-step challenge. Daily DD is calculated from the highest balance or equity of that trading day, whichever is greater."}},
+        {"@type": "Question","name": "Can I trade news with an EA on FundedNext?","acceptedAnswer": {"@type": "Answer","text": "FundedNext does not have a blanket news trading ban, but it is advisable to avoid opening new trades within 30 minutes before and after high-impact news events. Prop firms can flag accounts showing consistent news-spike entry patterns as strategy exploitation."}},
+        {"@type": "Question","name": "What is the maximum drawdown on FundedNext?","acceptedAnswer": {"@type": "Answer","text": "FundedNext Stellar 2-step has a 10% maximum overall drawdown limit based on the initial balance. The Stellar 1-step challenge uses an 8% maximum drawdown. FundedNext uses a static floor that never moves, making it more EA-friendly than trailing DD firms like FTMO."}},
+        {"@type": "Question","name": "Does FundedNext allow copy trading between accounts?","acceptedAnswer": {"@type": "Answer","text": "FundedNext prohibits copying identical trades across multiple funded accounts simultaneously. Each account must be traded independently. Running the same EA on multiple accounts at different times is generally acceptable."}},
+        {"@type": "Question","name": "What lot size should I use on FundedNext with an EA?","acceptedAnswer": {"@type": "Answer","text": "Use a risk-per-trade setting of 0.5%–1% of account balance to stay well inside the 5% daily drawdown limit. At 1% risk, you need 5 consecutive full-stop losses in a single day to approach the daily limit — statistically rare with a quality EA trading fewer than 5 times per day."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#ffffff;--muted:#CCCCCC;--muted2:#888888;--green:#2DB87A;--max:860px;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+.blog-nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.blog-nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+.blog-nav a.brand img{height:36px;width:36px;object-fit:contain}
+.blog-nav .nav-links a{color:var(--muted);font-size:.95rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+.blog-nav .nav-links a:hover{color:var(--gold)}
+.blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.blog-nav .nav-cta:hover{background:var(--gold2);text-decoration:none}
+.blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
+.blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px}
+.blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
+.blog-hero .breadcrumb a:hover{color:var(--gold)}
+.blog-hero .tag{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;max-width:780px;margin:0 auto 20px}
+.blog-hero h1 span{color:var(--gold)}
+.blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
+.thumb-real{height:380px;background-size:cover;background-position:center;border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 35%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.thumb-tag{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.thumb-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.thumb-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ts{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:20px;font-size:.78rem;color:#ddd;font-weight:600;backdrop-filter:blur(4px)}
+.blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
+.toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.toc ol{padding-left:18px}.toc li{margin-bottom:6px}
+.toc a{color:var(--muted);font-size:.88rem;font-weight:500;text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--gold)}
+.answer-box{background:linear-gradient(135deg,rgba(245,200,66,.07),rgba(245,200,66,.03));border:1px solid rgba(245,200,66,.25);border-left:4px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:32px 0}
+.answer-box .ab-label{font-size:.72rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.answer-box p{color:var(--white);font-size:.96rem;line-height:1.65;font-weight:500;margin:0}
+h2{font-size:1.55rem;font-weight:800;color:var(--white);margin:52px 0 18px;line-height:1.25}
+h2 .gold{color:var(--gold)}
+h3{font-size:1.15rem;font-weight:700;color:var(--white);margin:36px 0 12px}
+p{color:var(--muted);margin-bottom:18px;line-height:1.78}
+strong{color:var(--white);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:18px}
+li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--white)}
+.rule-block{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:28px;margin:24px 0;border-left:4px solid var(--gold)}
+.rule-block h3{margin-top:0;margin-bottom:10px;color:var(--gold)}
+.callout{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin:32px 0}
+.callout.tip{border-left:4px solid var(--green)}.callout.warning{border-left:4px solid #ff7070}
+.callout-icon{font-size:1.1rem;margin-right:8px}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:.88rem;overflow-x:auto;display:block}
+.data-table th{background:var(--surf2);color:var(--gold);font-weight:700;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-size:.78rem;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
+.data-table td{padding:12px 16px;border-bottom:1px solid rgba(42,31,0,.5);color:var(--muted);vertical-align:top}
+.data-table .good{color:var(--green);font-weight:700}
+.data-table .warn{color:#ffaa44;font-weight:700}
+.data-table .bad{color:#ff7070;font-weight:700}
+.faq-section{margin:52px 0}
+.faq-item-blog{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.faq-q-blog{padding:18px 22px;font-weight:700;font-size:.94rem;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--surf)}
+.faq-q-blog:hover{background:var(--surf2)}
+.faq-a-blog{padding:18px 22px;color:var(--muted);font-size:.9rem;line-height:1.72;border-top:1px solid var(--border);background:var(--bg)}
+.cta-block{background:linear-gradient(135deg,#1A1000,#0D0A00);border:1px solid rgba(245,200,66,.25);border-radius:16px;padding:44px;text-align:center;margin:56px 0}
+.cta-block h3{font-size:1.45rem;font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-block p{color:var(--muted);margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);text-decoration:none}
+.cta-btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:8px;font-size:.9rem;text-decoration:none;margin-left:14px;transition:all .2s}
+.cta-btn-outline:hover{background:rgba(245,200,66,.1);text-decoration:none}
+.blog-footer{border-top:1px solid var(--border);padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.blog-footer p{color:var(--muted2);font-size:.8rem}
+.blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.blog-footer .footer-links a:hover{color:var(--gold)}
+.scroll-top-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:800;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(245,200,66,.35);transition:transform .2s}
+.scroll-top-btn:hover{transform:translateY(-3px)}
+@media(max-width:640px){
+  .blog-nav{padding:0 20px}.blog-hero{padding:44px 20px 40px}
+  .blog-content{padding:40px 20px 60px}.thumb-real{height:240px}
+  .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .blog-footer .footer-links a{margin:0 8px}
+  .cta-block{padding:28px 20px}.cta-btn-outline{margin:12px 0 0;display:block}
+  .blog-nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge Trading">Quantum Edge</a>
+  <div class="nav-links">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &rarr;</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="breadcrumb"><a href="https://getquantumedgeai.com">Home</a> &rsaquo; <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo; FundedNext EA Rules 2026</div>
+  <div class="tag">Prop Firm Trading</div>
+  <h1>FundedNext EA Rules 2026<br><span>What Expert Advisors Are Actually Allowed</span></h1>
+  <div class="meta">
+    <span>&#128197; May 31, 2026</span>
+    <span>&#9200; 10 min read</span>
+    <span>&#127942; Prop Firm Guide</span>
+    <span>By <strong style="color:var(--white)">Quantum Edge Trading</strong></span>
+  </div>
+</div>
+
+<div class="blog-thumb">
+  <div class="thumb-real" style="background-image:url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1200&q=80&fit=crop&h=500')">
+    <div class="thumb-overlay">
+      <div class="thumb-tag">PROP FIRM EA RULES</div>
+      <h2 class="thumb-title">FundedNext EA Rules &mdash; Full 2026 Compliance Guide</h2>
+      <div class="thumb-stats">
+        <span class="ts">&#128203; Daily DD: 5%</span>
+        <span class="ts">&#128683; Max DD: 10%</span>
+        <span class="ts">&#9989; EAs Allowed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-content">
+
+  <div class="answer-box">
+    <div class="ab-label">Quick Answer</div>
+    <p>Expert Advisors are fully allowed on FundedNext. Core rules: 5% daily drawdown limit (4% on 1-step), 10% maximum drawdown (8% on 1-step), EAs must not use latency arbitrage, HFT tick scalping, or simultaneous account copying. Most standard rule-based EAs are compliant by default &mdash; configure risk per trade at 0.5%&ndash;1% to stay safely inside the daily DD limit.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#are-eas-allowed">Are EAs Allowed on FundedNext?</a></li>
+      <li><a href="#dd-rules">Daily &amp; Maximum Drawdown Rules Explained</a></li>
+      <li><a href="#challenge-types">Challenge Types &amp; Their Limits</a></li>
+      <li><a href="#restricted">Restricted EA Strategies</a></li>
+      <li><a href="#allowed">Fully Allowed EA Strategies</a></li>
+      <li><a href="#news-trading">News Trading Rules</a></li>
+      <li><a href="#copy-trading">Copy Trading Between Accounts</a></li>
+      <li><a href="#configure">How to Configure Your EA for FundedNext</a></li>
+      <li><a href="#risk-sizing">Risk Sizing for the 5% Daily Limit</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <p>FundedNext is one of the fastest-growing prop firms in the world, with funded accounts up to $200,000 and a profit split starting at 80%. If you are running an automated Expert Advisor, understanding the exact rules &mdash; not just the headline numbers &mdash; is what separates a clean pass from a surprise breach.</p>
+
+  <p>This guide breaks down every FundedNext EA rule for 2026 in plain language, including the drawdown calculation method most traders misunderstand, the strategy types that trigger instant disqualification, and exactly how to set up your EA inputs for full compliance.</p>
+
+  <h2 id="are-eas-allowed"><span class="gold">Are EAs Allowed</span> on FundedNext?</h2>
+
+  <p>Yes. FundedNext explicitly permits Expert Advisors and all forms of automated trading software on their challenge and funded accounts. Their documentation states that EAs, bots, and algorithmic trading are welcome provided they do not exploit platform infrastructure or engage in unfair advantage strategies.</p>
+
+  <p>A standard rule-based EA &mdash; one that analyses price action, indicators, or patterns on H1/H4 charts and opens positions with defined stop losses &mdash; is completely compliant by default. FundedNext wants to fund profitable traders and does not penalise traders for using professional-grade automation.</p>
+
+  <div class="callout tip">
+    <span class="callout-icon">&#128161;</span>
+    <strong>FundedNext vs FTMO:</strong> Both allow EAs. FundedNext is slightly more permissive on news trading. FTMO enforces stricter overnight and weekend holding rules on some account types. If you already pass FTMO with an EA, the same EA will almost certainly comply with FundedNext.
+  </div>
+
+  <h2 id="dd-rules"><span class="gold">Daily &amp; Maximum Drawdown</span> Rules Explained</h2>
+
+  <p>The two drawdown rules are the most important numbers for any EA trader. Understanding how FundedNext calculates them is critical.</p>
+
+  <div class="rule-block">
+    <h3>Daily Drawdown Limit</h3>
+    <p>FundedNext calculates daily drawdown from the <strong>highest point of your balance or equity on that trading day</strong>, whichever is greater. If your account opens the day at $10,000 and hits $10,300 equity mid-session, your daily DD limit for that day is calculated from $10,300.</p>
+    <p><strong>Stellar 2-step:</strong> 5% daily loss limit &mdash; $515 from the $10,300 peak, so your equity must not fall below $9,785 on that day.</p>
+    <p><strong>Stellar 1-step:</strong> 4% daily loss limit.</p>
+    <p>The day resets at midnight server time. Floating losses on open trades count towards daily DD &mdash; a trade in drawdown overnight counts against the next day&rsquo;s limit.</p>
+  </div>
+
+  <div class="rule-block">
+    <h3>Maximum (Overall) Drawdown Limit</h3>
+    <p>Maximum drawdown is calculated from the <strong>initial starting balance</strong> &mdash; a fixed floor that never moves. This is more EA-friendly than trailing DD systems used by some other prop firms.</p>
+    <p><strong>Stellar 2-step:</strong> 10% maximum. On a $10,000 account, balance or equity must never fall below $9,000.</p>
+    <p><strong>Stellar 1-step:</strong> 8% maximum. Equity must stay above $9,200 at all times on a $10,000 account.</p>
+    <p>Unlike FTMO&rsquo;s trailing maximum drawdown (which moves up as balance grows), FundedNext uses a <strong>static floor</strong>. A run of wins does not shrink your safety buffer.</p>
+  </div>
+
+  <h2 id="challenge-types"><span class="gold">Challenge Types</span> &amp; Their Limits</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Challenge Type</th>
+        <th>Profit Target</th>
+        <th>Daily DD</th>
+        <th>Max DD</th>
+        <th>Max DD Type</th>
+        <th>EA Friendly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Stellar 2-Step</strong></td>
+        <td>10% / 5%</td>
+        <td class="warn">5%</td>
+        <td class="warn">10%</td>
+        <td class="good">Static</td>
+        <td class="good">&#9989; High</td>
+      </tr>
+      <tr>
+        <td><strong>Stellar 1-Step</strong></td>
+        <td>10%</td>
+        <td class="warn">4%</td>
+        <td class="warn">8%</td>
+        <td class="good">Static</td>
+        <td class="good">&#9989; Medium</td>
+      </tr>
+      <tr>
+        <td><strong>Express Challenge</strong></td>
+        <td>15% (unlimited time)</td>
+        <td class="warn">5%</td>
+        <td class="warn">10%</td>
+        <td class="good">Static</td>
+        <td class="good">&#9989; High</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="restricted"><span class="gold">Restricted EA Strategies</span> &mdash; Instant Disqualification</h2>
+
+  <p>These strategy types will result in account closure regardless of profitability:</p>
+
+  <ul>
+    <li><strong>Latency arbitrage</strong> &mdash; exploiting price feed delays between FundedNext&rsquo;s data and a faster external feed.</li>
+    <li><strong>High-frequency scalping</strong> &mdash; opening and closing dozens of trades per hour targeting 1&ndash;3 pip movements. Average hold time under 30 seconds is a red flag.</li>
+    <li><strong>Grid and martingale strategies</strong> &mdash; adding to losing positions to recover losses through position stacking. Explicitly banned due to exponential drawdown risk.</li>
+    <li><strong>Simultaneous account copying</strong> &mdash; running identical EA positions across multiple FundedNext accounts simultaneously. Treated as group risk exploitation.</li>
+    <li><strong>No stop loss entries</strong> &mdash; any EA entering trades without a hard stop loss order on the exchange is non-compliant. Stop losses must be set at order entry, not managed in code alone.</li>
+  </ul>
+
+  <div class="callout warning">
+    <span class="callout-icon">&#9888;</span>
+    <strong>Grid/Martingale Warning:</strong> Any EA that does not use a fixed stop loss per trade should not be used on any prop firm account. The compounding position size will eventually hit the 10% max DD in a single bad session.
+  </div>
+
+  <h2 id="allowed"><span class="gold">Fully Allowed</span> EA Strategies</h2>
+
+  <ul>
+    <li><strong>Trend-following EAs</strong> &mdash; using moving averages, ADX, or MACD to identify directional bias and enter on pullbacks.</li>
+    <li><strong>Price action EAs</strong> &mdash; pin bars, engulfing candles, and pattern-based entries on H1/H4 charts.</li>
+    <li><strong>Session-filtered EAs</strong> &mdash; EAs that only trade during London or New York session windows.</li>
+    <li><strong>Breakout EAs</strong> &mdash; entering on confirmed break of previous day high/low or consolidation range.</li>
+    <li><strong>Swing EAs</strong> &mdash; holding trades for hours to days, targeting 2R+ exits. Most prop-firm-friendly category.</li>
+  </ul>
+
+  <h2 id="news-trading"><span class="gold">News Trading Rules</span></h2>
+
+  <p>FundedNext does not have an explicit news trading ban in their standard challenge terms. However, accounts showing patterns of consistent news-spike entry can be reviewed. Best practice: configure a news blackout filter that blocks new entries 30 minutes before and after FOMC decisions and NFP releases. This protects you from slippage risk and compliance scrutiny.</p>
+
+  <h2 id="copy-trading"><span class="gold">Copy Trading</span> Between Accounts</h2>
+
+  <p>FundedNext prohibits running identical simultaneous positions across multiple accounts you own. Running the same EA on multiple accounts at different times with meaningfully different parameters is not prohibited. If your EA opens a USDCHF long on account A at 09:14 and on account B at 11:47, those are independent decisions. Both accounts opening identical positions within seconds of each other can trigger a group risk flag.</p>
+
+  <h2 id="configure"><span class="gold">How to Configure</span> Your EA for FundedNext</h2>
+
+  <div class="rule-block">
+    <h3>Key EA Inputs for FundedNext Compliance</h3>
+    <ul>
+      <li><strong>RiskPercent = 1.0</strong> &mdash; 1% risk per trade. 5 consecutive full losses required to reach the daily DD limit.</li>
+      <li><strong>MaxDailyLossPercent = 4.0</strong> &mdash; internal daily DD cap at 4% (below the 5% firm limit). EA stops trading when this is hit.</li>
+      <li><strong>MaxTotalLossPercent = 8.0</strong> &mdash; internal max DD cap at 8% (below the 10% firm limit). EA shuts down if overall DD hits this level.</li>
+      <li><strong>StopLossRequired = true</strong> &mdash; hard stop loss on every trade in the market.</li>
+      <li><strong>NewsBlackoutMinutes = 30</strong> &mdash; blocks entries 30 minutes before and after high-impact news.</li>
+      <li><strong>MaxOpenTrades = 1</strong> &mdash; one trade at a time prevents multiple simultaneous losses compressing daily DD.</li>
+    </ul>
+  </div>
+
+  <h2 id="risk-sizing"><span class="gold">Risk Sizing</span> for the 5% Daily Limit</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Account Size</th>
+        <th>1% Risk/Trade</th>
+        <th>Consecutive Losses to Hit 5% Daily DD</th>
+        <th>Safety Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>$10,000</td><td>$100</td><td>5 losses</td><td class="good">&#9989; Safe</td></tr>
+      <tr><td>$25,000</td><td>$250</td><td>5 losses</td><td class="good">&#9989; Safe</td></tr>
+      <tr><td>$50,000</td><td>$500</td><td>5 losses</td><td class="good">&#9989; Safe</td></tr>
+      <tr><td>$100,000</td><td>$1,000</td><td>5 losses</td><td class="good">&#9989; Safe</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout tip">
+    <span class="callout-icon">&#128161;</span>
+    <strong>Multi-pair EAs:</strong> If your EA trades multiple pairs simultaneously, halve the risk to 0.5% per trade. Two simultaneous losing trades at 0.5% = 1% daily loss. Even 10 simultaneous losing trades only reaches 5%.
+  </div>
+
+  <div class="cta-block">
+    <h3>TITAN AutoTrader Is Built for Prop Firms</h3>
+    <p>TITAN runs on 5 CHF pairs with 1% default risk, built-in daily DD cap, news blackout filter, and 4% hard stop &mdash; engineered to pass FTMO and FundedNext challenges without touching the drawdown limits.</p>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta-btn">See TITAN Pricing &rarr;</a>
+    <a href="https://getquantumedgeai.com/prop-guide.html" class="cta-btn-outline">Prop Firm Guide</a>
+  </div>
+
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked <span class="gold">Questions</span></h2>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">Are Expert Advisors allowed on FundedNext? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Yes. FundedNext explicitly permits Expert Advisors on all challenge and funded account types. The EA must not use prohibited strategies such as HFT tick scalping, latency arbitrage, or simultaneous trade copying between accounts. Standard rule-based EAs with stop losses and logical entry criteria are fully compliant.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What is the daily drawdown limit on FundedNext? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">The Stellar 2-step challenge uses a 5% daily loss limit. The Stellar 1-step challenge uses 4%. Daily DD is calculated from the highest balance or equity of that trading day &mdash; floating losses on open trades count towards the daily limit.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What is the maximum drawdown on FundedNext? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Stellar 2-step: 10% maximum drawdown from the initial balance. Stellar 1-step: 8%. FundedNext uses a static floor &mdash; it never moves up as your balance grows. This is more EA-friendly than firms using trailing maximum drawdown like FTMO.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">Are grid and martingale EAs allowed on FundedNext? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">No. Grid and martingale strategies are explicitly prohibited. Any EA that adds to losing positions will eventually produce exponential drawdown and violate the 10% maximum DD limit. FundedNext requires each trade to carry its own independent stop loss.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">Can I trade news events with an EA on FundedNext? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">FundedNext does not ban news trading outright, but accounts showing consistent news-spike exploitation patterns can be reviewed. Best practice is to configure a 30-minute news blackout filter around FOMC and NFP releases to avoid both slippage and compliance scrutiny.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What lot size should I use on a $10,000 FundedNext account? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Set EA risk to 1% per trade = $100. With a 1.5&times;ATR stop loss this is approximately 0.05&ndash;0.15 lots depending on the pair. At 1% risk, you need 5 consecutive full-stop losses in a single day to approach the 5% daily limit &mdash; statistically rare with a quality EA trading fewer than 5 times per day.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="blog-footer">
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="https://getquantumedgeai.com/blog">Blog</a>
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+const stb=document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',()=>{stb.style.display=window.scrollY>400?'flex':'none'});
+</script>
+</body>
+</html>

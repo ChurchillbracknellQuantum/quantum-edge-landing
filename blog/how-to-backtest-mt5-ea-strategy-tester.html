@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Backtest an MT5 EA in Strategy Tester — Full 2026 Guide | Quantum Edge Trading</title>
+<meta name="description" content="How to backtest an MT5 Expert Advisor using Strategy Tester. Correct settings, OHLC vs tick data, how to read results, quality %, and the 5 mistakes that produce fake backtest numbers.">
+<meta name="keywords" content="how to backtest MT5 EA, MT5 strategy tester guide, MT5 backtest settings, MT5 EA backtest quality, expert advisor backtest tutorial 2026">
+<link rel="canonical" href="https://getquantumedgeai.com/blog/how-to-backtest-mt5-ea-strategy-tester.html">
+<link rel="icon" href="../Logo.png" type="image/png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getquantumedgeai.com/blog/how-to-backtest-mt5-ea-strategy-tester.html">
+<meta property="og:title" content="How to Backtest an MT5 EA in Strategy Tester — Full 2026 Guide">
+<meta property="og:description" content="Step-by-step MT5 Strategy Tester walkthrough. Every setting explained, 100% quality data, reading results correctly, and the 5 mistakes that produce misleading backtests.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&fit=crop&h=630">
+<meta property="og:site_name" content="Quantum Edge Trading">
+<meta property="article:published_time" content="2026-05-31T00:00:00Z">
+<meta property="article:author" content="Quantum Edge Trading">
+<meta property="article:section" content="MT5 Education">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Backtest an MT5 EA — Strategy Tester Guide 2026">
+<meta name="twitter:description" content="Full MT5 Strategy Tester walkthrough. Settings, data quality, reading results, and the 5 mistakes that produce fake backtest numbers.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&fit=crop&h=630">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getquantumedgeai.com/blog/how-to-backtest-mt5-ea-strategy-tester.html#article",
+      "headline": "How to Backtest an MT5 EA in Strategy Tester — Full 2026 Guide",
+      "description": "A complete guide to backtesting MT5 Expert Advisors using the built-in Strategy Tester. Covers every setting, data quality, result interpretation, and the 5 common mistakes.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+      "datePublished": "2026-05-31",
+      "dateModified": "2026-05-31",
+      "author": {"@type": "Organization", "name": "Quantum Edge Trading", "url": "https://getquantumedgeai.com"},
+      "publisher": {"@type": "Organization", "name": "Quantum Edge Trading", "logo": {"@type": "ImageObject", "url": "https://getquantumedgeai.com/Logo.png"}},
+      "mainEntityOfPage": "https://getquantumedgeai.com/blog/how-to-backtest-mt5-ea-strategy-tester.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getquantumedgeai.com"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getquantumedgeai.com/blog"},
+        {"@type": "ListItem", "position": 3, "name": "How to Backtest an MT5 EA"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "How do I backtest an Expert Advisor in MT5?","acceptedAnswer": {"@type": "Answer","text": "Open MetaTrader 5 and press Ctrl+R to open Strategy Tester. Select your EA from the Expert dropdown, choose the symbol and timeframe, set the date range to at least 12 months, select 1 Minute OHLC as the modelling method for H1+ EAs, enter your deposit and leverage, then click Start. Check the Report tab for quality % — must be 90%+ for valid results."}},
+        {"@type": "Question","name": "What is 1 Minute OHLC vs Every Tick in MT5 Strategy Tester?","acceptedAnswer": {"@type": "Answer","text": "1 Minute OHLC uses real 1-minute candle data to simulate price on higher timeframes — highly accurate for H1+ EAs, fast to run, achieves 100% quality. Every Tick generates synthetic tick data from 1-minute OHLC bars — more granular but slower and prone to look-ahead artefacts. For H1 EAs, 1 Minute OHLC is the correct choice."}},
+        {"@type": "Question","name": "What does history quality percentage mean in MT5 backtesting?","acceptedAnswer": {"@type": "Answer","text": "Quality % indicates what fraction of the tested period had real downloaded historical data. 99–100% means nearly all bars were real data. Under 90% means MT5 generated synthetic bars to fill gaps — those synthetic bars can produce false signals. Always get to 99%+ quality before trusting backtest results."}},
+        {"@type": "Question","name": "How far back should I backtest an MT5 EA?","acceptedAnswer": {"@type": "Answer","text": "Minimum 12 months. Recommended 18–24 months. The period must include both trending and ranging market conditions. Testing only on a bull trend produces misleadingly good results. Extend the date range until it includes multiple market phases."}},
+        {"@type": "Question","name": "What is a good profit factor in MT5 backtesting?","acceptedAnswer": {"@type": "Answer","text": "Profit Factor (total gross profit divided by total gross loss) above 1.5 is acceptable for a live system. Above 1.8 is strong. Above 2.0 is excellent. Above 3.0 often indicates over-optimisation — the EA was curve-fitted to historical patterns that won't repeat in live markets."}},
+        {"@type": "Question","name": "Why are my MT5 backtest results different from live trading?","acceptedAnswer": {"@type": "Answer","text": "Common causes: spread set to zero in backtest (not real broker spread), data quality under 90%, EA was optimised and validated on the same data (curve fitting), slippage not modelled, or parameters tuned to historical patterns that don't repeat. Run an out-of-sample test on a fresh date range to check if results hold."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#0D0A00;--surf:#121000;--surf2:#1A1300;--border:#2A1F00;--gold:#F5C842;--gold2:#E8A800;--white:#ffffff;--muted:#CCCCCC;--muted2:#888888;--green:#2DB87A;--max:860px;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+.blog-nav{background:rgba(13,10,0,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 44px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.blog-nav a.brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:1rem;text-decoration:none}
+.blog-nav a.brand img{height:36px;width:36px;object-fit:contain}
+.blog-nav .nav-links a{color:var(--muted);font-size:.95rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
+.blog-nav .nav-links a:hover{color:var(--gold)}
+.blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.blog-nav .nav-cta:hover{background:var(--gold2);text-decoration:none}
+.blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
+.blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px}
+.blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
+.blog-hero .breadcrumb a:hover{color:var(--gold)}
+.blog-hero .tag{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:20px}
+.blog-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;max-width:780px;margin:0 auto 20px}
+.blog-hero h1 span{color:var(--gold)}
+.blog-hero .meta{font-size:.82rem;color:var(--muted2);display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.blog-thumb{max-width:860px;margin:0 auto;padding:0 24px}
+.thumb-real{height:380px;background-size:cover;background-position:center;border-radius:16px;border:1px solid var(--border);position:relative;overflow:hidden}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 35%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.thumb-tag{display:inline-block;background:rgba(245,200,66,.15);color:var(--gold);border:1px solid rgba(245,200,66,.3);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;width:fit-content}
+.thumb-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:14px}
+.thumb-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ts{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:20px;font-size:.78rem;color:#ddd;font-weight:600;backdrop-filter:blur(4px)}
+.blog-content{max-width:var(--max);margin:0 auto;padding:56px 24px 80px}
+.toc{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.toc h3{font-size:.88rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.toc ol{padding-left:18px}.toc li{margin-bottom:6px}
+.toc a{color:var(--muted);font-size:.88rem;font-weight:500;text-decoration:none;transition:color .2s}
+.toc a:hover{color:var(--gold)}
+.answer-box{background:linear-gradient(135deg,rgba(245,200,66,.07),rgba(245,200,66,.03));border:1px solid rgba(245,200,66,.25);border-left:4px solid var(--gold);border-radius:var(--r);padding:22px 26px;margin:32px 0}
+.answer-box .ab-label{font-size:.72rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.answer-box p{color:var(--white);font-size:.96rem;line-height:1.65;font-weight:500;margin:0}
+h2{font-size:1.55rem;font-weight:800;color:var(--white);margin:52px 0 18px;line-height:1.25}
+h2 .gold{color:var(--gold)}
+h3{font-size:1.15rem;font-weight:700;color:var(--white);margin:36px 0 12px}
+p{color:var(--muted);margin-bottom:18px;line-height:1.78}
+strong{color:var(--white);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:18px}
+li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--white)}
+.step-block{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:28px 28px 24px;margin:28px 0;position:relative}
+.step-num{position:absolute;top:-14px;left:24px;background:var(--gold);color:#000;font-weight:900;font-size:.8rem;padding:4px 14px;border-radius:20px;letter-spacing:.5px}
+.step-block h3{margin-top:8px;margin-bottom:10px}
+.callout{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin:32px 0}
+.callout.tip{border-left:4px solid var(--green)}.callout.warning{border-left:4px solid #ff7070}
+.callout-icon{font-size:1.1rem;margin-right:8px}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:.88rem;overflow-x:auto;display:block}
+.data-table th{background:var(--surf2);color:var(--gold);font-weight:700;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);font-size:.78rem;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
+.data-table td{padding:12px 16px;border-bottom:1px solid rgba(42,31,0,.5);color:var(--muted);vertical-align:top}
+.data-table .good{color:var(--green);font-weight:700}
+.data-table .warn{color:#ffaa44;font-weight:700}
+.data-table .bad{color:#ff7070;font-weight:700}
+.faq-section{margin:52px 0}
+.faq-item-blog{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+.faq-q-blog{padding:18px 22px;font-weight:700;font-size:.94rem;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--surf)}
+.faq-q-blog:hover{background:var(--surf2)}
+.faq-a-blog{padding:18px 22px;color:var(--muted);font-size:.9rem;line-height:1.72;border-top:1px solid var(--border);background:var(--bg)}
+.cta-block{background:linear-gradient(135deg,#1A1000,#0D0A00);border:1px solid rgba(245,200,66,.25);border-radius:16px;padding:44px;text-align:center;margin:56px 0}
+.cta-block h3{font-size:1.45rem;font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-block p{color:var(--muted);margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;font-size:.95rem;text-decoration:none;transition:background .2s,transform .2s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);text-decoration:none}
+.cta-btn-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:8px;font-size:.9rem;text-decoration:none;margin-left:14px;transition:all .2s}
+.cta-btn-outline:hover{background:rgba(245,200,66,.1);text-decoration:none}
+.blog-footer{border-top:1px solid var(--border);padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.blog-footer p{color:var(--muted2);font-size:.8rem}
+.blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.blog-footer .footer-links a:hover{color:var(--gold)}
+.scroll-top-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:800;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(245,200,66,.35);transition:transform .2s}
+.scroll-top-btn:hover{transform:translateY(-3px)}
+@media(max-width:640px){
+  .blog-nav{padding:0 20px}.blog-hero{padding:44px 20px 40px}
+  .blog-content{padding:40px 20px 60px}.thumb-real{height:240px}
+  .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .blog-footer .footer-links a{margin:0 8px}
+  .cta-block{padding:28px 20px}.cta-btn-outline{margin:12px 0 0;display:block}
+  .blog-nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="blog-nav">
+  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge Trading">Quantum Edge</a>
+  <div class="nav-links">
+    <a href="https://getquantumedgeai.com/#performance">Results</a>
+    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
+    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &rarr;</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="breadcrumb"><a href="https://getquantumedgeai.com">Home</a> &rsaquo; <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo; How to Backtest an MT5 EA</div>
+  <div class="tag">MT5 Education</div>
+  <h1>How to Backtest an MT5 EA<br><span>Strategy Tester Guide 2026</span></h1>
+  <div class="meta">
+    <span>&#128197; May 31, 2026</span>
+    <span>&#9200; 11 min read</span>
+    <span>&#128202; Complete Walkthrough</span>
+    <span>By <strong style="color:var(--white)">Quantum Edge Trading</strong></span>
+  </div>
+</div>
+
+<div class="blog-thumb">
+  <div class="thumb-real" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&fit=crop&h=500')">
+    <div class="thumb-overlay">
+      <div class="thumb-tag">MT5 STRATEGY TESTER</div>
+      <h2 class="thumb-title">How to Backtest an MT5 EA &mdash; Every Setting Explained</h2>
+      <div class="thumb-stats">
+        <span class="ts">&#9313; Step-by-Step</span>
+        <span class="ts">&#128202; 100% Quality Data</span>
+        <span class="ts">&#9989; Avoid Fake Results</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-content">
+
+  <div class="answer-box">
+    <div class="ab-label">Quick Answer</div>
+    <p>To backtest an MT5 EA: press <strong>Ctrl+R</strong> to open Strategy Tester, select your EA, set the symbol and timeframe, choose <strong>1 Minute OHLC</strong> as the model (for H1+ EAs), set at least 12 months of date range, match deposit and leverage to your broker, then click Start. Check the Report tab for quality % &mdash; must be 90%+ for valid results, 99%+ preferred. Need at least 30 completed trades for statistical meaning.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#open-tester">Opening the Strategy Tester</a></li>
+      <li><a href="#settings">Every Setting Explained</a></li>
+      <li><a href="#data-quality">Data Quality &mdash; The Most Misunderstood Setting</a></li>
+      <li><a href="#ohlc-vs-tick">1 Minute OHLC vs Every Tick</a></li>
+      <li><a href="#run-backtest">Running the Backtest Step-by-Step</a></li>
+      <li><a href="#key-metrics">Key Metrics Explained</a></li>
+      <li><a href="#common-mistakes">5 Mistakes That Produce Fake Results</a></li>
+      <li><a href="#visual-backtest">Visual Backtest Mode</a></li>
+      <li><a href="#out-of-sample">The Out-of-Sample Test</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <p>MetaTrader 5&rsquo;s Strategy Tester is one of the most powerful tools available to retail forex traders &mdash; but only if you use it correctly. Default settings produce results that look convincing but contain fundamental errors: wrong data model, incomplete history, incorrect spread, periods too short to be statistically valid.</p>
+
+  <p>This guide walks through every Strategy Tester setting in order, explains what each one does, and identifies the specific mistakes that generate impressive-looking backtests for strategies that will fail on live markets.</p>
+
+  <h2 id="open-tester"><span class="gold">Opening</span> the Strategy Tester</h2>
+
+  <p>Three ways to open MT5 Strategy Tester:</p>
+  <ul>
+    <li><strong>Keyboard shortcut:</strong> Press <strong>Ctrl+R</strong> anywhere in MT5</li>
+    <li><strong>Menu:</strong> View &rarr; Strategy Tester</li>
+    <li><strong>Toolbar:</strong> Click the Strategy Tester icon</li>
+  </ul>
+
+  <p>The tester panel opens at the bottom of MT5. It has tabs across the top: Settings, Results, Graph, Report, Optimization Results. All configuration happens in the Settings tab.</p>
+
+  <h2 id="settings"><span class="gold">Every Setting</span> Explained</h2>
+
+  <div class="step-block">
+    <div class="step-num">EXPERT ADVISOR</div>
+    <h3>Select Your EA</h3>
+    <p>Click the Expert dropdown and select your EA. If it does not appear, the .ex5 file is not in the correct Experts folder, or the EA has not been compiled. Open MetaEditor (F4), open the .mq5 source file, and press F7 to compile. The compiled .ex5 file then appears in the tester list.</p>
+    <p><strong>Critical:</strong> When testing multiple EA versions, confirm the exact name in the dropdown. If you have QuantumForex_TITAN and QuantumForex_TITAN_v2, selecting the wrong one produces results for the wrong EA entirely &mdash; a mistake that has invalidated more than one trader&rsquo;s session.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">SYMBOL &amp; TIMEFRAME</div>
+    <h3>Match the EA&rsquo;s Designed Pair and Timeframe</h3>
+    <p>Set the symbol to the exact pair the EA was designed for. Set timeframe to the EA&rsquo;s chart period. An H1 EA must be tested on H1. Testing an H1 EA on M15 produces 4&times; more bars and potentially inflated trade counts that do not reflect real operation.</p>
+    <p>If the symbol is greyed out or missing from the dropdown, right-click Market Watch and select &ldquo;Show All&rdquo; to load all available pairs.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">MODEL</div>
+    <h3>Modelling Method &mdash; The Most Important Setting</h3>
+    <p>Controls how MT5 simulates price movement. Three options:</p>
+    <ul>
+      <li><strong>1 Minute OHLC</strong> &mdash; uses real 1-minute candle data. Highly accurate for H1+ EAs. Fast. Achieves 100% quality. <strong>Recommended for most EAs.</strong></li>
+      <li><strong>Every Tick</strong> &mdash; generates synthetic tick data from 1-minute bars. More granular but slower and prone to artefacts from synthetic tick generation. Only meaningfully better for M1/M5 EAs where sub-minute price movement matters.</li>
+      <li><strong>Open Prices Only</strong> &mdash; tests only at bar open. For quick optimisation checks only &mdash; not valid for final results.</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">DATE RANGE</div>
+    <h3>Set a Meaningful Test Period</h3>
+    <p>Minimum 12 months. Recommended 18&ndash;24 months. The tested period must include:</p>
+    <ul>
+      <li>At least one trending market period</li>
+      <li>At least one ranging/consolidation period</li>
+      <li>At least one high-volatility event window (rate decisions, major news)</li>
+    </ul>
+    <p>Testing only on a favourable market phase is the most common way to produce misleadingly good results. Extend the date range until it covers multiple market conditions.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">DEPOSIT &amp; LEVERAGE</div>
+    <h3>Match Your Real Account</h3>
+    <p>Set deposit to the actual balance you will trade. Lot sizes calculated from percentage risk are balance-dependent &mdash; testing on $10,000 and running on $1,000 produces different lot sizes. Always match deposit to your real account or prop firm challenge size.</p>
+    <p>Set leverage to match your broker. Prop firms typically cap at 1:100 for EA accounts. Higher leverage does not change results unless the EA uses fixed lot sizes &mdash; it only affects margin requirements.</p>
+  </div>
+
+  <h2 id="data-quality"><span class="gold">Data Quality</span> &mdash; The Most Misunderstood Setting</h2>
+
+  <p>After your backtest runs, the Report tab shows a &ldquo;Quality&rdquo; percentage. This is the fraction of the tested period for which MT5 found real downloaded historical data.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Quality %</th>
+        <th>Meaning</th>
+        <th>Trust Level</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>99&ndash;100%</td>
+        <td>Near-complete real data</td>
+        <td class="good">&#9989; Trustworthy</td>
+        <td>Valid result — proceed with analysis</td>
+      </tr>
+      <tr>
+        <td>90&ndash;98%</td>
+        <td>Minor data gaps filled</td>
+        <td class="warn">&#9888; Acceptable</td>
+        <td>Results likely valid with minor caveats</td>
+      </tr>
+      <tr>
+        <td>50&ndash;89%</td>
+        <td>Significant synthetic data</td>
+        <td class="warn">&#9888; Unreliable</td>
+        <td>Re-download history from better broker source</td>
+      </tr>
+      <tr>
+        <td>Under 50%</td>
+        <td>Mostly generated data</td>
+        <td class="bad">&#10060; Invalid</td>
+        <td>Results meaningless — fix data source first</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>How to Get 100% Quality Data</h3>
+  <p>Data quality depends on your broker. IC Markets, Pepperstone, and FP Markets retain 10+ years of 1-minute history. Some Exness accounts only hold from January 2026. To download missing history:</p>
+  <ol>
+    <li>Open the chart for the pair you want to test</li>
+    <li>Switch to the M1 timeframe</li>
+    <li>Scroll all the way back in chart history &mdash; MT5 downloads bars as you scroll</li>
+    <li>Wait for loading to complete (progress shown in the status bar at the bottom)</li>
+    <li>Re-run the backtest &mdash; quality should now be higher</li>
+  </ol>
+
+  <div class="callout warning">
+    <span class="callout-icon">&#9888;</span>
+    <strong>Exness Tick Data Gap:</strong> Exness standard accounts only retain tick-level history from January 2026. For 1-minute OHLC data going back to 2020+, use IC Markets or Pepperstone demo (free, no deposit required). Connect MT5 to their demo server and download history from there for testing purposes.
+  </div>
+
+  <h2 id="ohlc-vs-tick"><span class="gold">1 Minute OHLC vs Every Tick</span></h2>
+
+  <p>For EAs trading on H1, H4, or daily timeframes, <strong>1 Minute OHLC is correct</strong>. The difference vs Every Tick is under 2% on most performance metrics. Every Tick is only meaningfully better for M1/M5 EAs where the sub-minute price movement between candles determines whether the stop or take profit was hit first.</p>
+
+  <p>Practical rule: if your EA&rsquo;s entry and exit logic only checks at bar close, use 1 Minute OHLC. If your EA trails stops or closes intra-bar, Every Tick is more accurate &mdash; but ensure you have real tick data, not generated ticks.</p>
+
+  <h2 id="run-backtest"><span class="gold">Running the Backtest</span> Step-by-Step</h2>
+
+  <div class="step-block">
+    <div class="step-num">STEP 01</div>
+    <h3>Confirm all settings and click Start</h3>
+    <p>Verify: EA selected and correct version, symbol correct, timeframe matches EA, model = 1 Minute OHLC, date range 12+ months, deposit and leverage entered. Click <strong>Start</strong>. Progress bar shows completion. Typical time: 5&ndash;60 seconds depending on EA complexity and date range.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">STEP 02</div>
+    <h3>Check Journal tab for errors</h3>
+    <p>If the tester hangs at 0% for 30+ seconds, the EA likely has a compilation error or infinite loop. Check the Journal tab for error messages. If progress jumps from 0% to 100% with zero trades, the EA&rsquo;s entry conditions did not fire &mdash; confirm you selected the correct pair and timeframe.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">STEP 03</div>
+    <h3>Check Report tab before looking at profit</h3>
+    <p>Before reading any profit numbers, verify: (1) Quality % is 90%+. (2) Total trades is 20+. (3) Modelling confirms &ldquo;1 Minute OHLC&rdquo; and not &ldquo;Open Prices Only&rdquo; by mistake. Only after these three checks should you proceed to analyse the performance metrics.</p>
+  </div>
+
+  <h2 id="key-metrics"><span class="gold">Key Metrics</span> Explained</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>What It Measures</th>
+        <th>Target (Prop Firm EA)</th>
+        <th>Red Flag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Profit Factor</strong></td>
+        <td>Gross profit &divide; gross loss</td>
+        <td class="good">1.5&ndash;2.5</td>
+        <td>Over 3.0 = likely over-optimised</td>
+      </tr>
+      <tr>
+        <td><strong>Win Rate</strong></td>
+        <td>% trades closed in profit</td>
+        <td class="good">65%&ndash;80%</td>
+        <td>Over 90% = check SL/TP ratio</td>
+      </tr>
+      <tr>
+        <td><strong>Max Drawdown</strong></td>
+        <td>Largest equity decline from peak</td>
+        <td class="good">Under 5%</td>
+        <td>Over 10% = not suitable for prop firms</td>
+      </tr>
+      <tr>
+        <td><strong>Expected Payoff</strong></td>
+        <td>Average profit per trade</td>
+        <td class="good">Positive</td>
+        <td>Negative = losing system regardless of win rate</td>
+      </tr>
+      <tr>
+        <td><strong>Sharpe Ratio</strong></td>
+        <td>Return relative to volatility</td>
+        <td class="good">Over 3.0</td>
+        <td>Under 1.0 = too volatile for the return generated</td>
+      </tr>
+      <tr>
+        <td><strong>Total Trades</strong></td>
+        <td>Completed round trips</td>
+        <td class="good">30&ndash;150/year</td>
+        <td>Under 20 = statistically meaningless</td>
+      </tr>
+      <tr>
+        <td><strong>Recovery Factor</strong></td>
+        <td>Net profit &divide; max drawdown</td>
+        <td class="good">Over 3.0</td>
+        <td>Under 1.0 = DD too large relative to gain</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="common-mistakes"><span class="gold">5 Mistakes</span> That Produce Fake Results</h2>
+
+  <ul>
+    <li><strong>1. Testing with zero spread.</strong> Default tester spread is often 0 or minimum. Real spreads on CHF pairs during off-hours can reach 5&ndash;8 pips. Always set spread to &ldquo;Current spread&rdquo; or manually enter the real average spread your broker charges.</li>
+    <li><strong>2. Data quality under 90%.</strong> Synthetic data fills gaps with generated candles that can have impossible OHLC relationships or miss real news-spike candles. Download full history before testing.</li>
+    <li><strong>3. Test period too short or too favourable.</strong> Testing only on 2020&ndash;2021 and calling the result validated is misleading. Test through a full cycle including trending and consolidating phases.</li>
+    <li><strong>4. Optimise and validate on the same data.</strong> If you optimise parameters on Jan&ndash;Dec 2024, then run a &ldquo;backtest&rdquo; on the same period, you are measuring curve-fitting, not strategy validity. Always split: optimise on one period, validate on a separate out-of-sample period.</li>
+    <li><strong>5. Ignoring the trade count.</strong> 8 trades with 100% win rate is not validated &mdash; it is luck. A statistically valid sample requires at least 30 completed trades, ideally 50+. Under 20 trades and any conclusions about win rate or profit factor are meaningless.</li>
+  </ul>
+
+  <h2 id="visual-backtest"><span class="gold">Visual Backtest Mode</span></h2>
+
+  <p>Visual backtest replays the test in real time on an animated chart, showing each trade entry and exit as it happens. Useful for:</p>
+
+  <ul>
+    <li>Confirming the EA enters trades in the right market conditions</li>
+    <li>Spotting entries that should not have fired based on your reading of the market</li>
+    <li>Recording video evidence of EA performance for documentation or sales pages</li>
+    <li>Debugging unexpected entries that the log alone cannot explain</li>
+  </ul>
+
+  <p>To enable: tick the <strong>&ldquo;Visualization&rdquo;</strong> checkbox in Settings before clicking Start. Use the speed slider to control playback &mdash; 60&ndash;70% is ideal for recording without missing detail.</p>
+
+  <div class="callout tip">
+    <span class="callout-icon">&#128161;</span>
+    <strong>Recording for evidence:</strong> Start OBS Studio or Windows Game Bar (Win+G) before the visual backtest. Set speed to 65%. The animated equity curve at the bottom makes compelling, verifiable performance evidence.
+  </div>
+
+  <h2 id="out-of-sample">The <span class="gold">Out-of-Sample Test</span> &mdash; The Only Real Validation</h2>
+
+  <p>After you are satisfied with a backtest result, run the EA on a date range it has never seen &mdash; the most recent 3&ndash;6 months. If profit factor and win rate hold within 20% of the in-sample result, the strategy is likely not curve-fitted. If performance collapses on new data, the parameters were tuned specifically to the historical period.</p>
+
+  <p>TITAN AutoTrader&rsquo;s original 17-month backtest (Jan 2023&ndash;May 2024) showed 78.6% WR and PF 1.95 on CADCHF. When run on the unseen 2025&ndash;2026 period: 73.81% WR and PF 1.93. Results held within 7% &mdash; confirmation the strategy is not curve-fitted and holds on live market data.</p>
+
+  <div class="cta-block">
+    <h3>TITAN AutoTrader &mdash; 100% Quality, Validated Out-of-Sample</h3>
+    <p>17-month backtest at 99%+ quality, confirmed on unseen 2025&ndash;2026 data: 73.81% WR, PF 1.93, DD 1.00%. Not curve-fitted. Built and tested the right way.</p>
+    <a href="https://getquantumedgeai.com/#performance" class="cta-btn">See Full Results &rarr;</a>
+    <a href="https://getquantumedgeai.com/#pricing" class="cta-btn-outline">Get TITAN</a>
+  </div>
+
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked <span class="gold">Questions</span></h2>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">How do I backtest an Expert Advisor in MT5? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Open Strategy Tester with Ctrl+R. Select your EA, set symbol and timeframe, choose 1 Minute OHLC model, set at least 12 months of date range, enter deposit and leverage, click Start. Check Report tab quality % and trade count before trusting any results.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What is 1 Minute OHLC vs Every Tick in MT5? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">1 Minute OHLC uses real 1-minute candle data to simulate price on higher timeframes. Highly accurate for H1+ EAs, fast, achieves 100% quality. Every Tick generates synthetic tick data from the 1-minute bars &mdash; more granular but slower. For H1 EAs, 1 Minute OHLC is the correct and recommended choice.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What does history quality % mean in MT5 backtesting? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Quality % indicates what fraction of the tested period had real downloaded historical data. Under 90% means MT5 generated synthetic bars for the gaps &mdash; which can produce false signals and invalid results. Download full history and verify quality is 99%+ before trusting results.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">What is a good profit factor in MT5 backtesting? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Above 1.5 is acceptable. Above 1.8 is strong. Above 2.0 is excellent. Above 3.0 often indicates over-optimisation &mdash; the EA was curve-fitted to historical data and will underperform on live markets.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">How far back should I backtest an MT5 EA? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Minimum 12 months. Recommended 18&ndash;24 months. Include trending, ranging, and high-volatility periods. Testing only on a bull trend produces misleadingly good results that collapse when market conditions change.</div>
+    </div>
+
+    <div class="faq-item-blog">
+      <div class="faq-q-blog" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'||!this.nextElementSibling.style.display?'block':'none'">Why are my backtest results different from live trading? <span>+</span></div>
+      <div class="faq-a-blog" style="display:none">Most common causes: spread set to zero (not real broker spread), data quality under 90%, optimised and validated on the same data (curve fitting), slippage not modelled, or parameters that were tuned to historical patterns that don&rsquo;t repeat. Run an out-of-sample test on a fresh date range to check if results hold on unseen data.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="blog-footer">
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="https://getquantumedgeai.com/blog">Blog</a>
+    <a href="https://getquantumedgeai.com/terms.html">Terms</a>
+    <a href="https://getquantumedgeai.com/privacy.html">Privacy</a>
+    <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+const stb=document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',()=>{stb.style.display=window.scrollY>400?'flex':'none'});
+</script>
+</body>
+</html>
