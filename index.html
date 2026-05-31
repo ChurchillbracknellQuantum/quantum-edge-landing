@@ -710,7 +710,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .priv-box ul{padding-left:18px;margin-top:6px}
 .priv-box ul li{margin-bottom:5px}
 @media(max-width:600px){.priv-box{padding:28px 20px}}
-.spline-robot{position:absolute;top:0;right:0;bottom:0;width:52%;z-index:2;pointer-events:auto}
+.spline-robot{position:absolute;top:0;right:0;bottom:0;width:52%;z-index:0;pointer-events:auto}
 @media(max-width:767px){.spline-robot{display:none}}
 #mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
 #mobileNav.open{display:block}
@@ -1312,6 +1312,23 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
   </div>
 </section>
 
+<!-- ══════════════════ VIDEO DEMO ══════════════════ -->
+<section id="video-demo" style="background:var(--surface);border-top:1px solid rgba(42,31,0,.4);border-bottom:1px solid rgba(42,31,0,.4)">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label">Live Proof</div>
+      <h2 class="sec-title">Watch TITAN Trade Live</h2>
+      <p class="sec-sub" style="margin:0 auto">17 months of real backtest results &mdash; every trade, every pair, every drawdown &mdash; shown unedited. No cherry-picking. No theory. Just the machine doing its job.</p>
+    </div>
+    <div class="reveal" style="margin-top:40px;position:relative;width:100%;max-width:860px;margin-left:auto;margin-right:auto">
+      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(245,200,66,.25);box-shadow:0 24px 60px rgba(0,0,0,.6)">
+        <iframe id="titanVideo" src="https://www.youtube.com/embed/PLACEHOLDER_VIDEO_ID?rel=0&modestbranding=1&color=white" title="TITAN AutoTrader &mdash; Live Backtest Demo" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+      </div>
+      <p style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--muted2);letter-spacing:1px">TITAN AutoTrader &mdash; 17-Month Backtest Demo &middot; All 5 Pairs &middot; Unedited</p>
+    </div>
+  </div>
+</section>
+
 <section id="performance">
   <div class="container">
     <div class="reveal"><div class="sec-label">Verified Results</div><h2 class="sec-title">Real Numbers. Real Trades.</h2><p class="sec-sub">17-month backtest. $2,000 account. MT5 Strategy Tester. 1-minute OHLC. 100% history quality.</p></div>
@@ -1376,23 +1393,6 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="edge-card reveal"><div class="edge-tag">Prop Firms</div><div class="edge-icon">&#127942;</div><h3>Engineered to Pass FTMO &amp; FundedNext.</h3><p>4% daily DD hard stop. News blackout on FOMC/NFP. Friday close before cutoff. Exact per-firm settings guide included. TITAN Pro is built for prop challenges from the ground up.</p></div>
       <div class="edge-card reveal"><div class="edge-tag">Updates</div><div class="edge-icon">&#128260;</div><h3>Free Lifetime Updates. Always.</h3><p>Markets evolve. Our EA evolves with them. Every strategy improvement delivered free to all existing buyers forever. No extra charge. No expiry.</p></div>
       <div class="edge-card reveal"><div class="edge-tag">Support</div><div class="edge-icon">&#9889;</div><h3>AI Support Bot &mdash; Instant Answers 24/5.</h3><p>Buyers get exclusive Telegram support bot access trained on full documentation. Setup, broker settings, prop rules &mdash; answered in seconds, not days.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════ VIDEO DEMO ══════════════════ -->
-<section id="video-demo" style="background:var(--surface);border-top:1px solid rgba(42,31,0,.4);border-bottom:1px solid rgba(42,31,0,.4)">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="sec-label">Live Proof</div>
-      <h2 class="sec-title">Watch TITAN Trade Live</h2>
-      <p class="sec-sub" style="margin:0 auto">17 months of real backtest results — every trade, every pair, every drawdown — shown unedited. No cherry-picking. No theory. Just the machine doing its job.</p>
-    </div>
-    <div class="reveal" style="margin-top:40px;position:relative;width:100%;max-width:860px;margin-left:auto;margin-right:auto">
-      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(245,200,66,.25);box-shadow:0 24px 60px rgba(0,0,0,.6)">
-        <iframe id="titanVideo" src="https://www.youtube.com/embed/PLACEHOLDER_VIDEO_ID?rel=0&modestbranding=1&color=white" title="TITAN AutoTrader — Live Backtest Demo" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
-      </div>
-      <p style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--muted2);letter-spacing:1px">TITAN AutoTrader — 17-Month Backtest Demo &middot; All 5 Pairs &middot; Unedited</p>
     </div>
   </div>
 </section>
