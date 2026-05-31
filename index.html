@@ -94,6 +94,8 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 .nav-dropdown a{display:block;padding:10px 22px;color:var(--muted);font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s,background .2s;white-space:nowrap;letter-spacing:.3px}
 .nav-dropdown a:hover{color:var(--gold);background:rgba(245,200,66,.05)}
 .nav-dropdown a::after{display:none!important}
+.nav-blog-btn{background:var(--gold)!important;color:#000!important;font-weight:800!important;margin:6px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important;letter-spacing:.4px!important}
+.nav-blog-btn:hover{background:var(--gold2)!important;color:#000!important}
 .nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;z-index:1001;position:relative}
 .nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;transition:transform .35s cubic-bezier(.77,0,.175,1),opacity .2s,width .3s}
 .nav-burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
@@ -1007,7 +1009,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <a href="#founders">Founders</a>
           <a href="#support">Support</a>
           <a href="setup-guide.html">Setup Guide</a>
-          <a href="blog/" style="color:var(--gold);font-weight:700">&#128196; Blog</a>
+          <a href="blog/" class="nav-blog-btn">&#128196; Blog — Free Guides</a>
         </div>
       </div>
       <a href="#simulator" class="nav-mob-link">Simulator</a>
