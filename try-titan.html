@@ -189,7 +189,6 @@ footer a:hover{color:var(--gold)}
           <a href="index.html#founders">Founders</a>
           <a href="index.html#support">Support</a>
           <a href="setup-guide.html">Setup Guide</a>
-          <a href="try-titan.html" class="active" style="color:var(--gold)">&#9654; Try TITAN Free</a>
           <a href="blog/" class="nav-blog-btn">&#128196; Blog</a>
         </div>
       </div>
@@ -234,61 +233,49 @@ footer a:hover{color:var(--gold)}
 <div style="padding:64px 0 20px">
 <div class="container">
 
-  <!-- STEP 0: Do This First -->
-  <div style="text-align:center;margin-bottom:16px"><div class="sec-label">Critical First Step</div></div>
-  <div class="warn-box warn-gold">
-    <span class="step0-tag">Do This First &mdash; 30 Seconds</span>
-    <h3>&#9888; Add the URL to MT5 WebRequest Whitelist</h3>
-    <p>TITAN DEMO verifies your 24-hour trial on startup. MT5 blocks all web connections by default &mdash; you must whitelist the URL <strong>before</strong> running the EA or it will refuse to load.</p>
-    <ol>
-      <li>Open MT5 &rarr; <strong>Tools</strong> menu &rarr; <strong>Options</strong></li>
-      <li>Click the <strong>Expert Advisors</strong> tab</li>
-      <li>Check the box: <strong>Allow WebRequests for listed URL</strong></li>
-      <li>Click <strong>+</strong> and add exactly:</li>
-    </ol>
-    <div class="url-mono">https://getquantumedgeai.com</div>
-    <p style="margin-top:14px;font-size:.88rem">Click <strong>OK</strong>. Done. You only do this once &mdash; it persists across MT5 sessions.</p>
-  </div>
-
-  <!-- DOWNLOAD -->
+  <!-- DOWNLOAD — first thing visitors see -->
   <div class="dl-block">
+    <div style="display:inline-block;background:rgba(45,184,122,.12);border:1px solid rgba(45,184,122,.3);color:#2DB87A;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px">Free &mdash; No Signup Required</div>
     <h2>Download TITAN DEMO</h2>
-    <p>Free 24-hour trial &mdash; CADCHF H1 Strategy Tester only.<br>Same core logic as the full 5-pair TITAN v1.41.</p>
-    <!-- DEVELOPER NOTE: Compile QuantumForex_TITAN_DEMO.mq5 in MetaEditor (F7).
-         Upload the resulting TITAN_DEMO.ex5 to Hostinger at /public_html/download/TITAN_DEMO.ex5 -->
+    <p>Same core logic as the full 5-pair TITAN v1.41.<br>Runs on CADCHF H1 in MT5 Strategy Tester. 24-hour free trial.</p>
     <a href="/download/TITAN_DEMO.ex5" class="btn-gold" download>
       &#11015;&nbsp; Download TITAN DEMO (.ex5)
     </a>
-    <p class="dl-note">MT5 Expert Advisor (.ex5) &mdash; 24-hour free trial &mdash; CADCHF H1 only</p>
+    <p class="dl-note">MT5 Expert Advisor (.ex5) &middot; Windows &middot; No account needed to download</p>
   </div>
 
-  <!-- RAW ACCOUNT WARNING -->
-  <div class="warn-box warn-red">
+  <!-- RAW ACCOUNT NOTE -->
+  <div class="warn-box warn-red" style="margin-bottom:56px">
     <h3>&#9888; Use a RAW / ECN Spread Account for Accurate Results</h3>
-    <p>Standard accounts add 1.5&ndash;3 pips of spread markup to every price. This distorts backtest results &mdash; trades that should win appear as losses, and profit factors read lower than real performance.</p>
-    <p style="margin-top:10px"><strong>Use a Raw / ECN / Razor / Zero account</strong> with spreads from 0.0 pips (broker charges commission instead). IC Markets, Pepperstone, FP Markets, and Exness all offer one.</p>
-    <p style="margin-top:10px">If you are on a Standard account: open a free Raw Spread demo account at your broker. Takes 2 minutes and changes everything.</p>
+    <p>Standard accounts add 1.5&ndash;3 extra pips to every price. This inflates spread costs and makes win rates look lower than they really are. For results that match our published data, use a <strong>Raw / ECN / Razor / Zero spread account</strong> &mdash; these charge a small commission instead of inflated spreads.</p>
+    <p style="margin-top:10px">IC Markets, Pepperstone, FP Markets, and Exness all offer a free Raw Spread demo account. Takes 2 minutes to open &mdash; it is a demo account, not a live account. Zero risk to your money.</p>
   </div>
 
   <!-- 6-STEP GUIDE -->
   <div style="text-align:center;margin-bottom:36px">
-    <div class="sec-label">Step-by-Step</div>
-    <h2 class="sec-title">Run the Backtest in 6 Steps</h2>
+    <div class="sec-label">Step-by-Step Setup</div>
+    <h2 class="sec-title">Run Your First Backtest in 10 Minutes</h2>
+    <p style="color:var(--muted);font-size:.95rem;margin-top:8px">No experience needed. Follow these 6 steps exactly.</p>
   </div>
 
   <div class="steps-grid">
     <div class="step-card">
       <div class="step-num">1</div>
-      <h3>Move the EA to MT5</h3>
-      <p>Place <code>TITAN_DEMO.ex5</code> in your MT5 Experts folder.<br>Quickest route: MT5 &rarr; File &rarr; Open Data Folder &rarr; MQL5 &rarr; Experts. Drag and drop the file in.</p>
+      <h3>Copy the EA into MT5</h3>
+      <p>In MT5 go to <strong>File &rarr; Open Data Folder &rarr; MQL5 &rarr; Experts</strong>. Copy <code>TITAN_DEMO.ex5</code> into that folder. Restart MT5 so it appears in the Expert Advisors list.</p>
     </div>
     <div class="step-card">
       <div class="step-num">2</div>
-      <h3>Open Strategy Tester</h3>
-      <p>Press <code>Ctrl + R</code> in MT5 or go to View &rarr; Strategy Tester. The tester panel opens at the bottom of the screen.</p>
+      <h3>Allow one quick setting</h3>
+      <p>Go to <strong>Tools &rarr; Options &rarr; Expert Advisors</strong> tab. Tick <strong>"Allow WebRequests for listed URL"</strong> and add <code>https://getquantumedgeai.com</code>. Click OK. This lets the EA verify its free trial &mdash; done once, saves permanently.</p>
     </div>
     <div class="step-card">
       <div class="step-num">3</div>
+      <h3>Open Strategy Tester</h3>
+      <p>Press <code>Ctrl + R</code> in MT5. The Strategy Tester panel opens at the bottom of your screen. This is where the backtest runs.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
       <h3>Set these exact parameters</h3>
       <p>
         Expert: <code>QuantumForex_TITAN_DEMO</code><br>
@@ -301,19 +288,14 @@ footer a:hover{color:var(--gold)}
       </p>
     </div>
     <div class="step-card">
-      <div class="step-num">4</div>
-      <h3>Confirm RiskPercent</h3>
-      <p>Click the <code>Inputs</code> tab in the tester &rarr; confirm <code>RiskPercent = 1.0</code>. Leave all other inputs at default values.</p>
-    </div>
-    <div class="step-card">
       <div class="step-num">5</div>
-      <h3>Click Start</h3>
-      <p>Press the <code>Start</code> button. The backtest runs in seconds to a few minutes depending on your PC speed and data downloaded.</p>
+      <h3>Check Inputs tab</h3>
+      <p>Click the <strong>Inputs</strong> tab. Confirm <code>RiskPercent = 1.0</code>. Leave all other values at default &mdash; do not change anything else.</p>
     </div>
     <div class="step-card">
       <div class="step-num">6</div>
-      <h3>Check the Report tab</h3>
-      <p>When the progress bar completes, click the <code>Report</code> tab. You will see Win Rate, Profit Factor, Max Drawdown, and every individual trade.</p>
+      <h3>Start &mdash; then read the Report</h3>
+      <p>Click <strong>Start</strong>. Finishes in under a minute. When the progress bar completes, click the <strong>Report</strong> tab to see Win Rate, Profit Factor, Drawdown, and every trade.</p>
     </div>
   </div>
 
