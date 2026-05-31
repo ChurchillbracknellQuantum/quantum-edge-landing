@@ -255,24 +255,28 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 }
 
 /* BROKER STRIP */
-#brokers{background:rgba(18,16,0,.6);border-top:1px solid rgba(42,31,0,.5);border-bottom:1px solid rgba(42,31,0,.5);padding:16px 44px}
-.broker-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
-.broker-label{font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
-.broker-badge{padding:5px 14px;border:1px solid rgba(42,31,0,.8);border-radius:5px;font-size:.72rem;font-weight:600;color:var(--muted);background:rgba(255,255,255,.02);transition:all .2s;white-space:nowrap}
-.broker-badge:hover{border-color:rgba(245,200,66,.3);color:var(--gold)}
+#brokers{background:linear-gradient(90deg,#070500,#0F0C00,#070500);border-top:1px solid rgba(245,200,66,.14);border-bottom:1px solid rgba(245,200,66,.14);padding:22px 44px}
+.broker-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
+.broker-label{font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap;padding-right:14px;border-right:1px solid rgba(245,200,66,.25);margin-right:4px}
+.broker-badge{padding:9px 20px;border:1px solid rgba(245,200,66,.28);border-radius:9px;font-size:.84rem;font-weight:700;color:#ddd;background:rgba(245,200,66,.06);transition:all .25s;white-space:nowrap;letter-spacing:.3px}
+.broker-badge:hover{border-color:rgba(245,200,66,.65);color:var(--gold);background:rgba(245,200,66,.12);transform:translateY(-3px);box-shadow:0 6px 20px rgba(245,200,66,.14)}
 
 /* TRUST STRIP */
-.trust-strip{background:#0A0800;border-bottom:1px solid rgba(42,31,0,.5);padding:12px 44px}
-.trust-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:.73rem;font-weight:600;color:var(--muted);padding:6px 20px;white-space:nowrap;border-right:1px solid rgba(42,31,0,.6)}
+.trust-strip{background:linear-gradient(90deg,#060400,#0C0900,#060400);border-bottom:1px solid rgba(245,200,66,.12);padding:0}
+.trust-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.trust-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:26px 18px;text-align:center;border-right:1px solid rgba(245,200,66,.09);transition:background .3s,box-shadow .3s;position:relative}
 .trust-item:last-child{border-right:none}
-.trust-icon{font-size:.85rem;flex-shrink:0}
-@media(max-width:600px){
-  .trust-inner{flex-direction:column;align-items:flex-start}
-  .trust-item{border-right:none;border-bottom:1px solid rgba(42,31,0,.4);width:100%;padding:8px 20px}
-  .trust-item:last-child{border-bottom:none}
-  .trust-strip{padding:8px 20px}
-}
+.trust-item:hover{background:rgba(245,200,66,.05)}
+.trust-icon{font-size:1.8rem;display:block;filter:drop-shadow(0 0 8px rgba(245,200,66,.4));line-height:1}
+.trust-item span:last-child{font-size:.82rem;font-weight:700;color:#ddd;line-height:1.45;letter-spacing:.2px}
+@keyframes trustGlow{0%,100%{opacity:.7}50%{opacity:1}}
+.trust-icon{animation:trustGlow 3s ease-in-out infinite}
+.trust-item:nth-child(2) .trust-icon{animation-delay:.6s}
+.trust-item:nth-child(3) .trust-icon{animation-delay:1.2s}
+.trust-item:nth-child(4) .trust-icon{animation-delay:1.8s}
+.trust-item:nth-child(5) .trust-icon{animation-delay:2.4s}
+@media(max-width:768px){.trust-inner{grid-template-columns:repeat(3,1fr)}.trust-item{padding:20px 12px;border-bottom:1px solid rgba(245,200,66,.08)}}
+@media(max-width:480px){.trust-inner{grid-template-columns:repeat(2,1fr)}.trust-strip{padding:0}.broker-label{display:none}}
 
 /* SECTIONS */
 section{padding:96px 44px}
