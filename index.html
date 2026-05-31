@@ -155,6 +155,7 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
   position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.042;
 }
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+#siteCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;display:block}
 .hero-split{
   max-width:var(--max);margin:0 auto;width:100%;
   padding:70px 44px;
@@ -955,6 +956,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 
 </head>
 <body class="loading">
+<canvas id="siteCanvas"></canvas>
 <div class="cur" id="cDot"></div>
 <div class="cur" id="cRing"></div>
 
@@ -2409,6 +2411,80 @@ runCalc();
   hero.addEventListener('mouseleave',function(){mouse.active=false;},{passive:true});
   hero.addEventListener('touchmove',function(e){var r=hero.getBoundingClientRect();var t=e.touches[0];mouse.x=t.clientX-r.left;mouse.y=t.clientY-r.top;mouse.active=true;},{passive:true});
   hero.addEventListener('touchend',function(){mouse.active=false;},{passive:true});
+  window.addEventListener('resize',function(){setTimeout(resize,100);},{passive:true});
+  resize();
+})();
+
+// ── SITE-WIDE PARTICLE SYSTEM ────────────────────────────
+(function(){
+  var canvas=document.getElementById('siteCanvas');
+  if(!canvas)return;
+  var DENSITY=0.000065,BG_DENSITY=0.000022,MOUSE_R=140,RETURN=0.07,DAMP=0.91,REPUL=1.1;
+  var particles=[],bgParticles=[],W=0,H=0,raf=0,tick=0;
+  var mouse={x:-9999,y:-9999,active:false};
+  function rnd(a,b){return Math.random()*(b-a)+a;}
+  function resize(){
+    cancelAnimationFrame(raf);
+    var dpr=window.devicePixelRatio||1;
+    W=window.innerWidth;H=window.innerHeight;
+    canvas.width=W*dpr;canvas.height=H*dpr;
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    var ctx=canvas.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var n=Math.floor(W*H*DENSITY);
+    particles=[];
+    for(var i=0;i<n;i++){
+      var x=Math.random()*W,y=Math.random()*H;
+      particles.push({x:x,y:y,ox:x,oy:y,vx:0,vy:0,size:rnd(0.7,1.8),gold:Math.random()>0.84});
+    }
+    var bn=Math.floor(W*H*BG_DENSITY);
+    bgParticles=[];
+    for(var j=0;j<bn;j++){
+      bgParticles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,size:rnd(.3,1.1),alpha:rnd(.05,.22),phase:Math.random()*Math.PI*2});
+    }
+    loop();
+  }
+  function loop(){
+    var ctx=canvas.getContext('2d');
+    ctx.clearRect(0,0,W,H);
+    tick++;
+    for(var i=0;i<bgParticles.length;i++){
+      var b=bgParticles[i];
+      b.x+=b.vx;b.y+=b.vy;
+      if(b.x<0)b.x=W;if(b.x>W)b.x=0;
+      if(b.y<0)b.y=H;if(b.y>H)b.y=0;
+      var tw=Math.sin(tick*.013+b.phase)*.5+.5;
+      ctx.globalAlpha=b.alpha*(.3+.7*tw);
+      ctx.fillStyle='#fff';
+      ctx.beginPath();ctx.arc(b.x,b.y,b.size,0,Math.PI*2);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    for(var j=0;j<particles.length;j++){
+      var p=particles[j];
+      if(mouse.active){
+        var dx=mouse.x-p.x,dy=mouse.y-p.y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<MOUSE_R&&dist>.5){
+          var force=(MOUSE_R-dist)/MOUSE_R;
+          p.vx-=(dx/dist)*force*REPUL*5;
+          p.vy-=(dy/dist)*force*REPUL*5;
+        }
+      }
+      p.vx+=(p.ox-p.x)*RETURN;p.vy+=(p.oy-p.y)*RETURN;
+      p.vx*=DAMP;p.vy*=DAMP;
+      p.x+=p.vx;p.y+=p.vy;
+      var vel=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+      var al=Math.min(.2+vel*.10,0.85);
+      ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fillStyle=p.gold?'rgba(245,200,66,'+Math.min(al+.12,0.85)+')':'rgba(255,255,255,'+al+')';
+      ctx.fill();
+    }
+    raf=requestAnimationFrame(loop);
+  }
+  document.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true;},{passive:true});
+  document.addEventListener('mouseleave',function(){mouse.active=false;},{passive:true});
+  document.addEventListener('touchmove',function(e){var t=e.touches[0];mouse.x=t.clientX;mouse.y=t.clientY;mouse.active=true;},{passive:true});
+  document.addEventListener('touchend',function(){mouse.active=false;},{passive:true});
   window.addEventListener('resize',function(){setTimeout(resize,100);},{passive:true});
   resize();
 })();
