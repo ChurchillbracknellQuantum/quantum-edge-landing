@@ -1,0 +1,10 @@
+# DB credentials — NEVER commit this file
+api/config.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
