@@ -825,6 +825,38 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .tia-candle-result{text-align:center;padding:5px 8px;font-size:.74rem;font-weight:800;min-height:22px;letter-spacing:.5px}
 .tia-candle-result.win{color:#2DB87A}
 .tia-candle-result.loss{color:#ff7070}
+
+/* ══ HERO TRY TEASER ══ */
+.hero-try-teaser{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px;background:rgba(45,184,122,.06);border:1px solid rgba(45,184,122,.22);border-radius:14px;padding:20px 28px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center}
+.htt-label{display:flex;align-items:center;gap:8px;color:#2DB87A;font-size:.73rem;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+.htt-dot{width:7px;height:7px;border-radius:50%;background:#2DB87A;animation:pulse 1.8s infinite;flex-shrink:0}
+.htt-text{color:var(--muted);font-size:.9rem;line-height:1.55}
+.htt-link{display:inline-flex;align-items:center;gap:7px;color:#000;background:#2DB87A;font-weight:800;font-size:.88rem;padding:10px 26px;border-radius:8px;text-decoration:none;transition:background .2s,transform .15s;margin-top:4px}
+.htt-link:hover{background:#1fa065;transform:translateY(-1px)}
+@media(max-width:600px){.hero-try-teaser{padding:16px 18px}.htt-text{font-size:.84rem}}
+
+/* ══ FREE TRIAL PROMO SECTION ══ */
+#free-trial{background:#040200;padding:100px 0;position:relative;overflow:hidden}
+#free-trial::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(45,184,122,.06) 0%,transparent 65%);pointer-events:none}
+.ft-inner{max-width:960px;margin:0 auto;padding:0 40px;text-align:center}
+.ft-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,184,122,.12);color:#2DB87A;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:20px;border:1px solid rgba(45,184,122,.3);margin-bottom:28px}
+.ft-badge-dot{width:7px;height:7px;border-radius:50%;background:#2DB87A;animation:pulse 1.8s infinite}
+.ft-h{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:18px;letter-spacing:-.4px}
+.ft-h .green{color:#2DB87A}
+.ft-sub{color:var(--muted);font-size:1.05rem;max-width:660px;margin:0 auto 40px;line-height:1.65}
+.ft-chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:46px}
+.ft-chip{display:flex;align-items:center;gap:8px;background:rgba(45,184,122,.06);border:1px solid rgba(45,184,122,.15);padding:10px 22px;border-radius:30px;font-size:.88rem;color:var(--muted);font-weight:600}
+.ft-chip-ic{color:#2DB87A;font-weight:900}
+.ft-cta-wrap{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.ft-cta-main{display:inline-flex;align-items:center;gap:10px;background:#2DB87A;color:#000;font-weight:800;font-size:1.05rem;padding:18px 50px;border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 32px rgba(45,184,122,.3)}
+.ft-cta-main:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(45,184,122,.42)}
+.ft-cta-sec{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(245,200,66,.4);color:var(--gold);font-weight:700;font-size:.93rem;padding:16px 28px;border-radius:12px;text-decoration:none;transition:all .2s}
+.ft-cta-sec:hover{background:rgba(245,200,66,.08)}
+.ft-note{color:var(--muted2);font-size:.8rem;margin-top:18px}
+.ft-quote{background:rgba(45,184,122,.04);border:1px solid rgba(45,184,122,.14);border-radius:14px;padding:26px 32px;margin:44px auto 0;max-width:640px}
+.ft-quote p{color:var(--muted);font-size:.95rem;font-style:italic;line-height:1.65;margin-bottom:10px}
+.ft-quote cite{color:#2DB87A;font-size:.8rem;font-weight:700;font-style:normal}
+@media(max-width:768px){.ft-inner{padding:0 24px}.ft-chips{gap:8px}.ft-chip{padding:8px 14px;font-size:.82rem}}
 </style>
 
 <!-- ═══ STRUCTURED DATA / SCHEMA MARKUP ═══ -->
@@ -1126,6 +1158,13 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="hero-btns reveal">
         <a href="#pricing" class="btn-gold">Get Started &rarr;</a>
         <a href="try-titan.html" class="btn-outline">Try TITAN Free &rarr;</a>
+      </div>
+
+      <!-- FREE TRIAL TEASER -->
+      <div class="hero-try-teaser reveal">
+        <div class="htt-label"><span class="htt-dot"></span> Try the AI — Before You Buy</div>
+        <p class="htt-text">Download TITAN DEMO and run a real backtest in MT5 Strategy Tester. See the exact win rate and profit factor with your own eyes &mdash; zero signup, zero commitment, 10 minutes.</p>
+        <a href="try-titan.html" class="htt-link">Run a Free Backtest Now &rarr;</a>
       </div>
     </div>
 
@@ -1720,6 +1759,30 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="comp-item"><span class="chk">&#10003;</span>FTMO &amp; FundedNext compliant</div>
         <div class="comp-item"><span class="chk">&#10003;</span>Monster trail &mdash; rides 6R+ winners</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FREE TRIAL PROMO ══════════════════ -->
+<section id="free-trial">
+  <div class="ft-inner">
+    <div class="ft-badge reveal"><span class="ft-badge-dot"></span>&nbsp; Zero Risk &mdash; Try First, Pay Later</div>
+    <h2 class="ft-h reveal">See TITAN Perform <span class="green">Before You Spend</span><br>a Single Dollar</h2>
+    <p class="ft-sub reveal">Most EAs make promises. TITAN lets you verify the results yourself &mdash; completely free &mdash; before you commit to anything. Download the free DEMO, run a real CADCHF backtest in MT5 Strategy Tester, and see a 73&ndash;79% win rate on real market data with your own eyes. Under 10 minutes. Zero obligation.</p>
+    <div class="ft-chips reveal">
+      <div class="ft-chip"><span class="ft-chip-ic">&#10003;</span> No Signup Required</div>
+      <div class="ft-chip"><span class="ft-chip-ic">&#10003;</span> No Credit Card</div>
+      <div class="ft-chip"><span class="ft-chip-ic">&#10003;</span> Real CADCHF Market Data</div>
+      <div class="ft-chip"><span class="ft-chip-ic">&#10003;</span> Done in Under 10 Minutes</div>
+    </div>
+    <div class="ft-cta-wrap reveal">
+      <a href="try-titan.html" class="ft-cta-main">&#11015;&nbsp; Try TITAN Free Now &rarr;</a>
+      <a href="#pricing" class="ft-cta-sec">View Pricing &darr;</a>
+    </div>
+    <p class="ft-note reveal">24-hour trial &middot; MT5 Strategy Tester only &middot; Same core logic as the full 5-pair product</p>
+    <div class="ft-quote reveal">
+      <p>&ldquo;Why take our word for it? Run the numbers yourself. If the results don&rsquo;t match what we publish, don&rsquo;t buy. That&rsquo;s how confident we are in what TITAN delivers.&rdquo;</p>
+      <cite>&mdash; Quantum Edge Trading Team</cite>
     </div>
   </div>
 </section>
