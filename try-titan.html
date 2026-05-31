@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Try TITAN Free — Verify Results Yourself | Quantum Edge Trading</title>
+<meta name="description" content="Download the free TITAN DEMO and run it yourself in MT5 Strategy Tester. CADCHF H1, 24-hour trial. No signup. No credit card. See real backtest results in minutes.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://getquantumedgeai.com/try-titan.html">
+<link rel="icon" href="Logo.png" type="image/png">
+<link rel="apple-touch-icon" href="Logo.png">
+<meta property="og:title" content="Try TITAN Free — Verify Results Yourself">
+<meta property="og:description" content="Download TITAN DEMO. Run CADCHF H1 backtest yourself. See 73-79% win rate in minutes. No signup.">
+<meta property="og:image" content="https://getquantumedgeai.com/og-card.svg">
+<meta property="og:url" content="https://getquantumedgeai.com/try-titan.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LP07BV4QJQ');</script>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"TITAN AutoTrader DEMO",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"MetaTrader 5",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free 24-hour trial"},
+  "description":"Free trial version of the TITAN AutoTrader MT5 Expert Advisor. Runs on CADCHF H1 in Strategy Tester for 24 hours.",
+  "publisher":{"@type":"Organization","name":"Quantum Edge Trading","url":"https://getquantumedgeai.com"}
+}
+</script>
+
+<style>
+:root{
+  --bg:#0D0A00;--surface:#121000;--surface2:#1A1300;--border:#2A1F00;
+  --gold:#F5C842;--gold2:#E8A800;--white:#FFFFFF;--muted:#CCCCCC;--muted2:#888888;
+  --green:#2DB87A;--font:'Segoe UI',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.6;min-height:100vh}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:1000;background:rgba(13,10,0,.95);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 72px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:34px}
+.nav-logo-text{font-weight:800;font-size:.95rem;letter-spacing:.4px;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{color:var(--muted);font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000!important;font-weight:800!important;padding:8px 18px;border-radius:8px;font-size:.88rem!important;transition:background .2s}
+.nav-cta:hover{background:var(--gold2)!important}
+.nav-more{position:relative;display:flex;align-items:center}
+.nav-more-btn{background:none;border:none;color:var(--muted);font-size:.93rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0;font-family:var(--font)}
+.nav-more-btn:hover{color:var(--gold)}
+.nav-arr{font-size:.65rem;transition:transform .25s}
+.nav-more.open .nav-more-btn{color:var(--gold)}
+.nav-more.open .nav-arr{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:#141100;border:1px solid rgba(245,200,66,.22);border-radius:12px;padding:8px 0;min-width:190px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:200;box-shadow:0 20px 56px rgba(0,0,0,.7)}
+.nav-more.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block;padding:10px 22px;color:var(--muted);font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-dropdown a:hover,.nav-dropdown a.active{color:var(--gold)}
+.nav-blog-btn{background:var(--gold)!important;color:#000!important;font-weight:800!important;margin:6px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px}
+#mobileNav{display:none;position:fixed;inset:0;background:rgba(13,10,0,.98);z-index:9000;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:100px;overflow-y:scroll;-webkit-overflow-scrolling:touch}
+#mobileNav.open{display:flex}
+#mobileNav a{display:block;color:var(--white);font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
+#mobileNav a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;z-index:9001}
+.mob-cta{background:var(--gold);color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
+
+/* HERO */
+.hero{padding:100px 0 70px;text-align:center;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(245,200,66,.06) 0%,transparent 60%)}
+.hero-badge{display:inline-block;background:rgba(245,200,66,.12);color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;border:1px solid rgba(245,200,66,.3);margin-bottom:24px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;line-height:1.1;margin-bottom:20px;letter-spacing:-.5px}
+.hero h1 span{color:var(--gold)}
+.hero-sub{color:var(--muted);font-size:1.1rem;max-width:580px;margin:0 auto 40px}
+.hero-chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:8px 16px;border-radius:8px;font-size:.85rem;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* LAYOUT */
+.container{max-width:900px;margin:0 auto;padding:0 32px}
+.sec-label{font-size:.75rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:900;line-height:1.15;margin-bottom:12px}
+
+/* WARNING BOXES */
+.warn-box{border-radius:14px;padding:28px 32px;margin-bottom:48px}
+.warn-gold{background:rgba(245,200,66,.07);border:2px solid rgba(245,200,66,.4)}
+.warn-red{background:rgba(220,50,50,.07);border:2px solid rgba(220,80,80,.45)}
+.warn-box h3{font-size:1.05rem;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.warn-gold h3{color:var(--gold)}
+.warn-red h3{color:#ff6b6b}
+.warn-box p,.warn-box li{color:var(--muted);font-size:.93rem;line-height:1.7}
+.warn-box ol,.warn-box ul{padding-left:20px;margin-top:10px}
+.warn-box li{margin-bottom:6px}
+.url-mono{display:inline-block;background:rgba(245,200,66,.15);border:1px solid rgba(245,200,66,.4);color:var(--gold);font-family:monospace;font-size:.95rem;font-weight:700;padding:8px 18px;border-radius:8px;margin-top:10px}
+.step0-tag{display:inline-block;background:#e06b00;color:#000;font-size:.7rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:10px}
+
+/* DOWNLOAD */
+.dl-block{background:var(--surface2);border:2px solid rgba(245,200,66,.35);border-radius:18px;padding:40px;text-align:center;margin-bottom:56px}
+.dl-block h2{font-size:1.7rem;font-weight:900;margin-bottom:10px}
+.dl-block p{color:var(--muted);margin-bottom:28px;font-size:.93rem}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#000;font-weight:800;font-size:1.05rem;padding:16px 36px;border-radius:12px;text-decoration:none;transition:background .2s,transform .15s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.dl-note{margin-top:14px;font-size:.8rem;color:var(--muted2)}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:56px}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 22px}
+.step-num{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(245,200,66,.14);border:2px solid var(--gold);color:var(--gold);font-weight:900;font-size:1.05rem;margin-bottom:14px}
+.step-card h3{font-size:.97rem;font-weight:800;margin-bottom:8px}
+.step-card p{font-size:.87rem;color:var(--muted);line-height:1.65}
+.step-card code{background:rgba(245,200,66,.12);color:var(--gold);padding:2px 6px;border-radius:4px;font-size:.84rem}
+
+/* RESULTS */
+.results-card{background:var(--surface2);border:2px solid rgba(245,200,66,.35);border-radius:18px;padding:36px 40px;margin-bottom:56px}
+.results-card h2{font-size:1.5rem;font-weight:900;margin-bottom:8px}
+.r-sub{color:var(--muted);font-size:.88rem;margin-bottom:28px}
+.r-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;margin-bottom:20px}
+.r-stat{background:rgba(13,10,0,.5);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.r-val{font-size:1.9rem;font-weight:900;color:var(--gold);line-height:1}
+.r-lbl{font-size:.75rem;color:var(--muted2);margin-top:5px;text-transform:uppercase;letter-spacing:.8px}
+.r-explain{font-size:.79rem;color:var(--muted);margin-top:5px}
+.r-note{font-size:.83rem;color:var(--muted2);font-style:italic}
+
+/* AI TIP */
+.ai-tip{background:rgba(45,184,122,.06);border:1px solid rgba(45,184,122,.22);border-radius:14px;padding:28px 30px;margin-bottom:56px}
+.ai-tip h3{color:var(--green);font-size:.98rem;font-weight:800;margin-bottom:10px}
+.ai-tip p{color:var(--muted);font-size:.91rem;line-height:1.7}
+.prompt-box{background:rgba(0,0,0,.45);border:1px solid rgba(45,184,122,.2);border-radius:8px;padding:14px 18px;margin-top:14px;font-family:monospace;font-size:.87rem;color:var(--green);line-height:1.6}
+
+/* FINAL CTA */
+.final-cta{background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(245,200,66,.06) 0%,transparent 70%);padding:80px 0;text-align:center}
+.final-cta h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:900;margin-bottom:14px}
+.final-cta p{color:var(--muted);margin-bottom:36px;font-size:1rem}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--gold);color:var(--gold);font-weight:700;font-size:.93rem;padding:13px 26px;border-radius:10px;text-decoration:none;transition:background .2s,color .2s;margin-left:14px}
+.btn-outline:hover{background:var(--gold);color:#000}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--muted2);font-size:.82rem}
+footer a{color:var(--muted2);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--gold)}
+
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.2rem;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:800}
+#scrollTop.show{display:flex}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:0 20px;height:58px}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .hero{padding:70px 0 50px}
+  .dl-block,.results-card{padding:24px 20px}
+  .warn-box{padding:20px}
+  .container{padding:0 20px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:1.85rem}
+  .r-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="Logo.png" alt="Quantum Edge Trading">
+    <span class="nav-logo-text">Quantum Edge</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#performance">Performance</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li>
+      <div class="nav-more" id="navMore">
+        <button class="nav-more-btn" onclick="toggleMoreMenu(event)">More <span class="nav-arr">&#9660;</span></button>
+        <div class="nav-dropdown" id="navDrop">
+          <a href="index.html#titan-in-action">TITAN In Action</a>
+          <a href="index.html#simulator">Simulator</a>
+          <a href="index.html#founders">Founders</a>
+          <a href="index.html#support">Support</a>
+          <a href="setup-guide.html">Setup Guide</a>
+          <a href="try-titan.html" class="active" style="color:var(--gold)">&#9654; Try TITAN Free</a>
+          <a href="blog/" class="nav-blog-btn">&#128196; Blog</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="index.html#pricing" class="nav-cta">Get Started &rarr;</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" onclick="openMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobileNav">
+  <button class="mob-close" onclick="closeMobile()">&#10005;</button>
+  <a href="index.html#performance" onclick="closeMobile()">Performance</a>
+  <a href="index.html#simulator" onclick="closeMobile()">Simulator</a>
+  <a href="index.html#founders" onclick="closeMobile()">Founders</a>
+  <a href="index.html#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="index.html#faq" onclick="closeMobile()">FAQ</a>
+  <a href="index.html#support" onclick="closeMobile()">Support</a>
+  <a href="setup-guide.html" onclick="closeMobile()">Setup Guide</a>
+  <a href="try-titan.html" style="color:var(--gold)" onclick="closeMobile()">Try TITAN Free</a>
+  <a href="blog/" onclick="closeMobile()">Blog</a>
+  <a href="index.html#pricing" class="mob-cta" onclick="closeMobile()">Get Started &rarr;</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Free 24-Hour Trial &mdash; No Signup Required</div>
+    <h1>Verify TITAN Yourself.<br><span>No Signup. No Credit Card.</span></h1>
+    <p class="hero-sub">Download the free TITAN DEMO, run it in MT5 Strategy Tester on CADCHF H1, and see the exact results yourself in under 10 minutes.</p>
+    <div class="hero-chips">
+      <span class="chip"><span class="dot"></span>Strategy Tester only &mdash; no live account needed</span>
+      <span class="chip">&#127919; CADCHF H1</span>
+      <span class="chip">&#9200; 24-hour access</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div style="padding:64px 0 20px">
+<div class="container">
+
+  <!-- STEP 0: Do This First -->
+  <div style="text-align:center;margin-bottom:16px"><div class="sec-label">Critical First Step</div></div>
+  <div class="warn-box warn-gold">
+    <span class="step0-tag">Do This First &mdash; 30 Seconds</span>
+    <h3>&#9888; Add the URL to MT5 WebRequest Whitelist</h3>
+    <p>TITAN DEMO verifies your 24-hour trial on startup. MT5 blocks all web connections by default &mdash; you must whitelist the URL <strong>before</strong> running the EA or it will refuse to load.</p>
+    <ol>
+      <li>Open MT5 &rarr; <strong>Tools</strong> menu &rarr; <strong>Options</strong></li>
+      <li>Click the <strong>Expert Advisors</strong> tab</li>
+      <li>Check the box: <strong>Allow WebRequests for listed URL</strong></li>
+      <li>Click <strong>+</strong> and add exactly:</li>
+    </ol>
+    <div class="url-mono">https://getquantumedgeai.com</div>
+    <p style="margin-top:14px;font-size:.88rem">Click <strong>OK</strong>. Done. You only do this once &mdash; it persists across MT5 sessions.</p>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div class="dl-block">
+    <h2>Download TITAN DEMO</h2>
+    <p>Free 24-hour trial &mdash; CADCHF H1 Strategy Tester only.<br>Same core logic as the full 5-pair TITAN v1.41.</p>
+    <!-- DEVELOPER NOTE: Compile QuantumForex_TITAN_DEMO.mq5 in MetaEditor (F7).
+         Upload the resulting TITAN_DEMO.ex5 to Hostinger at /public_html/download/TITAN_DEMO.ex5 -->
+    <a href="/download/TITAN_DEMO.ex5" class="btn-gold" download>
+      &#11015;&nbsp; Download TITAN DEMO (.ex5)
+    </a>
+    <p class="dl-note">MT5 Expert Advisor (.ex5) &mdash; 24-hour free trial &mdash; CADCHF H1 only</p>
+  </div>
+
+  <!-- RAW ACCOUNT WARNING -->
+  <div class="warn-box warn-red">
+    <h3>&#9888; Use a RAW / ECN Spread Account for Accurate Results</h3>
+    <p>Standard accounts add 1.5&ndash;3 pips of spread markup to every price. This distorts backtest results &mdash; trades that should win appear as losses, and profit factors read lower than real performance.</p>
+    <p style="margin-top:10px"><strong>Use a Raw / ECN / Razor / Zero account</strong> with spreads from 0.0 pips (broker charges commission instead). IC Markets, Pepperstone, FP Markets, and Exness all offer one.</p>
+    <p style="margin-top:10px">If you are on a Standard account: open a free Raw Spread demo account at your broker. Takes 2 minutes and changes everything.</p>
+  </div>
+
+  <!-- 6-STEP GUIDE -->
+  <div style="text-align:center;margin-bottom:36px">
+    <div class="sec-label">Step-by-Step</div>
+    <h2 class="sec-title">Run the Backtest in 6 Steps</h2>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Move the EA to MT5</h3>
+      <p>Place <code>TITAN_DEMO.ex5</code> in your MT5 Experts folder.<br>Quickest route: MT5 &rarr; File &rarr; Open Data Folder &rarr; MQL5 &rarr; Experts. Drag and drop the file in.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Open Strategy Tester</h3>
+      <p>Press <code>Ctrl + R</code> in MT5 or go to View &rarr; Strategy Tester. The tester panel opens at the bottom of the screen.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Set these exact parameters</h3>
+      <p>
+        Expert: <code>QuantumForex_TITAN_DEMO</code><br>
+        Symbol: <code>CADCHF</code><br>
+        Timeframe: <code>H1</code><br>
+        Model: <code>1 Minute OHLC</code><br>
+        From: <code>2025.01.01</code><br>
+        To: <code>2026.05.31</code><br>
+        Deposit: <code>2000 USD</code>
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Confirm RiskPercent</h3>
+      <p>Click the <code>Inputs</code> tab in the tester &rarr; confirm <code>RiskPercent = 1.0</code>. Leave all other inputs at default values.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <h3>Click Start</h3>
+      <p>Press the <code>Start</code> button. The backtest runs in seconds to a few minutes depending on your PC speed and data downloaded.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <h3>Check the Report tab</h3>
+      <p>When the progress bar completes, click the <code>Report</code> tab. You will see Win Rate, Profit Factor, Max Drawdown, and every individual trade.</p>
+    </div>
+  </div>
+
+  <!-- EXPECTED RESULTS -->
+  <div class="results-card">
+    <h2>Expected Results</h2>
+    <p class="r-sub">CADCHF H1 &mdash; $2,000 deposit &mdash; 1% risk per trade &mdash; Jan 2025 to May 2026</p>
+    <div class="r-grid">
+      <div class="r-stat">
+        <div class="r-val">73&ndash;79%</div>
+        <div class="r-lbl">Win Rate</div>
+        <div class="r-explain">Proportion of trades that close in profit</div>
+      </div>
+      <div class="r-stat">
+        <div class="r-val">1.90+</div>
+        <div class="r-lbl">Profit Factor</div>
+        <div class="r-explain">Total profit &divide; total losses. Above 1.5 = strong. Above 2.0 = excellent.</div>
+      </div>
+      <div class="r-stat">
+        <div class="r-val">&lt;&nbsp;2%</div>
+        <div class="r-lbl">Max Drawdown</div>
+        <div class="r-explain">Largest peak-to-trough equity dip during the test period</div>
+      </div>
+      <div class="r-stat">
+        <div class="r-val">35&ndash;45</div>
+        <div class="r-lbl">Trades</div>
+        <div class="r-explain">Total entries over the 17-month backtest period</div>
+      </div>
+    </div>
+    <p class="r-note">Results may vary by 5&ndash;10% depending on broker spread data. Use a Raw/ECN account for the most accurate comparison. Model must be set to 1 Minute OHLC.</p>
+  </div>
+
+  <!-- AI TIP -->
+  <div class="ai-tip">
+    <h3>&#129504; Not Sure What the Numbers Mean? Ask AI.</h3>
+    <p>When the backtest finishes, take a screenshot of the Report tab. Then paste it into ChatGPT or Claude with this prompt:</p>
+    <div class="prompt-box">"Here is my MT5 backtest report. Is this profitable? Please explain the Win Rate, Profit Factor, and Max Drawdown in plain English, and tell me if these are good results compared to typical trading systems."</div>
+    <p style="margin-top:14px;font-size:.87rem">You will get an honest, plain-English breakdown in seconds &mdash; no prior trading knowledge required.</p>
+  </div>
+
+</div><!-- /container -->
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Results Match? Get All 5 Pairs.</h2>
+    <p>Full TITAN covers USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF &mdash; live trading on your own broker account.</p>
+    <a href="index.html#pricing" class="btn-gold">Get Full TITAN &rarr;</a>
+    <a href="setup-guide.html" class="btn-outline">Setup Guide</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:10px">&copy; 2026 Quantum Edge Trading. All rights reserved.</p>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="risk-disclaimer.html">Risk Disclaimer</a>
+  <a href="index.html">Home</a>
+  <p style="margin-top:14px;max-width:600px;margin-left:auto;margin-right:auto;color:#555;font-size:.77rem">Trading forex involves substantial risk of loss. Past backtest performance does not guarantee future results. TITAN DEMO is provided for evaluation purposes only and runs in Strategy Tester only.</p>
+</footer>
+
+<!-- Scroll top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+function toggleMoreMenu(e){e.stopPropagation();document.getElementById('navMore').classList.toggle('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))m.classList.remove('open');});
+document.querySelectorAll('#navDrop a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navMore').classList.remove('open');});});
+function openMobile(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+var st=document.getElementById('scrollTop');
+window.addEventListener('scroll',function(){st.classList.toggle('show',window.scrollY>400);});
+</script>
+</body>
+</html>
