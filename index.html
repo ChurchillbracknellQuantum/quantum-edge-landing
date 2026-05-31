@@ -406,13 +406,28 @@ tr:hover td{background:rgba(245,200,66,.03)}
 
 /* KNOWLEDGE */
 #knowledge{background:var(--surface);border-top:1px solid rgba(42,31,0,.4)}
-.know-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:52px}
-.kstat{margin-bottom:24px}
-.kstat .big{font-family:var(--fontd);font-size:3.4rem;font-weight:900;color:var(--gold);line-height:1}
-.kstat p{color:var(--muted2);font-size:.85rem;margin-top:5px;font-weight:500}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.tag{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.15);color:var(--muted);font-size:.73rem;padding:5px 13px;border-radius:20px;font-weight:500}
-@media(max-width:768px){.know-wrap{grid-template-columns:1fr;gap:36px}}
+/* power stat cards */
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.pk-card{background:linear-gradient(150deg,#161200,#0A0800);border:1px solid rgba(245,200,66,.22);border-radius:20px;padding:36px 24px 30px;text-align:center;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s}
+.pk-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 55% at 50% 0%,rgba(245,200,66,.09),transparent 70%);pointer-events:none}
+.pk-card:hover{transform:translateY(-8px);box-shadow:0 24px 70px rgba(245,200,66,.18),0 0 0 1px rgba(245,200,66,.5);border-color:rgba(245,200,66,.55)}
+@keyframes pkPulse{0%,100%{box-shadow:0 0 22px rgba(245,200,66,.07),0 0 0 1px rgba(245,200,66,.22)}50%{box-shadow:0 0 42px rgba(245,200,66,.2),0 0 0 1px rgba(245,200,66,.38)}}
+.pk-card{animation:pkPulse 4s ease-in-out infinite}
+.pk-card:nth-child(2){animation-delay:1.4s}
+.pk-card:nth-child(3){animation-delay:2.8s}
+.pk-icon{font-size:2.4rem;display:block;margin-bottom:16px;filter:drop-shadow(0 0 10px rgba(245,200,66,.45))}
+.pk-num-wrap{display:flex;align-items:flex-end;justify-content:center;gap:1px;margin-bottom:12px}
+.pk-num{font-family:var(--fontd);font-size:4.2rem;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 28px rgba(245,200,66,.55)}
+.pk-plus{font-family:var(--fontd);font-size:2.6rem;font-weight:900;color:var(--gold);line-height:1.25;opacity:.75}
+.pk-label{color:#d4d4d4;font-size:.9rem;font-weight:600;line-height:1.5;letter-spacing:.2px}
+/* what's inside */
+.wi-wrap{margin-top:56px;background:linear-gradient(145deg,#111000,#0D0A00);border:1px solid rgba(245,200,66,.18);border-radius:20px;padding:40px 44px}
+.wi-head{font-size:1.3rem;color:var(--gold);font-weight:800;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px}
+.wi-sub{color:#999;font-size:.85rem;margin-bottom:26px;line-height:1.6;max-width:680px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.2);color:#ccc;font-size:.82rem;padding:9px 18px;border-radius:26px;font-weight:600;letter-spacing:.3px;transition:all .22s;cursor:default}
+.tag.pw{background:rgba(245,200,66,.16);border-color:rgba(245,200,66,.5);color:var(--gold);font-weight:700}
+@media(max-width:768px){.pk-grid{grid-template-columns:1fr;gap:16px}.wi-wrap{padding:28px 22px}}
 
 /* FOUNDERS — DestinationCard style */
 #founders{background:var(--bg);border-top:1px solid rgba(42,31,0,.4)}
@@ -1555,20 +1570,47 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 
 <section id="knowledge">
   <div class="container">
-    <div class="know-wrap">
-      <div class="reveal">
-        <div class="sec-label">The Research</div>
-        <h2 class="sec-title">Built on Institutional Knowledge</h2>
-        <p class="sec-sub" style="margin-bottom:26px">Every signal backed by quantified pattern research from the world's top trading authors. No guesswork.</p>
-        <div class="kstat"><div class="big" data-count="60">0</div><p>Trading books studied in depth</p></div>
-        <div class="kstat"><div class="big" data-count="800">0</div><p>Proven trading strategies validated</p></div>
-        <div class="kstat"><div class="big" data-count="7">0</div><p>High-probability patterns running simultaneously</p></div>
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label">The Research</div>
+      <h2 class="sec-title">Built on Institutional Knowledge</h2>
+      <p class="sec-sub" style="margin:0 auto">Every signal backed by quantified pattern research from the world's top trading authors. No guesswork. No theory. Pure edge.</p>
+    </div>
+    <div class="pk-grid">
+      <div class="pk-card reveal">
+        <span class="pk-icon">📚</span>
+        <div class="pk-num-wrap"><div class="pk-num big" data-count="60">0</div><span class="pk-plus">+</span></div>
+        <div class="pk-label">Trading Books<br>Studied In Depth</div>
       </div>
-      <div class="reveal">
-        <h3 style="font-size:.85rem;color:var(--gold);margin-bottom:18px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800">What's Inside</h3>
-        <div class="tags">
-          <span class="tag">ICT Kill Zones</span><span class="tag">Kaufman ER Filter</span><span class="tag">ADX Trend Gate</span><span class="tag">Triple-Screen D1+H4+H1</span><span class="tag">Harmonic Patterns</span><span class="tag">Bulkowski Pipe</span><span class="tag">Linda Raschke Holy Grail</span><span class="tag">Nial Fuller Pin Bar</span><span class="tag">ICT BOS+FVG</span><span class="tag">News Blackout NFP/FOMC</span><span class="tag">Monster Trail Exit</span><span class="tag">No Fixed TP</span><span class="tag">FTMO Compliant</span><span class="tag">4% Daily DD Stop</span><span class="tag">Auto Position Size</span>
-        </div>
+      <div class="pk-card reveal">
+        <span class="pk-icon">🔬</span>
+        <div class="pk-num-wrap"><div class="pk-num big" data-count="800">0</div><span class="pk-plus">+</span></div>
+        <div class="pk-label">Proven Trading Strategies<br>Validated &amp; Tested</div>
+      </div>
+      <div class="pk-card reveal">
+        <span class="pk-icon">🎯</span>
+        <div class="pk-num-wrap"><div class="pk-num big" data-count="7">0</div></div>
+        <div class="pk-label">High-Probability Patterns<br>Running Simultaneously</div>
+      </div>
+    </div>
+    <div class="wi-wrap reveal">
+      <div class="wi-head">&#9889; What&rsquo;s Inside TITAN</div>
+      <p class="wi-sub">Every technique below is sourced from a named author, a published strategy, or a validated institutional method &mdash; not random indicators found on YouTube.</p>
+      <div class="tags">
+        <span class="tag pw">&#10003; ICT Kill Zones</span>
+        <span class="tag pw">&#10003; Kaufman ER Filter</span>
+        <span class="tag pw">&#10003; ADX Trend Gate</span>
+        <span class="tag pw">&#10003; Triple-Screen D1+H4+H1</span>
+        <span class="tag">Harmonic Patterns</span>
+        <span class="tag">Bulkowski Pipe</span>
+        <span class="tag pw">&#10003; Linda Raschke Holy Grail</span>
+        <span class="tag pw">&#10003; Nial Fuller Pin Bar</span>
+        <span class="tag">ICT BOS+FVG</span>
+        <span class="tag pw">&#10003; News Blackout NFP/FOMC</span>
+        <span class="tag pw">&#10003; Monster Trail Exit</span>
+        <span class="tag">No Fixed TP</span>
+        <span class="tag pw">&#10003; FTMO Compliant</span>
+        <span class="tag pw">&#10003; 4% Daily DD Stop</span>
+        <span class="tag pw">&#10003; Auto Position Size</span>
       </div>
     </div>
   </div>
