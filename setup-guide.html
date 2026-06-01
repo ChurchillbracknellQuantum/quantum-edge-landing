@@ -11,8 +11,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TITAN AutoTrader Setup Guide — MT5 Installation & Configuration</title>
-<meta name="description" content="Complete step-by-step setup guide for TITAN AutoTrader MT5 Expert Advisor. Install, configure, and go live in under 10 minutes.">
+<title>TITAN AutoTrader Setup Guide — MT5 & MT4 Installation & Configuration</title>
+<meta name="description" content="Complete step-by-step setup guide for TITAN AutoTrader Expert Advisor. MT5 and MT4 installation, configure risk inputs, and go live in under 10 minutes.">
 <link rel="canonical" href="https://getquantumedgeai.com/setup-guide.html">
 <link rel="icon" href="Logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,8 +143,8 @@ footer a:hover{color:var(--gold)}
 <div class="guide-hero">
   <div class="guide-badge">&#9881; Step-by-Step Installation Guide</div>
   <h1>TITAN AutoTrader Setup</h1>
-  <p>From download to your first live trade in under 10 minutes. Follow each step exactly — no experience required.</p>
-  <div class="time-badge">&#10003; Takes under 10 minutes &nbsp;&middot;&nbsp; Works on any MT5 broker</div>
+  <p>From download to your first live trade in under 10 minutes. Covers both MT5 and MT4 — follow the section for your platform.</p>
+  <div class="time-badge">&#10003; Takes under 10 minutes &nbsp;&middot;&nbsp; MT5 &amp; MT4 supported</div>
 </div>
 
 <div class="guide-body">
@@ -156,7 +156,7 @@ footer a:hover{color:var(--gold)}
     </div>
     <p>MT5 is free. Download directly from your broker's website or from MetaQuotes. Recommended brokers for TITAN: <strong style="color:var(--white)">IC Markets, Pepperstone, FP Markets, Exness</strong> — all support hedging mode and Expert Advisors.</p>
     <p>After installing, open MT5 and create a <strong style="color:var(--white)">demo account</strong> first to test before going live. Takes 2 minutes. No deposit required.</p>
-    <div class="step-note"><strong>Note:</strong> Only MetaTrader 5 is supported. MT4 is NOT compatible with TITAN. Ensure your broker allows Expert Advisors (EAs). FTMO and FundedNext both permit MT5 EAs.</div>
+    <div class="step-note"><strong>Note:</strong> This section covers MT5 setup. If you purchased the MT4 version, scroll down to the <a href="#mt4-setup" style="color:var(--gold)">MT4 Setup section</a> below. Ensure your broker allows Expert Advisors (EAs). FTMO and FundedNext permit both MT5 and MT4 EAs.</div>
   </div>
 
   <div class="step-block">
@@ -254,6 +254,122 @@ footer a:hover{color:var(--gold)}
     <h3>&#10003; You're Live</h3>
     <p>TITAN is running on all 5 pairs. Expect your first trade within 1–5 trading days depending on market conditions. Check the Journal tab daily to confirm all 5 EAs are active.</p>
     <a href="/#support" class="btn-gold">Questions? Access Telegram Support &rarr;</a>
+  </div>
+
+  <!-- MT4 SETUP SECTION -->
+  <div id="mt4-setup" style="margin-top:56px">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:18px">&#9881; MetaTrader 4 Setup</div>
+      <h2 style="font-family:var(--fontd);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--white);margin-bottom:10px">TITAN on MT4 — Step-by-Step</h2>
+      <p style="color:var(--muted);font-size:.92rem;max-width:600px;margin:0 auto">MT4 buyers receive <strong style="color:var(--white)">.ex4 compiled files</strong> — one per pair. The setup process is nearly identical to MT5 with a few key differences noted below.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">1</div>
+        <h2>Download &amp; Install MetaTrader 4</h2>
+      </div>
+      <p>MT4 is free. Download directly from your broker's website — search "[broker name] MetaTrader 4 download". Recommended brokers for TITAN MT4: <strong style="color:var(--white)">IC Markets, Pepperstone, FP Markets, Exness</strong> — all offer MT4 with low spreads and EA support.</p>
+      <p>After installing, create a <strong style="color:var(--white)">demo account</strong> first to verify the EA runs correctly before going live. Takes 2 minutes — no deposit required.</p>
+      <div class="step-note"><strong>MT4 vs MT5:</strong> MT4 uses <strong style="color:var(--gold)">.ex4</strong> files (not .mq5). The Experts folder path is different. Everything else — pairs, timeframe, inputs — is identical.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">2</div>
+        <h2>Install Your TITAN .ex4 Files</h2>
+      </div>
+      <p>After purchase you receive a .zip file with your TITAN .ex4 files — one per pair (5 files for Regular, 5 for PROP version). These are compiled binaries — do not try to open them as text files.</p>
+      <p><strong style="color:var(--white)">Step 2a:</strong> In MT4, click <em style="color:var(--gold)">File &rarr; Open Data Folder</em></p>
+      <p><strong style="color:var(--white)">Step 2b:</strong> Navigate to the MQL4 Experts folder and paste your .ex4 files:</p>
+      <div class="code-block">MQL4 &rarr; Experts &rarr; [paste your .ex4 files here]</div>
+      <p><strong style="color:var(--white)">Step 2c:</strong> In the Navigator panel (Ctrl+N to open), right-click <em style="color:var(--gold)">Expert Advisors &rarr; Refresh</em>. Your TITAN EAs appear in the list.</p>
+      <div class="step-note"><strong>Key difference from MT5:</strong> MT4 uses <code style="color:var(--gold);background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px">MQL4\Experts\</code> not <code style="color:var(--gold);background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px">MQL5\Experts\</code>. Make sure you are in the correct folder.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">3</div>
+        <h2>Open the 5 Required H1 Charts</h2>
+      </div>
+      <p>Same 5 pairs as the MT5 version, same H1 timeframe. In MT4: <em style="color:var(--gold)">File &rarr; New Chart</em> or use the Market Watch panel (Ctrl+M), right-click the pair &rarr; <em style="color:var(--gold)">Chart Window</em>, then switch timeframe to H1.</p>
+      <div class="pairs-grid">
+        <div class="pair-tag">USDCHF <span>H1 Chart</span></div>
+        <div class="pair-tag">GBPUSD <span>H1 Chart</span></div>
+        <div class="pair-tag">AUDUSD <span>H1 Chart</span></div>
+        <div class="pair-tag">AUDCHF <span>H1 Chart</span></div>
+        <div class="pair-tag">CADCHF <span>H1 Chart</span></div>
+      </div>
+      <div class="step-warn"><strong>Important:</strong> TITAN MT4 is validated on these 5 pairs only, on H1. Running on other pairs or timeframes is unsupported. Each EA file is pair-specific — attach the USDCHF EA to the USDCHF chart only.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">4</div>
+        <h2>Attach TITAN to Each Chart &amp; Enter Your License Key</h2>
+      </div>
+      <p>Drag the matching TITAN EA from the Navigator panel onto the corresponding chart (or double-click while that chart is active). The EA properties dialog opens.</p>
+      <p><strong style="color:var(--white)">In the Common tab:</strong> tick <em style="color:var(--gold)">"Allow live trading"</em> (MT4 wording — same as MT5's "Allow Algo Trading")</p>
+      <p><strong style="color:var(--white)">In the Inputs tab:</strong> enter your <strong style="color:var(--gold)">LicenseKey</strong> first (format: QE-XXXX-XXXX-XXXX-XXXX from your purchase email), then configure risk settings. Click OK.</p>
+      <div class="step-warn"><strong>License Key required:</strong> TITAN MT4 will not run without a valid license key. Enter the key exactly as received — including dashes. The key locks to your MT4 account number on first use and cannot be transferred. If you have not received your key, check your purchase confirmation email or contact support via Telegram.</div>
+      <div class="step-note"><strong>Check:</strong> A smiley face in the top-right of each chart = EA active. Frowning face = disabled (check AutoTrading is on — Step 6). The Journal tab shows license validation: "License active" or an error message if the key is invalid.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">5</div>
+        <h2>Configure Your Risk Inputs</h2>
+      </div>
+      <p>Same inputs as the MT5 version. Only adjust the parameters below — all others are pre-optimised from the 17-month backtest.</p>
+      <table class="input-table">
+        <thead><tr><th>Input</th><th>Recommended</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>LicenseKey</td><td><em>QE-XXXX-XXXX-XXXX-XXXX</em></td><td>Your unique license key from purchase email. Required — EA will not trade without it.</td></tr>
+          <tr><td>RiskPercent</td><td><em>0.5% – 1%</em></td><td>Risk per trade as % of balance. Start at 0.5% on live. PROP: always 0.5%.</td></tr>
+          <tr><td>ATR_SL_Mult</td><td><em>1.5</em></td><td>ATR multiplier for stop loss. Pre-optimised — do not change.</td></tr>
+          <tr><td>PartialClosePct</td><td><em>50</em></td><td>Closes 50% of position at 2R profit. Reduces drawdown significantly.</td></tr>
+          <tr><td>LockTriggerR</td><td><em>2.0</em></td><td>Moves stop to breakeven once trade reaches 2R profit.</td></tr>
+          <tr><td>ADX_MinValue</td><td><em>25.0</em></td><td>Minimum ADX trend strength required to enter. Do not lower.</td></tr>
+          <tr><td>MaxSpreadPoints</td><td><em>20 – 30</em></td><td>Maximum spread in points. Protects against spread spikes on MT4 brokers.</td></tr>
+          <tr><td>NewsFilterMinutes</td><td><em>30</em></td><td>Pauses trading 30 min before/after high-impact news. Essential for PROP accounts.</td></tr>
+        </tbody>
+      </table>
+      <div class="step-warn"><strong>PROP traders:</strong> Use RiskPercent = 0.5% and NewsFilterMinutes = 60. See the full <a href="prop-guide.html" style="color:var(--gold)">Prop Firm Guide</a> for firm-specific settings.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">6</div>
+        <h2>Enable AutoTrading in MT4</h2>
+      </div>
+      <p>AutoTrading must be enabled at the platform level. In the MT4 toolbar, click the <em style="color:var(--gold)">"AutoTrading"</em> button — it turns green when active. Also confirm:</p>
+      <div class="code-block">Tools &rarr; Options &rarr; Expert Advisors &rarr; tick "Allow automated trading"</div>
+      <p>If the button is grey or shows "AutoTrading disabled", EAs will not trade even if attached correctly. This is the most commonly missed step.</p>
+      <div class="step-note"><strong>Also required:</strong> If your broker requires it, check <em style="color:var(--gold)">"Allow DLL imports"</em> and <em style="color:var(--gold)">"Allow WebRequest for listed URLs"</em> in the same Expert Advisors options panel. TITAN uses WebRequest for license validation — add <code style="color:var(--gold);background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px">https://getquantumedgeai.com</code> to the allowed URLs list.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num-row">
+        <div class="step-circle">7</div>
+        <h2>Monitor &amp; Verify</h2>
+      </div>
+      <p>In MT4, check the <strong style="color:var(--white)">Experts tab</strong> (bottom panel — not "Journal", that tab is "Experts" in MT4). You should see initialization messages:</p>
+      <div class="code-block">
+        TITAN MT4 v1.41 initialized | USDCHF H1 | Magic: 50301 | Risk: 0.50% | License: active<br>
+        TITAN MT4 v1.41 initialized | GBPUSD H1 | Magic: 50302 | Risk: 0.50% | License: active<br>
+        TITAN MT4 v1.41 initialized | AUDUSD H1 | Magic: 50303 | Risk: 0.50% | License: active<br>
+        TITAN MT4 v1.41 initialized | AUDCHF H1 | Magic: 50304 | Risk: 0.50% | License: active<br>
+        TITAN MT4 v1.41 initialized | CADCHF H1 | Magic: 50305 | Risk: 0.50% | License: active
+      </div>
+      <p>PROP version Magic numbers: 50311–50315 (same pairs). If you see "License: invalid" — double-check the key was entered exactly as received, including all dashes.</p>
+      <div class="step-note"><strong>VPS recommended:</strong> Same advice as MT5 — ForexVPS, BeeksFX, or Contabo (~$20–30/month). MT4 is lighter than MT5 and runs well on a 2GB VPS if needed.</div>
+    </div>
+
+    <div class="success-box">
+      <h3>&#10003; MT4 Running</h3>
+      <p>All 5 TITAN MT4 EAs are live. Expect your first trade within 1–5 trading days. Check the Experts tab daily to confirm all 5 EAs show "License: active".</p>
+      <a href="/#support" class="btn-gold">Questions? Access Telegram Support &rarr;</a>
+    </div>
   </div>
 
   <!-- PROP FIRM SECTION -->
