@@ -1,5 +1,5 @@
-# DB credentials — NEVER commit this file
-api/config.php
+# DB credentials live in ~/private/titan_secrets.php (outside public_html)
+# config.php is a safe loader — committed to GitHub, no real credentials inside
 
 # OS
 .DS_Store
