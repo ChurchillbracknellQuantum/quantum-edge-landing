@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// TITAN Demo License Server — Database Configuration
+// TITAN License Server — Database Configuration (Demo + Paid)
 // ============================================================
 // INSTRUCTIONS:
 // 1. Copy this file, rename to config.php
@@ -20,3 +20,8 @@ $ADMIN_PASSWORD = 'CHOOSE_A_STRONG_PASSWORD'; // Password for /admin/ — change
 
 // --- Trial Settings ---
 $TRIAL_HOURS = 24; // Hours allowed per machine before trial expires
+
+// --- FastSpring License Secret ---
+// Random string you choose — paste this same value into FastSpring license URL as ?secret=
+// Example: 'xK9mP2qR7vN4jL8wA3sD6fH1'  (make your own, keep it private)
+$FS_LICENSE_SECRET = 'REPLACE_WITH_YOUR_OWN_SECRET_STRING';
