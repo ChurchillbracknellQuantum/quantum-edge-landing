@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LP07BV4QJQ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TITAN AutoTrader vs ForexFury vs Coinrule vs XAUBot — Full Comparison</title>
+<meta name="description" content="Compare the top forex EA trading bots. See how TITAN AutoTrader stacks up against ForexFury, Coinrule, and XAUBot across performance, pricing, prop firm support, and transparency.">
+<link rel="canonical" href="https://getquantumedgeai.com/compare.html">
+<link rel="icon" href="Logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "TITAN AutoTrader vs ForexFury vs Coinrule vs XAUBot — Full Comparison",
+  "description": "Compare the top forex EA trading bots. See how TITAN AutoTrader stacks up against ForexFury, Coinrule, and XAUBot across performance, pricing, prop firm support, and transparency.",
+  "url": "https://getquantumedgeai.com/compare.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Quantum Edge Trading",
+    "url": "https://getquantumedgeai.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://getquantumedgeai.com/Logo.png"
+    }
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0A00;--surface:#121000;--surface2:#1A1300;--border:#2A1F00;
+  --gold:#F5C842;--gold2:#E8A800;--gf:rgba(245,200,66,0.08);
+  --white:#fff;--muted:#CCCCCC;--muted2:#888;--green:#2DB87A;
+  --red:#e05555;--amber:#F5A623;
+  --font:'Inter',sans-serif;--fontd:'Playfair Display',serif;--max:1100px;--r:12px
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.6;min-height:100vh}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:1000;height:72px;background:rgba(13,10,0,.96);border-bottom:1px solid rgba(42,31,0,.6);backdrop-filter:blur(14px);display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:70px;width:70px;object-fit:contain}
+.nav-logo-text .brand{font-size:1rem;font-weight:800;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.nav-logo-text .sub{font-size:.56rem;color:var(--muted2);letter-spacing:3px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.93rem;font-weight:600;letter-spacing:.3px;transition:color .2s;white-space:nowrap;position:relative}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:9px 20px;border-radius:8px;font-weight:800}
+.nav-links a.nav-cta:hover{color:#000;box-shadow:0 4px 18px rgba(245,200,66,.35)}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;display:block;transition:transform .3s,opacity .2s}
+.nav-burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-burger.active span:nth-child(2){opacity:0}
+.nav-burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media(max-width:768px){.nav-links{display:none!important}.nav-burger{display:flex!important}}
+
+/* ── MOBILE NAV ── */
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:var(--fontd);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px}
+#mobileNav a:active{color:var(--gold)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+
+/* ── HERO ── */
+.cmp-hero{padding:72px 32px 52px;max-width:var(--max);margin:0 auto;text-align:center}
+.cmp-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:24px}
+.cmp-hero h1{font-family:var(--fontd);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;margin-bottom:18px;background:linear-gradient(135deg,#fff 40%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cmp-hero p{color:var(--muted);font-size:1.05rem;max-width:620px;margin:0 auto;line-height:1.75}
+
+/* ── TABLE WRAPPER ── */
+.table-section{max-width:var(--max);margin:0 auto;padding:0 24px 64px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid rgba(42,31,0,.7);box-shadow:0 0 60px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+
+/* Header row */
+table thead tr{background:linear-gradient(135deg,#1c1400 0%,#241800 100%)}
+table thead th{padding:22px 20px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);text-align:left;border-bottom:2px solid rgba(42,31,0,.9)}
+table thead th:first-child{color:var(--muted2);width:200px}
+table thead th.th-titan{color:var(--gold);background:linear-gradient(180deg,rgba(245,200,66,.12) 0%,rgba(245,200,66,.04) 100%);border-left:2px solid var(--gold);border-right:1px solid rgba(245,200,66,.2);text-align:center}
+table thead th.th-comp{text-align:center;color:var(--muted2)}
+
+/* Body rows */
+table tbody tr{border-bottom:1px solid rgba(42,31,0,.5);transition:background .15s}
+table tbody tr:hover{background:rgba(255,255,255,.02)}
+table tbody tr:last-child{border-bottom:none}
+table tbody td{padding:18px 20px;font-size:.88rem;color:var(--muted);vertical-align:middle;line-height:1.5}
+table tbody td:first-child{color:var(--white);font-weight:700;font-size:.84rem;background:rgba(255,255,255,.015)}
+table tbody td.td-titan{background:rgba(245,200,66,.04);border-left:2px solid rgba(245,200,66,.35);border-right:1px solid rgba(245,200,66,.12);text-align:center;font-weight:600}
+table tbody td.td-comp{text-align:center}
+table tbody tr:nth-child(odd) td.td-comp{background:rgba(255,255,255,.01)}
+
+/* Status icons */
+.yes{color:#2DB87A;font-weight:800}
+.no{color:#e05555;font-weight:800}
+.partial{color:#F5A623;font-weight:700}
+
+/* Glow on TITAN column header */
+table thead th.th-titan::before{content:'⭐ TITAN';display:block;font-size:.72rem;letter-spacing:2px;color:var(--gold);margin-bottom:4px}
+table thead th.th-titan span{display:block;font-size:.65rem;color:rgba(245,200,66,.6);font-weight:500;letter-spacing:.5px;text-transform:none;margin-top:2px}
+
+/* ── WHY TITAN WINS ── */
+.why-section{max-width:var(--max);margin:0 auto;padding:0 24px 72px}
+.why-section h2{font-family:var(--fontd);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;text-align:center;margin-bottom:12px;color:var(--white)}
+.why-sub{text-align:center;color:var(--muted);font-size:.95rem;max-width:520px;margin:0 auto 40px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.why-card{background:var(--surface2);border:1px solid rgba(42,31,0,.8);border-radius:16px;padding:32px 28px;transition:border-color .25s,transform .2s,box-shadow .25s;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .25s}
+.why-card:hover{border-color:rgba(245,200,66,.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.why-card:hover::before{opacity:1}
+.why-icon{font-size:2rem;margin-bottom:16px;display:block}
+.why-card h3{font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:10px;letter-spacing:.2px}
+.why-card p{color:var(--muted);font-size:.88rem;line-height:1.7}
+
+/* ── FREE TRIAL CTA ── */
+.trial-cta{background:linear-gradient(135deg,#0a1f0e 0%,#061409 100%);border-top:1px solid rgba(45,184,122,.2);border-bottom:1px solid rgba(45,184,122,.2);padding:64px 32px;text-align:center;margin:0 0 72px}
+.trial-cta h2{font-family:var(--fontd);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:var(--white);margin-bottom:14px}
+.trial-cta p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto 32px;line-height:1.7}
+.btn-green{display:inline-block;background:#2DB87A;color:#fff;font-weight:800;font-size:.95rem;padding:16px 40px;border-radius:8px;text-decoration:none;letter-spacing:.4px;transition:box-shadow .2s,transform .15s}
+.btn-green:hover{box-shadow:0 6px 28px rgba(45,184,122,.4);transform:translateY(-1px)}
+.trial-note{margin-top:16px;color:var(--muted2);font-size:.8rem}
+
+/* ── FAQ ── */
+.faq-section{max-width:760px;margin:0 auto;padding:0 24px 80px}
+.faq-section h2{font-family:var(--fontd);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;text-align:center;margin-bottom:40px;color:var(--white)}
+.faq-item{border:1px solid rgba(42,31,0,.7);border-radius:12px;margin-bottom:14px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:rgba(245,200,66,.3)}
+.faq-q{width:100%;background:var(--surface);border:none;color:var(--white);font-family:var(--font);font-size:.92rem;font-weight:700;padding:20px 24px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .2s}
+.faq-q:hover{background:var(--surface2)}
+.faq-q .faq-icon{font-size:1.1rem;color:var(--gold);flex-shrink:0;transition:transform .25s;line-height:1}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--muted);font-size:.88rem;line-height:1.75;background:var(--surface)}
+.faq-item.open .faq-a{display:block}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(42,31,0,.5);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer p{color:var(--muted2);font-size:.8rem}
+footer p a{color:var(--muted2);text-decoration:none}
+footer p a:hover{color:var(--gold)}
+.footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
+.footer-links a:hover{color:var(--gold)}
+@media(max-width:600px){
+  footer{flex-direction:column;text-align:center;padding:24px 20px}
+  .footer-links a{margin:0 8px}
+  .cmp-hero{padding:52px 20px 36px}
+  .table-section,.why-section,.faq-section{padding-left:16px;padding-right:16px}
+  .why-card{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="Quantum Edge Trading" width="70" height="70">
+      <div class="nav-logo-text">
+        <div class="brand">Quantum Edge</div>
+        <div class="sub">Trading</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#performance">Performance</a>
+      <a href="index.html#simulator">Simulator</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="setup-guide.html">Setup Guide</a>
+      <a href="blog/">Blog</a>
+      <a href="try-titan.html">Try Free</a>
+      <a href="index.html#pricing" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ MOBILE NAV ═══ -->
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="Logo.png" alt="Quantum Edge" width="46" height="46">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="index.html#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="index.html#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="index.html#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="index.html#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <a href="index.html#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="cmp-hero">
+  <div class="cmp-badge">&#9654; Comparison &mdash; Unbiased &amp; Data-Driven</div>
+  <h1>How Does TITAN Compare?</h1>
+  <p>We compared the four most-searched forex trading bots across 10 criteria. Judge for yourself.</p>
+</div>
+
+<!-- ═══ COMPARISON TABLE ═══ -->
+<div class="table-section">
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="padding-left:24px">Criteria</th>
+          <th class="th-titan"><span>AutoTrader (MT5 EA)</span></th>
+          <th class="th-comp">ForexFury</th>
+          <th class="th-comp">Coinrule</th>
+          <th class="th-comp">XAUBot</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td style="padding-left:24px">&#128176; Pricing model</td>
+          <td class="td-titan"><span class="yes">One-time $250–$549</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">No subscription, ever</span></td>
+          <td class="td-comp"><span style="color:var(--muted)">From $97 one-time (basic)</span></td>
+          <td class="td-comp"><span style="color:var(--amber)">Subscription from $29/mo</span></td>
+          <td class="td-comp"><span style="color:var(--muted)">From $299 one-time</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128187; MT5 support</td>
+          <td class="td-titan"><span class="yes">&#10003; Full MT5 native</span></td>
+          <td class="td-comp"><span class="no">&#10007; MT4 only</span></td>
+          <td class="td-comp"><span class="no">&#10007; Web / exchange only</span></td>
+          <td class="td-comp"><span class="yes">&#10003; MT5 available</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#127942; Prop firm ready</td>
+          <td class="td-titan"><span class="yes">&#10003; FTMO / FundedNext / Infinity</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">4% DD hard stop built-in</span></td>
+          <td class="td-comp"><span class="no">&#10007; Not built for prop</span></td>
+          <td class="td-comp"><span class="no">&#10007; No MT5 / prop integration</span></td>
+          <td class="td-comp"><span class="partial">&#126; Limited prop support</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128202; Verified backtest</td>
+          <td class="td-titan"><span class="yes">&#10003; 17-month 1-min OHLC</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">195 trades, 5 pairs, 100% quality</span></td>
+          <td class="td-comp"><span class="partial">&#126; Some strategy reports</span></td>
+          <td class="td-comp"><span class="no">&#10007; No verifiable backtest</span></td>
+          <td class="td-comp"><span class="partial">&#126; Limited data shown</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128200; Win rate published</td>
+          <td class="td-titan"><span class="yes">&#10003; 73–79% across 5 pairs</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">Per-pair breakdown available</span></td>
+          <td class="td-comp"><span class="partial">&#126; Partial results</span></td>
+          <td class="td-comp"><span class="no">&#10007; Not published</span></td>
+          <td class="td-comp"><span class="partial">&#126; Some live stats</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#9989; Free trial</td>
+          <td class="td-titan"><span class="yes">&#10003; Full CADCHF backtest free</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">Run in MT5 — zero sign-up</span></td>
+          <td class="td-comp"><span class="no">&#10007; No trial</span></td>
+          <td class="td-comp"><span class="no">&#10007; No EA trial</span></td>
+          <td class="td-comp"><span class="no">&#10007; No free trial</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128737; Max drawdown</td>
+          <td class="td-titan"><span class="yes">&#10003; Under 2% (17 months)</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">CADCHF 1.39% · USDCHF 2.07%</span></td>
+          <td class="td-comp"><span class="partial">&#126; Not disclosed clearly</span></td>
+          <td class="td-comp"><span style="color:var(--muted2);font-size:.82rem">N/A — not a forex EA</span></td>
+          <td class="td-comp"><span class="partial">&#126; Not disclosed</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128279; Pairs traded</td>
+          <td class="td-titan" style="font-size:.8rem;line-height:1.6"><span style="color:var(--gold);font-weight:700">USDCHF · GBPUSD · AUDUSD<br>AUDCHF · CADCHF</span><br><span style="color:var(--muted2);font-size:.72rem">(5 CHF &amp; cable pairs, H1)</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">Multiple (undisclosed)</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">Any exchange pair</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">XAUUSD focused</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#9654; Lifetime updates</td>
+          <td class="td-titan"><span class="yes">&#10003; Free forever</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">No upgrade fees, ever</span></td>
+          <td class="td-comp"><span class="partial">&#126; Upgrade fees for new strategies</span></td>
+          <td class="td-comp"><span class="partial">&#126; Subscription required</span></td>
+          <td class="td-comp"><span class="partial">&#126; Unclear</span></td>
+        </tr>
+
+        <tr>
+          <td style="padding-left:24px">&#128172; Support</td>
+          <td class="td-titan"><span class="yes">&#10003; Telegram bot + human admin</span><br><span style="font-size:.75rem;color:var(--muted2);font-weight:400">Instant answers, 24/5</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">Email support</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">Community forum</span></td>
+          <td class="td-comp"><span style="color:var(--muted);font-size:.84rem">Email support</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Legend -->
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:18px;padding:0 4px">
+    <span style="font-size:.75rem;color:var(--muted2)">Legend:</span>
+    <span style="font-size:.78rem"><span class="yes">&#10003;</span> <span style="color:var(--muted2)">= Confirmed</span></span>
+    <span style="font-size:.78rem"><span class="no">&#10007;</span> <span style="color:var(--muted2)">= Not available</span></span>
+    <span style="font-size:.78rem"><span class="partial">&#126;</span> <span style="color:var(--muted2)">= Partial / unclear</span></span>
+    <span style="font-size:.75rem;color:var(--muted2);margin-left:auto">Data current as of June 2026. Based on publicly available information from each vendor's website.</span>
+  </div>
+</div>
+
+<!-- ═══ WHY TITAN WINS ═══ -->
+<div class="why-section">
+  <h2>Why TITAN Wins for Prop Firm Traders</h2>
+  <p class="why-sub">Three things no other EA on this list can match.</p>
+  <div class="why-grid">
+
+    <div class="why-card">
+      <span class="why-icon">&#127942;</span>
+      <h3>Built for FTMO &amp; FundedNext</h3>
+      <p>TITAN PROP version includes a hard 4% daily drawdown stop, a news blackout filter (FOMC + NFP), and exact input settings tested against FTMO and FundedNext rules. No other EA on this list was engineered specifically for prop firm compliance.</p>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">&#128202;</span>
+      <h3>A Backtest You Can Run Yourself</h3>
+      <p>Download the free TITAN DEMO EA, open MT5 Strategy Tester, and run CADCHF H1 with 1-minute OHLC data. You see the same 73–79% win rate and sub-2% drawdown we publish — in under 2 minutes, on your own machine.</p>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">&#128176;</span>
+      <h3>One Price, Forever</h3>
+      <p>$250, $399, or $549 — once. No monthly subscription creeping up on you. No features locked behind a tier you don't have. No renewal email threatening to cut off your EA. Lifetime updates are included at every tier.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FREE TRIAL CTA ═══ -->
+<div class="trial-cta">
+  <h2>See TITAN's Backtest Before You Decide</h2>
+  <p>No credit card. No signup. Download the free DEMO EA and run it in MT5 Strategy Tester in under 2 minutes.</p>
+  <a href="try-titan.html" class="btn-green">Run a Free Backtest Now &rarr;</a>
+  <div class="trial-note">Works on any MT5 demo account &middot; CADCHF H1 &middot; Takes 2 minutes</div>
+</div>
+
+<!-- ═══ FAQ ═══ -->
+<div class="faq-section">
+  <h2>Common Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Does TITAN work on MT4?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">No — TITAN is MT5 only. MT4 lacks the backtesting accuracy and native tick data required to validate a strategy properly. The 17-month backtest that underpins TITAN's published results was only possible because of MT5's 1-minute OHLC model at 100% quality. An MT4 port would compromise that foundation.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Is ForexFury good for prop firms?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">ForexFury was designed for retail MT4 trading, not prop firm drawdown rules. It does not include native daily drawdown stops aligned to FTMO or FundedNext limits, and it runs on MT4 which most modern prop firms discourage or restrict in favour of MT5. If you are pursuing FTMO or FundedNext funding, you need an EA specifically built to those rule sets — which is exactly what TITAN PROP does.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Can Coinrule trade forex?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Coinrule is a crypto and stock exchange automation platform — it connects to Binance, Coinbase, and similar exchanges. It has no MT5 integration, no forex broker connectivity, and no concept of prop firm rules. If you are looking for a forex EA to run on MetaTrader 5, Coinrule is simply not in the same category.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Is XAUBot only for gold?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Yes — XAUBot focuses on XAUUSD (gold). TITAN focuses on CHF-cross and cable pairs (USDCHF, GBPUSD, AUDUSD, AUDCHF, CADCHF) where the institutional pullback patterns and ADX trend strength signal perform most consistently. We tested gold extensively during development and closed that line after two strategy variants failed to meet our drawdown and win rate targets. We only sell what we can prove.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Which EA has the lowest drawdown?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Of the four EAs compared on this page, TITAN is the only one with a publicly verified, independently reproducible maximum drawdown figure: under 2% over 17 months on CADCHF H1 (1.39% max DD). ForexFury, Coinrule, and XAUBot do not publish a clearly verified drawdown figure based on a full multi-year backtest with disclosed methodology and data quality. You can verify TITAN's figure yourself using the free DEMO EA in MT5 Strategy Tester.</div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>&copy; 2026 Quantum Edge Trading &mdash; <a href="https://getquantumedgeai.com">getquantumedgeai.com</a></p>
+  <div class="footer-links">
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="risk-disclaimer.html">Risk Disclaimer</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+<!-- ═══ SCROLL TO TOP ═══ -->
+<button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:28px;right:28px;z-index:800;width:44px;height:44px;border-radius:50%;background:#F5C842;color:#000;border:none;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,200,66,.35)">&#8679;</button>
+
+<script>
+// Scroll-to-top visibility
+var _s=document.getElementById('stt');
+window.addEventListener('scroll',function(){_s.style.display=window.scrollY>400?'block':'none'});
+
+// Mobile nav
+function toggleNav(){
+  var nav=document.getElementById('mobileNav');
+  var burger=document.querySelector('.nav-burger');
+  nav.classList.toggle('open');
+  burger.classList.toggle('active');
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('active');
+}
+
+// FAQ accordion
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open')});
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

@@ -252,6 +252,96 @@ footer a:hover{color:var(--gold)}
     <a href="index.html#support" class="btn-gold">Questions? Access Telegram Support &rarr;</a>
   </div>
 
+  <!-- PROP FIRM SECTION -->
+  <div style="margin-top:48px">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:18px">&#127942; Prop Firm Configuration</div>
+      <h2 style="font-family:var(--fontd);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--white);margin-bottom:10px">Running TITAN on Prop Firms</h2>
+      <p style="color:var(--muted);font-size:.92rem;max-width:580px;margin:0 auto">TITAN Pro is engineered for prop firm challenges. Below are exact settings per firm — copy them precisely. Do not change any value not listed here.</p>
+    </div>
+
+    <!-- FTMO -->
+    <div class="step-block" style="margin-bottom:20px;border-color:rgba(245,200,66,.25)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
+        <div style="background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:8px;padding:8px 16px;font-weight:800;font-size:.9rem;color:var(--gold)">FTMO</div>
+        <div style="font-size:1.05rem;font-weight:800;color:var(--white)">FTMO Challenge &amp; Verification</div>
+        <div style="background:rgba(45,184,122,.08);border:1px solid rgba(45,184,122,.25);border-radius:6px;padding:4px 12px;font-size:.75rem;font-weight:700;color:var(--green)">Primary Target</div>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:14px">FTMO runs a <strong style="color:var(--white)">10% max drawdown</strong> (balance-based, static floor) and <strong style="color:var(--white)">5% daily drawdown</strong> rule. Profit target: 10% Phase 1, 5% Phase 2. TITAN's 4% hard stop gives you a full 6% cushion below the daily limit.</p>
+      <table class="input-table">
+        <thead><tr><th>Input Parameter</th><th>FTMO Setting</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>RiskPercent</td><td><em>0.5%</em></td><td>At 0.5% risk, worst 5-loss streak = ~2.5% DD. Well inside FTMO's 5% daily limit.</td></tr>
+          <tr><td>MaxDailyLossPct</td><td><em>3.5</em></td><td>Conservative internal cap — EA stops trading before FTMO's 5% wall.</td></tr>
+          <tr><td>MaxOverallDDPct</td><td><em>6.0</em></td><td>Hard stop at 6% preserves 4% buffer inside FTMO's 10% overall limit.</td></tr>
+          <tr><td>NewsFilterMinutes</td><td><em>60</em></td><td>Block entries 60 min around FOMC/NFP. FTMO penalises news-event losses.</td></tr>
+          <tr><td>UseKillZone</td><td><em>true</em></td><td>London + NY open only. Avoids illiquid overnight sessions.</td></tr>
+          <tr><td>MaxSpreadPoints</td><td><em>20</em></td><td>FTMO brokers have tight spreads. 20 pts rejects anomalous widening.</td></tr>
+          <tr><td>UseFridayClose</td><td><em>true</em></td><td>FridayCloseHour = 16. No weekend exposure during challenge.</td></tr>
+          <tr><td>MaxConsecLosses</td><td><em>3</em></td><td>Tighten to 3 on challenge (default 5). Prevents revenge-trading sequences.</td></tr>
+        </tbody>
+      </table>
+      <div class="step-note" style="margin-top:16px"><strong>FTMO tip:</strong> Run all 5 TITAN PROP EAs simultaneously. Portfolio DD is typically 1.39% — far lower than running single-pair. Diversification is your best DD protection.</div>
+    </div>
+
+    <!-- FundedNext -->
+    <div class="step-block" style="margin-bottom:20px;border-color:rgba(245,200,66,.2)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
+        <div style="background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:8px;padding:8px 16px;font-weight:800;font-size:.9rem;color:var(--gold)">FundedNext</div>
+        <div style="font-size:1.05rem;font-weight:800;color:var(--white)">FundedNext Stellar &amp; Express</div>
+        <div style="background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.2);border-radius:6px;padding:4px 12px;font-size:.75rem;font-weight:700;color:var(--gold)">Primary Target</div>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:14px">FundedNext uses a <strong style="color:var(--white)">trailing drawdown</strong> — the floor rises as your equity rises. This is the most dangerous DD type for EAs. TITAN's conservative risk per trade and partial close at 2R directly counteract trailing floor risk.</p>
+      <div class="step-warn" style="margin-bottom:14px"><strong>Critical:</strong> FundedNext's trailing floor moves based on your highest equity, not account balance. If you run a 2R profit then give it back, your floor has already risen. TITAN's partial close at 2R locks in gains before the floor can trap you.</div>
+      <table class="input-table">
+        <thead><tr><th>Input Parameter</th><th>FundedNext Setting</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>RiskPercent</td><td><em>0.5%</em></td><td>Conservative. FundedNext's trailing floor closes fast with aggressive risk.</td></tr>
+          <tr><td>MaxDailyLossPct</td><td><em>4.0</em></td><td>FundedNext daily limit is 5%. EA self-stops at 4% to protect the account.</td></tr>
+          <tr><td>MaxOverallDDPct</td><td><em>7.0</em></td><td>Hard internal stop at 7% — 3% inside FundedNext's 10% trailing limit.</td></tr>
+          <tr><td>PartialClosePct</td><td><em>50</em></td><td>Close 50% at 2R. Realised profit raises balance, trailing floor moves less.</td></tr>
+          <tr><td>NewsFilterMinutes</td><td><em>60</em></td><td>Same as FTMO — 60 min blackout around major events.</td></tr>
+          <tr><td>MaxConsecLosses</td><td><em>3</em></td><td>Stop at 3 consecutive losses during challenge phases.</td></tr>
+        </tbody>
+      </table>
+      <div class="step-note" style="margin-top:16px"><strong>FundedNext monitoring:</strong> Check your trailing floor daily. If your equity high was $11,000 (started at $10,000), your floor is now $10,000 — you have zero room. Take a day off. TITAN will not trade if MaxOverallDDPct is hit, but this is your manual safety check.</div>
+    </div>
+
+    <!-- Infinity Forex Funds -->
+    <div class="step-block" style="margin-bottom:24px;border-color:rgba(245,200,66,.18)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
+        <div style="background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:8px;padding:8px 16px;font-weight:800;font-size:.9rem;color:var(--gold)">Infinity Forex Funds</div>
+        <div style="font-size:1.05rem;font-weight:800;color:var(--white)">Infinity Classic &amp; Rapid</div>
+        <div style="background:rgba(136,136,136,.12);border:1px solid rgba(136,136,136,.25);border-radius:6px;padding:4px 12px;font-size:.75rem;font-weight:700;color:var(--muted2)">Secondary Target</div>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:14px">Infinity uses a <strong style="color:var(--white)">static drawdown</strong> (balance-based, like FTMO) at <strong style="color:var(--white)">8% max DD</strong> and <strong style="color:var(--white)">4% daily DD</strong>. Simpler rules than FundedNext — use these settings:</p>
+      <table class="input-table">
+        <thead><tr><th>Input Parameter</th><th>Infinity Setting</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>RiskPercent</td><td><em>0.75%</em></td><td>Slightly higher than FTMO (static floor = safer). Still conservative on challenge.</td></tr>
+          <tr><td>MaxDailyLossPct</td><td><em>3.0</em></td><td>Infinity's 4% daily limit. EA stops at 3% with full 1% safety margin.</td></tr>
+          <tr><td>MaxOverallDDPct</td><td><em>6.0</em></td><td>Infinity max is 8%. TITAN stops at 6% — 2% safety margin.</td></tr>
+          <tr><td>NewsFilterMinutes</td><td><em>30</em></td><td>30 min (Infinity is less strict on news than FTMO but caution still applies).</td></tr>
+          <tr><td>MaxConsecLosses</td><td><em>4</em></td><td>Slightly relaxed — Infinity rules give more runway than FTMO.</td></tr>
+        </tbody>
+      </table>
+      <div class="step-note" style="margin-top:16px"><strong>Infinity tip:</strong> Infinity allows scaling — once funded, you can apply for higher allocation. TITAN's consistent sub-2% DD makes this realistic within 3–6 months of live trading.</div>
+    </div>
+
+    <!-- Daily DD monitoring -->
+    <div style="background:rgba(45,184,122,.05);border:1px solid rgba(45,184,122,.2);border-radius:14px;padding:28px 32px;margin-bottom:28px">
+      <div style="font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px">&#9888; Daily DD Monitoring — Non-Negotiable</div>
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:12px">All three firms track DD in real time. TITAN has internal stops but you are the last line of defence. Check your prop firm dashboard every morning before London open:</p>
+      <ul style="color:var(--muted);font-size:.86rem;line-height:2;padding-left:18px">
+        <li><strong style="color:var(--white)">Current balance vs starting balance</strong> — ensure you are inside your overall DD limit</li>
+        <li><strong style="color:var(--white)">Today's low equity vs today's opening balance</strong> — ensure you are inside daily DD limit</li>
+        <li><strong style="color:var(--white)">Journal tab in MT5</strong> — confirm all 5 TITAN EAs logged their initialization messages today</li>
+        <li><strong style="color:var(--white)">VPS uptime</strong> — check your VPS is online before market opens</li>
+      </ul>
+      <p style="color:var(--muted);font-size:.86rem;margin-top:12px">If you are within 1% of any DD limit — pause all EAs manually. One unexpected spike can end a challenge in minutes. Capital preservation always beats profit chasing.</p>
+    </div>
+  </div>
+
   <div style="background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.18);border-radius:12px;padding:28px 32px;margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
     <div>
       <div style="font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">PROP FIRM TRADERS</div>
