@@ -38,7 +38,21 @@ nav{position:sticky;top:0;z-index:100;height:72px;background:rgba(13,10,0,.96);b
 .nav-links a:hover{color:var(--gold)}
 .nav-links a.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:9px 20px;border-radius:8px;font-weight:800}
 .nav-links a.nav-cta:hover{color:#000;box-shadow:0 4px 18px rgba(245,200,66,.35)}
-@media(max-width:768px){.nav-links .nav-hide{display:none}}
+@media(max-width:768px){.nav-links{display:none!important}}
+.nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;display:block;transition:transform .3s,opacity .2s}
+.nav-burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-burger.active span:nth-child(2){opacity:0}
+.nav-burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px}
+#mobileNav a:active{color:var(--gold)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(max-width:768px){.nav-burger{display:flex!important}}
 .pg-hero{padding:64px 32px 40px;max-width:var(--max);margin:0 auto;text-align:center}
 .pg-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:24px}
 .pg-hero h1{font-family:var(--fontd);font-size:clamp(2rem,4vw,2.8rem);font-weight:900;margin-bottom:16px;color:var(--white)}
@@ -92,8 +106,28 @@ footer a:hover{color:var(--gold)}
       <a href="try-titan.html">Try Free</a>
       <a href="/#pricing" class="nav-cta">Get Started &rarr;</a>
     </div>
+    <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="/#support" onclick="closeMobileNav()">Support</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
 
 <div class="pg-hero">
   <div class="pg-badge">&#128203; Legal Document</div>
@@ -268,5 +302,19 @@ footer a:hover{color:var(--gold)}
   <p>&copy; 2026 <span>Quantum Edge Trading</span> &middot; All Rights Reserved &middot; <a href="mailto:hello@getquantumedgeai.com">hello@getquantumedgeai.com</a> &middot; <a href="terms.html">Terms of Service</a> &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="risk-disclaimer.html">Risk Disclaimer</a></p>
 </footer>
 
+<script>
+function toggleNav(){
+  var mn=document.getElementById('mobileNav');
+  var nb=document.querySelector('.nav-burger');
+  var open=mn.classList.toggle('open');
+  nb.classList.toggle('active',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('active');
+  document.body.style.overflow='';
+}
+</script>
 </body>
 </html>

@@ -1106,10 +1106,14 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
   <a href="#performance" onclick="closeMobileNav()">Performance</a>
   <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
   <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
   <a href="#simulator" onclick="closeMobileNav()">Simulator</a>
   <a href="#founders" onclick="closeMobileNav()">Founders</a>
   <a href="#support" onclick="closeMobileNav()">Support</a>
-  <a href="setup-guide.html">Setup Guide</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="try-titan.html" onclick="closeMobileNav()">Try Free</a>
   <a href="#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
@@ -1815,8 +1819,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 <!-- ══════════════════ COUNTDOWN ══════════════════ -->
 <div id="pricingCountdown" style="background:linear-gradient(90deg,rgba(245,200,66,.08),rgba(232,168,0,.12),rgba(245,200,66,.08));border-top:1px solid rgba(245,200,66,.2);border-bottom:1px solid rgba(245,200,66,.2);padding:14px 20px;text-align:center">
   <span style="font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(245,200,66,.7);margin-right:10px">Current Pricing Closes In</span>
-  <span id="ctDisplay" style="font-family:'Courier New',monospace;font-size:1.35rem;font-weight:900;color:#F5C842;letter-spacing:4px;text-shadow:0 0 18px rgba(245,200,66,.45)">00:00:00</span>
-  <span style="font-size:.72rem;font-weight:600;color:rgba(245,200,66,.55);margin-left:12px">— Price increases after</span>
+  <span id="ctDisplay" style="font-family:'Courier New',monospace;font-size:1.35rem;font-weight:900;color:#F5C842;letter-spacing:4px;text-shadow:0 0 18px rgba(245,200,66,.45)">00d 00:00:00</span>
+  <span style="font-size:.72rem;font-weight:600;color:rgba(245,200,66,.55);margin-left:12px">— Pricing resets next month</span>
 </div>
 
 <!-- ══════════════════ PRICING ══════════════════ -->
@@ -2871,29 +2875,23 @@ runCalc();
   obs.observe(sec);
 })();
 
-// Countdown timer — 48-hour cycle, persists via localStorage
+// Countdown timer — monthly cycle, resets at midnight on 1st of each new month
 (function(){
-  var KEY='titan_ct_deadline';
   var el=document.getElementById('ctDisplay');
   if(!el) return;
-  var deadline=parseInt(localStorage.getItem(KEY)||'0',10);
-  var now=Date.now();
-  if(!deadline||deadline<=now){
-    deadline=now+48*3600*1000;
-    localStorage.setItem(KEY,deadline);
+  function monthEnd(){
+    var n=new Date();
+    return new Date(n.getFullYear(),n.getMonth()+1,1,0,0,0,0).getTime();
   }
   function pad(n){return n<10?'0'+n:n;}
   function tick(){
-    var rem=deadline-Date.now();
-    if(rem<=0){
-      deadline=Date.now()+48*3600*1000;
-      localStorage.setItem(KEY,deadline);
-      rem=48*3600*1000;
-    }
-    var h=Math.floor(rem/3600000);
+    var rem=monthEnd()-Date.now();
+    if(rem<0) rem=0;
+    var d=Math.floor(rem/86400000);
+    var h=Math.floor((rem%86400000)/3600000);
     var m=Math.floor((rem%3600000)/60000);
     var s=Math.floor((rem%60000)/1000);
-    el.textContent=pad(h)+':'+pad(m)+':'+pad(s);
+    el.textContent=pad(d)+'d '+pad(h)+':'+pad(m)+':'+pad(s);
   }
   tick();
   setInterval(tick,1000);

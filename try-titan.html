@@ -172,47 +172,52 @@ footer a:hover{color:var(--gold)}
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="Logo.png" alt="Quantum Edge Trading">
     <span class="nav-logo-text">Quantum Edge</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#performance">Performance</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="/#performance">Performance</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#faq">FAQ</a></li>
     <li>
       <div class="nav-more" id="navMore">
         <button class="nav-more-btn" onclick="toggleMoreMenu(event)">More <span class="nav-arr">&#9660;</span></button>
         <div class="nav-dropdown" id="navDrop">
-          <a href="index.html#titan-in-action">TITAN In Action</a>
-          <a href="index.html#simulator">Simulator</a>
-          <a href="index.html#founders">Founders</a>
-          <a href="index.html#support">Support</a>
+          <a href="/#titan-in-action">TITAN In Action</a>
+          <a href="/#simulator">Simulator</a>
+          <a href="/#founders">Founders</a>
+          <a href="/#support">Support</a>
           <a href="setup-guide.html">Setup Guide</a>
           <a href="blog/" class="nav-blog-btn">&#128196; Blog</a>
         </div>
       </div>
     </li>
-    <li><a href="index.html#pricing" class="nav-cta">Get Started &rarr;</a></li>
+    <li><a href="/#pricing" class="nav-cta">Get Started &rarr;</a></li>
   </ul>
-  <button class="nav-burger" id="burger" onclick="openMobile()" aria-label="Menu">
+  <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile Nav -->
 <div id="mobileNav">
-  <button class="mob-close" onclick="closeMobile()">&#10005;</button>
-  <a href="index.html#performance" onclick="closeMobile()">Performance</a>
-  <a href="index.html#simulator" onclick="closeMobile()">Simulator</a>
-  <a href="index.html#founders" onclick="closeMobile()">Founders</a>
-  <a href="index.html#pricing" onclick="closeMobile()">Pricing</a>
-  <a href="index.html#faq" onclick="closeMobile()">FAQ</a>
-  <a href="index.html#support" onclick="closeMobile()">Support</a>
-  <a href="setup-guide.html" onclick="closeMobile()">Setup Guide</a>
-  <a href="try-titan.html" style="color:var(--gold)" onclick="closeMobile()">Try TITAN Free</a>
-  <a href="blog/" onclick="closeMobile()">Blog</a>
-  <a href="index.html#pricing" class="mob-cta" onclick="closeMobile()">Get Started &rarr;</a>
+  <div class="mob-head">
+    <img src="Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="/#support" onclick="closeMobileNav()">Support</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="try-titan.html" class="nav-active" onclick="closeMobileNav()">Try Free</a>
+  <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
 <!-- HERO -->
@@ -356,7 +361,7 @@ footer a:hover{color:var(--gold)}
   <div class="container">
     <h2>Results Match? Get All 5 Pairs.</h2>
     <p>Full TITAN covers USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF &mdash; live trading on your own broker account.</p>
-    <a href="index.html#pricing" class="btn-gold">Get Full TITAN &rarr;</a>
+    <a href="/#pricing" class="btn-gold">Get Full TITAN &rarr;</a>
     <a href="setup-guide.html" class="btn-outline">Setup Guide</a>
   </div>
 </section>
@@ -367,7 +372,7 @@ footer a:hover{color:var(--gold)}
   <a href="terms.html">Terms</a>
   <a href="privacy.html">Privacy</a>
   <a href="risk-disclaimer.html">Risk Disclaimer</a>
-  <a href="index.html">Home</a>
+  <a href="/">Home</a>
   <p style="margin-top:14px;max-width:600px;margin-left:auto;margin-right:auto;color:#555;font-size:.77rem">Trading forex involves substantial risk of loss. Past backtest performance does not guarantee future results. TITAN DEMO is provided for evaluation purposes only and runs in Strategy Tester only.</p>
 </footer>
 
@@ -378,8 +383,19 @@ footer a:hover{color:var(--gold)}
 function toggleMoreMenu(e){e.stopPropagation();document.getElementById('navMore').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))m.classList.remove('open');});
 document.querySelectorAll('#navDrop a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navMore').classList.remove('open');});});
-function openMobile(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
-function closeMobile(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+function toggleNav(){
+  var mn=document.getElementById('mobileNav');
+  var nb=document.querySelector('.nav-burger');
+  var open=mn.classList.toggle('open');
+  if(nb)nb.classList.toggle('active',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  var nb=document.querySelector('.nav-burger');
+  if(nb)nb.classList.remove('active');
+  document.body.style.overflow='';
+}
 var st=document.getElementById('scrollTop');
 window.addEventListener('scroll',function(){st.classList.toggle('show',window.scrollY>400);});
 </script>
