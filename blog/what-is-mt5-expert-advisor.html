@@ -153,6 +153,19 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
   .blog-footer{padding:24px 20px;flex-direction:column;text-align:center}.blog-footer .footer-links a{margin:0 8px}
   .stat-row{grid-template-columns:1fr 1fr}.cta-block{padding:28px 20px}.cta-btn-outline{margin:12px 0 0;display:block}
 }
+/* MOBILE NAV */
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px}
+#mobileNav{display:none;position:fixed;inset:0;background:rgba(13,10,0,.98);z-index:9000;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:100px;overflow-y:scroll;-webkit-overflow-scrolling:touch}
+#mobileNav.open{display:flex}
+.mob-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 24px;position:absolute;top:18px}
+.mob-head img{height:34px;width:34px;object-fit:contain}
+.mob-close{background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;z-index:9001;padding:8px}
+#mobileNav a{display:block;color:var(--white);font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
+#mobileNav a:hover{color:var(--gold)}
+.mob-cta{background:var(--gold);color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
+@media(min-width:769px){.nav-burger{display:none!important}}
+@media(max-width:768px){.nav-burger{display:flex}.blog-nav .nav-links{display:none}}
 </style>
 </head>
 <body>
@@ -168,6 +181,25 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
     <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN →</a>
   </div>
 </nav>
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="../Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="/#support" onclick="closeMobileNav()">Support</a>
+  <a href="../setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="../compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="../blog/" class="nav-active" onclick="closeMobileNav()">Blog</a>
+  <a href="../try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
+
 
 <div class="blog-hero">
   <div class="breadcrumb"><a href="https://getquantumedgeai.com">Home</a> &rsaquo; <a href="https://getquantumedgeai.com/blog">Blog</a> &rsaquo; What Is an MT5 Expert Advisor?</div>

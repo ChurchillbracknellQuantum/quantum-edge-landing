@@ -44,18 +44,51 @@ footer p{color:var(--muted2);font-size:.8rem}
 footer .fl a{color:var(--muted2);font-size:.8rem;margin-left:16px}
 footer .fl a:hover{color:var(--gold)}
 @media(max-width:640px){nav{padding:0 20px}.hero{padding:48px 20px 40px}.grid{padding:40px 16px 60px;grid-template-columns:1fr}footer{padding:20px;flex-direction:column;text-align:center}.fl a{margin:0 8px}}
+/* MOBILE NAV */
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--muted2);border-radius:2px}
+#mobileNav{display:none;position:fixed;inset:0;background:rgba(13,10,0,.98);z-index:9000;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:100px;overflow-y:scroll;-webkit-overflow-scrolling:touch}
+#mobileNav.open{display:flex}
+.mob-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 24px;position:absolute;top:18px}
+.mob-head img{height:34px;width:34px;object-fit:contain}
+.mob-close{background:none;border:none;color:var(--muted2);font-size:1.6rem;cursor:pointer;z-index:9001;padding:8px}
+#mobileNav a{display:block;color:#fff;font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
+#mobileNav a:hover{color:#F5C842}
+.mob-cta{background:#F5C842;color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
+.nav-active{color:#F5C842!important}
+@media(min-width:769px){.nav-burger{display:none!important}}
+@media(max-width:768px){.nav-burger{display:flex}nav .nl{display:none}}
 </style>
 </head>
 <body>
 <nav>
-  <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge">Quantum Edge</a>
+  <a href="/" class="brand"><img src="../Logo.png" alt="Quantum Edge">Quantum Edge</a>
   <div class="nl">
-    <a href="https://getquantumedgeai.com/#performance">Results</a>
-    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
-    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
-    <a href="https://getquantumedgeai.com/#pricing" class="cta">Get TITAN →</a>
+    <a href="/#performance">Results</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="../setup-guide.html">Setup</a>
+    <a href="/#pricing" class="cta">Get TITAN →</a>
   </div>
+  <div class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
+<div id="mobileNav">
+  <div class="mob-head">
+    <img src="../Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="/#support" onclick="closeMobileNav()">Support</a>
+  <a href="../setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="../compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="../blog/" class="nav-active" onclick="closeMobileNav()">Blog</a>
+  <a href="../try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
+</div>
 
 <div class="hero">
   <div class="hero-label">&#128196; The Quantum Edge Blog</div>
@@ -283,5 +316,9 @@ footer .fl a:hover{color:var(--gold)}
     <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
   </div>
 </footer>
+<script>
+function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':'';}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+</script>
 </body>
 </html>

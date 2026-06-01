@@ -109,6 +109,8 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 #mobileNav.open{display:flex}
 #mobileNav a{display:block;color:var(--white);font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
 #mobileNav a:hover{color:var(--gold)}
+.mob-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 24px;position:absolute;top:18px}
+.mob-head img{height:34px;width:34px;object-fit:contain}
 .mob-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;z-index:9001}
 .mob-cta{background:var(--gold);color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
 
@@ -183,19 +185,19 @@ footer a:hover{color:var(--gold)}
 <body>
 
 <nav class="nav">
-  <a href="../index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="../Logo.png" alt="Quantum Edge Trading" loading="lazy" width="34" height="34">
     <span class="nav-logo-text">Quantum Edge</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../index.html#performance">Performance</a></li>
-    <li><a href="../index.html#pricing">Pricing</a></li>
-    <li><a href="../index.html#faq">FAQ</a></li>
+    <li><a href="/#performance">Performance</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#faq">FAQ</a></li>
     <li>
       <div class="nav-more" id="navMore">
         <button class="nav-more-btn" onclick="toggleMoreMenu(event)">More <span class="nav-arr">&#9660;</span></button>
         <div class="nav-dropdown" id="navDrop">
-          <a href="../index.html#simulator">Simulator</a>
+          <a href="/#simulator">Simulator</a>
           <a href="../blog/">Blog</a>
           <a href="../try-titan.html" style="color:var(--green);font-weight:800">Try TITAN Free</a>
           <a href="../setup-guide.html">Setup Guide</a>
@@ -203,23 +205,30 @@ footer a:hover{color:var(--gold)}
         </div>
       </div>
     </li>
-    <li><a href="../index.html#pricing" class="nav-cta">Get Started &rarr;</a></li>
+    <li><a href="/#pricing" class="nav-cta">Get Started &rarr;</a></li>
   </ul>
-  <button class="nav-burger" id="burger" onclick="openMobile()" aria-label="Menu">
+  <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div id="mobileNav">
-  <button class="mob-close" onclick="closeMobile()">&#10005;</button>
-  <a href="../index.html#performance" onclick="closeMobile()">Performance</a>
-  <a href="../index.html#simulator" onclick="closeMobile()">Simulator</a>
-  <a href="../index.html#pricing" onclick="closeMobile()">Pricing</a>
-  <a href="../index.html#faq" onclick="closeMobile()">FAQ</a>
-  <a href="../setup-guide.html" onclick="closeMobile()">Setup Guide</a>
-  <a href="../try-titan.html" style="color:var(--gold)" onclick="closeMobile()">Try TITAN Free</a>
-  <a href="../blog/" onclick="closeMobile()">Blog</a>
-  <a href="../index.html#pricing" class="mob-cta" onclick="closeMobile()">Get Started &rarr;</a>
+  <div class="mob-head">
+    <img src="../Logo.png" alt="Quantum Edge">
+    <button class="mob-close" onclick="toggleNav()">&times;</button>
+  </div>
+  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
+  <a href="/#support" onclick="closeMobileNav()">Support</a>
+  <a href="../setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
+  <a href="../compare.html" onclick="closeMobileNav()">Compare EAs</a>
+  <a href="../blog/" class="nav-active" onclick="closeMobileNav()">Blog</a>
+  <a href="../try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
 <div class="blog-wrap">
@@ -411,7 +420,7 @@ MagicNumber      = 50205</code>
     <div class="blog-cta">
       <h3>Ready to Run TITAN on Your Prop Firm Challenge?</h3>
       <p>TITAN Pro includes exact prop firm compliance for FTMO, FundedNext, and Infinity. 4% daily hard stop and news blackout built in. One-time payment, free updates forever.</p>
-      <a href="../index.html#pricing" class="btn-gold">Get TITAN Pro &rarr;</a>
+      <a href="/#pricing" class="btn-gold">Get TITAN Pro &rarr;</a>
       <a href="../try-titan.html" class="btn-outline">Try Free First</a>
     </div>
 
@@ -423,7 +432,7 @@ MagicNumber      = 50205</code>
   <a href="../terms.html">Terms</a>
   <a href="../privacy.html">Privacy</a>
   <a href="../risk-disclaimer.html">Risk Disclaimer</a>
-  <a href="../index.html">Home</a>
+  <a href="/">Home</a>
   <a href="../blog/">Blog</a>
   <p style="margin-top:14px;max-width:600px;margin-left:auto;margin-right:auto;color:#555;font-size:.77rem">Trading forex involves substantial risk of loss. Prop firm challenges involve real money and can result in total loss of your challenge fee. Past performance does not guarantee future results.</p>
 </footer>
@@ -433,8 +442,8 @@ MagicNumber      = 50205</code>
 <script>
 function toggleMoreMenu(e){e.stopPropagation();document.getElementById('navMore').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))m.classList.remove('open');});
-function openMobile(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
-function closeMobile(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
 var st=document.getElementById('scrollTop');
 window.addEventListener('scroll',function(){st.classList.toggle('show',window.scrollY>400);});
 </script>
