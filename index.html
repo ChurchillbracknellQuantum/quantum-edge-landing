@@ -506,6 +506,19 @@ tr:hover td{background:rgba(245,200,66,.03)}
   .founder-card{height:420px}
 }
 
+/* FOUNDER TEXT CARDS (no photo) */
+.founder-card-text{background:linear-gradient(145deg,var(--surface2),var(--surface));border:1px solid rgba(42,31,0,.7);border-radius:20px;padding:36px;transition:border-color .35s,box-shadow .35s}
+.founder-card-text:hover{border-color:rgba(245,200,66,.55);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.fct-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.3);color:var(--gold);font-size:.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.fct-name{font-family:var(--fontd);font-size:2rem;font-weight:900;color:#fff;line-height:1.05;margin-bottom:6px}
+.fct-role{font-size:.59rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.fct-divider{width:44px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);border:none;border-radius:2px;margin:0 0 20px}
+.fct-bio{font-size:.88rem;color:#ccc;line-height:1.78;margin-bottom:20px}
+.fct-bio strong{color:#fff;font-weight:700}
+.fct-bio em{color:var(--gold);font-style:italic}
+.fct-tags{display:flex;flex-wrap:wrap;gap:8px}
+.fct-tags span{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);color:var(--gold);font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+
 /* COMPARE */
 #compare{background:var(--surface);border-top:1px solid rgba(42,31,0,.4)}
 .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
@@ -1120,11 +1133,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 
 <!-- ══════════════════ FOUNDER MODAL ══════════════════ -->
 <div id="founderModal" class="fmod-overlay" onclick="closeFounderModal(event)">
-  <div class="fmod-box">
+  <div class="fmod-box" style="grid-template-columns:1fr">
     <button class="fmod-close" onclick="closeFounderModal(null)">&times;</button>
-    <div class="fmod-photo">
-      <img id="fmodImg" src="" alt="" loading="lazy">
-    </div>
     <div class="fmod-details">
       <div class="fmod-badge" id="fmodBadge"></div>
       <div class="fmod-name" id="fmodName"></div>
@@ -1296,7 +1306,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 <!-- TRUST STRIP -->
 <div class="trust-strip">
   <div class="trust-inner">
-    <div class="trust-item"><span class="trust-icon">&#128218;</span><span>30+ Years Combined Market Experience</span></div>
+    <div class="trust-item"><span class="trust-icon">&#128218;</span><span>20+ Years Combined Market Experience</span></div>
     <div class="trust-item"><span class="trust-icon">&#127942;</span><span>FTMO &amp; FundedNext Compliant</span></div>
     <div class="trust-item"><span class="trust-icon">&#128202;</span><span>17-Month Verified Backtest</span></div>
     <div class="trust-item"><span class="trust-icon">&#9889;</span><span>Zero Martingale &mdash; Fixed Lot Only</span></div>
@@ -1705,62 +1715,40 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <div class="reveal" style="text-align:center">
       <div class="sec-label">The Team</div>
       <h2 class="sec-title">Built by Real Traders</h2>
-      <p class="sec-sub" style="margin:0 auto">Two private traders with 50+ combined years of live market experience who built the system they wished existed &mdash; no hype, no social media, just results.</p>
+      <p class="sec-sub" style="margin:0 auto">Two private traders with 20+ combined years of live market experience who built the system they wished existed &mdash; no hype, no social media, just results.</p>
     </div>
     <div class="founders-grid">
-      <!-- Philina card -->
-      <div class="founder-card reveal" onclick="toggleFounder(this)">
-        <div class="fc-bg">
-          <img src="founders/philina.png?v=4" alt="Philina Kendricks — Co-Founder, Quantum Edge Trading" loading="lazy">
-        </div>
-        <div class="fc-overlay"></div>
-        <div class="fc-content">
-          <div class="fc-bio-panel">
-            <div class="fc-bio-panel-inner">
-              <p class="fc-bio-text">Philina brings over <strong>20 years of live market experience</strong> across forex, gold, and currency pairs. Her journey started in binary trading where timing and market reading had to be razor sharp. She later moved into forex, building deep expertise in price action, market structure, and trading psychology.<br><br>She has supported private traders with analysis, trade signals, and practical guidance for many years. Her strength: reading the market calmly, cutting through noise, and finding setups that make structural sense.</p>
-            </div>
-          </div>
-          <div class="fc-meta">
-            <div class="fc-yrs">&#9200;&nbsp; 20+ Years Experience</div>
-            <div class="fc-name">Philina Kendricks</div>
-            <div class="fc-role">Co-Founder &middot; Market Analyst &amp; Strategy Lead</div>
-            <button class="fc-explore" onclick="openFounderModal('philina');event.stopPropagation()">Explore Profile <span class="fc-arrow">&#8594;</span></button>
-          </div>
-        </div>
+      <!-- Bracknell Churchill card -->
+      <div class="founder-card-text reveal">
+        <div class="fct-badge">&#9200;&nbsp; 12+ Years Experience</div>
+        <div class="fct-name">Bracknell Churchill</div>
+        <div class="fct-role">Founder &middot; Quantitative Systems Architect</div>
+        <hr class="fct-divider">
+        <p class="fct-bio">Bracknell brings over <strong>12 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure, consistency, and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don&rsquo;t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em></p>
+        <div class="fct-tags"><span>Forex</span><span>Quantitative Systems</span><span>Risk Management</span></div>
       </div>
-      <!-- Philip card -->
-      <div class="founder-card reveal" onclick="toggleFounder(this)">
-        <div class="fc-bg">
-          <img src="founders/philip.png?v=4" alt="Philip John — Co-Founder, Quantum Edge Trading" loading="lazy">
-        </div>
-        <div class="fc-overlay"></div>
-        <div class="fc-content">
-          <div class="fc-bio-panel">
-            <div class="fc-bio-panel-inner">
-              <p class="fc-bio-text">Philip brings over <strong>30 years of trading experience</strong> across financial markets, private trading environments, and industry-level systems. His background covers forex, commodities, and deep market behaviour analysis. He has worked with trading teams, brokers, and market businesses across multiple decades.<br><br>Philip saw the same pattern repeatedly: traders don't lose for lack of opportunity &mdash; they lose because emotions take over. Fear exits winners early. Greed overloads risk. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em></p>
-            </div>
-          </div>
-          <div class="fc-meta">
-            <div class="fc-yrs">&#9200;&nbsp; 30+ Years Experience</div>
-            <div class="fc-name">Philip John</div>
-            <div class="fc-role">Co-Founder &middot; Quantitative Systems Architect</div>
-            <button class="fc-explore" onclick="openFounderModal('philip');event.stopPropagation()">Explore Profile <span class="fc-arrow">&#8594;</span></button>
-          </div>
-        </div>
+      <!-- Gloria Churchill card -->
+      <div class="founder-card-text reveal">
+        <div class="fct-badge">&#9200;&nbsp; 10+ Years Experience</div>
+        <div class="fct-name">Gloria Churchill</div>
+        <div class="fct-role">Co-Founder &middot; Market Analyst &amp; Strategy Lead</div>
+        <hr class="fct-divider">
+        <p class="fct-bio">Gloria brings over <strong>10 years of live market experience</strong> across forex, gold, and currency pairs. Her expertise covers price action analysis, market structure, and trading psychology &mdash; the discipline that separates consistently profitable traders from the rest.<br><br>Her strength: reading the market calmly, cutting through noise, and identifying setups that make structural sense. She believes trading rewards patience, structure, and emotional control &mdash; nothing else.</p>
+        <div class="fct-tags"><span>Forex</span><span>Market Analysis</span><span>Trading Psychology</span></div>
       </div>
     </div>
     <div class="founders-combined reveal">
       <div class="fc-inner">
         <div class="fc-stat">
-          <div class="fc-num">50+</div>
-          <div class="fc-lbl">Combined Years<br>Market Experience</div>
+          <div class="fc-num">20+</div>
+          <div class="fc-lbl">Combined Years<br>Live Market Experience</div>
         </div>
         <div class="fc-quote">
-          <em>Philina and Philip came together with one simple idea:</em> build a trading system shaped by real experience, not hype. Their combined background covers forex, gold, broker-side knowledge, private trade signals, market analysis, and long-term trading discipline. TITAN was built to give traders more control, less emotion, and better structure &mdash; a calmer and more realistic way to approach the market.
+          <em>Bracknell Churchill and Gloria Churchill came together with one simple idea:</em> build a trading system shaped by real experience, not hype. Their combined background covers forex, gold, quantitative systems design, price action analysis, and long-term trading discipline. TITAN was built to give traders more control, less emotion, and better structure &mdash; a calmer and more realistic way to approach the market.
         </div>
         <div class="fc-stat">
-          <div class="fc-num">30+</div>
-          <div class="fc-lbl">Years Combined<br>Live Market Experience</div>
+          <div class="fc-num">195</div>
+          <div class="fc-lbl">Validated Trades<br>Across 5 Pairs</div>
         </div>
       </div>
     </div>
@@ -1785,7 +1773,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="comp-item"><span class="chk">&#10003;</span>70-79% verified win rate</div>
         <div class="comp-item"><span class="chk">&#10003;</span>17-month real backtest</div>
         <div class="comp-item"><span class="chk">&#10003;</span>Fixed lot, zero martingale</div>
-        <div class="comp-item"><span class="chk">&#10003;</span>30+ yrs experience + ICT methodology</div>
+        <div class="comp-item"><span class="chk">&#10003;</span>20+ yrs experience + ICT methodology</div>
         <div class="comp-item"><span class="chk">&#10003;</span>FTMO &amp; FundedNext compliant</div>
         <div class="comp-item"><span class="chk">&#10003;</span>Monster trail &mdash; rides 6R+ winners</div>
       </div>
@@ -1929,7 +1917,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Do I need to watch it 24/7?<span class="faq-icon">+</span></div><div class="faq-a"><p>No. Runs fully automated on a VPS. It monitors markets 24/5, manages all open trades, applies trailing stops, and closes everything Friday before market close.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Is this a martingale or grid system?<span class="faq-icon">+</span></div><div class="faq-a"><p>No. Fixed lot sizing only. One position maximum per pair at any time. No doubling on losers. Hard daily DD cap and overall DD cap built in as code-level hard stops.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">What VPS do I need?<span class="faq-icon">+</span></div><div class="faq-a"><p>Any Windows VPS with MT4 or MT5 installed. Hostinger VPS (~$8/mo), Contabo (~$5/mo), or ForexVPS.net work well. You host the VPS &mdash; TITAN runs inside your MT5 terminal.</p></div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Who built this EA?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN was built by Philina Kendricks (20+ years, forex &amp; gold) and Philip John (30+ years, forex &amp; commodities). Two private traders with 50+ combined years of live market experience. See the Founders section above.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Who built this EA?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN was built by Bracknell Churchill and Gloria Churchill &mdash; two private traders with 20+ combined years of live market experience across forex, quantitative systems design, price action analysis, and trading psychology. See the Founders section above.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">Which currency pairs does TITAN trade?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN trades exactly 5 pairs on the H1 timeframe: USDCHF, GBPUSD, AUDUSD, AUDCHF, and CADCHF. These were selected after testing 22 pairs &mdash; only pairs with verified profit factors above 1.44 across a 17-month window made the cut. EURUSD and JPY pairs are permanently excluded.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">What is the difference between TITAN and TITAN Pro?<span class="faq-icon">+</span></div><div class="faq-a"><p>TITAN AutoTrader ($250) is optimised for live retail accounts &mdash; standard risk management, all 5 pairs. TITAN AutoTrader Pro ($399) is the prop firm edition: it adds a 4% hard daily drawdown stop, news blackout on FOMC/NFP events, and a Friday cut-off close. It is specifically engineered to pass FTMO and FundedNext Phase 1 and Phase 2 challenges. The Suite ($549) includes both versions plus Inner Circle access.</p></div></div>
       <div class="faq-item reveal"><div class="faq-q" onclick="tFaq(this)">How was the backtest conducted?<span class="faq-icon">+</span></div><div class="faq-a"><p>All results use MT5 Strategy Tester with 1-minute OHLC data and 100% modelling quality. Starting balance: $2,000. Period: 17 months covering bull, bear, and sideways regimes. No look-ahead bias &mdash; each trade entry, management, and exit is evaluated tick-by-tick. Spread is factored in on every trade.</p></div></div>
@@ -2004,7 +1992,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <div class="honest-stat"><div class="n">1.95</div><div class="l">Profit factor</div></div>
         </div>
         <p style="color:var(--muted2);font-size:.82rem;margin-top:22px;line-height:1.65;border-top:1px solid var(--border);padding-top:18px">&ldquo;We tested 195 trades across 5 pairs over 17 months. The edge is real — but it builds wealth the same way a business does: steadily, consistently, one trade at a time.&rdquo;</p>
-        <p style="color:var(--gold);font-size:.78rem;margin-top:10px;font-weight:700">&mdash; Philip &amp; Philina, Quantum Edge Trading</p>
+        <p style="color:var(--gold);font-size:.78rem;margin-top:10px;font-weight:700">&mdash; Bracknell Churchill &amp; Gloria Churchill, Quantum Edge Trading</p>
       </div>
     </div>
   </div>
@@ -2245,27 +2233,23 @@ function toggleFounder(el){
 
 // Founder modal
 var FDATA={
-  philina:{
-    img:'founders/philina.png?v=4',
-    badge:'&#9200; 20+ Years Experience',
-    name:'Philina Kendricks',
-    role:'Co-Founder &middot; Market Analyst &amp; Strategy Lead',
-    bio:'Philina brings over <strong>20 years of live market experience</strong> across forex, gold, and currency pairs. Her journey started in binary trading where timing and market reading had to be razor sharp. She later moved into forex, building deep expertise in price action, market structure, and trading psychology.<br><br>She has supported private traders with analysis, trade signals, and practical guidance for many years. Her strength: reading the market calmly, cutting through noise, and finding setups that make structural sense. She believes trading rewards patience, structure, and emotional control &mdash; nothing else.',
-    quote:'"Trading rewards patience, structure, and emotional control &mdash; nothing else."'
-  },
-  philip:{
-    img:'founders/philip.png?v=4',
-    badge:'&#9200; 30+ Years Experience',
-    name:'Philip John',
-    role:'Co-Founder &middot; Quantitative Systems Architect',
-    bio:'Philip brings over <strong>30 years of trading experience</strong> across financial markets, private trading environments, and industry-level systems. His background covers forex, commodities, and deep market behaviour analysis. He has worked with trading teams, brokers, and market businesses across multiple decades.<br><br>Philip saw the same pattern repeatedly: traders don\'t lose for lack of opportunity &mdash; they lose because emotions take over. Fear exits winners early. Greed overloads risk. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em>',
+  bracknell:{
+    badge:'&#9200; 12+ Years Experience',
+    name:'Bracknell Churchill',
+    role:'Founder &middot; Quantitative Systems Architect',
+    bio:'Bracknell brings over <strong>12 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don\'t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em>',
     quote:'"Markets reward structure, not emotion. TITAN was built to give every trader exactly that."'
+  },
+  gloria:{
+    badge:'&#9200; 10+ Years Experience',
+    name:'Gloria Churchill',
+    role:'Co-Founder &middot; Market Analyst &amp; Strategy Lead',
+    bio:'Gloria brings over <strong>10 years of live market experience</strong> across forex, gold, and currency pairs. Her expertise covers price action analysis, market structure, and trading psychology &mdash; the discipline that separates consistently profitable traders from the rest.<br><br>Her strength: reading the market calmly, cutting through noise, and finding setups that make structural sense. She believes trading rewards patience, structure, and emotional control &mdash; nothing else.',
+    quote:'"Trading rewards patience, structure, and emotional control &mdash; nothing else."'
   }
 };
 function openFounderModal(key){
   var d=FDATA[key];if(!d)return;
-  document.getElementById('fmodImg').src=d.img;
-  document.getElementById('fmodImg').alt=d.name;
   document.getElementById('fmodBadge').innerHTML=d.badge;
   document.getElementById('fmodName').innerHTML=d.name;
   document.getElementById('fmodRole').innerHTML=d.role;
