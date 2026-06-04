@@ -1720,11 +1720,11 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <div class="founders-grid">
       <!-- Bracknell Churchill card -->
       <div class="founder-card-text reveal">
-        <div class="fct-badge">&#9200;&nbsp; 12+ Years Experience</div>
+        <div class="fct-badge">&#9200;&nbsp; 15+ Years Experience</div>
         <div class="fct-name">Bracknell Churchill</div>
         <div class="fct-role">Founder &middot; Quantitative Systems Architect</div>
         <hr class="fct-divider">
-        <p class="fct-bio">Bracknell brings over <strong>12 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure, consistency, and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don&rsquo;t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em></p>
+        <p class="fct-bio">Bracknell brings over <strong>15 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure, consistency, and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don&rsquo;t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em></p>
         <div class="fct-tags"><span>Forex</span><span>Quantitative Systems</span><span>Risk Management</span></div>
       </div>
       <!-- Gloria Churchill card -->
@@ -2234,10 +2234,10 @@ function toggleFounder(el){
 // Founder modal
 var FDATA={
   bracknell:{
-    badge:'&#9200; 12+ Years Experience',
+    badge:'&#9200; 15+ Years Experience',
     name:'Bracknell Churchill',
     role:'Founder &middot; Quantitative Systems Architect',
-    bio:'Bracknell brings over <strong>12 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don\'t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em>',
+    bio:'Bracknell brings over <strong>15 years of live market experience</strong> across forex markets, quantitative systems design, and algorithmic trading. His focus: removing human error from the equation by building rules-based systems that execute with structure and discipline.<br><br>He observed the same pattern repeatedly &mdash; traders don\'t lose for lack of opportunity, they lose because emotions override logic. TITAN is his answer: <em>a system built on structure, discipline, and consistency over time.</em>',
     quote:'"Markets reward structure, not emotion. TITAN was built to give every trader exactly that."'
   },
   gloria:{
@@ -2707,7 +2707,7 @@ runCalc();
     var em=document.getElementById('epEmail').value.trim();
     if(!em)return;
     var fd=new FormData();
-    fd.append('email',em);fd.append('_subject','TITAN Waitlist — '+em);fd.append('_autoresponse','Thanks for joining the TITAN waitlist!\n\nHere is your quick strategy snapshot:\n\nTITAN fires only when ALL 4 confluences align:\n✓ EMA200 confirms trend direction\n✓ Price pulls back to EMA21 area of value\n✓ Pin Bar or Engulfing candle fires\n✓ ADX > 25 confirms trend strength\n\nResult: 74% win rate across 5 pairs — 195 trades over 17 months.\n\nFull launch details and backtest report coming your way soon.\n\nWatch it live: https://getquantumedgeai.com\n\n— Philip & Philina\nQuantum Edge Trading');
+    fd.append('email',em);fd.append('_subject','TITAN Waitlist — '+em);fd.append('_autoresponse','Thanks for joining the TITAN waitlist!\n\nHere is your quick strategy snapshot:\n\nTITAN fires only when ALL 4 confluences align:\n✓ EMA200 confirms trend direction\n✓ Price pulls back to EMA21 area of value\n✓ Pin Bar or Engulfing candle fires\n✓ ADX > 25 confirms trend strength\n\nResult: 74% win rate across 5 pairs — 195 trades over 17 months.\n\nFull launch details and backtest report coming your way soon.\n\nWatch it live: https://getquantumedgeai.com\n\n— Bracknell Churchill & Gloria Churchill\nQuantum Edge Trading');
     fetch('https://formsubmit.co/ajax/churchillbracknellportfolio@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd}).catch(function(){});
     localStorage.setItem('ep_done','1');
     document.getElementById('epWrap').innerHTML='<p style="text-align:center;padding:20px 0"><span style="font-size:2rem">✓</span><br><strong style="color:var(--green);font-size:1.1rem;display:block;margin:10px 0">You\'re on the list.</strong><span style="color:var(--muted);font-size:.85rem">Backtest report incoming. Check your inbox.</span></p>';
