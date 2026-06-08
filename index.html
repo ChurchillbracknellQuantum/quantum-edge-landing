@@ -1805,6 +1805,13 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
   </div>
 </section>
 
+<!-- ══════════════════ PRICING COUNTDOWN ══════════════════ -->
+<div id="pricingCountdown" style="background:linear-gradient(135deg,#1a0f00,#2a1800,#1a0f00);border-top:2px solid rgba(245,200,66,.5);border-bottom:2px solid rgba(245,200,66,.5);padding:28px 20px;text-align:center;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(245,200,66,.10) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="font-size:.62rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:rgba(245,200,66,.75);margin-bottom:12px">&#9889;&nbsp; Current Pricing Closes In</div>
+  <div id="ctDisplay" style="font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:900;color:#F5C842;letter-spacing:6px;line-height:1;text-shadow:0 0 30px rgba(245,200,66,.6),0 0 70px rgba(245,200,66,.25)">00d&nbsp;&nbsp;00:00:00</div>
+</div>
+
 <!-- ══════════════════ PRICING ══════════════════ -->
 <section id="pricing">
   <div class="container">
@@ -2851,6 +2858,20 @@ runCalc();
     en.forEach(function(e){if(e.isIntersecting&&!fired){fired=true;run();obs.disconnect();}});
   },{threshold:0.15});
   obs.observe(sec);
+})();
+
+// Countdown — monthly cycle, resets midnight 1st of each month
+(function(){
+  var el=document.getElementById('ctDisplay');
+  if(!el)return;
+  function monthEnd(){var n=new Date();return new Date(n.getFullYear(),n.getMonth()+1,1,0,0,0);}
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff=Math.max(0,monthEnd()-new Date());
+    var d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
+    el.textContent=d+'d  '+pad(h)+':'+pad(m)+':'+pad(s);
+  }
+  tick();setInterval(tick,1000);
 })();
 
 </script>
