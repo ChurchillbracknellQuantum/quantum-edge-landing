@@ -97,7 +97,10 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 .nav-dropdown a{display:block;padding:11px 24px;color:var(--muted);font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s,background .2s,padding-left .2s;white-space:nowrap;letter-spacing:.3px;border-left:2px solid transparent}
 .nav-dropdown a:hover{color:var(--gold);background:rgba(245,200,66,.06);border-left-color:var(--gold);padding-left:28px}
 .nav-dropdown a::after{display:none!important}
-.nav-blog-btn{background:var(--gold)!important;color:#000!important;font-weight:800!important;margin:6px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important;letter-spacing:.4px!important}
+.nav-drop-label{padding:4px 24px 9px;font-size:.57rem;letter-spacing:3px;color:var(--muted2);text-transform:uppercase;font-weight:800}
+.nav-drop-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.25),transparent);margin:7px 14px}
+.nav-dropdown a .ndi{display:inline-block;width:24px;font-size:.92rem;opacity:.85}
+.nav-blog-btn{background:var(--gold)!important;color:#000!important;font-weight:800!important;margin:8px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important;letter-spacing:.4px!important;border-left:none!important}
 .nav-blog-btn:hover{background:var(--gold2)!important;color:#000!important}
 .nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;z-index:1001;position:relative}
 .nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;transition:transform .35s cubic-bezier(.77,0,.175,1),opacity .2s,width .3s}
@@ -781,7 +784,12 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 .spline-robot{position:absolute;top:0;right:0;bottom:0;width:52%;z-index:0;pointer-events:none}
 @media(max-width:767px){.spline-robot{display:none}}
 #mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
-#mobileNav.open{display:block}
+#mobileNav.open{display:block;animation:mobNavIn .28s ease}
+@keyframes mobNavIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+#mobileNav .mob-label{padding:18px 28px 8px;font-size:.6rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted2)}
+#mobileNav a .mni{display:inline-block;width:36px;font-size:1.1rem;vertical-align:1px}
+#mobileNav a:not(.mob-cta){position:relative}
+#mobileNav a:not(.mob-cta)::after{content:'\203A';position:absolute;right:28px;top:50%;transform:translateY(-50%);color:rgba(245,200,66,.5);font-size:1.5rem;font-weight:400;font-family:var(--font)}
 #mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
 #mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
 #mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
@@ -1091,12 +1099,15 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="nav-more" id="navMore">
         <button class="nav-more-btn" onclick="toggleMoreMenu(event)" aria-haspopup="true" aria-expanded="false" aria-controls="navDrop">More <span class="nav-arr">&#9660;</span></button>
         <div class="nav-dropdown" id="navDrop">
-          <a href="#titan-in-action">TITAN In Action</a>
-          <a href="#simulator">Simulator</a>
-          <a href="#founders">Founders</a>
-          <a href="#support">Support</a>
-          <a href="setup-guide.html">Setup Guide</a>
-          <a href="compare.html">Compare EAs</a>
+          <div class="nav-drop-label">Explore</div>
+          <a href="#titan-in-action"><span class="ndi">&#127916;</span>TITAN In Action</a>
+          <a href="#simulator"><span class="ndi">&#128202;</span>Simulator</a>
+          <a href="#compatibility"><span class="ndi">&#127942;</span>Brokers &amp; Prop Firms</a>
+          <a href="#founders"><span class="ndi">&#128101;</span>Founders</a>
+          <a href="#support"><span class="ndi">&#9889;</span>Support</a>
+          <div class="nav-drop-divider"></div>
+          <a href="setup-guide.html"><span class="ndi">&#128736;&#65039;</span>Setup Guide</a>
+          <a href="compare.html"><span class="ndi">&#9878;&#65039;</span>Compare EAs</a>
           <a href="blog/" class="nav-blog-btn">&#128196; Blog — Free Guides</a>
         </div>
       </div>
@@ -1134,17 +1145,19 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <img src="Logo.png" alt="Quantum Edge" width="80" height="80">
     <button class="mob-close" onclick="toggleNav()">&times;</button>
   </div>
-  <a href="#performance" onclick="closeMobileNav()">Performance</a>
-  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
-  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
-  <a href="#simulator" onclick="closeMobileNav()">Simulator</a>
-  <a href="#founders" onclick="closeMobileNav()">Founders</a>
-  <a href="#support" onclick="closeMobileNav()">Support</a>
-  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
-  <a href="compare.html" onclick="closeMobileNav()">Compare EAs</a>
-  <a href="blog/" onclick="closeMobileNav()">Blog</a>
-  <a href="try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <div class="mob-label">Menu</div>
+  <a href="#performance" onclick="closeMobileNav()"><span class="mni">&#128200;</span>Performance</a>
+  <a href="#pricing" onclick="closeMobileNav()"><span class="mni">&#128176;</span>Pricing</a>
+  <a href="#faq" onclick="closeMobileNav()"><span class="mni">&#10067;</span>FAQ</a>
+  <a href="#titan-in-action" onclick="closeMobileNav()"><span class="mni">&#127916;</span>TITAN In Action</a>
+  <a href="#simulator" onclick="closeMobileNav()"><span class="mni">&#128202;</span>Simulator</a>
+  <a href="#compatibility" onclick="closeMobileNav()"><span class="mni">&#127942;</span>Brokers &amp; Prop Firms</a>
+  <a href="#founders" onclick="closeMobileNav()"><span class="mni">&#128101;</span>Founders</a>
+  <a href="#support" onclick="closeMobileNav()"><span class="mni">&#9889;</span>Support</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()"><span class="mni">&#128736;&#65039;</span>Setup Guide</a>
+  <a href="compare.html" onclick="closeMobileNav()"><span class="mni">&#9878;&#65039;</span>Compare EAs</a>
+  <a href="blog/" onclick="closeMobileNav()"><span class="mni">&#128196;</span>Blog</a>
+  <a href="try-titan.html" onclick="closeMobileNav()"><span class="mni">&#127873;</span>Try Free</a>
   <a href="#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
