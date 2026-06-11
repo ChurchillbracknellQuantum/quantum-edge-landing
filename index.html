@@ -320,6 +320,24 @@ section{padding:96px 44px}
 .pb-meta{font-size:.68rem;color:var(--muted2);text-align:right;line-height:1.6;font-weight:500}
 .pb-meta strong{color:var(--green);font-weight:800}
 .perf-table-wrap{overflow-x:auto;margin:34px 0 52px}
+.perf-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px 0 4px}
+.perf-tab{background:rgba(15,12,0,.6);border:1px solid rgba(245,200,66,.2);color:var(--muted);font-family:var(--font);font-size:.9rem;font-weight:800;letter-spacing:.6px;padding:11px 22px;border-radius:50px;cursor:pointer;transition:color .25s,background .25s,box-shadow .25s,border-color .25s}
+.perf-tab:hover{color:var(--gold);border-color:rgba(245,200,66,.5)}
+.perf-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border-color:transparent;box-shadow:0 4px 18px rgba(245,200,66,.3)}
+.perf-panel{display:none}
+.perf-panel.active{display:block;animation:compatFade .4s cubic-bezier(.2,.7,.2,1)}
+.perf-statgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:26px 0 26px}
+.perf-stat{background:rgba(15,12,0,.55);border:1px solid rgba(42,31,0,.75);border-radius:12px;padding:18px 8px;text-align:center}
+.perf-stat .ps-val{display:block;font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1.1}
+.perf-stat .ps-val.green{color:var(--green)}
+.perf-stat .ps-lbl{display:block;font-size:.66rem;color:var(--muted2);margin-top:7px;letter-spacing:.6px;text-transform:uppercase;font-weight:800}
+.perf-shots{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.perf-shots figure{margin:0;cursor:pointer;border:1px solid rgba(42,31,0,.75);border-radius:12px;overflow:hidden;background:var(--surf);transition:transform .2s,border-color .2s}
+.perf-shots figure:hover{transform:translateY(-3px);border-color:rgba(245,200,66,.45)}
+.perf-shots img{width:100%;display:block}
+.perf-shots figcaption{padding:11px 14px;font-size:.8rem;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px}
+@media(max-width:768px){.perf-statgrid{grid-template-columns:repeat(3,1fr)}.perf-shots{grid-template-columns:1fr}}
+@media(max-width:420px){.perf-statgrid{grid-template-columns:repeat(2,1fr)}}
 table{width:100%;border-collapse:collapse;min-width:520px}
 th{background:rgba(245,200,66,.06);color:var(--gold);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;padding:14px 18px;text-align:left;border-bottom:1px solid rgba(42,31,0,.6);font-weight:700}
 td{padding:13px 18px;border-bottom:1px solid rgba(42,31,0,.35);font-size:.88rem;color:var(--muted);font-weight:500}
@@ -1499,34 +1517,82 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="pb-row"><div class="pb-pair">USDCHF</div><div class="pb-track"><div class="pb-fill" data-width="73.81"></div></div><div class="pb-meta"><strong>73.8% WR</strong> &middot; PF 1.86 &middot; SR 8.23</div></div>
       <div class="pb-row"><div class="pb-pair">GBPUSD</div><div class="pb-track"><div class="pb-fill" data-width="70.27"></div></div><div class="pb-meta"><strong>70.3% WR</strong> &middot; PF 1.44 &middot; SR 3.31</div></div>
     </div>
-    <div class="perf-table-wrap reveal">
-      <table>
-        <tr><th>Pair</th><th>Trades</th><th>Win Rate</th><th>Profit Factor</th><th>Sharpe</th><th>Max DD</th><th>Net Profit</th></tr>
-        <tr><td>USDCHF H1</td><td>42</td><td class="wr">73.81%</td><td>1.86</td><td>8.23</td><td>2.07%</td><td class="wr">+$85.63</td></tr>
-        <tr><td>GBPUSD H1</td><td>37</td><td class="wr">70.27%</td><td>1.44</td><td>3.31</td><td>2.29%</td><td class="wr">+$45.16</td></tr>
-        <tr><td>AUDUSD H1</td><td>28</td><td class="wr">76.50%</td><td>1.78</td><td>5.16</td><td>1.46%</td><td class="wr">+$54.61</td></tr>
-        <tr><td>AUDCHF H1</td><td>46</td><td class="wr">73.91%</td><td>1.95</td><td>7.41</td><td>1.44%</td><td class="wr">+$94.94</td></tr>
-        <tr><td>CADCHF H1</td><td>42</td><td class="wr">78.57%</td><td>1.95</td><td>9.32</td><td>1.39%</td><td class="wr">+$79.81</td></tr>
-      </table>
+    <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; click a pair</div>
+    <div class="perf-tabs reveal" role="tablist">
+      <button class="perf-tab active" data-pair="cadchf" role="tab" aria-selected="true" onclick="switchPair('cadchf')">CADCHF</button>
+      <button class="perf-tab" data-pair="audusd" role="tab" aria-selected="false" onclick="switchPair('audusd')">AUDUSD</button>
+      <button class="perf-tab" data-pair="audchf" role="tab" aria-selected="false" onclick="switchPair('audchf')">AUDCHF</button>
+      <button class="perf-tab" data-pair="usdchf" role="tab" aria-selected="false" onclick="switchPair('usdchf')">USDCHF</button>
+      <button class="perf-tab" data-pair="gbpusd" role="tab" aria-selected="false" onclick="switchPair('gbpusd')">GBPUSD</button>
     </div>
-    <div class="reveal">
-      <div class="gal-title">&#128202; Click Any Screenshot to View Full Size</div>
-      <div class="gal-tabs">
-        <button class="gtab active" onclick="filterGal('all',this)">All Pairs</button>
-        <button class="gtab" onclick="filterGal('graph',this)">Equity Curves</button>
-        <button class="gtab" onclick="filterGal('backtest',this)">Backtest Stats</button>
+    <div class="perf-panel active" id="pp-cadchf">
+      <div class="perf-statgrid">
+        <div class="perf-stat"><span class="ps-val">42</span><span class="ps-lbl">Trades</span></div>
+        <div class="perf-stat"><span class="ps-val">78.6%</span><span class="ps-lbl">Win Rate</span></div>
+        <div class="perf-stat"><span class="ps-val">1.95</span><span class="ps-lbl">Profit Factor</span></div>
+        <div class="perf-stat"><span class="ps-val">9.32</span><span class="ps-lbl">Sharpe</span></div>
+        <div class="perf-stat"><span class="ps-val">1.39%</span><span class="ps-lbl">Max DD</span></div>
+        <div class="perf-stat"><span class="ps-val green">+$79.81</span><span class="ps-lbl">Net Profit</span></div>
       </div>
-      <div class="gal-grid" id="galGrid">
-        <div class="gcard" data-cat="graph"   onclick="openLB(0)"><img src="screenshots/USDCHF_equity (2).png" alt="USDCHF Equity"   loading="lazy"><div class="gcard-lbl"><span class="dot"></span>USDCHF &mdash; Equity Curve</div></div>
-        <div class="gcard" data-cat="backtest" onclick="openLB(1)"><img src="screenshots/USDCHF_equity (1).png" alt="USDCHF Stats"    loading="lazy"><div class="gcard-lbl"><span class="dot"></span>USDCHF &mdash; Backtest Stats</div></div>
-        <div class="gcard" data-cat="graph"   onclick="openLB(2)"><img src="screenshots/GBPUSD_equity (1).png" alt="GBPUSD Equity"   loading="lazy"><div class="gcard-lbl"><span class="dot"></span>GBPUSD &mdash; Equity Curve</div></div>
-        <div class="gcard" data-cat="backtest" onclick="openLB(3)"><img src="screenshots/GBPUSD_equity (2).png" alt="GBPUSD Stats"    loading="lazy"><div class="gcard-lbl"><span class="dot"></span>GBPUSD &mdash; Backtest Stats</div></div>
-        <div class="gcard" data-cat="graph"   onclick="openLB(4)"><img src="screenshots/AUDUSD_equity (1).png" alt="AUDUSD Equity"   loading="lazy"><div class="gcard-lbl"><span class="dot"></span>AUDUSD &mdash; Equity Curve</div></div>
-        <div class="gcard" data-cat="backtest" onclick="openLB(5)"><img src="screenshots/AUDUSD_equity (2).png" alt="AUDUSD Stats"    loading="lazy"><div class="gcard-lbl"><span class="dot"></span>AUDUSD &mdash; Backtest Stats</div></div>
-        <div class="gcard" data-cat="graph"   onclick="openLB(6)"><img src="screenshots/AUDCHF_equity (1).png" alt="AUDCHF Equity"   loading="lazy"><div class="gcard-lbl"><span class="dot"></span>AUDCHF &mdash; Equity Curve</div></div>
-        <div class="gcard" data-cat="backtest" onclick="openLB(7)"><img src="screenshots/AUDCHF_equity (2).png" alt="AUDCHF Stats"    loading="lazy"><div class="gcard-lbl"><span class="dot"></span>AUDCHF &mdash; Backtest Stats</div></div>
-        <div class="gcard" data-cat="graph"   onclick="openLB(8)"><img src="screenshots/CADCHF_equity (1).png" alt="CADCHF Equity"   loading="lazy"><div class="gcard-lbl"><span class="dot"></span>CADCHF &mdash; Equity Curve</div></div>
-        <div class="gcard" data-cat="backtest" onclick="openLB(9)"><img src="screenshots/CADCHF_equity (2).png" alt="CADCHF Stats"    loading="lazy"><div class="gcard-lbl"><span class="dot"></span>CADCHF &mdash; Backtest Stats</div></div>
+      <div class="perf-shots">
+        <figure onclick="openLB(8)"><img src="screenshots/CADCHF_equity (1).png" alt="CADCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(9)"><img src="screenshots/CADCHF_equity (2).png" alt="CADCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+      </div>
+    </div>
+    <div class="perf-panel" id="pp-audusd">
+      <div class="perf-statgrid">
+        <div class="perf-stat"><span class="ps-val">28</span><span class="ps-lbl">Trades</span></div>
+        <div class="perf-stat"><span class="ps-val">76.5%</span><span class="ps-lbl">Win Rate</span></div>
+        <div class="perf-stat"><span class="ps-val">1.78</span><span class="ps-lbl">Profit Factor</span></div>
+        <div class="perf-stat"><span class="ps-val">5.16</span><span class="ps-lbl">Sharpe</span></div>
+        <div class="perf-stat"><span class="ps-val">1.46%</span><span class="ps-lbl">Max DD</span></div>
+        <div class="perf-stat"><span class="ps-val green">+$54.61</span><span class="ps-lbl">Net Profit</span></div>
+      </div>
+      <div class="perf-shots">
+        <figure onclick="openLB(4)"><img src="screenshots/AUDUSD_equity (1).png" alt="AUDUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(5)"><img src="screenshots/AUDUSD_equity (2).png" alt="AUDUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+      </div>
+    </div>
+    <div class="perf-panel" id="pp-audchf">
+      <div class="perf-statgrid">
+        <div class="perf-stat"><span class="ps-val">46</span><span class="ps-lbl">Trades</span></div>
+        <div class="perf-stat"><span class="ps-val">73.9%</span><span class="ps-lbl">Win Rate</span></div>
+        <div class="perf-stat"><span class="ps-val">1.95</span><span class="ps-lbl">Profit Factor</span></div>
+        <div class="perf-stat"><span class="ps-val">7.41</span><span class="ps-lbl">Sharpe</span></div>
+        <div class="perf-stat"><span class="ps-val">1.44%</span><span class="ps-lbl">Max DD</span></div>
+        <div class="perf-stat"><span class="ps-val green">+$94.94</span><span class="ps-lbl">Net Profit</span></div>
+      </div>
+      <div class="perf-shots">
+        <figure onclick="openLB(6)"><img src="screenshots/AUDCHF_equity (1).png" alt="AUDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(7)"><img src="screenshots/AUDCHF_equity (2).png" alt="AUDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+      </div>
+    </div>
+    <div class="perf-panel" id="pp-usdchf">
+      <div class="perf-statgrid">
+        <div class="perf-stat"><span class="ps-val">42</span><span class="ps-lbl">Trades</span></div>
+        <div class="perf-stat"><span class="ps-val">73.8%</span><span class="ps-lbl">Win Rate</span></div>
+        <div class="perf-stat"><span class="ps-val">1.86</span><span class="ps-lbl">Profit Factor</span></div>
+        <div class="perf-stat"><span class="ps-val">8.23</span><span class="ps-lbl">Sharpe</span></div>
+        <div class="perf-stat"><span class="ps-val">2.07%</span><span class="ps-lbl">Max DD</span></div>
+        <div class="perf-stat"><span class="ps-val green">+$85.63</span><span class="ps-lbl">Net Profit</span></div>
+      </div>
+      <div class="perf-shots">
+        <figure onclick="openLB(0)"><img src="screenshots/USDCHF_equity (2).png" alt="USDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(1)"><img src="screenshots/USDCHF_equity (1).png" alt="USDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+      </div>
+    </div>
+    <div class="perf-panel" id="pp-gbpusd">
+      <div class="perf-statgrid">
+        <div class="perf-stat"><span class="ps-val">37</span><span class="ps-lbl">Trades</span></div>
+        <div class="perf-stat"><span class="ps-val">70.3%</span><span class="ps-lbl">Win Rate</span></div>
+        <div class="perf-stat"><span class="ps-val">1.44</span><span class="ps-lbl">Profit Factor</span></div>
+        <div class="perf-stat"><span class="ps-val">3.31</span><span class="ps-lbl">Sharpe</span></div>
+        <div class="perf-stat"><span class="ps-val">2.29%</span><span class="ps-lbl">Max DD</span></div>
+        <div class="perf-stat"><span class="ps-val green">+$45.16</span><span class="ps-lbl">Net Profit</span></div>
+      </div>
+      <div class="perf-shots">
+        <figure onclick="openLB(2)"><img src="screenshots/GBPUSD_equity (1).png" alt="GBPUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(3)"><img src="screenshots/GBPUSD_equity (2).png" alt="GBPUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
   </div>
@@ -2489,6 +2555,12 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   q.setAttribute('aria-expanded','false');
   q.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tFaq(q);}});
 });
+
+// Performance per-pair switcher
+function switchPair(p){
+  document.querySelectorAll('.perf-tab').forEach(function(b){var on=b.dataset.pair===p;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  document.querySelectorAll('.perf-panel').forEach(function(panel){panel.classList.toggle('active',panel.id==='pp-'+p);});
+}
 
 // Compatibility tab switcher
 function switchCompat(t){
