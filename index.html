@@ -373,6 +373,23 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .compat-feats li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0}
 .compat-note{text-align:center;margin-top:30px;font-size:.8rem;color:var(--muted2);line-height:1.7}
 .compat-grouplabel{text-align:center;font-size:.74rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:50px 0 2px;opacity:.92}
+.compat-tabs{display:inline-flex;gap:6px;margin:46px auto 0;padding:6px;background:rgba(15,12,0,.65);border:1px solid rgba(245,200,66,.18);border-radius:50px;position:relative;left:50%;transform:translateX(-50%)}
+.compat-tab{background:none;border:none;color:var(--muted);font-family:var(--font);font-size:.92rem;font-weight:700;letter-spacing:.4px;padding:11px 26px;border-radius:50px;cursor:pointer;transition:color .25s,background .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.compat-tab .ct-ico{font-size:1rem;line-height:1}
+.compat-tab .ct-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:20px;background:rgba(245,200,66,.16);color:var(--gold);font-size:.72rem;font-weight:800;transition:background .25s,color .25s}
+.compat-tab:hover{color:var(--gold)}
+.compat-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;box-shadow:0 6px 22px rgba(245,200,66,.32)}
+.compat-tab.active .ct-count{background:rgba(0,0,0,.22);color:#000}
+.compat-panel{display:none}
+.compat-panel.active{display:block;animation:compatFade .4s cubic-bezier(.2,.7,.2,1)}
+.compat-paneltip{text-align:center;color:var(--muted);font-size:.92rem;line-height:1.6;max-width:560px;margin:22px auto 0}
+@keyframes compatFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.compat-panel .compat-grid{margin-top:26px}
+@media(max-width:480px){
+  .compat-tabs{display:flex;width:100%;left:0;transform:none}
+  .compat-tab{flex:1;justify-content:center;padding:12px 8px;font-size:.86rem}
+  .compat-tab .ct-ico{font-size:.95rem}
+}
 .compat-note strong{color:var(--gold);font-weight:700}
 
 /* SIMULATOR */
@@ -1547,90 +1564,98 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <h2 class="sec-title">Brokers &amp; Prop Firms TITAN Runs On</h2>
       <p class="sec-sub" style="margin:0 auto">Individually verified &mdash; all 5 TITAN pairs tradeable, EAs allowed, MT4 &amp; MT5 supported. No guesswork before you commit.</p>
     </div>
-    <div class="compat-grouplabel reveal">Brokers &mdash; Live Trading</div>
-    <div class="compat-grid">
-      <div class="compat-card reveal">
-        <span class="compat-type">Broker</span>
-        <div class="compat-name">FOREX.com</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>MT4 &amp; MT5 platforms</li>
-          <li>EAs fully allowed</li>
-          <li>Regulated, global access</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type">Broker</span>
-        <div class="compat-name">Exness</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>MT4 &amp; MT5 platforms</li>
-          <li>EAs allowed</li>
-          <li>Use a Raw or Zero spread account</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type">Broker</span>
-        <div class="compat-name">IC Markets</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>MT4 &amp; MT5 platforms</li>
-          <li>EAs allowed</li>
-          <li>Raw Spread + full tick history</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type">Broker</span>
-        <div class="compat-name">Pepperstone</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>MT4 &amp; MT5 platforms</li>
-          <li>EAs allowed</li>
-          <li>Razor account, low spreads</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type">Broker</span>
-        <div class="compat-name">FP Markets</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>MT4 &amp; MT5 platforms</li>
-          <li>EAs allowed</li>
-          <li>Raw account, deep history</li>
-        </ul>
+    <div class="compat-tabs reveal" role="tablist">
+      <button class="compat-tab active" data-tab="brokers" role="tab" aria-selected="true" onclick="switchCompat('brokers')"><span class="ct-ico">&#127974;</span> Brokers <span class="ct-count">5</span></button>
+      <button class="compat-tab" data-tab="props" role="tab" aria-selected="false" onclick="switchCompat('props')"><span class="ct-ico">&#127942;</span> Prop Firms <span class="ct-count">3</span></button>
+    </div>
+    <div class="compat-panel active" id="cp-brokers">
+      <p class="compat-paneltip">Run TITAN live on your own broker account &mdash; MT4 &amp; MT5, EAs allowed, all 5 pairs.</p>
+      <div class="compat-grid">
+        <div class="compat-card">
+          <span class="compat-type">Broker</span>
+          <div class="compat-name">FOREX.com</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>MT4 &amp; MT5 platforms</li>
+            <li>EAs fully allowed</li>
+            <li>Regulated, global access</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type">Broker</span>
+          <div class="compat-name">Exness</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>MT4 &amp; MT5 platforms</li>
+            <li>EAs allowed</li>
+            <li>Use a Raw or Zero spread account</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type">Broker</span>
+          <div class="compat-name">IC Markets</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>MT4 &amp; MT5 platforms</li>
+            <li>EAs allowed</li>
+            <li>Raw Spread + full tick history</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type">Broker</span>
+          <div class="compat-name">Pepperstone</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>MT4 &amp; MT5 platforms</li>
+            <li>EAs allowed</li>
+            <li>Razor account, low spreads</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type">Broker</span>
+          <div class="compat-name">FP Markets</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>MT4 &amp; MT5 platforms</li>
+            <li>EAs allowed</li>
+            <li>Raw account, deep history</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="compat-grouplabel reveal" style="margin-top:46px">Prop Firms &mdash; Funded Challenges</div>
-    <div class="compat-grid">
-      <div class="compat-card reveal">
-        <span class="compat-type firm">Prop Firm</span>
-        <div class="compat-name">FTMO</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs available</li>
-          <li>EAs allowed on challenges</li>
-          <li>5% daily / 10% max drawdown (2-Step)</li>
-          <li>TITAN Pro 4% hard stop sits safely below</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type firm">Prop Firm</span>
-        <div class="compat-name">FundedNext</div>
-        <ul class="compat-feats">
-          <li>All 5 pairs incl. AUDCHF &amp; CADCHF confirmed</li>
-          <li>EAs allowed</li>
-          <li>MT4 &amp; MT5 supported</li>
-          <li>Exact input settings in buyer guide</li>
-        </ul>
-      </div>
-      <div class="compat-card reveal">
-        <span class="compat-type firm">Prop Firm</span>
-        <div class="compat-name">E8 Markets</div>
-        <ul class="compat-feats">
-          <li>All 5 TITAN pairs verified</li>
-          <li>EAs allowed &middot; MT5</li>
-          <li>Raw spreads + $5 commissions</li>
-          <li>Configurable drawdown &mdash; 5%/10% available</li>
-        </ul>
+    <div class="compat-panel" id="cp-props">
+      <p class="compat-paneltip">Pass funded challenges on autopilot &mdash; TITAN Pro's 4% hard stop sits safely inside every firm's limit.</p>
+      <div class="compat-grid">
+        <div class="compat-card">
+          <span class="compat-type firm">Prop Firm</span>
+          <div class="compat-name">FTMO</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs available</li>
+            <li>EAs allowed on challenges</li>
+            <li>5% daily / 10% max drawdown (2-Step)</li>
+            <li>TITAN Pro 4% hard stop sits safely below</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type firm">Prop Firm</span>
+          <div class="compat-name">FundedNext</div>
+          <ul class="compat-feats">
+            <li>All 5 pairs incl. AUDCHF &amp; CADCHF confirmed</li>
+            <li>EAs allowed</li>
+            <li>MT4 &amp; MT5 supported</li>
+            <li>Exact input settings in buyer guide</li>
+          </ul>
+        </div>
+        <div class="compat-card">
+          <span class="compat-type firm">Prop Firm</span>
+          <div class="compat-name">E8 Markets</div>
+          <ul class="compat-feats">
+            <li>All 5 TITAN pairs verified</li>
+            <li>EAs allowed &middot; MT5</li>
+            <li>Raw spreads + $5 commissions</li>
+            <li>Configurable drawdown &mdash; 5%/10% available</li>
+          </ul>
+        </div>
       </div>
     </div>
     <p class="compat-note reveal">Also runs on <strong>XM, Tickmill</strong> and any MT4/MT5 broker with a Raw, Zero or ECN account. <strong>Tip:</strong> for the free Strategy Tester backtest, a full-history broker (IC Markets, Pepperstone, FP Markets) gives the cleanest data &mdash; some brokers' demo tick history is limited. Prop firm input settings for each firm are included in the buyer guide.</p>
@@ -2464,6 +2489,14 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   q.setAttribute('aria-expanded','false');
   q.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tFaq(q);}});
 });
+
+// Compatibility tab switcher
+function switchCompat(t){
+  document.querySelectorAll('.compat-tab').forEach(function(b){var on=b.dataset.tab===t;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  var br=document.getElementById('cp-brokers'),pr=document.getElementById('cp-props');
+  if(br)br.classList.toggle('active',t==='brokers');
+  if(pr)pr.classList.toggle('active',t==='props');
+}
 
 // Scroll top
 const stBtn=document.getElementById('scrollTop');
