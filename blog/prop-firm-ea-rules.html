@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prop Firm EA Rules 2026 — FTMO vs FundedNext vs Infinity Forex Funds | Quantum Edge Trading</title>
-<meta name="description" content="Complete EA rules for FTMO, FundedNext, and Infinity Forex Funds in 2026. Daily DD limits, max drawdown, news filters, what gets you failed, and exact TITAN configuration per firm.">
-<meta name="keywords" content="prop firm EA rules 2026, FTMO EA rules, FundedNext EA rules, Infinity Forex Funds EA, prop firm expert advisor allowed, FTMO automated trading rules">
+<title>Prop Firm EA Rules 2026 — FTMO vs FundedNext vs E8 Markets | Quantum Edge Trading</title>
+<meta name="description" content="Complete EA rules for FTMO, FundedNext, and E8 Markets in 2026. Daily DD limits, max drawdown, news filters, what gets you failed, and exact TITAN configuration per firm.">
+<meta name="keywords" content="prop firm EA rules 2026, FTMO EA rules, FundedNext EA rules, E8 Markets EA rules, prop firm expert advisor allowed, FTMO automated trading rules">
 <link rel="canonical" href="https://getquantumedgeai.com/blog/prop-firm-ea-rules.html">
 <link rel="icon" href="../Logo.png" type="image/png">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://getquantumedgeai.com/blog/prop-firm-ea-rules.html">
-<meta property="og:title" content="Prop Firm EA Rules 2026 — FTMO vs FundedNext vs Infinity Forex Funds">
+<meta property="og:title" content="Prop Firm EA Rules 2026 — FTMO vs FundedNext vs E8 Markets">
 <meta property="og:description" content="Side-by-side breakdown of EA rules across the 3 top prop firms. What's allowed, what fails you, and how to configure your MT5 EA for full compliance.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=630">
 <meta property="og:site_name" content="Quantum Edge Trading">
@@ -18,7 +18,7 @@
 <meta property="article:author" content="Quantum Edge Trading">
 <meta property="article:section" content="Prop Firm Trading">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Prop Firm EA Rules 2026 — FTMO vs FundedNext vs Infinity">
+<meta name="twitter:title" content="Prop Firm EA Rules 2026 — FTMO vs FundedNext vs E8 Markets">
 <meta name="twitter:description" content="Daily DD, max DD, news filters, restricted strategies — everything you need to run an EA on the top 3 prop firms without getting breached.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=630">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP07BV4QJQ"></script>
@@ -30,8 +30,8 @@
     {
       "@type": "Article",
       "@id": "https://getquantumedgeai.com/blog/prop-firm-ea-rules.html#article",
-      "headline": "Prop Firm EA Rules 2026 — FTMO vs FundedNext vs Infinity Forex Funds",
-      "description": "A complete side-by-side guide to EA trading rules across FTMO, FundedNext, and Infinity Forex Funds. Covers drawdown limits, news filters, restricted strategies, and exact EA configuration settings.",
+      "headline": "Prop Firm EA Rules 2026 — FTMO vs FundedNext vs E8 Markets",
+      "description": "A complete side-by-side guide to EA trading rules across FTMO, FundedNext, and E8 Markets. Covers drawdown limits, news filters, restricted strategies, and exact EA configuration settings.",
       "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80",
       "datePublished": "2026-06-01",
       "dateModified": "2026-06-01",
@@ -53,12 +53,12 @@
         {
           "@type": "Question",
           "name": "Are Expert Advisors allowed on FTMO?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes. FTMO explicitly allows automated trading and Expert Advisors on MT5. EAs must comply with their drawdown rules: 5% daily loss limit and 10% maximum loss. Martingale, grid, and high-frequency scalping strategies that exploit spread or latency are banned."}
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. FTMO explicitly allows automated trading and Expert Advisors on MT5. EAs must comply with their drawdown rules: on the 2-Step Challenge that is a 5% Max Daily Loss and 10% Max Loss, both static. Martingale, grid, and high-frequency scalping strategies that exploit spread or latency are banned, and identical third-party EAs running across many clients can trip FTMO's allocation rules."}
         },
         {
           "@type": "Question",
           "name": "Can you use an EA on FundedNext?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes. FundedNext allows EAs on all account types. The same rules apply as manual trading: 5% daily drawdown limit and 10% maximum drawdown. News trading EAs need a filter to avoid trading within 2 minutes of major releases."}
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. FundedNext allows EAs on MT4 and MT5 with conditions: settings must be customized and unique, and duplicated strategies across multiple clients are not allowed. On the Stellar 2-Step model the limits are a 5% daily loss and 10% maximum loss, both static against initial balance and measured on equity."}
         },
         {
           "@type": "Question",
@@ -68,7 +68,7 @@
         {
           "@type": "Question",
           "name": "What is the daily drawdown rule for FTMO?",
-          "acceptedAnswer": {"@type": "Answer", "text": "FTMO's daily loss limit is 5% of the initial balance. This resets each day. If your account balance was $100,000 at the start of the day, you cannot lose more than $5,000 in a single trading day. TITAN Pro has a 4% daily DD hard stop built in — well within FTMO's limit."}
+          "acceptedAnswer": {"@type": "Answer", "text": "On the FTMO 2-Step Challenge the Max Daily Loss is 5% of initial capital, recalculated at midnight CE(S)T each day and measured on equity — floating losses count. On a $100,000 account you cannot lose more than $5,000 in a single trading day. TITAN Pro has a 4% daily DD hard stop built in — well within FTMO's limit."}
         }
       ]
     }
@@ -103,16 +103,26 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 .nav-dropdown a{display:block;padding:10px 22px;color:var(--muted);font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s;white-space:nowrap}
 .nav-dropdown a:hover{color:var(--gold)}
 .nav-blog-btn{background:var(--gold)!important;color:#000!important;font-weight:800!important;margin:6px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important}
+.nav-home{font-weight:700}
+.nav-drop-label{padding:4px 22px 9px;font-size:.57rem;letter-spacing:3px;color:#888;text-transform:uppercase;font-weight:800}
+.nav-drop-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.25),transparent);margin:7px 14px}
+.nav-dropdown a .ndi{display:inline-block;width:24px;font-size:.92rem;opacity:.85}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px}
-#mobileNav{display:none;position:fixed;inset:0;background:rgba(13,10,0,.98);z-index:9000;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:100px;overflow-y:scroll;-webkit-overflow-scrolling:touch}
-#mobileNav.open{display:flex}
-#mobileNav a{display:block;color:var(--white);font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
-#mobileNav a:hover{color:var(--gold)}
-.mob-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 24px;position:absolute;top:18px}
-.mob-head img{height:34px;width:34px;object-fit:contain}
-.mob-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;z-index:9001}
-.mob-cta{background:var(--gold);color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block;animation:mobNavIn .28s ease}
+@keyframes mobNavIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+#mobileNav .mob-label{padding:18px 28px 8px;font-size:.6rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:#888}
+#mobileNav a .mni{display:inline-block;width:36px;font-size:1.1rem;vertical-align:1px}
+#mobileNav a:not(.mob-cta){position:relative}
+#mobileNav a:not(.mob-cta)::after{content:'\203A';position:absolute;right:28px;top:50%;transform:translateY(-50%);color:rgba(245,200,66,.5);font-size:1.5rem;font-weight:400}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:#F5C842;width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px;text-align:left}
+#mobileNav a:active{color:#F5C842;background:rgba(245,200,66,.04)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(min-width:961px){#mobileNav{display:none!important}}
 
 .blog-wrap{max-width:820px;margin:0 auto;padding:60px 32px 80px}
 .blog-hero-img{width:100%;height:340px;object-fit:cover;border-radius:16px;margin-bottom:40px;border:1px solid var(--border)}
@@ -165,8 +175,10 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 .btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--gold);color:var(--gold);font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:10px;text-decoration:none;margin-left:12px;transition:background .2s,color .2s}
 .btn-outline:hover{background:var(--gold);color:#000;text-decoration:none}
 
-#scrollTop{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.2rem;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:800}
-#scrollTop.show{display:flex}
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:28px;right:18px;z-index:9400;width:44px;height:44px;background:linear-gradient(135deg,rgba(245,200,66,.15),rgba(245,200,66,.08));border:1.5px solid rgba(245,200,66,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#F5C842;font-size:1.35rem;line-height:1;transition:all .3s;opacity:0;transform:translateY(12px);pointer-events:none}
+#scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#scrollTop:hover{background:linear-gradient(135deg,rgba(245,200,66,.25),rgba(245,200,66,.12));box-shadow:0 4px 20px rgba(245,200,66,.25)}
 
 footer{border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--muted2);font-size:.82rem}
 footer a{color:var(--muted2);text-decoration:none;margin:0 10px}
@@ -190,17 +202,25 @@ footer a:hover{color:var(--gold)}
     <span class="nav-logo-text">Quantum Edge</span>
   </a>
   <ul class="nav-links">
+    <li><a href="/" class="nav-home">Home</a></li>
     <li><a href="/#performance">Performance</a></li>
     <li><a href="/#pricing">Pricing</a></li>
     <li><a href="/#faq">FAQ</a></li>
     <li>
       <div class="nav-more" id="navMore">
-        <button class="nav-more-btn" onclick="toggleMoreMenu(event)">More <span class="nav-arr">&#9660;</span></button>
+        <button class="nav-more-btn" onclick="toggleMoreMenu(event)" aria-haspopup="true" aria-expanded="false" aria-controls="navDrop">More <span class="nav-arr">&#9660;</span></button>
         <div class="nav-dropdown" id="navDrop">
-          <a href="/#simulator">Simulator</a>
-          <a href="../try-titan.html" style="color:var(--green);font-weight:800">Try TITAN Free</a>
-          <a href="../setup-guide.html">Setup Guide</a>
-          <a href="../blog/" class="nav-blog-btn">&#128196; Blog</a>
+          <div class="nav-drop-label">Explore</div>
+          <a href="/#titan-in-action"><span class="ndi">&#127916;</span>TITAN In Action</a>
+          <a href="/#simulator"><span class="ndi">&#128202;</span>Simulator</a>
+          <a href="/#compatibility"><span class="ndi">&#127942;</span>Brokers &amp; Prop Firms</a>
+          <a href="/#founders"><span class="ndi">&#128101;</span>Founders</a>
+          <a href="/#support"><span class="ndi">&#9889;</span>Support</a>
+          <div class="nav-drop-divider"></div>
+          <a href="/setup-guide.html"><span class="ndi">&#128736;&#65039;</span>Setup Guide</a>
+          <a href="/compare.html"><span class="ndi">&#9878;&#65039;</span>Compare EAs</a>
+          <a href="/try-titan.html"><span class="ndi">&#127873;</span>Try TITAN Free</a>
+          <a href="/blog/" class="nav-blog-btn">&#128196; Blog &mdash; Free Guides</a>
         </div>
       </div>
     </li>
@@ -213,20 +233,22 @@ footer a:hover{color:var(--gold)}
 
 <div id="mobileNav">
   <div class="mob-head">
-    <img src="../Logo.png" alt="Quantum Edge">
+    <img src="../Logo.png" alt="Quantum Edge" width="80" height="80">
     <button class="mob-close" onclick="toggleNav()">&times;</button>
   </div>
-  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
-  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
-  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
-  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
-  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
-  <a href="/#support" onclick="closeMobileNav()">Support</a>
-  <a href="../setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
-  <a href="../compare.html" onclick="closeMobileNav()">Compare EAs</a>
-  <a href="../blog/" class="nav-active" onclick="closeMobileNav()">Blog</a>
-  <a href="../try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <div class="mob-label">Menu</div>
+  <a href="/" onclick="toggleNav()"><span class="mni">&#127968;</span>Home</a>
+  <a href="/#performance" onclick="closeMobileNav()"><span class="mni">&#128200;</span>Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()"><span class="mni">&#128176;</span>Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()"><span class="mni">&#10067;</span>FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()"><span class="mni">&#127916;</span>TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()"><span class="mni">&#128202;</span>Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()"><span class="mni">&#128101;</span>Founders</a>
+  <a href="/#support" onclick="closeMobileNav()"><span class="mni">&#9889;</span>Support</a>
+  <a href="../setup-guide.html" onclick="closeMobileNav()"><span class="mni">&#128736;&#65039;</span>Setup Guide</a>
+  <a href="../compare.html" onclick="closeMobileNav()"><span class="mni">&#9878;&#65039;</span>Compare EAs</a>
+  <a href="../blog/" class="nav-active" onclick="closeMobileNav()"><span class="mni">&#128196;</span>Blog</a>
+  <a href="../try-titan.html" onclick="closeMobileNav()"><span class="mni">&#127873;</span>Try Free</a>
   <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
@@ -235,7 +257,7 @@ footer a:hover{color:var(--gold)}
   <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&fit=crop&h=630" alt="Prop firm trading screens" class="blog-hero-img" loading="lazy" width="1200" height="630">
 
   <div class="blog-label">Prop Firm Trading &middot; Expert Advisors</div>
-  <h1 class="blog-title">Prop Firm EA Rules 2026 — FTMO vs FundedNext vs Infinity Forex Funds</h1>
+  <h1 class="blog-title">Prop Firm EA Rules 2026 — FTMO vs FundedNext vs E8 Markets</h1>
   <div class="blog-meta">
     <span>&#128197; June 2026</span>
     <span>&#9201; 9 min read</span>
@@ -246,42 +268,42 @@ footer a:hover{color:var(--gold)}
 
     <div class="aeo-box">
       <div class="aeo-label">Quick Answer</div>
-      <p><strong>Yes — EAs are allowed on FTMO, FundedNext, and Infinity Forex Funds.</strong> All three permit automated trading on MT5 provided you stay within their drawdown rules, avoid banned strategies (martingale, grid, latency arbitrage), and use a news filter around major releases. The key difference: FTMO and FundedNext allow 5% daily drawdown, while Infinity Forex Funds enforces a tighter 4% limit.</p>
+      <p><strong>Yes — EAs are allowed on FTMO, FundedNext, and E8 Markets.</strong> All three permit automated trading on MT5 provided you stay within their drawdown rules, avoid banned strategies (martingale, grid, latency arbitrage, HFT), and use a news filter around major releases. FTMO's 2-Step Challenge and FundedNext's Stellar 2-Step both run 5% daily / 10% max static limits, while E8 Markets lets you configure your drawdown at purchase — a 5% daily / 10% max setup is available.</p>
     </div>
 
     <p>Running an Expert Advisor on a prop firm account is one of the most effective moves an algorithmic trader can make — access to $10,000&ndash;$200,000 in funded capital without risking your own money. But the rules vary by firm, and a single violation can permanently close your funded account.</p>
 
-    <p>This guide covers every EA-relevant rule across the three prop firms we recommend: <strong>FTMO</strong>, <strong>FundedNext</strong>, and <strong>Infinity Forex Funds</strong>. At the end you will find exact input settings to configure TITAN AutoTrader Pro for full compliance with each firm.</p>
+    <p>This guide covers every EA-relevant rule across the three prop firms we recommend: <strong>FTMO</strong>, <strong>FundedNext</strong>, and <strong>E8 Markets</strong>. At the end you will find exact input settings to configure TITAN AutoTrader Pro for full compliance with each firm.</p>
 
     <h2>At a Glance — Drawdown Rules Comparison</h2>
 
     <div class="firm-grid">
       <div class="firm-card">
-        <h4>&#127937; FTMO</h4>
+        <h4>&#127937; FTMO (2-Step)</h4>
         <div class="rule">Daily DD limit <span>5%</span></div>
         <div class="rule">Max overall DD <span>10%</span></div>
-        <div class="rule">DD type <span>Balance-based</span></div>
+        <div class="rule">DD type <span>Static, equity-measured</span></div>
         <div class="rule">EAs allowed <span class="pass">Yes</span></div>
         <div class="rule">News trading <span class="warn">Filtered</span></div>
         <div class="rule">Weekend hold <span class="warn">Account type</span></div>
       </div>
       <div class="firm-card">
-        <h4>&#128202; FundedNext</h4>
+        <h4>&#128202; FundedNext (Stellar 2-Step)</h4>
         <div class="rule">Daily DD limit <span>5%</span></div>
         <div class="rule">Max overall DD <span>10%</span></div>
-        <div class="rule">DD type <span>Equity-based</span></div>
+        <div class="rule">DD type <span>Static, equity-measured</span></div>
         <div class="rule">EAs allowed <span class="pass">Yes</span></div>
         <div class="rule">News trading <span class="warn">Filtered</span></div>
         <div class="rule">Weekend hold <span class="pass">Allowed</span></div>
       </div>
       <div class="firm-card">
-        <h4>&#9889; Infinity Forex</h4>
-        <div class="rule">Daily DD limit <span>4%</span></div>
-        <div class="rule">Max overall DD <span>8%</span></div>
-        <div class="rule">DD type <span>Balance-based</span></div>
+        <h4>&#9889; E8 Markets (Classic 2-Step)</h4>
+        <div class="rule">Daily DD limit <span>3&ndash;7% configurable</span></div>
+        <div class="rule">Max overall DD <span>6&ndash;14% configurable</span></div>
+        <div class="rule">DD type <span>Intraday trailing</span></div>
         <div class="rule">EAs allowed <span class="pass">Yes</span></div>
-        <div class="rule">News trading <span class="warn">Filtered</span></div>
-        <div class="rule">Weekend hold <span class="pass">Allowed</span></div>
+        <div class="rule">News trading <span class="warn">~2-min restriction</span></div>
+        <div class="rule">Consistency rule <span class="warn">40% best day</span></div>
       </div>
     </div>
 
@@ -290,8 +312,8 @@ footer a:hover{color:var(--gold)}
     <p>FTMO is the largest prop firm in the world and has the most clearly documented EA policy. Automated trading is fully permitted on MT5 provided the EA does not use prohibited strategies.</p>
 
     <h3>Drawdown rules</h3>
-    <p>FTMO uses a <strong>balance-based daily loss limit</strong>. Your daily limit is calculated from your account balance at the start of each trading day (midnight server time, CET). On a $100,000 account, you cannot lose more than $5,000 that day — regardless of how many open trades you have.</p>
-    <p>The <strong>10% maximum loss</strong> is measured from your initial account balance. Your account is breached if equity ever falls below $90,000 at any point — even for a second on a sudden spike.</p>
+    <p>The FTMO 2-Step Challenge uses a <strong>5% Max Daily Loss</strong>, recalculated at midnight CE(S)T against initial capital, and <strong>measured on equity</strong> — floating losses on open trades count, not just closed ones. On a $100,000 account, your equity cannot drop more than $5,000 in a single trading day.</p>
+    <p>The <strong>10% Max Loss</strong> is static, measured from your initial account balance. Your account is breached if equity ever falls below $90,000 at any point — even for a second on a sudden spike. (FTMO also offers a 1-Step model with 3% daily and a 10% end-of-day trailing drawdown — different rules; this guide uses the standard 2-Step.)</p>
 
     <h3>What EA strategies are banned on FTMO</h3>
     <ul>
@@ -300,6 +322,7 @@ footer a:hover{color:var(--gold)}
       <li><strong>High-frequency scalping</strong> — strategies targeting 1&ndash;2 pip moves dozens of times per hour are flagged and reviewed.</li>
       <li><strong>News spike exploitation</strong> — entering trades in the 30-second window immediately before or after a major release (NFP, FOMC, CPI) to catch the initial spike.</li>
       <li><strong>Copy trading across multiple FTMO accounts</strong> — simultaneously copying the same trades to two or more FTMO accounts to compound exposure.</li>
+      <li><strong>Identical third-party EAs across many clients</strong> — if a purchased EA runs identical trades on identical settings across many FTMO accounts, it can trip FTMO's capital-allocation rules. Customise your inputs to your own plan.</li>
     </ul>
 
     <h3>News trading on FTMO</h3>
@@ -307,20 +330,23 @@ footer a:hover{color:var(--gold)}
 
     <h2>FundedNext — EA Rules in Full</h2>
 
-    <p>FundedNext has grown rapidly and is now a primary alternative to FTMO. Their EA rules are broadly similar, with one important difference: they use an <strong>equity-based daily drawdown</strong> rather than balance-based.</p>
+    <p>FundedNext has grown rapidly and is now a primary alternative to FTMO. Their EA rules are broadly similar — and on the current Stellar lineup, the drawdown maths is just as straightforward: <strong>both limits are static</strong>.</p>
 
-    <h3>Equity vs balance — why it matters for EA traders</h3>
-    <p>On FTMO, the daily loss limit is calculated from your <em>balance</em> at the start of the day. On FundedNext, it is calculated from your <em>equity</em> — meaning floating losses on open trades count toward your daily limit immediately, not just when you close them.</p>
+    <h3>Stellar drawdown rules — static, not trailing</h3>
+    <p>The Stellar 2-Step Challenge runs a <strong>5% daily loss limit</strong> and <strong>10% maximum loss</strong>, both fixed against your initial balance. The daily limit resets at 00:00 server time (GMT+2/+3) and is <strong>measured on equity</strong> — floating losses on open trades count toward your daily limit immediately, not just when you close them.</p>
     <p>For an EA trader this is critical. If your EA has 3 open trades showing a combined floating loss of 3%, you only have 2% of daily limit remaining before a breach — even with no closed trades yet.</p>
+    <p>One thing you may have read elsewhere: FundedNext's old <em>Evaluation</em> and <em>Express</em> models used a trailing drawdown that locked at +5% profit. <strong>Those models were discontinued on March 18, 2025</strong> — the current Stellar 2-Step (5%/10%), Stellar 1-Step (3%/6%) and Stellar Lite (4%/8%) are all static. The only trailing exception is Stellar <em>Instant</em>, which has no daily limit and a 6% trailing max drawdown.</p>
 
-    <h3>Trailing maximum drawdown on Stellar accounts</h3>
-    <p>FundedNext's Stellar account model uses a <strong>trailing drawdown floor</strong>. As your account equity grows, your drawdown floor moves up — locking in profits. If your account grows from $100,000 to $105,000, your floor moves from $90,000 to $95,000. This is tighter than a static floor. Use 1% risk per trade on Stellar accounts.</p>
+    <h3>EA conditions on FundedNext</h3>
+    <p>EAs are allowed on MT4 and MT5, with conditions: your EA settings must be <strong>customised and unique</strong>, and duplicated strategies across multiple clients are not permitted. Adjust your TITAN inputs (risk percentage, drawdown buffers) to your own plan rather than running untouched defaults.</p>
 
-    <h2>Infinity Forex Funds — EA Rules in Full</h2>
+    <h2>E8 Markets — EA Rules in Full</h2>
 
-    <p>Infinity Forex Funds enforces stricter drawdown limits than both FTMO and FundedNext — 4% daily and 8% maximum. This makes it the most conservative of the three firms and the most stable in terms of payout history.</p>
+    <p>E8 Markets takes a different approach: <strong>you configure your drawdown limits when you buy the evaluation</strong>. On E8 Classic (2-step), the daily limit can be set between 3% and 7% and the maximum between 6% and 14% — a 5% daily / 10% max configuration is available and is the one we recommend for TITAN. The drawdown type is intraday-trailing on Classic/One/Track accounts, meaning floating profit can raise the floor during the day.</p>
 
-    <p>The 4% daily drawdown limit leaves less margin for error. TITAN Pro already has a 4% daily DD hard stop built into the code — the EA automatically stops entering new trades the moment daily drawdown reaches 4%, aligning exactly with Infinity's rule. Set <code>RiskPercent = 0.8</code> to leave a small buffer.</p>
+    <p>EAs are allowed without pre-approval; HFT and latency arbitrage are banned, and there is a roughly 2-minute restriction around major news releases. Evaluation accounts also carry a <strong>40% consistency rule</strong> — no single day may account for more than 40% of your total evaluation profit. Leverage is 1:50 on evaluation and 1:30 once funded, and MT5 is available for non-US clients with raw spreads plus a $5/lot forex commission. All 5 TITAN pairs are tradeable.</p>
+
+    <p>TITAN Pro's 4% daily DD hard stop sits 1% under a 5% daily configuration, and its 2&ndash;3 trades/week rhythm across 5 pairs spreads profit across many days — which is exactly what the consistency rule wants to see.</p>
 
     <h2>What Gets You Failed — The Real Reasons</h2>
 
@@ -340,21 +366,21 @@ footer a:hover{color:var(--gold)}
 
     <table class="comp-table">
       <thead>
-        <tr><th>Rule</th><th>FTMO</th><th>FundedNext</th><th>Infinity Forex</th></tr>
+        <tr><th>Rule</th><th>FTMO (2-Step)</th><th>FundedNext (Stellar 2-Step)</th><th>E8 Markets (Classic 2-Step)</th></tr>
       </thead>
       <tbody>
-        <tr><td>EAs allowed</td><td class="pass">Yes</td><td class="pass">Yes</td><td class="pass">Yes</td></tr>
-        <tr><td>Daily DD limit</td><td>5% of balance</td><td>5% of equity</td><td>4% of balance</td></tr>
-        <tr><td>Max overall DD</td><td>10% of balance</td><td>10% of equity</td><td>8% of balance</td></tr>
-        <tr><td>DD floor type</td><td>Static</td><td>Trailing (Stellar) / Static (Evaluation)</td><td>Static</td></tr>
+        <tr><td>EAs allowed</td><td class="pass">Yes</td><td class="pass">Yes (unique settings required)</td><td class="pass">Yes (no pre-approval)</td></tr>
+        <tr><td>Daily DD limit</td><td>5% of initial capital, equity-measured</td><td>5% static, equity-measured</td><td>3&ndash;7% configurable (5% available)</td></tr>
+        <tr><td>Max overall DD</td><td>10% static from initial balance</td><td>10% static from initial balance</td><td>6&ndash;14% configurable (10% available)</td></tr>
+        <tr><td>DD floor type</td><td>Static</td><td>Static (not trailing)</td><td>Intraday trailing</td></tr>
         <tr><td>Martingale</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
         <tr><td>Grid trading</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
-        <tr><td>News spike scalping</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
-        <tr><td>Latency arbitrage</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
+        <tr><td>News spike scalping</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned (~2-min restriction)</td></tr>
+        <tr><td>Latency arbitrage / HFT</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
         <tr><td>News trading (normal)</td><td class="warn">Allowed with filter</td><td class="warn">Allowed with filter</td><td class="warn">Allowed with filter</td></tr>
-        <tr><td>Weekend holding</td><td class="warn">Account type dependent</td><td class="pass">Allowed</td><td class="pass">Allowed</td></tr>
-        <tr><td>Multi-account copying</td><td class="fail">Banned</td><td class="fail">Banned</td><td class="fail">Banned</td></tr>
-        <tr><td>Recommended TITAN risk</td><td><strong>1.0%</strong></td><td><strong>1.0%</strong></td><td><strong>0.8%</strong></td></tr>
+        <tr><td>Daily reset time</td><td>Midnight CE(S)T</td><td>00:00 server time (GMT+2/+3)</td><td>Per dashboard — verify</td></tr>
+        <tr><td>Consistency rule</td><td>&mdash;</td><td>&mdash;</td><td class="warn">40% best-day (evaluation)</td></tr>
+        <tr><td>Recommended TITAN risk</td><td><strong>1.0%</strong></td><td><strong>1.0%</strong></td><td><strong>1.0%</strong> (on 5%/10% config)</td></tr>
       </tbody>
     </table>
 
@@ -373,52 +399,57 @@ MagicNumber      = 50205</code>
     </div>
 
     <div class="config-block">
-      <h4>FundedNext (Evaluation or Stellar) — recommended inputs</h4>
-      <code>RiskPercent      = 1.0    // 1% per trade — accounts for equity-based DD
+      <h4>FundedNext (Stellar 2-Step) — recommended inputs</h4>
+      <code>RiskPercent      = 1.0    // 1% per trade — within 5% static daily limit
 ATR_SL_Mult      = 1.5    // SL at 1.5x ATR
-DailyDDCap       = 4.0    // Buffer for floating losses (equity-based DD)
-MaxOverallDD     = 8.0    // Buffer below FundedNext 10% limit
+DailyDDCap       = 4.0    // Buffer for floating losses (limit is equity-measured)
+MaxOverallDD     = 8.0    // Buffer below Stellar's 10% static max loss
 UseNewsBlackout  = true   // Required for compliance
 MagicNumber      = 50205
 
-// IMPORTANT: Floating losses count toward daily DD on FundedNext.
-// Monitor total open equity, not just closed P&L.</code>
+// IMPORTANT: The daily limit is measured on equity — floating losses count.
+// Monitor total open equity, not just closed P&L.
+// Customise these inputs to your own plan — FundedNext requires unique EA settings.</code>
     </div>
 
     <div class="config-block">
-      <h4>Infinity Forex Funds — recommended inputs</h4>
-      <code>RiskPercent      = 0.8    // Slightly lower — 4% daily limit is tighter
+      <h4>E8 Markets (Classic 2-Step) — recommended inputs</h4>
+      <code>RiskPercent      = 1.0    // Same as FTMO — assumes 5%/10% drawdown config
 ATR_SL_Mult      = 1.5    // SL at 1.5x ATR
-DailyDDCap       = 3.5    // Buffer below Infinity's 4% daily limit
-MaxOverallDD     = 6.5    // Buffer below Infinity's 8% overall limit
-UseNewsBlackout  = true   // Required
-MagicNumber      = 50205</code>
+DailyDDCap       = 4.0    // Hard stop at 4% — buffer below 5% daily config
+MaxOverallDD     = 8.0    // Buffer below 10% max config
+UseNewsBlackout  = true   // E8 restricts trading ~2 min around major news
+MagicNumber      = 50205
+
+// IMPORTANT: Choose the 5% daily / 10% max drawdown configuration
+// when buying your E8 evaluation — these settings assume it.</code>
     </div>
 
     <h2>Which Firm Is Best for Running TITAN?</h2>
 
-    <p>For pure EA trading with TITAN we recommend starting with <strong>FTMO</strong> or <strong>FundedNext</strong>. Both have 5% daily limits which give more breathing room for a strategy that trades 2&ndash;3 times per week.</p>
+    <p>For pure EA trading with TITAN we recommend starting with <strong>FTMO</strong> or <strong>FundedNext</strong>. Both run 5% daily / 10% max static limits on their standard 2-Step models, which gives plenty of breathing room for a strategy that trades 2&ndash;3 times per week.</p>
 
-    <p>FTMO's balance-based daily calculation is easier to monitor in real time. FundedNext's equity-based calculation is harder to track when you have multiple open trades — but their Stellar trailing floor grows with your account, which is powerful on a winning run.</p>
+    <p>Both firms measure the daily limit on equity, so track your floating P&amp;L when multiple trades are open. The practical difference is the reset clock — midnight CE(S)T on FTMO, 00:00 server time (GMT+2/+3) on FundedNext — and FundedNext's requirement that EA settings be customised and unique.</p>
 
-    <p><strong>Infinity Forex Funds</strong> suits traders who want the tightest risk profile. The 4% daily and 8% overall limits work well with TITAN's low historical drawdown of 1.39% — there is plenty of buffer. Start at 0.8% risk per trade.</p>
+    <p><strong>E8 Markets</strong> suits traders who want control over their risk parameters — you pick the drawdown configuration when you buy. Choose the 5% daily / 10% max setup and TITAN's settings carry over unchanged from FTMO. Just plan around the 40% best-day consistency rule on evaluation accounts — TITAN's multi-day, multi-pair profit distribution handles this naturally.</p>
 
     <h2>Final Pre-Launch Checklist</h2>
 
     <ul>
       <li>&#10003; Using <strong>TITAN Pro</strong> (Magic 50205) — not TITAN Regular</li>
-      <li>&#10003; <code>RiskPercent</code> set correctly per firm (1.0% or 0.8%)</li>
+      <li>&#10003; <code>RiskPercent</code> set correctly per firm (1.0%)</li>
       <li>&#10003; <code>UseNewsBlackout = true</code> — FOMC and NFP blocked automatically</li>
       <li>&#10003; Account is <strong>Raw or ECN spread</strong> — not Standard spread</li>
       <li>&#10003; EA running on a VPS — not a home computer that can sleep or disconnect</li>
       <li>&#10003; One EA instance per pair — no duplicate EAs on the same chart</li>
       <li>&#10003; Know your firm's daily DD reset time (usually midnight server time)</li>
-      <li>&#10003; On FundedNext: monitor floating equity — open losses count toward daily limit</li>
+      <li>&#10003; Monitor floating equity — daily limits are equity-measured, open losses count</li>
+      <li>&#10003; On E8 Markets: bought the 5% daily / 10% max drawdown configuration</li>
     </ul>
 
     <div class="blog-cta">
       <h3>Ready to Run TITAN on Your Prop Firm Challenge?</h3>
-      <p>TITAN Pro includes exact prop firm compliance for FTMO, FundedNext, and Infinity. 4% daily hard stop and news blackout built in. One-time payment, free updates forever.</p>
+      <p>TITAN Pro includes exact prop firm compliance for FTMO, FundedNext, and E8 Markets. 4% daily hard stop and news blackout built in. One-time payment, free updates forever.</p>
       <a href="/#pricing" class="btn-gold">Get TITAN Pro &rarr;</a>
       <a href="../try-titan.html" class="btn-outline">Try Free First</a>
     </div>
@@ -443,8 +474,8 @@ function toggleMoreMenu(e){e.stopPropagation();document.getElementById('navMore'
 document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))m.classList.remove('open');});
 function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
 function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
-var st=document.getElementById('scrollTop');
-window.addEventListener('scroll',function(){st.classList.toggle('show',window.scrollY>400);});
+const stBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{if(stBtn)stBtn.classList.toggle('show',scrollY>300)});
 </script>
 </body>
 </html>

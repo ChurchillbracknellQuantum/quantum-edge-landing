@@ -671,7 +671,7 @@ footer span{color:var(--gold);font-weight:700}
 #scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
 #scrollTop:hover{background:linear-gradient(135deg,rgba(245,200,66,.25),rgba(245,200,66,.12));box-shadow:0 4px 20px rgba(245,200,66,.25)}
 body.has-sticky #scrollTop{bottom:161px}
-@media(max-width:768px){#scrollTop{display:none!important}}
+@media(max-width:768px){#scrollTop{width:42px;height:42px;right:16px;bottom:90px}body.has-sticky #scrollTop{bottom:90px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 /* STICKY CTA */
@@ -1093,6 +1093,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       </div>
     </a>
     <div class="nav-links" id="navLinks">
+      <a href="#hero" data-label="Home">Home</a>
       <a href="#performance" data-label="Performance">Performance</a>
       <a href="#pricing" data-label="Pricing">Pricing</a>
       <a href="#faq" data-label="FAQ">FAQ</a>
@@ -1108,6 +1109,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <div class="nav-drop-divider"></div>
           <a href="setup-guide.html"><span class="ndi">&#128736;&#65039;</span>Setup Guide</a>
           <a href="compare.html"><span class="ndi">&#9878;&#65039;</span>Compare EAs</a>
+          <a href="try-titan.html"><span class="ndi">&#127873;</span>Try TITAN Free</a>
           <a href="blog/" class="nav-blog-btn">&#128196; Blog — Free Guides</a>
         </div>
       </div>
@@ -1146,6 +1148,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
     <button class="mob-close" onclick="toggleNav()">&times;</button>
   </div>
   <div class="mob-label">Menu</div>
+  <a href="#hero" onclick="closeMobileNav()"><span class="mni">&#127968;</span>Home</a>
   <a href="#performance" onclick="closeMobileNav()"><span class="mni">&#128200;</span>Performance</a>
   <a href="#pricing" onclick="closeMobileNav()"><span class="mni">&#128176;</span>Pricing</a>
   <a href="#faq" onclick="closeMobileNav()"><span class="mni">&#10067;</span>FAQ</a>
@@ -1560,7 +1563,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <ul class="compat-feats">
           <li>All 5 TITAN pairs available</li>
           <li>EAs allowed on challenges</li>
-          <li>5% daily / 10% max drawdown</li>
+          <li>5% daily / 10% max drawdown (2-Step)</li>
           <li>TITAN Pro 4% hard stop sits safely below</li>
         </ul>
       </div>
@@ -1581,7 +1584,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
           <li>All 5 TITAN pairs verified</li>
           <li>EAs allowed &middot; MT5</li>
           <li>Raw spreads + $5 commissions</li>
-          <li>5% daily / 10% max drawdown</li>
+          <li>Configurable drawdown &mdash; 5%/10% available</li>
         </ul>
       </div>
     </div>

@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TITAN AutoTrader Prop Firm Guide — FTMO & FundedNext Settings</title>
-<meta name="description" content="Exact TITAN AutoTrader settings for FTMO, FundedNext, and Infinity Forex Funds. Pass your prop challenge with institutional-grade risk management.">
+<meta name="description" content="Exact TITAN AutoTrader settings for FTMO, FundedNext, and E8 Markets. Pass your prop challenge with institutional-grade risk management.">
 <link rel="canonical" href="https://getquantumedgeai.com/prop-guide.html">
 <meta property="og:image" content="https://getquantumedgeai.com/og-card.png">
 <meta name="twitter:image" content="https://getquantumedgeai.com/og-card.png">
@@ -45,6 +45,27 @@ nav{position:sticky;top:0;z-index:100;height:72px;background:rgba(13,10,0,.96);b
 .nav-links a.nav-active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
 .nav-links a.nav-cta{background:linear-gradient(135deg,var(--gold),#E8A800);color:#000;padding:9px 20px;border-radius:8px;font-weight:800}
 .nav-links a.nav-cta:hover{color:#000;box-shadow:0 4px 18px rgba(245,200,66,.35)}
+.nav-home{font-weight:700}
+.nav-more{position:relative;display:flex;align-items:center}
+.nav-more-btn{background:none;border:none;color:#CCCCCC;font-size:.93rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;letter-spacing:.3px;padding:0;transition:color .2s;font-family:inherit;white-space:nowrap;line-height:1}
+.nav-more-btn:hover{color:#F5C842}
+.nav-more-btn .nav-arr{font-size:.65rem;transition:transform .25s;display:inline-block}
+.nav-more.open .nav-more-btn{color:#F5C842}
+.nav-more.open .nav-arr{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:linear-gradient(180deg,#171300,#100D00);border:1px solid rgba(245,200,66,.28);border-radius:14px;padding:10px 0;min-width:212px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:1200;box-shadow:0 24px 64px rgba(0,0,0,.75),0 0 0 1px rgba(245,200,66,.07);backdrop-filter:blur(10px)}
+.nav-dropdown::before{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#171300;border-left:1px solid rgba(245,200,66,.28);border-top:1px solid rgba(245,200,66,.28)}
+.nav-more::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+.nav-more.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block!important;padding:11px 24px;color:#CCCCCC;font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s,background .2s,padding-left .2s;white-space:nowrap;letter-spacing:.3px;border-left:2px solid transparent}
+.nav-dropdown a:hover{color:#F5C842;background:rgba(245,200,66,.06);border-left-color:#F5C842;padding-left:28px}
+.nav-dropdown a::after{display:none!important}
+.nav-dropdown a.nav-active{color:#F5C842}
+.nav-drop-label{padding:4px 24px 9px;font-size:.57rem;letter-spacing:3px;color:#888;text-transform:uppercase;font-weight:800}
+.nav-drop-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.25),transparent);margin:7px 14px}
+.nav-dropdown a .ndi{display:inline-block;width:24px;font-size:.92rem;opacity:.85}
+.nav-blog-btn{background:#F5C842!important;color:#000!important;font-weight:800!important;margin:8px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important;border-left:none!important}
+.nav-blog-btn:hover{background:#E8A800!important;color:#000!important}
+@media(max-width:768px){.nav-more{display:none!important}}
 @media(max-width:768px){.nav-links{display:none!important}}
 .nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;background:none;border:none}
 .nav-burger span{width:26px;height:2px;background:var(--gold);border-radius:2px;display:block;transition:transform .3s,opacity .2s}
@@ -52,13 +73,23 @@ nav{position:sticky;top:0;z-index:100;height:72px;background:rgba(13,10,0,.96);b
 .nav-burger.active span:nth-child(2){opacity:0}
 .nav-burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 #mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
-#mobileNav.open{display:block}
+#mobileNav.open{display:block;animation:mobNavIn .28s ease}
+@keyframes mobNavIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+#mobileNav .mob-label{padding:18px 28px 8px;font-size:.6rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:#888}
+#mobileNav a .mni{display:inline-block;width:36px;font-size:1.1rem;vertical-align:1px}
+#mobileNav a:not(.mob-cta){position:relative}
+#mobileNav a:not(.mob-cta)::after{content:'\203A';position:absolute;right:28px;top:50%;transform:translateY(-50%);color:rgba(245,200,66,.5);font-size:1.5rem;font-weight:400}
 #mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
 #mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
-#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
-#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:var(--fontd);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px}
-#mobileNav a:active{color:var(--gold)}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:#F5C842;width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-family:var(--fontd);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px;text-align:left}
+#mobileNav a:active{color:#F5C842;background:rgba(245,200,66,.04)}
 #mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(min-width:961px){#mobileNav{display:none!important}}
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:28px;right:18px;z-index:9400;width:44px;height:44px;background:linear-gradient(135deg,rgba(245,200,66,.15),rgba(245,200,66,.08));border:1.5px solid rgba(245,200,66,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#F5C842;font-size:1.35rem;line-height:1;transition:all .3s;opacity:0;transform:translateY(12px);pointer-events:none}
+#scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#scrollTop:hover{background:linear-gradient(135deg,rgba(245,200,66,.25),rgba(245,200,66,.12));box-shadow:0 4px 20px rgba(245,200,66,.25)}
 @media(max-width:768px){.nav-burger{display:flex!important}}
 .guide-hero{padding:60px 32px 40px;max-width:var(--max);margin:0 auto;text-align:center}
 .guide-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.22);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:24px}
@@ -127,15 +158,26 @@ footer a:hover{color:var(--gold)}
       </div>
     </a>
     <div class="nav-links">
+      <a href="/" class="nav-home">Home</a>
       <a href="/#performance">Performance</a>
-      <a href="/#simulator">Simulator</a>
       <a href="/#pricing">Pricing</a>
       <a href="/#faq">FAQ</a>
-      <a href="setup-guide.html">Setup Guide</a>
-      <a href="prop-guide.html" class="nav-active">Prop Guide</a>
-      <a href="compare.html">Compare EAs</a>
-      <a href="blog/">Blog</a>
-      <a href="try-titan.html">Try Free</a>
+      <div class="nav-more" id="navMore">
+        <button class="nav-more-btn" onclick="toggleMoreMenu(event)" aria-haspopup="true" aria-expanded="false" aria-controls="navDrop">More <span class="nav-arr">&#9660;</span></button>
+        <div class="nav-dropdown" id="navDrop">
+          <div class="nav-drop-label">Explore</div>
+          <a href="/#titan-in-action"><span class="ndi">&#127916;</span>TITAN In Action</a>
+          <a href="/#simulator"><span class="ndi">&#128202;</span>Simulator</a>
+          <a href="/#compatibility"><span class="ndi">&#127942;</span>Brokers &amp; Prop Firms</a>
+          <a href="/#founders"><span class="ndi">&#128101;</span>Founders</a>
+          <a href="/#support"><span class="ndi">&#9889;</span>Support</a>
+          <div class="nav-drop-divider"></div>
+          <a href="/setup-guide.html"><span class="ndi">&#128736;&#65039;</span>Setup Guide</a>
+          <a href="/compare.html"><span class="ndi">&#9878;&#65039;</span>Compare EAs</a>
+          <a href="/try-titan.html"><span class="ndi">&#127873;</span>Try TITAN Free</a>
+          <a href="/blog/" class="nav-blog-btn">&#128196; Blog &mdash; Free Guides</a>
+        </div>
+      </div>
       <a href="/#pricing" class="nav-cta">Get Started</a>
     </div>
     <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
@@ -144,31 +186,33 @@ footer a:hover{color:var(--gold)}
 
 <div id="mobileNav">
   <div class="mob-head">
-    <img src="Logo.png" alt="Quantum Edge">
+    <img src="Logo.png" alt="Quantum Edge" width="80" height="80">
     <button class="mob-close" onclick="toggleNav()">&times;</button>
   </div>
-  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
-  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
-  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
-  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
-  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
-  <a href="/#support" onclick="closeMobileNav()">Support</a>
-  <a href="setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
-  <a href="compare.html" onclick="closeMobileNav()">Compare EAs</a>
-  <a href="blog/" onclick="closeMobileNav()">Blog</a>
-  <a href="try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <div class="mob-label">Menu</div>
+  <a href="/" onclick="closeMobileNav()"><span class="mni">&#127968;</span>Home</a>
+  <a href="/#performance" onclick="closeMobileNav()"><span class="mni">&#128200;</span>Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()"><span class="mni">&#128176;</span>Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()"><span class="mni">&#10067;</span>FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()"><span class="mni">&#127916;</span>TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()"><span class="mni">&#128202;</span>Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()"><span class="mni">&#128101;</span>Founders</a>
+  <a href="/#support" onclick="closeMobileNav()"><span class="mni">&#9889;</span>Support</a>
+  <a href="setup-guide.html" onclick="closeMobileNav()"><span class="mni">&#128736;&#65039;</span>Setup Guide</a>
+  <a href="compare.html" onclick="closeMobileNav()"><span class="mni">&#9878;&#65039;</span>Compare EAs</a>
+  <a href="blog/" onclick="closeMobileNav()"><span class="mni">&#128196;</span>Blog</a>
+  <a href="try-titan.html" onclick="closeMobileNav()"><span class="mni">&#127873;</span>Try Free</a>
   <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
 <div class="guide-hero">
   <div class="guide-badge">&#127942; Prop Firm Configuration Guide</div>
   <h1>TITAN on Prop Firms</h1>
-  <p>Exact TITAN settings engineered for FTMO, FundedNext, and Infinity Forex Funds. Every rule. Every input. No guessing.</p>
+  <p>Exact TITAN settings engineered for FTMO, FundedNext, and E8 Markets. Every rule. Every input. No guessing.</p>
   <div class="firm-tabs">
     <a href="#ftmo" class="firm-tab">FTMO</a>
     <a href="#fundednext" class="firm-tab">FundedNext</a>
-    <a href="#infinity" class="firm-tab">Infinity Forex Funds</a>
+    <a href="#e8markets" class="firm-tab">E8 Markets</a>
   </div>
 </div>
 
@@ -188,8 +232,8 @@ footer a:hover{color:var(--gold)}
       </div>
     </div>
     <div class="rules-grid">
-      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">5%</div><div class="rule-sub">Hard breach = immediate fail</div></div>
-      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">10%</div><div class="rule-sub">From initial balance</div></div>
+      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">5%</div><div class="rule-sub">2-Step Challenge &middot; equity-measured, resets midnight CE(S)T</div></div>
+      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">10%</div><div class="rule-sub">2-Step &middot; static, from initial balance</div></div>
       <div class="rule-card safe"><div class="rule-label">Phase 1 Target</div><div class="rule-val">10%</div><div class="rule-sub">No time limit</div></div>
       <div class="rule-card safe"><div class="rule-label">Phase 2 Target</div><div class="rule-val">5%</div><div class="rule-sub">No time limit</div></div>
       <div class="rule-card"><div class="rule-label">Min Trading Days</div><div class="rule-val">4</div><div class="rule-sub">Per phase</div></div>
@@ -244,8 +288,8 @@ footer a:hover{color:var(--gold)}
       </div>
     </div>
     <div class="rules-grid">
-      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">5%</div><div class="rule-sub">Evaluation model</div></div>
-      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">10%</div><div class="rule-sub">From initial balance</div></div>
+      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">5%</div><div class="rule-sub">Stellar 2-Step &middot; static, resets 00:00 server time</div></div>
+      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">10%</div><div class="rule-sub">Static, from initial balance &mdash; not trailing</div></div>
       <div class="rule-card safe"><div class="rule-label">Phase 1 Target</div><div class="rule-val">10%</div><div class="rule-sub">No time limit</div></div>
       <div class="rule-card safe"><div class="rule-label">Phase 2 Target</div><div class="rule-val">5%</div><div class="rule-sub">No time limit</div></div>
       <div class="rule-card safe"><div class="rule-label">Challenge Profit Share</div><div class="rule-val">15%</div><div class="rule-sub">Earned during challenge</div></div>
@@ -270,9 +314,9 @@ footer a:hover{color:var(--gold)}
       <ul>
         <li>FundedNext pays 15% of challenge profits — every trade counts from day one. Treat it like a funded account from the start.</li>
         <li>Run all 5 TITAN PROP EAs on all 5 pairs simultaneously. Same approach as FTMO.</li>
-        <li>FundedNext "Stellar" model has slightly different rules — verify your specific account type's DD rules in your dashboard.</li>
+        <li>Stellar 2-Step is the standard model (5% daily / 10% max, both static). Stellar 1-Step (3%/6% static) and Stellar Lite (4%/8% static) have tighter limits — verify your exact account type in your dashboard.</li>
         <li>Minimum trading day requirements vary by account size. TITAN running 24/5 naturally meets any minimum.</li>
-        <li>Drawdown is tracked from initial balance (not peak equity). Never over-leverage to recover losses.</li>
+        <li>On Stellar accounts both drawdown limits are static against initial balance (not trailing), measured on equity — floating losses count. Never over-leverage to recover losses.</li>
         <li>Phase 1 typically completes in 20–35 trading days at 0.5% risk across 5 pairs in normal market conditions.</li>
       </ul>
     </div>
@@ -282,6 +326,7 @@ footer a:hover{color:var(--gold)}
         <li>Weekend holding — FundedNext prohibits this on most account types. TITAN closes Friday automatically.</li>
         <li>High-frequency scalping under 60s hold time — TITAN PROP enforces this. Do not override.</li>
         <li>Copy trading between FundedNext accounts. Each TITAN license = one MT5 account number.</li>
+        <li>Running an off-the-shelf EA on identical default settings as other clients — FundedNext requires EA settings to be customised/unique. Adjust your TITAN inputs (risk, buffers) to your own plan.</li>
         <li>Running on non-validated pairs — unfamiliar market behaviour increases DD risk significantly.</li>
       </ul>
     </div>
@@ -289,45 +334,46 @@ footer a:hover{color:var(--gold)}
 
   <hr class="divider">
 
-  <!-- INFINITY -->
-  <div class="firm-section" id="infinity">
+  <!-- E8 MARKETS -->
+  <div class="firm-section" id="e8markets">
     <div class="firm-header">
-      <div class="firm-logo-placeholder">IFF</div>
+      <div class="firm-logo-placeholder">E8</div>
       <div class="firm-header-text">
-        <h2>Infinity Forex Funds</h2>
-        <p>US-based. Tighter daily DD but lower profit targets. No minimum trading day requirement.</p>
+        <h2>E8 Markets</h2>
+        <p>US-based. Configurable drawdown at purchase. EAs allowed without pre-approval. All 5 TITAN pairs available with raw spreads.</p>
       </div>
     </div>
     <div class="rules-grid">
-      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">4%</div><div class="rule-sub">Tighter than FTMO/FN</div></div>
-      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">8%</div><div class="rule-sub">From initial balance</div></div>
-      <div class="rule-card safe"><div class="rule-label">Phase 1 Target</div><div class="rule-val">8%</div><div class="rule-sub">No time limit</div></div>
-      <div class="rule-card safe"><div class="rule-label">Phase 2 Target</div><div class="rule-val">5%</div><div class="rule-sub">No time limit</div></div>
-      <div class="rule-card"><div class="rule-label">Min Trading Days</div><div class="rule-val">None</div><div class="rule-sub">Pass whenever ready</div></div>
-      <div class="rule-card safe"><div class="rule-label">EAs Allowed</div><div class="rule-val">YES</div><div class="rule-sub">MT5 EAs permitted</div></div>
+      <div class="rule-card danger"><div class="rule-label">Daily Loss Limit</div><div class="rule-val">3&ndash;7%</div><div class="rule-sub">E8 Classic 2-Step &mdash; configurable at purchase (5% available)</div></div>
+      <div class="rule-card danger"><div class="rule-label">Max Overall DD</div><div class="rule-val">6&ndash;14%</div><div class="rule-sub">Configurable (10% available) &middot; intraday-trailing type</div></div>
+      <div class="rule-card"><div class="rule-label">Leverage</div><div class="rule-val">1:50</div><div class="rule-sub">Evaluation &middot; 1:30 once funded</div></div>
+      <div class="rule-card"><div class="rule-label">Consistency Rule</div><div class="rule-val">40%</div><div class="rule-sub">Max best-day share of profit (evaluation accounts)</div></div>
+      <div class="rule-card safe"><div class="rule-label">Platform</div><div class="rule-val">MT5</div><div class="rule-sub">Non-US clients &middot; raw spreads + $5/lot commission</div></div>
+      <div class="rule-card safe"><div class="rule-label">EAs Allowed</div><div class="rule-val">YES</div><div class="rule-sub">No pre-approval needed &middot; HFT banned</div></div>
     </div>
     <div class="settings-block">
-      <h3>TITAN PROP Settings — Infinity Forex Funds</h3>
+      <h3>TITAN PROP Settings — E8 Markets</h3>
       <table class="input-table">
-        <thead><tr><th>Input</th><th>Infinity Value</th><th>Why</th></tr></thead>
+        <thead><tr><th>Input</th><th>E8 Value</th><th>Why</th></tr></thead>
         <tbody>
-          <tr><td>RiskPercent</td><td><em>0.35%</em></td><td>Infinity's 4% daily cap is tighter. Use 0.35% — 5 pairs at 0.35% = max 1.75% simultaneous exposure. Wide buffer.</td></tr>
-          <tr><td>MaxDailyDD_Pct</td><td><em>3.0%</em></td><td>1% buffer under Infinity's 4% daily limit. Tighter than FTMO setting due to smaller daily allowance.</td></tr>
-          <tr><td>NewsFilterMinutes</td><td><em>60</em></td><td>Given 4% daily cap, news session exposure is not acceptable. Full 60-min block on both sides.</td></tr>
-          <tr><td>MaxSpreadPoints</td><td><em>20</em></td><td>Tighter spread cap due to tighter DD rules. 20pt maximum. Reject entries in widening spread conditions.</td></tr>
-          <tr><td>PartialClosePct</td><td><em>50</em></td><td>Essential with Infinity's limits. Always lock 50% profit at 2R without exception.</td></tr>
-          <tr><td>LockTriggerR</td><td><em>2.0</em></td><td>Breakeven at 2R — non-negotiable with 4% daily cap. Protect every winner.</td></tr>
+          <tr><td>RiskPercent</td><td><em>0.5%</em></td><td>Assumes the 5% daily / 10% max drawdown configuration. 5 pairs at 0.5% = max 2.5% simultaneous exposure — comfortable buffer.</td></tr>
+          <tr><td>MaxDailyDD_Pct</td><td><em>4.0%</em></td><td>1% buffer under a 5% daily configuration. Same hard stop as FTMO settings. If you buy a tighter config, lower this accordingly.</td></tr>
+          <tr><td>NewsFilterMinutes</td><td><em>60</em></td><td>E8 restricts trading around major news (~2-minute window). TITAN's 60-min block clears it with a wide margin.</td></tr>
+          <tr><td>MaxSpreadPoints</td><td><em>25</em></td><td>E8 uses raw spreads + $5/lot forex commission. 25pt cap rejects entries during news-driven spread spikes.</td></tr>
+          <tr><td>PartialClosePct</td><td><em>50</em></td><td>Lock 50% of position at 2R. Steady, distributed profits also help satisfy the 40% best-day consistency rule.</td></tr>
+          <tr><td>LockTriggerR</td><td><em>2.0</em></td><td>Move stop to breakeven at 2R. Winning trades become risk-free quickly.</td></tr>
         </tbody>
       </table>
     </div>
     <div class="strategy-block">
-      <h3>Infinity Challenge Strategy with TITAN</h3>
+      <h3>E8 Markets Challenge Strategy with TITAN</h3>
       <ul>
-        <li>Infinity's 4% daily and 8% overall DD require extra caution — start at 0.35% risk, not 0.5%.</li>
-        <li>No minimum trading day requirement — TITAN can pass Phase 1 in 12–15 active trading days.</li>
-        <li>Phase 1 target is only 8% — achievable in 16–24 trading days at 0.35% risk across 5 pairs.</li>
-        <li>Infinity lower challenge cost makes it a good first prop firm entry with TITAN before scaling to FTMO.</li>
-        <li>All 5 TITAN PROP EAs running simultaneously — same diversified approach as FTMO and FundedNext.</li>
+        <li>Drawdown is configurable when you buy your evaluation — <strong>choose the 5% daily / 10% max configuration</strong> so the settings above apply directly.</li>
+        <li>E8's drawdown is intraday-trailing in type on Classic/One/Track accounts — floating profit raises the floor during the day. TITAN's breakeven-at-2R and partial-close logic keeps open risk small.</li>
+        <li>EAs are allowed without pre-approval. HFT and latency arbitrage are banned — TITAN trades H1 with multi-hour holds, nowhere near HFT.</li>
+        <li>The 40% consistency rule means no single day may produce more than 40% of total evaluation profit. TITAN's 5-pair, 2–3 trades/week rhythm spreads profit across many days naturally.</li>
+        <li>MT5 is available for non-US clients. All 5 TITAN pairs (USDCHF, GBPUSD, AUDUSD, AUDCHF, CADCHF) are tradeable on E8.</li>
+        <li>Leverage is 1:50 on evaluation and 1:30 funded — ample for TITAN's 0.5% risk sizing.</li>
       </ul>
     </div>
   </div>
@@ -385,6 +431,8 @@ footer a:hover{color:var(--gold)}
   <p>&copy; 2026 Quantum Edge Trading &nbsp;&middot;&nbsp; <a href="/">Home</a> &nbsp;&middot;&nbsp; <a href="setup-guide.html">Setup Guide</a> &nbsp;&middot;&nbsp; <a href="/#support">Support</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="risk-disclaimer.html">Risk Disclaimer</a></p>
 </footer>
 
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
 <script>
 function toggleNav(){
   var mn=document.getElementById('mobileNav');
@@ -398,6 +446,13 @@ function closeMobileNav(){
   document.querySelector('.nav-burger').classList.remove('active');
   document.body.style.overflow='';
 }
+function setMoreState(open){var m=document.getElementById('navMore');if(!m)return;m.classList.toggle('open',open);var b=m.querySelector('.nav-more-btn');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
+function toggleMoreMenu(e){e.stopPropagation();var m=document.getElementById('navMore');if(m)setMoreState(!m.classList.contains('open'));}
+document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))setMoreState(false);});
+document.querySelectorAll('#navDrop a').forEach(function(a){a.addEventListener('click',function(){setMoreState(false);});});
+(function(){var m=document.getElementById('navMore');if(!m||!window.matchMedia('(hover:hover)').matches)return;var t=null;m.addEventListener('mouseenter',function(){clearTimeout(t);setMoreState(true);});m.addEventListener('mouseleave',function(){t=setTimeout(function(){setMoreState(false);},220);});m.addEventListener('keydown',function(e){if(e.key==='Escape')setMoreState(false);});})();
+const stBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{if(stBtn)stBtn.classList.toggle('show',scrollY>300)});
 </script>
 </body>
 </html>

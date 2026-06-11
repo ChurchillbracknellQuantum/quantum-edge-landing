@@ -70,6 +70,26 @@ a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
 .blog-nav .nav-links a{color:var(--muted);font-size:.95rem;font-weight:600;margin-left:24px;text-decoration:none;transition:color .2s}
 .blog-nav .nav-links a:hover,.blog-nav .nav-cta:hover{color:#000;background:var(--gold2);text-decoration:none}
 .blog-nav .nav-cta{background:var(--gold);color:#000;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;margin-left:24px;transition:background .2s}
+.nav-home{font-weight:700}
+.nav-more{position:relative;display:flex;align-items:center}
+.nav-more-btn{background:none;border:none;color:#CCCCCC;font-size:.93rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;letter-spacing:.3px;padding:0;transition:color .2s;font-family:inherit;white-space:nowrap;line-height:1}
+.nav-more-btn:hover{color:#F5C842}
+.nav-more-btn .nav-arr{font-size:.65rem;transition:transform .25s;display:inline-block}
+.nav-more.open .nav-more-btn{color:#F5C842}
+.nav-more.open .nav-arr{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:linear-gradient(180deg,#171300,#100D00);border:1px solid rgba(245,200,66,.28);border-radius:14px;padding:10px 0;min-width:212px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:1200;box-shadow:0 24px 64px rgba(0,0,0,.75),0 0 0 1px rgba(245,200,66,.07);backdrop-filter:blur(10px)}
+.nav-dropdown::before{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#171300;border-left:1px solid rgba(245,200,66,.28);border-top:1px solid rgba(245,200,66,.28)}
+.nav-more::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+.nav-more.open .nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block!important;padding:11px 24px;color:#CCCCCC;font-size:.93rem;font-weight:600;text-decoration:none;transition:color .2s,background .2s,padding-left .2s;white-space:nowrap;letter-spacing:.3px;border-left:2px solid transparent;margin-left:0!important}
+.nav-dropdown a:hover{color:#F5C842;background:rgba(245,200,66,.06);border-left-color:#F5C842;padding-left:28px}
+.nav-dropdown a::after{display:none!important}
+.nav-drop-label{padding:4px 24px 9px;font-size:.57rem;letter-spacing:3px;color:#888;text-transform:uppercase;font-weight:800}
+.nav-drop-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(245,200,66,.25),transparent);margin:7px 14px}
+.nav-dropdown a .ndi{display:inline-block;width:24px;font-size:.92rem;opacity:.85}
+.nav-blog-btn{background:#F5C842!important;color:#000!important;font-weight:800!important;margin:8px 10px 4px!important;border-radius:7px!important;padding:9px 16px!important;text-align:center!important;border-left:none!important}
+.nav-blog-btn:hover{background:#E8A800!important;color:#000!important}
+@media(max-width:768px){.nav-more{display:none!important}}
 .blog-hero{background:linear-gradient(135deg,#0D0A00 0%,#1A1000 50%,#0D0A00 100%);border-bottom:1px solid var(--border);padding:64px 44px 56px;text-align:center}
 .blog-hero .breadcrumb{font-size:.78rem;color:var(--muted2);margin-bottom:20px}
 .blog-hero .breadcrumb a{color:var(--muted2);text-decoration:none}
@@ -132,8 +152,10 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 .blog-footer p{color:var(--muted2);font-size:.8rem}
 .blog-footer .footer-links a{color:var(--muted2);font-size:.8rem;margin-left:18px;text-decoration:none}
 .blog-footer .footer-links a:hover{color:var(--gold)}
-.scroll-top-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:800;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(245,200,66,.35);transition:transform .2s}
-.scroll-top-btn:hover{transform:translateY(-3px)}
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:28px;right:18px;z-index:9400;width:44px;height:44px;background:linear-gradient(135deg,rgba(245,200,66,.15),rgba(245,200,66,.08));border:1.5px solid rgba(245,200,66,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#F5C842;font-size:1.35rem;line-height:1;transition:all .3s;opacity:0;transform:translateY(12px);pointer-events:none}
+#scrollTop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#scrollTop:hover{background:linear-gradient(135deg,rgba(245,200,66,.25),rgba(245,200,66,.12));box-shadow:0 4px 20px rgba(245,200,66,.25)}
 @media(max-width:640px){
   .blog-nav{padding:0 20px}.blog-nav .nav-links{display:none}
   .blog-hero{padding:44px 20px 40px}.blog-content{padding:40px 20px 60px}
@@ -145,14 +167,20 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 /* MOBILE NAV */
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px}
-#mobileNav{display:none;position:fixed;inset:0;background:rgba(13,10,0,.98);z-index:9000;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:100px;overflow-y:scroll;-webkit-overflow-scrolling:touch}
-#mobileNav.open{display:flex}
-.mob-head{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 24px;position:absolute;top:18px}
-.mob-head img{height:34px;width:34px;object-fit:contain}
-.mob-close{background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;z-index:9001;padding:8px}
-#mobileNav a{display:block;color:var(--white);font-size:1.3rem;font-weight:700;padding:14px 40px;text-decoration:none;text-align:center}
-#mobileNav a:hover{color:var(--gold)}
-.mob-cta{background:var(--gold);color:#000!important;border-radius:10px;margin-top:20px;padding:14px 40px!important}
+#mobileNav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080600;z-index:9902;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 40px}
+#mobileNav.open{display:block;animation:mobNavIn .28s ease}
+@keyframes mobNavIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+#mobileNav .mob-label{padding:18px 28px 8px;font-size:.6rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:#888}
+#mobileNav a .mni{display:inline-block;width:36px;font-size:1.1rem;vertical-align:1px}
+#mobileNav a:not(.mob-cta){position:relative}
+#mobileNav a:not(.mob-cta)::after{content:'\203A';position:absolute;right:28px;top:50%;transform:translateY(-50%);color:rgba(245,200,66,.5);font-size:1.5rem;font-weight:400}
+#mobileNav .mob-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid rgba(42,31,0,.6)}
+#mobileNav .mob-head img{height:46px;width:46px;object-fit:contain}
+#mobileNav .mob-close{background:none;border:1px solid rgba(245,200,66,.35);color:#F5C842;width:40px;height:40px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+#mobileNav a{display:block;color:rgba(255,255,255,.85);font-size:1.45rem;font-weight:900;padding:18px 28px;text-decoration:none;border-bottom:1px solid rgba(42,31,0,.45);letter-spacing:.4px;text-align:left}
+#mobileNav a:active{color:#F5C842;background:rgba(245,200,66,.04)}
+#mobileNav .mob-cta{display:block;margin:24px 28px 0;background:linear-gradient(135deg,#F5C842,#E8A800);color:#000!important;border-radius:50px;text-align:center;font-size:.9rem;letter-spacing:1.5px;border-bottom:none!important;padding:16px 28px!important}
+@media(min-width:961px){#mobileNav{display:none!important}}
 @media(min-width:769px){.nav-burger{display:none!important}}
 @media(max-width:768px){.nav-burger{display:flex}.blog-nav .nav-links{display:none}}
 </style>
@@ -161,12 +189,27 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 <nav class="blog-nav">
   <a href="https://getquantumedgeai.com" class="brand"><img src="../Logo.png" alt="Quantum Edge Trading" width="34" height="34">Quantum Edge</a>
   <div class="nav-links">
-    <a href="https://getquantumedgeai.com/#performance">Results</a>
-    <a href="https://getquantumedgeai.com/#pricing">Pricing</a>
-    <a href="https://getquantumedgeai.com/setup-guide.html">Setup</a>
-    <a href="https://getquantumedgeai.com/blog/">Blog</a>
-    <a href="https://getquantumedgeai.com/try-titan.html">Try Free</a>
-    <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &rarr;</a>
+      <a href="/" class="nav-home">Home</a>
+      <a href="/#performance">Performance</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <div class="nav-more" id="navMore">
+        <button class="nav-more-btn" onclick="toggleMoreMenu(event)" aria-haspopup="true" aria-expanded="false" aria-controls="navDrop">More <span class="nav-arr">&#9660;</span></button>
+        <div class="nav-dropdown" id="navDrop">
+          <div class="nav-drop-label">Explore</div>
+          <a href="/#titan-in-action"><span class="ndi">&#127916;</span>TITAN In Action</a>
+          <a href="/#simulator"><span class="ndi">&#128202;</span>Simulator</a>
+          <a href="/#compatibility"><span class="ndi">&#127942;</span>Brokers &amp; Prop Firms</a>
+          <a href="/#founders"><span class="ndi">&#128101;</span>Founders</a>
+          <a href="/#support"><span class="ndi">&#9889;</span>Support</a>
+          <div class="nav-drop-divider"></div>
+          <a href="/setup-guide.html"><span class="ndi">&#128736;&#65039;</span>Setup Guide</a>
+          <a href="/compare.html"><span class="ndi">&#9878;&#65039;</span>Compare EAs</a>
+          <a href="/try-titan.html"><span class="ndi">&#127873;</span>Try TITAN Free</a>
+          <a href="/blog/" class="nav-blog-btn">&#128196; Blog &mdash; Free Guides</a>
+        </div>
+      </div>
+      <a href="/#pricing" class="nav-cta">Get Started</a>
   </div>
   <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -174,20 +217,22 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 </nav>
 <div id="mobileNav">
   <div class="mob-head">
-    <img src="../Logo.png" alt="Quantum Edge">
+    <img src="../Logo.png" alt="Quantum Edge" width="80" height="80">
     <button class="mob-close" onclick="toggleNav()">&times;</button>
   </div>
-  <a href="/#performance" onclick="closeMobileNav()">Performance</a>
-  <a href="/#pricing" onclick="closeMobileNav()">Pricing</a>
-  <a href="/#faq" onclick="closeMobileNav()">FAQ</a>
-  <a href="/#titan-in-action" onclick="closeMobileNav()">TITAN In Action</a>
-  <a href="/#simulator" onclick="closeMobileNav()">Simulator</a>
-  <a href="/#founders" onclick="closeMobileNav()">Founders</a>
-  <a href="/#support" onclick="closeMobileNav()">Support</a>
-  <a href="../setup-guide.html" onclick="closeMobileNav()">Setup Guide</a>
-  <a href="../compare.html" onclick="closeMobileNav()">Compare EAs</a>
-  <a href="../blog/" class="nav-active" onclick="closeMobileNav()">Blog</a>
-  <a href="../try-titan.html" onclick="closeMobileNav()">Try Free</a>
+  <div class="mob-label">Menu</div>
+  <a href="/" onclick="closeMobileNav()"><span class="mni">&#127968;</span>Home</a>
+  <a href="/#performance" onclick="closeMobileNav()"><span class="mni">&#128200;</span>Performance</a>
+  <a href="/#pricing" onclick="closeMobileNav()"><span class="mni">&#128176;</span>Pricing</a>
+  <a href="/#faq" onclick="closeMobileNav()"><span class="mni">&#10067;</span>FAQ</a>
+  <a href="/#titan-in-action" onclick="closeMobileNav()"><span class="mni">&#127916;</span>TITAN In Action</a>
+  <a href="/#simulator" onclick="closeMobileNav()"><span class="mni">&#128202;</span>Simulator</a>
+  <a href="/#founders" onclick="closeMobileNav()"><span class="mni">&#128101;</span>Founders</a>
+  <a href="/#support" onclick="closeMobileNav()"><span class="mni">&#9889;</span>Support</a>
+  <a href="../setup-guide.html" onclick="closeMobileNav()"><span class="mni">&#128736;&#65039;</span>Setup Guide</a>
+  <a href="../compare.html" onclick="closeMobileNav()"><span class="mni">&#9878;&#65039;</span>Compare EAs</a>
+  <a href="../blog/" class="nav-active" onclick="closeMobileNav()"><span class="mni">&#128196;</span>Blog</a>
+  <a href="../try-titan.html" onclick="closeMobileNav()"><span class="mni">&#127873;</span>Try Free</a>
   <a href="/#pricing" class="mob-cta" onclick="closeMobileNav()">Get Started</a>
 </div>
 
@@ -422,11 +467,19 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
     <a href="https://getquantumedgeai.com/risk-disclaimer.html">Risk Disclaimer</a>
   </div>
 </footer>
-<button class="scroll-top-btn" id="sBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
-<script>var sb=document.getElementById('sBtn');window.addEventListener('scroll',function(){sb.style.display=window.scrollY>400?'flex':'none'},{passive:true});</script>
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>
+const stBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{if(stBtn)stBtn.classList.toggle('show',scrollY>300)});
+</script>
 <script>
 function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
 function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
+function setMoreState(open){var m=document.getElementById('navMore');if(!m)return;m.classList.toggle('open',open);var b=m.querySelector('.nav-more-btn');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
+function toggleMoreMenu(e){e.stopPropagation();var m=document.getElementById('navMore');if(m)setMoreState(!m.classList.contains('open'));}
+document.addEventListener('click',function(e){var m=document.getElementById('navMore');if(m&&!m.contains(e.target))setMoreState(false);});
+document.querySelectorAll('#navDrop a').forEach(function(a){a.addEventListener('click',function(){setMoreState(false);});});
+(function(){var m=document.getElementById('navMore');if(!m||!window.matchMedia('(hover:hover)').matches)return;var t=null;m.addEventListener('mouseenter',function(){clearTimeout(t);setMoreState(true);});m.addEventListener('mouseleave',function(){t=setTimeout(function(){setMoreState(false);},220);});m.addEventListener('keydown',function(e){if(e.key==='Escape')setMoreState(false);});})();
 </script>
 </body>
 </html>
