@@ -2,6 +2,9 @@
 RewriteEngine On
 RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
 
+# Custom branded 404 page
+ErrorDocument 404 /404.html
+
 # Cache control for HTML pages (only if mod_headers available)
 <IfModule mod_headers.c>
 <FilesMatch "\.(html|htm)$">
