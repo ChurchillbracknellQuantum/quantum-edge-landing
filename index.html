@@ -354,6 +354,23 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .edge-card p{font-size:.85rem;color:var(--muted2);line-height:1.68;font-weight:400}
 .edge-tag{display:inline-block;background:var(--gf);border:1px solid rgba(245,200,66,.18);color:var(--gold);font-size:.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:11px}
 
+/* COMPATIBILITY — verified brokers & prop firms */
+#compatibility{background:var(--bg);border-top:1px solid rgba(42,31,0,.4)}
+.compat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:52px}
+.compat-card{background:rgba(15,12,0,.6);border:1px solid rgba(42,31,0,.7);border-radius:var(--r);padding:30px 26px;position:relative;overflow:hidden;transition:transform .2s,border-color .25s;display:flex;flex-direction:column}
+.compat-card:hover{transform:translateY(-4px);border-color:rgba(245,200,66,.35)}
+.compat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.compat-card:hover::after{opacity:1}
+.compat-type{display:inline-block;width:fit-content;background:var(--gf);border:1px solid rgba(245,200,66,.18);color:var(--gold);font-size:.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:14px}
+.compat-type.firm{background:rgba(45,184,122,.07);border-color:rgba(45,184,122,.25);color:var(--green)}
+.compat-name{font-family:var(--fontd);font-size:1.35rem;font-weight:900;color:var(--white);margin-bottom:14px}
+.compat-feats{list-style:none;margin:0 0 4px;flex:1}
+.compat-feats li{font-size:.82rem;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(42,31,0,.35);display:flex;align-items:flex-start;gap:8px;font-weight:500;line-height:1.5}
+.compat-feats li:last-child{border-bottom:none}
+.compat-feats li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0}
+.compat-note{text-align:center;margin-top:30px;font-size:.8rem;color:var(--muted2);line-height:1.7}
+.compat-note strong{color:var(--gold);font-weight:700}
+
 /* SIMULATOR */
 #simulator{background:var(--surface);border-top:1px solid rgba(42,31,0,.4)}
 .sim-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:start;margin-top:52px}
@@ -1505,6 +1522,60 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
   </div>
 </section>
 
+<!-- ══════════════════ VERIFIED COMPATIBILITY ══════════════════ -->
+<section id="compatibility">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label">Verified Compatibility</div>
+      <h2 class="sec-title">Brokers &amp; Prop Firms TITAN Runs On</h2>
+      <p class="sec-sub" style="margin:0 auto">Individually verified &mdash; all 5 TITAN pairs tradeable, EAs allowed, MT4 &amp; MT5 supported. No guesswork before you commit.</p>
+    </div>
+    <div class="compat-grid">
+      <div class="compat-card reveal">
+        <span class="compat-type">Broker</span>
+        <div class="compat-name">FOREX.com</div>
+        <ul class="compat-feats">
+          <li>All 5 TITAN pairs available</li>
+          <li>MT4 &amp; MT5 platforms</li>
+          <li>EAs fully allowed</li>
+          <li>Regulated, global access</li>
+        </ul>
+      </div>
+      <div class="compat-card reveal">
+        <span class="compat-type firm">Prop Firm</span>
+        <div class="compat-name">FTMO</div>
+        <ul class="compat-feats">
+          <li>All 5 TITAN pairs available</li>
+          <li>EAs allowed on challenges</li>
+          <li>5% daily / 10% max drawdown</li>
+          <li>TITAN Pro 4% hard stop sits safely below</li>
+        </ul>
+      </div>
+      <div class="compat-card reveal">
+        <span class="compat-type firm">Prop Firm</span>
+        <div class="compat-name">FundedNext</div>
+        <ul class="compat-feats">
+          <li>All 5 pairs incl. AUDCHF &amp; CADCHF confirmed</li>
+          <li>EAs allowed</li>
+          <li>MT4 &amp; MT5 supported</li>
+          <li>Exact input settings in buyer guide</li>
+        </ul>
+      </div>
+      <div class="compat-card reveal">
+        <span class="compat-type firm">Prop Firm</span>
+        <div class="compat-name">E8 Markets</div>
+        <ul class="compat-feats">
+          <li>All 5 TITAN pairs verified</li>
+          <li>EAs allowed &middot; MT5</li>
+          <li>Raw spreads + $5 commissions</li>
+          <li>5% daily / 10% max drawdown</li>
+        </ul>
+      </div>
+    </div>
+    <p class="compat-note reveal">Also runs on <strong>IC Markets, Pepperstone, FP Markets, XM, Exness, Tickmill</strong> and any MT4/MT5 broker with Raw or Pro spread accounts. Prop firm input settings for each firm are included in the buyer guide.</p>
+  </div>
+</section>
+
 <!-- ══════════════════ TITAN SIMULATOR ══════════════════ -->
 <section id="simulator">
   <div class="container">
@@ -2184,7 +2255,7 @@ document.querySelectorAll('#navDrop a').forEach(a=>a.addEventListener('click',()
 })();
 
 // Stagger delays for card groups
-['.edge-grid .edge-card','.pain-grid .pain-card','.price-grid .pcard','.steps .step','.sup-grid .sup-card'].forEach(sel=>{
+['.edge-grid .edge-card','.pain-grid .pain-card','.price-grid .pcard','.steps .step','.sup-grid .sup-card','.compat-grid .compat-card'].forEach(sel=>{
   document.querySelectorAll(sel).forEach((el,i)=>el.style.setProperty('--rd',(i*110)+'ms'));
 });
 
