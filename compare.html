@@ -14,6 +14,9 @@
 <title>TITAN AutoTrader vs ForexFury vs Coinrule vs XAUBot — Full Comparison</title>
 <meta name="description" content="Compare the top forex EA trading bots. See how TITAN AutoTrader stacks up against ForexFury, Coinrule, and XAUBot across performance, pricing, prop firm support, and transparency.">
 <link rel="canonical" href="https://getquantumedgeai.com/compare.html">
+<meta property="og:image" content="https://getquantumedgeai.com/og-card.png">
+<meta name="twitter:image" content="https://getquantumedgeai.com/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="Logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -59,6 +62,8 @@ nav{position:sticky;top:0;z-index:1000;height:72px;background:rgba(13,10,0,.96);
 .nav-links{display:flex;align-items:center;gap:24px}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.93rem;font-weight:600;letter-spacing:.3px;transition:color .2s;white-space:nowrap;position:relative}
 .nav-links a:hover{color:var(--gold)}
+.nav-links a.nav-active{color:var(--gold)}
+.nav-links a.nav-active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
 .nav-links a.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:9px 20px;border-radius:8px;font-weight:800}
 .nav-links a.nav-cta:hover{color:#000;box-shadow:0 4px 18px rgba(245,200,66,.35)}
 .nav-burger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:8px;background:none;border:none}
@@ -182,6 +187,7 @@ footer p a:hover{color:var(--gold)}
       <a href="/#pricing">Pricing</a>
       <a href="/#faq">FAQ</a>
       <a href="setup-guide.html">Setup Guide</a>
+      <a href="compare.html" class="nav-active">Compare EAs</a>
       <a href="blog/">Blog</a>
       <a href="try-titan.html">Try Free</a>
       <a href="/#pricing" class="nav-cta">Get Started</a>

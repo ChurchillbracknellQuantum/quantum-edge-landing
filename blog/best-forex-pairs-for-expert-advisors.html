@@ -171,6 +171,9 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
     <a href="https://getquantumedgeai.com/try-titan.html">Try Free</a>
     <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &rarr;</a>
   </div>
+  <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div id="mobileNav">
   <div class="mob-head">
@@ -263,13 +266,13 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
   <table class="data-table">
     <tr><th>Pair</th><th>Trades</th><th>Win Rate</th><th>Profit Factor</th><th>Sharpe Ratio</th><th>Max DD</th><th>Net Profit</th></tr>
     <tr><td><strong>CADCHF H1</strong></td><td>42</td><td class="good">78.6%</td><td class="good">1.95</td><td class="good">9.32</td><td class="good">1.39%</td><td class="good">+$79.81</td></tr>
-    <tr><td><strong>AUDUSD H1</strong></td><td>37</td><td class="good">78.4%</td><td class="good">1.78</td><td class="good">5.16</td><td class="ok">1.46%</td><td class="good">+$54.61</td></tr>
+    <tr><td><strong>AUDUSD H1</strong></td><td>28</td><td class="good">76.5%</td><td class="good">1.78</td><td class="good">5.16</td><td class="ok">1.46%</td><td class="good">+$54.61</td></tr>
     <tr><td><strong>AUDCHF H1</strong></td><td>46</td><td class="ok">73.9%</td><td class="good">1.95</td><td class="good">7.41</td><td class="ok">1.44%</td><td class="good">+$94.94</td></tr>
     <tr><td><strong>USDCHF H1</strong></td><td>42</td><td class="ok">73.8%</td><td class="ok">1.86</td><td class="good">8.23</td><td class="ok">2.07%</td><td class="good">+$85.63</td></tr>
-    <tr><td><strong>GBPUSD H1</strong></td><td>37</td><td class="ok">64.9%</td><td class="ok">1.44</td><td class="ok">3.31</td><td class="bad">2.29%</td><td class="good">+$45.16</td></tr>
+    <tr><td><strong>GBPUSD H1</strong></td><td>37</td><td class="ok">70.3%</td><td class="ok">1.44</td><td class="ok">3.31</td><td class="bad">2.29%</td><td class="good">+$45.16</td></tr>
   </table>
 
-  <p>Every pair was profitable. But the differences are significant. CADCHF produced a 78.6% win rate with a Sharpe ratio of 9.32 &mdash; exceptional for any forex EA. GBPUSD, while still profitable, had the lowest win rate (64.9%), lowest Sharpe (3.31), and highest drawdown (2.29%). These are structural differences, not statistical noise from a small sample.</p>
+  <p>Every pair was profitable. But the differences are significant. CADCHF produced a 78.6% win rate with a Sharpe ratio of 9.32 &mdash; exceptional for any forex EA. GBPUSD, while still profitable, had the lowest win rate (70.3%), lowest Sharpe (3.31), and highest drawdown (2.29%). These are structural differences, not statistical noise from a small sample.</p>
 
   <h2 id="chf">Why <span class="gold">CHF Crosses</span> Outperform</h2>
 
@@ -306,14 +309,14 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 
   <div class="pair-card good">
     <div class="pair-verdict verdict-ok">&#9651; Good Performer</div>
-    <h3>AUDUSD &mdash; 78.4% Win Rate, PF 1.78, Sharpe 5.16</h3>
-    <p>AUDUSD surprises many traders by matching CADCHF&rsquo;s win rate. The AUD/USD relationship is structurally driven by commodity cycles and China growth &mdash; factors that produce sustained trends when conditions align. The lower Sharpe (5.16 vs 9.32 for CADCHF) indicates a more volatile equity curve, but the underlying win rate is excellent.</p>
+    <h3>AUDUSD &mdash; 76.5% Win Rate, PF 1.78, Sharpe 5.16</h3>
+    <p>AUDUSD surprises many traders by nearly matching CADCHF&rsquo;s win rate. The AUD/USD relationship is structurally driven by commodity cycles and China growth &mdash; factors that produce sustained trends when conditions align. The lower Sharpe (5.16 vs 9.32 for CADCHF) indicates a more volatile equity curve, but the underlying win rate is excellent.</p>
   </div>
 
   <div class="pair-card weak">
     <div class="pair-verdict verdict-ok">&#9651; Profitable but Weakest</div>
-    <h3>GBPUSD &mdash; 64.9% Win Rate, PF 1.44, Sharpe 3.31</h3>
-    <p>GBPUSD is the weakest performer but still profitable. GBP is highly sensitive to UK political and economic events &mdash; Bank of England decisions, inflation prints, and political instability have all produced extended periods of erratic price action. The win rate of 64.9% is acceptable, but the profit factor of 1.44 and Sharpe of 3.31 indicate significantly thinner edge. GBPUSD is worth including for diversification, but should not be your primary pair.</p>
+    <h3>GBPUSD &mdash; 70.3% Win Rate, PF 1.44, Sharpe 3.31</h3>
+    <p>GBPUSD is the weakest performer but still profitable. GBP is highly sensitive to UK political and economic events &mdash; Bank of England decisions, inflation prints, and political instability have all produced extended periods of erratic price action. The win rate of 70.3% is acceptable, but the profit factor of 1.44 and Sharpe of 3.31 indicate significantly thinner edge. GBPUSD is worth including for diversification, but should not be your primary pair.</p>
   </div>
 
   <h2 id="avoid">Pairs to <span class="gold">Avoid</span> and Why</h2>
@@ -422,5 +425,9 @@ li{color:var(--muted);margin-bottom:8px;line-height:1.7}li strong{color:var(--wh
 </footer>
 <button class="scroll-top-btn" id="sBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
 <script>var sb=document.getElementById('sBtn');window.addEventListener('scroll',function(){sb.style.display=window.scrollY>400?'flex':'none'},{passive:true});</script>
+<script>
+function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
+</script>
 </body>
 </html>

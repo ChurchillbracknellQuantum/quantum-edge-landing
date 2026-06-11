@@ -180,6 +180,9 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
     <a href="https://getquantumedgeai.com/try-titan.html">Try Free</a>
     <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN →</a>
   </div>
+  <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div id="mobileNav">
   <div class="mob-head">
@@ -444,7 +447,7 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
 
   <div class="cta-block">
     <h3>See a Professionally Built MT5 EA in Action</h3>
-    <p>TITAN AutoTrader was built from 60+ institutional trading books and verified across 17 months of backtesting. 74%+ win rate, 1.39% max drawdown, 5 forex pairs. No martingale. No guesswork.</p>
+    <p>TITAN AutoTrader was built from 25+ years of combined live trading experience and verified across 17 months of backtesting. 74%+ win rate, 1.39% max drawdown, 5 forex pairs. No martingale. No guesswork.</p>
     <a href="https://getquantumedgeai.com/#performance" class="cta-btn">View Live Results</a>
     <a href="https://getquantumedgeai.com/#pricing" class="cta-btn-outline">See Pricing</a>
   </div>
@@ -491,5 +494,9 @@ code{background:rgba(245,200,66,.1);color:var(--gold);padding:2px 7px;border-rad
 
 <button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:28px;right:28px;z-index:800;width:44px;height:44px;border-radius:50%;background:#F5C842;color:#000;border:none;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,200,66,.35)">&#8679;</button>
 <script>var _s=document.getElementById('stt');window.addEventListener('scroll',function(){_s.style.display=window.scrollY>400?'block':'none'});</script>
+<script>
+function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
+</script>
 </body>
 </html>

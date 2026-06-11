@@ -227,6 +227,9 @@ li strong{color:var(--white)}
     <a href="https://getquantumedgeai.com/try-titan.html">Try Free</a>
     <a href="https://getquantumedgeai.com/#pricing" class="nav-cta">Get TITAN &#8594;</a>
   </div>
+  <button class="nav-burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div id="mobileNav">
   <div class="mob-head">
@@ -683,5 +686,9 @@ li strong{color:var(--white)}
 
 <button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:28px;right:28px;z-index:800;width:44px;height:44px;border-radius:50%;background:#F5C842;color:#000;border:none;font-size:1.2rem;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(245,200,66,.35);transition:opacity .2s">&#8679;</button>
 <script>var _s=document.getElementById('stt');window.addEventListener('scroll',function(){_s.style.display=window.scrollY>400?'block':'none'});</script>
+<script>
+function toggleNav(){var n=document.getElementById('mobileNav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':"";}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow="";}
+</script>
 </body>
 </html>
