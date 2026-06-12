@@ -6,8 +6,9 @@ RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
 ErrorDocument 404 /404.html
 
 # Cache control for HTML pages (only if mod_headers available)
+# Short max-age + must-revalidate so edits show within ~10 min, not 1 hour
 <IfModule mod_headers.c>
 <FilesMatch "\.(html|htm)$">
-  Header set Cache-Control "public, max-age=3600"
+  Header set Cache-Control "public, max-age=600, must-revalidate"
 </FilesMatch>
 </IfModule>
