@@ -149,7 +149,13 @@ nav.scrolled{height:66px;background:rgba(13,10,0,.98)}
 #chatSendBtn:hover{transform:scale(1.08);box-shadow:0 4px 18px rgba(245,200,66,.4)}
 #chatOverlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9550;opacity:0;pointer-events:none;transition:opacity .45s}
 #chatOverlay.open{opacity:1;pointer-events:all}
-@media(max-width:480px){#chatPanel{width:100vw}#chatTab{padding:16px 8px}}
+@media(max-width:480px){#chatPanel{width:100vw}}
+@media(max-width:768px){
+  #chatTab{top:auto;bottom:152px;right:14px;transform:none;width:52px;height:52px;padding:0;border-radius:50%;border:1px solid rgba(245,200,66,.4);flex-direction:row;gap:0;box-shadow:0 4px 20px rgba(0,0,0,.45),0 0 18px rgba(245,200,66,.15)}
+  #chatTab .ct-txt,#chatTab .ct-bar{display:none}
+  #chatTab .ct-icon{font-size:1.45rem}
+  #chatTab .ct-dot{position:absolute;top:6px;right:6px;width:9px;height:9px}
+}
 
 /* HERO */
 #hero{
