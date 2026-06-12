@@ -331,7 +331,7 @@ section{padding:96px 44px}
 .perf-tab:hover{color:var(--gold);border-color:rgba(245,200,66,.5)}
 .perf-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border-color:transparent;box-shadow:0 4px 18px rgba(245,200,66,.3)}
 .perf-panel{display:none}
-.perf-panel.active{display:block;animation:compatFade .4s cubic-bezier(.2,.7,.2,1)}
+.perf-panel.active{display:block;animation:panelFade .28s ease}
 .perf-statgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:26px 0 26px}
 .perf-stat{background:rgba(15,12,0,.55);border:1px solid rgba(42,31,0,.75);border-radius:12px;padding:18px 8px;text-align:center}
 .perf-stat .ps-val{display:block;font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1.1}
@@ -405,9 +405,28 @@ tr:hover td{background:rgba(245,200,66,.03)}
 .compat-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;box-shadow:0 6px 22px rgba(245,200,66,.32)}
 .compat-tab.active .ct-count{background:rgba(0,0,0,.22);color:#000}
 .compat-panel{display:none}
-.compat-panel.active{display:block;animation:compatFade .4s cubic-bezier(.2,.7,.2,1)}
-.compat-paneltip{text-align:center;color:var(--muted);font-size:.92rem;line-height:1.6;max-width:560px;margin:22px auto 0}
+.compat-panel.active{display:block;animation:panelFade .28s ease}
+.compat-paneltip{text-align:center;color:var(--muted);font-size:.92rem;line-height:1.6;max-width:560px;margin:22px auto 0;animation:cardIn .45s cubic-bezier(.2,.7,.2,1) backwards}
 @keyframes compatFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes panelFade{from{opacity:0}to{opacity:1}}
+@keyframes cardIn{from{transform:translateY(20px) scale(.98)}to{transform:translateY(0) scale(1)}}
+.compat-panel.active .compat-card{animation:cardIn .5s cubic-bezier(.2,.7,.2,1) backwards}
+.compat-panel.active .compat-card:nth-child(1){animation-delay:.06s}
+.compat-panel.active .compat-card:nth-child(2){animation-delay:.12s}
+.compat-panel.active .compat-card:nth-child(3){animation-delay:.18s}
+.compat-panel.active .compat-card:nth-child(4){animation-delay:.24s}
+.compat-panel.active .compat-card:nth-child(5){animation-delay:.30s}
+.perf-panel.active .perf-stat{animation:cardIn .45s cubic-bezier(.2,.7,.2,1) backwards}
+.perf-panel.active .perf-stat:nth-child(1){animation-delay:.05s}
+.perf-panel.active .perf-stat:nth-child(2){animation-delay:.10s}
+.perf-panel.active .perf-stat:nth-child(3){animation-delay:.15s}
+.perf-panel.active .perf-stat:nth-child(4){animation-delay:.20s}
+.perf-panel.active .perf-stat:nth-child(5){animation-delay:.25s}
+.perf-panel.active .perf-stat:nth-child(6){animation-delay:.30s}
+.perf-panel.active .perf-shots figure{animation:cardIn .5s cubic-bezier(.2,.7,.2,1) backwards}
+.perf-panel.active .perf-shots figure:nth-child(1){animation-delay:.32s}
+.perf-panel.active .perf-shots figure:nth-child(2){animation-delay:.40s}
+@media(prefers-reduced-motion:reduce){.compat-panel.active .compat-card,.perf-panel.active .perf-stat,.perf-panel.active .perf-shots figure,.compat-paneltip{animation:none}}
 .compat-panel .compat-grid{margin-top:26px}
 @media(max-width:480px){
   .compat-tabs{display:flex;width:100%;left:0;transform:none}
