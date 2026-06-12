@@ -2364,7 +2364,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var sr=v.shadowRoot;
     if(!sr){setTimeout(nuke,400);return;}
     var s=document.createElement('style');
-    s.textContent='#logo,a[href*="spline"],div[class*="logo"],div[id*="logo"],[id*="watermark"],[class*="watermark"],canvas+div,#app>div:last-child{display:none!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important}';
+    s.textContent='#logo,a[href*="spline.design"],[id*="watermark"],[class*="watermark"]{opacity:0!important;width:0!important;height:0!important;overflow:hidden!important;pointer-events:none!important}';
     sr.appendChild(s);
     var el=sr.getElementById('logo');if(el)el.style.cssText='display:none!important';
   }
