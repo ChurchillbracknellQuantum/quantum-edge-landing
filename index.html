@@ -1515,30 +1515,118 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
 </section>
 
 <!-- ══════════════════ VIDEO DEMO ══════════════════ -->
-<section id="video-demo" style="background:var(--surface);border-top:1px solid rgba(42,31,0,.4);border-bottom:1px solid rgba(42,31,0,.4)">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="sec-label">Live Proof</div>
-      <h2 class="sec-title">Watch TITAN Trade Live</h2>
-      <p class="sec-sub" style="margin:0 auto">5 years of real backtest results &mdash; every trade, every pair, every drawdown &mdash; shown unedited. No cherry-picking. No theory. Just the machine doing its job.</p>
-    </div>
-    <div class="reveal" style="margin-top:40px;position:relative;width:100%;max-width:1040px;margin-left:auto;margin-right:auto">
-      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(245,200,66,.25);box-shadow:0 24px 60px rgba(0,0,0,.6)">
-        <iframe id="titanVideo" loading="lazy" src="https://www.youtube.com/embed/QzgXt7isLdw?rel=0&modestbranding=1&color=white" title="TITAN AutoTrader &mdash; Live Backtest Demo" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
-      </div>
-      <p style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--muted2);letter-spacing:1px">TITAN AutoTrader &mdash; 5-Year Backtest Demo &middot; All 5 Pairs &middot; Unedited</p>
-      <div style="text-align:center;margin-top:26px">
-        <p style="font-size:1.05rem;color:var(--white);font-weight:600;max-width:620px;margin:0 auto 18px;line-height:1.6">Watch it. Then <strong style="color:var(--gold)">test it free</strong> &mdash; verify every result yourself in MetaTrader's Strategy Tester before you pay a cent.</p>
-        <a href="try-titan.html" class="nav-cta" style="display:inline-block;padding:15px 34px;font-size:1rem">Watch &amp; Test TITAN Free &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="performance">
   <div class="container">
-    <div class="reveal"><div class="sec-label">Verified Results</div><h2 class="sec-title">Real Numbers. Real Trades.</h2><p class="sec-sub">5-year backtest (2021–2026). $10,000 account. MT5 Strategy Tester. 1-minute OHLC. 100% history quality.</p></div>
-    <div class="perf-bars reveal" id="perfBars">
+    <div class="reveal"><div class="sec-label">Verified Results</div><h2 class="sec-title">Real Numbers. Real Trades.</h2><p class="sec-sub">We verified TITAN twice &mdash; the original 17-month test (with full video walkthrough) and a 5-year stress test (2021&ndash;2026). Both below.</p></div>
+
+    <div class="perf-tabs reveal" role="tablist" style="margin-top:30px">
+      <button class="perf-tab active" data-bt="17mo" role="tab" aria-selected="true" onclick="switchBT('17mo')">17-Month Backtest</button>
+      <button class="perf-tab" data-bt="5yr" role="tab" aria-selected="false" onclick="switchBT('5yr')">5-Year Backtest (2021&ndash;2026)</button>
+    </div>
+
+    <!-- ========== TAB 1: 17-MONTH BACKTEST (default) ========== -->
+    <div class="perf-panel active" id="bt-17mo">
+      <p class="sec-sub" style="margin:18px auto 0">17-month backtest. $2,000 account. MT5 Strategy Tester. 1-minute OHLC. 100% history quality.</p>
+
+      <div class="reveal" style="margin-top:40px;position:relative;width:100%;max-width:1040px;margin-left:auto;margin-right:auto">
+        <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(245,200,66,.25);box-shadow:0 24px 60px rgba(0,0,0,.6)">
+          <iframe id="titanVideo" loading="lazy" src="https://www.youtube.com/embed/QzgXt7isLdw?rel=0&modestbranding=1&color=white" title="TITAN AutoTrader &mdash; 17-Month Verification Walkthrough" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+        </div>
+        <p style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--muted2);letter-spacing:1px">&#9654; The original 17-month verification, explained trade-by-trade (30 min).</p>
+      </div>
+
+      <div class="perf-bars reveal" id="perfBars17" style="margin-top:46px">
+        <div class="pb-head">Win Rate by Pair &mdash; 17-Month Backtest</div>
+        <div class="pb-row"><div class="pb-pair">CADCHF</div><div class="pb-track"><div class="pb-fill" data-width="78.57"></div></div><div class="pb-meta"><strong>78.6% WR</strong> &middot; PF 1.95 &middot; SR 9.32</div></div>
+        <div class="pb-row"><div class="pb-pair">AUDUSD</div><div class="pb-track"><div class="pb-fill" data-width="76.50"></div></div><div class="pb-meta"><strong>76.5% WR</strong> &middot; PF 1.78 &middot; SR 5.16</div></div>
+        <div class="pb-row"><div class="pb-pair">AUDCHF</div><div class="pb-track"><div class="pb-fill" data-width="73.91"></div></div><div class="pb-meta"><strong>73.9% WR</strong> &middot; PF 1.95 &middot; SR 7.41</div></div>
+        <div class="pb-row"><div class="pb-pair">USDCHF</div><div class="pb-track"><div class="pb-fill" data-width="73.81"></div></div><div class="pb-meta"><strong>73.8% WR</strong> &middot; PF 1.86 &middot; SR 8.23</div></div>
+        <div class="pb-row"><div class="pb-pair">GBPUSD</div><div class="pb-track"><div class="pb-fill" data-width="70.27"></div></div><div class="pb-meta"><strong>70.3% WR</strong> &middot; PF 1.44 &middot; SR 3.31</div></div>
+      </div>
+      <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; click a pair</div>
+      <div class="perf-tabs reveal" id="ptabs17" role="tablist">
+        <button class="perf-tab active" data-pair="cadchf" role="tab" aria-selected="true" onclick="switchPair17('cadchf')">CADCHF</button>
+        <button class="perf-tab" data-pair="audusd" role="tab" aria-selected="false" onclick="switchPair17('audusd')">AUDUSD</button>
+        <button class="perf-tab" data-pair="audchf" role="tab" aria-selected="false" onclick="switchPair17('audchf')">AUDCHF</button>
+        <button class="perf-tab" data-pair="usdchf" role="tab" aria-selected="false" onclick="switchPair17('usdchf')">USDCHF</button>
+        <button class="perf-tab" data-pair="gbpusd" role="tab" aria-selected="false" onclick="switchPair17('gbpusd')">GBPUSD</button>
+      </div>
+      <div class="perf-panel active" id="pp17-cadchf">
+        <div class="perf-statgrid">
+          <div class="perf-stat"><span class="ps-val">42</span><span class="ps-lbl">Trades</span></div>
+          <div class="perf-stat"><span class="ps-val">78.6%</span><span class="ps-lbl">Win Rate</span></div>
+          <div class="perf-stat"><span class="ps-val">1.95</span><span class="ps-lbl">Profit Factor</span></div>
+          <div class="perf-stat"><span class="ps-val">9.32</span><span class="ps-lbl">Sharpe</span></div>
+          <div class="perf-stat"><span class="ps-val">1.39%</span><span class="ps-lbl">Max DD</span></div>
+          <div class="perf-stat"><span class="ps-val green">+$79.81</span><span class="ps-lbl">Net Profit</span></div>
+        </div>
+        <div class="perf-shots">
+          <figure onclick="openLB(8)"><img src="screenshots/CADCHF_equity (1).png" alt="CADCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+          <figure onclick="openLB(9)"><img src="screenshots/CADCHF_equity (2).png" alt="CADCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        </div>
+      </div>
+      <div class="perf-panel" id="pp17-audusd">
+        <div class="perf-statgrid">
+          <div class="perf-stat"><span class="ps-val">28</span><span class="ps-lbl">Trades</span></div>
+          <div class="perf-stat"><span class="ps-val">76.5%</span><span class="ps-lbl">Win Rate</span></div>
+          <div class="perf-stat"><span class="ps-val">1.78</span><span class="ps-lbl">Profit Factor</span></div>
+          <div class="perf-stat"><span class="ps-val">5.16</span><span class="ps-lbl">Sharpe</span></div>
+          <div class="perf-stat"><span class="ps-val">1.46%</span><span class="ps-lbl">Max DD</span></div>
+          <div class="perf-stat"><span class="ps-val green">+$54.61</span><span class="ps-lbl">Net Profit</span></div>
+        </div>
+        <div class="perf-shots">
+          <figure onclick="openLB(4)"><img src="screenshots/AUDUSD_equity (1).png" alt="AUDUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+          <figure onclick="openLB(5)"><img src="screenshots/AUDUSD_equity (2).png" alt="AUDUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        </div>
+      </div>
+      <div class="perf-panel" id="pp17-audchf">
+        <div class="perf-statgrid">
+          <div class="perf-stat"><span class="ps-val">46</span><span class="ps-lbl">Trades</span></div>
+          <div class="perf-stat"><span class="ps-val">73.9%</span><span class="ps-lbl">Win Rate</span></div>
+          <div class="perf-stat"><span class="ps-val">1.95</span><span class="ps-lbl">Profit Factor</span></div>
+          <div class="perf-stat"><span class="ps-val">7.41</span><span class="ps-lbl">Sharpe</span></div>
+          <div class="perf-stat"><span class="ps-val">1.44%</span><span class="ps-lbl">Max DD</span></div>
+          <div class="perf-stat"><span class="ps-val green">+$94.94</span><span class="ps-lbl">Net Profit</span></div>
+        </div>
+        <div class="perf-shots">
+          <figure onclick="openLB(6)"><img src="screenshots/AUDCHF_equity (1).png" alt="AUDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+          <figure onclick="openLB(7)"><img src="screenshots/AUDCHF_equity (2).png" alt="AUDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        </div>
+      </div>
+      <div class="perf-panel" id="pp17-usdchf">
+        <div class="perf-statgrid">
+          <div class="perf-stat"><span class="ps-val">42</span><span class="ps-lbl">Trades</span></div>
+          <div class="perf-stat"><span class="ps-val">73.8%</span><span class="ps-lbl">Win Rate</span></div>
+          <div class="perf-stat"><span class="ps-val">1.86</span><span class="ps-lbl">Profit Factor</span></div>
+          <div class="perf-stat"><span class="ps-val">8.23</span><span class="ps-lbl">Sharpe</span></div>
+          <div class="perf-stat"><span class="ps-val">2.07%</span><span class="ps-lbl">Max DD</span></div>
+          <div class="perf-stat"><span class="ps-val green">+$85.63</span><span class="ps-lbl">Net Profit</span></div>
+        </div>
+        <div class="perf-shots">
+          <figure onclick="openLB(0)"><img src="screenshots/USDCHF_equity (2).png" alt="USDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+          <figure onclick="openLB(1)"><img src="screenshots/USDCHF_equity (1).png" alt="USDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        </div>
+      </div>
+      <div class="perf-panel" id="pp17-gbpusd">
+        <div class="perf-statgrid">
+          <div class="perf-stat"><span class="ps-val">37</span><span class="ps-lbl">Trades</span></div>
+          <div class="perf-stat"><span class="ps-val">70.3%</span><span class="ps-lbl">Win Rate</span></div>
+          <div class="perf-stat"><span class="ps-val">1.44</span><span class="ps-lbl">Profit Factor</span></div>
+          <div class="perf-stat"><span class="ps-val">3.31</span><span class="ps-lbl">Sharpe</span></div>
+          <div class="perf-stat"><span class="ps-val">2.29%</span><span class="ps-lbl">Max DD</span></div>
+          <div class="perf-stat"><span class="ps-val green">+$45.16</span><span class="ps-lbl">Net Profit</span></div>
+        </div>
+        <div class="perf-shots">
+          <figure onclick="openLB(2)"><img src="screenshots/GBPUSD_equity (1).png" alt="GBPUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+          <figure onclick="openLB(3)"><img src="screenshots/GBPUSD_equity (2).png" alt="GBPUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== TAB 2: 5-YEAR BACKTEST ========== -->
+    <div class="perf-panel" id="bt-5yr">
+      <p class="sec-sub" style="margin:18px auto 0">5-year backtest (2021&ndash;2026). $10,000 account. MT5 Strategy Tester. 1-minute OHLC. 100% history quality.</p>
+    <div class="perf-bars reveal" id="perfBars" style="margin-top:38px">
       <div class="pb-head">Win Rate by Pair &mdash; 5-Year Backtest</div>
       <div class="pb-row"><div class="pb-pair">CADCHF</div><div class="pb-track"><div class="pb-fill" data-width="83.5"></div></div><div class="pb-meta"><strong>83.5% WR</strong> &middot; PF 1.43 &middot; SR 4.28</div></div>
       <div class="pb-row"><div class="pb-pair">USDCHF</div><div class="pb-track"><div class="pb-fill" data-width="80.3"></div></div><div class="pb-meta"><strong>80.3% WR</strong> &middot; PF 1.20 &middot; SR 2.19</div></div>
@@ -1564,8 +1652,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="perf-stat"><span class="ps-val green">+$889</span><span class="ps-lbl">Net Profit</span></div>
       </div>
       <div class="perf-shots">
-        <figure onclick="openLB(8)"><img src="screenshots/CADCHF_equity (1).png" alt="CADCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
-        <figure onclick="openLB(9)"><img src="screenshots/CADCHF_equity (2).png" alt="CADCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(8)"><img src="screenshots/CADCHF_5yr_equity.png" alt="CADCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(9)"><img src="screenshots/CADCHF_5yr_stats.png" alt="CADCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
     <div class="perf-panel" id="pp-audusd">
@@ -1578,8 +1666,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="perf-stat"><span class="ps-val green">+$415</span><span class="ps-lbl">Net Profit</span></div>
       </div>
       <div class="perf-shots">
-        <figure onclick="openLB(4)"><img src="screenshots/AUDUSD_equity (1).png" alt="AUDUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
-        <figure onclick="openLB(5)"><img src="screenshots/AUDUSD_equity (2).png" alt="AUDUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(4)"><img src="screenshots/AUDUSD_5yr_equity.png" alt="AUDUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(5)"><img src="screenshots/AUDUSD_5yr_stats.png" alt="AUDUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
     <div class="perf-panel" id="pp-audchf">
@@ -1592,8 +1680,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="perf-stat"><span class="ps-val green">+$643</span><span class="ps-lbl">Net Profit</span></div>
       </div>
       <div class="perf-shots">
-        <figure onclick="openLB(6)"><img src="screenshots/AUDCHF_equity (1).png" alt="AUDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
-        <figure onclick="openLB(7)"><img src="screenshots/AUDCHF_equity (2).png" alt="AUDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(6)"><img src="screenshots/AUDCHF_5yr_equity.png" alt="AUDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(7)"><img src="screenshots/AUDCHF_5yr_stats.png" alt="AUDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
     <div class="perf-panel" id="pp-usdchf">
@@ -1606,8 +1694,8 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="perf-stat"><span class="ps-val green">+$486</span><span class="ps-lbl">Net Profit</span></div>
       </div>
       <div class="perf-shots">
-        <figure onclick="openLB(0)"><img src="screenshots/USDCHF_equity (2).png" alt="USDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
-        <figure onclick="openLB(1)"><img src="screenshots/USDCHF_equity (1).png" alt="USDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(0)"><img src="screenshots/USDCHF_5yr_equity.png" alt="USDCHF Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(1)"><img src="screenshots/USDCHF_5yr_stats.png" alt="USDCHF Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
     <div class="perf-panel" id="pp-gbpusd">
@@ -1620,10 +1708,11 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="perf-stat"><span class="ps-val green">+$355</span><span class="ps-lbl">Net Profit</span></div>
       </div>
       <div class="perf-shots">
-        <figure onclick="openLB(2)"><img src="screenshots/GBPUSD_equity (1).png" alt="GBPUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
-        <figure onclick="openLB(3)"><img src="screenshots/GBPUSD_equity (2).png" alt="GBPUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(2)"><img src="screenshots/GBPUSD_5yr_equity.png" alt="GBPUSD Equity Curve" loading="lazy"><figcaption><span class="dot"></span>Equity Curve &mdash; click to enlarge</figcaption></figure>
+        <figure onclick="openLB(3)"><img src="screenshots/GBPUSD_5yr_stats.png" alt="GBPUSD Backtest Stats" loading="lazy"><figcaption><span class="dot"></span>Backtest Stats &mdash; click to enlarge</figcaption></figure>
       </div>
     </div>
+    </div><!-- /#bt-5yr -->
   </div>
 </section>
 <div id="lb">
@@ -2529,6 +2618,8 @@ const pbObs=new IntersectionObserver(e=>{
 },{threshold:.2});
 const perfBarsEl=document.getElementById('perfBars');
 if(perfBarsEl)pbObs.observe(perfBarsEl);
+const perfBars17El=document.getElementById('perfBars17');
+if(perfBars17El)pbObs.observe(perfBars17El);
 
 // Gallery filter
 function filterGal(cat,btn){
@@ -2586,9 +2677,27 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 });
 
 // Performance per-pair switcher
+// Backtest top-level toggle (17-Month vs 5-Year)
+function switchBT(t){
+  document.querySelectorAll('#performance > .container > .perf-tabs .perf-tab').forEach(function(b){var on=b.dataset.bt===t;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  var a=document.getElementById('bt-17mo'),b=document.getElementById('bt-5yr');
+  if(a)a.classList.toggle('active',t==='17mo');
+  if(b)b.classList.toggle('active',t==='5yr');
+  // animate the bars of whichever tab just became visible
+  var bars=document.getElementById(t==='17mo'?'perfBars17':'perfBars');
+  if(bars)bars.querySelectorAll('.pb-fill').forEach(function(f){var w=f.getAttribute('data-width');if(w)f.style.width=w+'%';});
+}
+// 5-Year inner per-pair switcher (scoped to #bt-5yr)
 function switchPair(p){
-  document.querySelectorAll('.perf-tab').forEach(function(b){var on=b.dataset.pair===p;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
-  document.querySelectorAll('.perf-panel').forEach(function(panel){panel.classList.toggle('active',panel.id==='pp-'+p);});
+  var root=document.getElementById('bt-5yr');if(!root)return;
+  root.querySelectorAll('.perf-tab').forEach(function(b){var on=b.dataset.pair===p;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  root.querySelectorAll('.perf-panel').forEach(function(panel){panel.classList.toggle('active',panel.id==='pp-'+p);});
+}
+// 17-Month inner per-pair switcher (scoped to #bt-17mo)
+function switchPair17(p){
+  var root=document.getElementById('bt-17mo');if(!root)return;
+  root.querySelectorAll('.perf-tab').forEach(function(b){var on=b.dataset.pair===p;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');});
+  root.querySelectorAll('.perf-panel').forEach(function(panel){panel.classList.toggle('active',panel.id==='pp17-'+p);});
 }
 
 // Compatibility tab switcher
