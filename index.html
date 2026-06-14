@@ -330,6 +330,16 @@ section{padding:96px 44px}
 .perf-tab{background:rgba(15,12,0,.6);border:1px solid rgba(245,200,66,.2);color:var(--muted);font-family:var(--font);font-size:.9rem;font-weight:800;letter-spacing:.6px;padding:11px 22px;border-radius:50px;cursor:pointer;transition:color .25s,background .25s,box-shadow .25s,border-color .25s}
 .perf-tab:hover{color:var(--gold);border-color:rgba(245,200,66,.5)}
 .perf-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border-color:transparent;box-shadow:0 4px 18px rgba(245,200,66,.3)}
+/* ── make switch tabs OBVIOUSLY clickable ── */
+.switch-hint{display:inline-flex;align-items:center;gap:9px;font-size:.7rem;font-weight:800;letter-spacing:1.4px;color:var(--gold2);text-transform:uppercase;margin:0 auto 16px;padding:8px 20px;border:1px dashed rgba(245,200,66,.45);border-radius:50px;background:rgba(245,200,66,.06)}
+.switch-hint .sh-ic{font-size:1.05rem;animation:shTap 1.3s ease-in-out infinite;display:inline-block}
+@keyframes shTap{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.sh-row{display:flex;justify-content:center}
+.perf-tab,.compat-tab{transition:color .25s,background .25s,box-shadow .25s,border-color .25s,transform .2s}
+.perf-tab:not(.active):hover,.compat-tab:not(.active):hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(245,200,66,.2)}
+.perf-tab:not(.active),.compat-tab:not(.active){animation:tabGlow 2.6s ease-in-out infinite}
+@keyframes tabGlow{0%,100%{border-color:rgba(245,200,66,.22)}50%{border-color:rgba(245,200,66,.6);box-shadow:0 0 12px rgba(245,200,66,.1)}}
+@media(prefers-reduced-motion:reduce){.switch-hint .sh-ic,.perf-tab:not(.active),.compat-tab:not(.active){animation:none}}
 .perf-panel{display:none}
 .perf-panel.active{display:block;animation:panelFade .28s ease}
 .perf-statgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:26px 0 26px}
@@ -1519,6 +1529,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
   <div class="container">
     <div class="reveal"><div class="sec-label">Verified Results</div><h2 class="sec-title">Real Numbers. Real Trades.</h2><p class="sec-sub">We verified TITAN twice &mdash; the original 17-month test (with full video walkthrough) and a 5-year stress test (2021&ndash;2026). Both below.</p></div>
 
+    <div class="sh-row reveal"><span class="switch-hint"><span class="sh-ic">&#128073;</span> Click a tab to switch the backtest</span></div>
     <div class="perf-tabs reveal" role="tablist" style="margin-top:30px">
       <button class="perf-tab active" data-bt="17mo" role="tab" aria-selected="true" onclick="switchBT('17mo')">17-Month Backtest</button>
       <button class="perf-tab" data-bt="5yr" role="tab" aria-selected="false" onclick="switchBT('5yr')">5-Year Backtest (2021&ndash;2026)</button>
@@ -1543,7 +1554,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
         <div class="pb-row"><div class="pb-pair">USDCHF</div><div class="pb-track"><div class="pb-fill" data-width="73.81"></div></div><div class="pb-meta"><strong>73.8% WR</strong> &middot; PF 1.86 &middot; SR 8.23</div></div>
         <div class="pb-row"><div class="pb-pair">GBPUSD</div><div class="pb-track"><div class="pb-fill" data-width="70.27"></div></div><div class="pb-meta"><strong>70.3% WR</strong> &middot; PF 1.44 &middot; SR 3.31</div></div>
       </div>
-      <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; click a pair</div>
+      <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; <span class="sh-ic" style="display:inline-block;color:var(--gold2)">&#128073;</span> click any pair below</div>
       <div class="perf-tabs reveal" id="ptabs17" role="tablist">
         <button class="perf-tab active" data-pair="cadchf" role="tab" aria-selected="true" onclick="switchPair17('cadchf')">CADCHF</button>
         <button class="perf-tab" data-pair="audusd" role="tab" aria-selected="false" onclick="switchPair17('audusd')">AUDUSD</button>
@@ -1634,7 +1645,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <div class="pb-row"><div class="pb-pair">GBPUSD</div><div class="pb-track"><div class="pb-fill" data-width="78.8"></div></div><div class="pb-meta"><strong>78.8% WR</strong> &middot; PF 1.49 &middot; SR 4.05</div></div>
       <div class="pb-row"><div class="pb-pair">AUDCHF</div><div class="pb-track"><div class="pb-fill" data-width="73.9"></div></div><div class="pb-meta"><strong>73.9% WR</strong> &middot; PF 1.58 &middot; SR 4.83</div></div>
     </div>
-    <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; click a pair</div>
+    <div class="gal-title reveal" style="margin-top:46px">&#128202; Per-Pair Breakdown &mdash; <span class="sh-ic" style="display:inline-block;color:var(--gold2)">&#128073;</span> click any pair below</div>
     <div class="perf-tabs reveal" role="tablist">
       <button class="perf-tab active" data-pair="cadchf" role="tab" aria-selected="true" onclick="switchPair('cadchf')">CADCHF</button>
       <button class="perf-tab" data-pair="audusd" role="tab" aria-selected="false" onclick="switchPair('audusd')">AUDUSD</button>
@@ -1748,6 +1759,7 @@ input[type=range].calc-input::-moz-range-thumb{width:18px;height:18px;border-rad
       <h2 class="sec-title">Brokers &amp; Prop Firms TITAN Runs On</h2>
       <p class="sec-sub" style="margin:0 auto">Individually verified &mdash; all 5 TITAN pairs tradeable, EAs allowed, MT4 &amp; MT5 supported. No guesswork before you commit.</p>
     </div>
+    <div class="sh-row reveal"><span class="switch-hint"><span class="sh-ic">&#128073;</span> Click to switch</span></div>
     <div class="compat-tabs reveal" role="tablist">
       <button class="compat-tab active" data-tab="brokers" role="tab" aria-selected="true" onclick="switchCompat('brokers')"><span class="ct-ico">&#127974;</span> Brokers <span class="ct-count">5</span></button>
       <button class="compat-tab" data-tab="props" role="tab" aria-selected="false" onclick="switchCompat('props')"><span class="ct-ico">&#127942;</span> Prop Firms <span class="ct-count">3</span></button>
